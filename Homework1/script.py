@@ -1,5 +1,6 @@
 import math
 import sys 
+from functools import cmp_to_key
 
 class SYM():
     def __init__(self):
@@ -65,3 +66,33 @@ for x in [1,1,1,1,2,2,3]:
     num.add(x)
 print(num.mid())
 print(num.div())
+
+def map(t, fun):
+    u={}
+    for k,v in t.items():
+        v,k = fun(v)
+        if k != None and k != False:
+            u[k] = v
+        else:
+            u[1+len(u)] = v
+    return u
+
+def kap(t, fun):
+    u={}
+    for k, v in t.items():
+        v,k = fun(k)
+        if k!= None and k!= False:
+            u[k] = v
+        else:
+            u[1+len(u)]=v
+    return u
+
+def sort(t,fun):
+    return sorted(t,key=cmp_to_key(fun))
+
+def keys(t):
+    return(sort(kap(t.keys())))
+
+
+
+
