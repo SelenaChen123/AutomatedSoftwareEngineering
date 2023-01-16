@@ -93,6 +93,12 @@ def sort(t,fun):
 def keys(t):
     return(sort(kap(t.keys())))
 
-
-
+def coerce(s):
+    try:
+        return int(s)
+    except ValueError:
+        try:
+            return float(s)
+        except ValueError:
+            return s.strip()
 
