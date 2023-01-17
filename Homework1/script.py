@@ -2,6 +2,10 @@ import math
 import sys 
 from functools import cmp_to_key
 
+class table(dict):
+    def __repr__(i): 
+        return i.__class__.__name__ +"{"+', '.join([f":{k} {v}"   for k,v in sorted(list(i.__dict__.items())) if k[0] != "_"])+"}"
+
 class SYM():
     def __init__(self):
         self.n = 0
@@ -67,6 +71,8 @@ for x in [1,1,1,1,2,2,3]:
 print(num.mid())
 print(num.div())
 
+# List
+
 def map(t, fun):
     u={}
     for k,v in t.items():
@@ -102,3 +108,6 @@ def coerce(s):
         except ValueError:
             return s.strip()
 
+# Strings
+
+# Don't need o(t), oo(t, isKeys, fun), or fmt(t), since they are lua's attempt to an object oriented view of printing lines of a table. This is done through the table object created above, which is just a python dictionary with the __repr__ method changed.
