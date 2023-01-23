@@ -5,23 +5,26 @@ import re
 
 the = {}
 help = """
-script.lua : an example script with help text and a test suite
-(c)2022, Tim Menzies <timm@ieee.org>, BSD-2
+data.lua : an example csv reader script
+(c)2022, Tim Menzies <timm@ieee.org>, BSD-2 
 
-USAGE:   script.lua  [OPTIONS] [-g ACTION]
+USAGE:   data.lua  [OPTIONS] [-g ACTION]
 
 OPTIONS:
-  -d  --dump    on crash, dump stack = false
-  -g  --go      start-up action      = data
-  -h  --help    show help            = false
-  -s  --seed    random number seed   = 937162211
+  -d  --dump  on crash, dump stack = false
+  -f  --file  name of file         = ../etc/data/auto93.csv
+  -g  --go    start-up action      = data
+  -h  --help  show help            = false
+  -s  --seed  random number seed   = 937162211
 
 ACTIONS:
 """
 
 
 class SYM():
-    def __init__(self):
+    def __init__(self, at, txt):
+        self.at = at if at else 0
+        self.txt = txt if txt != "" else ""
         self.n = 0
         self.has = {}
         self.most = 0
@@ -49,12 +52,15 @@ class SYM():
 
 
 class NUM():
-    def __init__(self):
+    def __init__(self, at, txt):
+        self.at = at if at else 0
+        self.txt = txt if txt != "" else ""
         self.n = 0
         self.mu = 0
         self.m2 = 0
         self.hi = sys.maxsize
         self.lo = -sys.maxsize
+        self.w = self.txt.find("-$")
 
     def add(self, n):
         if n != "?":
@@ -92,7 +98,7 @@ def kap(t, fun):
     u = {}
 
     for k, v in t.items():
-        v, k = fun(k)
+        v, k = fun(k, v)
         if k != None and k != False:
             u[k] = v
         else:
@@ -185,24 +191,6 @@ def eg(key, str, fun):
 def eg_the():
     print(str(the))
     return the
-
-
-def eg_rand():
-    num1 = NUM()
-    num2 = NUM()
-
-    random.seed(the["seed"])
-    for _ in range(1, 10 ** 3):
-        num1.add(random.random())
-
-    random.seed(the["seed"])
-    for _ in range(1, 10 ** 3):
-        num2.add(random.random())
-
-    m1 = round(num1.mid(), 10)
-    m2 = round(num2.mid(), 10)
-
-    return m1 == m2 and .5 == round(m1, 1)
 
 
 def eg_sym():

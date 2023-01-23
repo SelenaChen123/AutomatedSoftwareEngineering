@@ -92,7 +92,7 @@ def kap(t, fun):
     u = {}
 
     for k, v in t.items():
-        v, k = fun(k)
+        v, k = fun(k, v)
         if k != None and k != False:
             u[k] = v
         else:
