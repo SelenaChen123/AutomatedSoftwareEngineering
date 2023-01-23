@@ -75,6 +75,36 @@ class NUM():
             return (self.m2 / (self.n - 1)) ** 0.5
 
 
+def map(t, fun):
+    u = {}
+
+    for k, v in t.items():
+        v, k = fun(v)
+        if k != None and k != False:
+            u[k] = v
+        else:
+            u[1 + len(u)] = v
+
+    return u
+
+
+def kap(t, fun):
+    u = {}
+
+    for k, v in t.items():
+        v, k = fun(k)
+        if k != None and k != False:
+            u[k] = v
+        else:
+            u[1 + len(u)] = v
+
+    return u
+
+
+def keys(self, t):
+    return sorted(self.kap(t.keys()))
+
+
 def coerce(s):
     if s == "true":
         return True
@@ -157,6 +187,24 @@ def eg_the():
     return the
 
 
+def eg_rand():
+    num1 = NUM()
+    num2 = NUM()
+
+    random.seed(the["seed"])
+    for _ in range(1, 10 ** 3):
+        num1.add(random.random())
+
+    random.seed(the["seed"])
+    for _ in range(1, 10 ** 3):
+        num2.add(random.random())
+
+    m1 = round(num1.mid(), 10)
+    m2 = round(num2.mid(), 10)
+
+    return m1 == m2 and .5 == round(m1, 1)
+
+
 def eg_sym():
     sym = SYM()
 
@@ -176,6 +224,7 @@ def eg_num():
 
 
 eg("the", "show settings", eg_the)
+eg("rand", "generate, reset, regenerate same", eg_rand)
 eg("sym", "check syms", eg_sym)
 eg("num", "check nums", eg_num)
 
