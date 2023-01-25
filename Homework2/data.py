@@ -141,9 +141,16 @@ class DATA:
             map({},data.add())
         return data
     
-    def stat(self):
-        return kap(self.cols.y, col.rnd)  # Need the round function from the other new functions for this part. 
-                                          # Not sure how to do the inline function in the lua for this one
+    def stat(self, what, cols, func):
+        if what == "mid":
+            func = getattr(globals()["SYM"](), ("mid"))
+        else:
+            func = getattr(globals()["SYM"](), ("div"))
+
+        if type(cols) == "COLS":
+            return kap(cols, func)
+        else:
+            return kap(self.cols.y, func)
 
             
 def map(t, fun):
