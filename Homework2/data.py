@@ -80,7 +80,55 @@ class NUM():
         else:
             return (self.m2 / (self.n - 1)) ** 0.5
 
+          
+class COLS:
 
+    def __init__(self,t):
+        self.names = t
+        self.all, self.x, self.y, self.klass = [], [], []
+        for n,s in enumerate(t):
+            if re.search('[a-zA-Z]+',s):
+                col = NUM(n,s)
+            else:
+                col = SYM(n,s)
+            self.all.append(col)
+            if s[-1]!="X":
+                if s[-1]!="!":
+                    self.klass = col
+                if s[-1]!= "!" and s[-1]!="+" and s[-1]!="-1":
+                    self.x.append(col)
+                else:
+                    self.y.append(col) 
+
+    def add(self,row):
+        not_skipped = self.x + self.y            
+        for column in not_skipped:
+            column.add(row.cells[column.at])
+        
+
+class ROW:
+    def __init__(self,t):
+        self.cells = t
+
+        
+class DATA:
+    def __init__(self,src):
+        self.rows, self.cols = [], None
+        if type(src)=="string":
+            c = csv(src,self.add())          # To be completed after CSV function
+    
+    def add(self,t):
+        if self.cols:
+            try: 
+                loc = t.cells
+            except:
+                t =ROW(t)
+            self.rows.append(t)
+            self.cols.add(t)
+        else:
+            self.cols = COLS(t)
+
+            
 def map(t, fun):
     u = {}
 
