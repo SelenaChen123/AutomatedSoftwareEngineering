@@ -116,6 +116,11 @@ class DATA:
         self.rows, self.cols = [], None
         if type(src)=="string":
             c = csv(src,self.add())          # To be completed after CSV function
+        else:
+            if  type(src)==list:             # Loading a list from the src variable if it is a list, or a new list, for the map function
+                m = map(src,self.add())
+            else:
+                m = map({},self.add())
     
     def add(self,t):
         if self.cols:
@@ -127,6 +132,18 @@ class DATA:
             self.cols.add(t)
         else:
             self.cols = COLS(t)
+    
+    def clone(self, init):
+        data = DATA(self.cols)
+        if type(init) == list:
+            map(init,data.add())
+        else:
+            map({},data.add())
+        return data
+    
+    def stat(self):
+        return kap(self.cols.y, col.rnd)  # Need the round function from the other new functions for this part. 
+                                          # Not sure how to do the inline function in the lua for this one
 
             
 def map(t, fun):
