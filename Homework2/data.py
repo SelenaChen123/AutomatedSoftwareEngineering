@@ -2,6 +2,7 @@ import math
 import sys
 import random
 import re
+import csv
 
 the = {}
 help = """
@@ -115,7 +116,9 @@ class DATA:
     def __init__(self,src):
         self.rows, self.cols = [], None
         if type(src)=="string":
-            c = csv(src,self.add())          # To be completed after CSV function
+            reader = csv.reader(src)
+            for row in reader:
+                self.add(row)
         else:
             if  type(src)==list:             # Loading a list from the src variable if it is a list, or a new list, for the map function
                 m = map(src,self.add())
