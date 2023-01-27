@@ -1,0 +1,6 @@
+{'dump': False, 'file': '../../etc/data/auto93.csv', 'go': 'all', 'help': False, 'seed': 937162211}
+✅ pass:the
+✅ pass:sym
+✅ pass:num
+✅ pass:csv
+❌ fail:data
