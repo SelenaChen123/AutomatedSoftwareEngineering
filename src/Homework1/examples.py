@@ -1,8 +1,8 @@
 import random
 
-from globals import the, help
-from num import NUM
-from sym import SYM
+import globals
+import num
+import sym
 
 
 global egs
@@ -10,26 +10,24 @@ egs = {}
 
 
 def eg(key, str, fun):
-    global help
-
     egs[key] = fun
-    help += "  -g  {}\t{}\n".format(key, str)
+    globals.help += "  -g  {}\t{}\n".format(key, str)
 
 
 def eg_the():
-    print(str(the))
-    return the
+    print(str(globals.the))
+    return globals.the
 
 
 def eg_rand():
-    num1 = NUM()
-    num2 = NUM()
+    num1 = num.NUM()
+    num2 = num.NUM()
 
-    random.seed(the["seed"])
+    random.seed(globals.the["seed"])
     for _ in range(1, 10 ** 3):
         num1.add(random.random())
 
-    random.seed(the["seed"])
+    random.seed(globals.the["seed"])
     for _ in range(1, 10 ** 3):
         num2.add(random.random())
 
@@ -40,18 +38,18 @@ def eg_rand():
 
 
 def eg_sym():
-    sym = SYM()
+    sym1 = sym.SYM()
 
     for x in ["a", "a", "a", "a", "b", "b", "c"]:
-        sym.add(x)
+        sym1.add(x)
 
-    return "a" == sym.mid() and 1.379 == round(sym.div(), 3)
+    return "a" == sym1.mid() and 1.379 == round(sym1.div(), 3)
 
 
 def eg_num():
-    num = NUM()
+    num1 = num.NUM()
 
     for x in [1, 1, 1, 1, 2, 2, 3]:
-        num.add(x)
+        num1.add(x)
 
-    return 11 / 7 == num.mid() and 0.787 == round(num.div(), 3)
+    return 11 / 7 == num1.mid() and 0.787 == round(num1.div(), 3)

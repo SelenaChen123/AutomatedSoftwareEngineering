@@ -1,9 +1,9 @@
 import sys
 import re
 
-from globals import the, help
-from utils import coerce
-from examples import egs, eg, eg_the, eg_rand, eg_sym, eg_num
+import globals
+import utils
+import examples
 
 
 def settings(s):
@@ -11,7 +11,7 @@ def settings(s):
 
     for item in re.findall("\n[\s]+[-][\S]+[\s]+[-][-]([\S]+)[^\n]+= ([\S]+)", s):
         k, v = item
-        t[k] = coerce(v)
+        t[k] = utils.coerce(v)
 
     return t
 
@@ -29,7 +29,7 @@ def cli(options):
                 else:
                     v = sys.argv[n + 1]
 
-        options[k] = coerce(v)
+        options[k] = utils.coerce(v)
 
     return options
 
@@ -39,16 +39,16 @@ def main(help, funs):
     fails = 0
 
     for k, v in cli(settings(help)).items():
-        the[k] = v
+        globals.the[k] = v
         saved[k] = v
 
-    if the["help"]:
+    if globals.the["help"]:
         print(help)
     else:
         for what in funs.keys():
-            if the["go"] == "all" or what == the["go"]:
+            if globals.the["go"] == "all" or what == globals.the["go"]:
                 for k, v in saved.items():
-                    the[k] = v
+                    globals.the[k] = v
 
                 if not funs[what]():
                     fails += 1
@@ -58,9 +58,9 @@ def main(help, funs):
 
 
 if __name__ == '__main__':
-    eg("the", "show settings", eg_the)
-    eg("rand", "generate, reset, regenerate same", eg_rand)
-    eg("sym", "check syms", eg_sym)
-    eg("num", "check nums", eg_num)
+    examples.eg("the", "show settings", examples.eg_the)
+    examples.eg("rand", "generate, reset, regenerate same", examples.eg_rand)
+    examples.eg("sym", "check syms", examples.eg_sym)
+    examples.eg("num", "check nums", examples.eg_num)
 
-    main(help, egs)
+    main(globals.help, examples.egs)
