@@ -17,7 +17,33 @@ Implemented COLS and DATA Classes that helps to create and store NUM and SYM obj
 
 ## Step to set-up and run the HW in your local machine
 
-1. Download and install the latest [Python](https://www.python.org/downloads/) version 
+1. Download and install the latest [Python](https://www.python.org/downloads/) version
+
+2. Check your Python version using: 
+
+   `python --version`
+
+3. Clone the repository using:
+
+    `https://github.com/SelenaChen123/AutomatedSoftwareEngineering`
+
+4. Go to the specific Homework folder. For instance if you you want to run tests in HW1, use:
+  
+    `cd src\docs\Homework1`
+   
+     All Homework files are in the src folder 
+
+5. To get help:
+   
+    `python main.py -h` 
+
+6. To run a specific Test:
+  
+   `python main.py -g <test-case-name>`
+  
+    To run all Test case:
+  
+   `python main.py -g all`
 
 ## Contributors:
 1. <a href="https://github.com/amsauerb" target="_blank">Andrew Sauerbrei</a>
