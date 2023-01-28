@@ -1,0 +1,16 @@
+name: test
+on: [push]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - uses: actions/setup-python@v4
+      with:
+        python-version: 3.11
+    - name: Test Homework 1
+      run: cd ./src; lua Homework1/main.py -g all
+    - run: echo "🍏 This job's status is ${{ job.status }}."
+    - name: Test Homework 2
+      run: cd ./src; lua Homework2/main.py -g all
+    - run: echo "🍏 This job's status is ${{ job.status }}."
