@@ -4,11 +4,11 @@ global help
 the = {}
 help = """
 data.lua : an example csv reader script
-(c)2022 BSD-2
+Copyright (c) 2023 MIT
 Tim Menzies <timm@ieee.org>
 Selena Chen <schen53@ncsu.edu>
+Arun Ramesh <arames25@ncsu.edu>
 Andrew Sauerbrei <amsauerb@ncsu.edu>
-Arun Ramesh <amsauerb@ncsu.edu>
 
 USAGE:   data.lua  [OPTIONS] [-g ACTION]
 
