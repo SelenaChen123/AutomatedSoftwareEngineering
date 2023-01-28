@@ -9,8 +9,8 @@ jobs:
       with:
         python-version: 3.11
     - name: Test Homework 1
-      run: cd ./src; lua Homework1/main.py -g all
+      run: cd ./src; python Homework1/main.py -g all
     - run: echo "🍏 This job's status is ${{ job.status }}."
     - name: Test Homework 2
-      run: cd ./src; lua Homework2/main.py -g all
+      run: cd ./src; python Homework2/main.py -g all
     - run: echo "🍏 This job's status is ${{ job.status }}."
