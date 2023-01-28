@@ -1,0 +1,23 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: AutomatedSoftwareEngineering
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file.
+type: software
+authors:
+  - given-names: Selena
+    family-names: Chen
+    email: schen53@ncsu.edu
+    affiliation: North Carolina State University
+  - given-names: Andrew
+    family-names: Sauerbrei
+    email: amsauerb@ncsu.edu
+    affiliation: North Carolina State University
+  - given-names: Arun
+    family-names: Ramesh
+    email: arames25@ncsu.edu
+    affiliation: North Carolina State University
+license: MIT
