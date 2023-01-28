@@ -1,7 +1,7 @@
 import re
 
-from num import NUM
-from sym import SYM
+import num
+import sym
 
 
 class COLS:
@@ -15,9 +15,9 @@ class COLS:
 
         for n, s in enumerate(t):
             if re.search("^[A-Z]+", s):
-                col = NUM(n, s)
+                col = num.NUM(n, s)
             else:
-                col = SYM(n, s)
+                col = sym.SYM(n, s)
 
             self.all.append(col)
 

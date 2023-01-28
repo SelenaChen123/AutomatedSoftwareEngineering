@@ -1,9 +1,9 @@
 import sys
 import re
 
-from globals import the, help
-from utils import coerce
-from examples import egs, eg, eg_the, eg_sym, eg_num, eg_csv, eg_data, eg_stats
+import globals
+import utils
+import examples
 
 
 def settings(s):
@@ -11,7 +11,7 @@ def settings(s):
 
     for item in re.findall("\n[\s]+[-][\S]+[\s]+[-][-]([\S]+)[^\n]+= ([\S]+)", s):
         k, v = item
-        t[k] = coerce(v)
+        t[k] = utils.coerce(v)
 
     return t
 
@@ -29,29 +29,28 @@ def cli(options):
                 else:
                     v = sys.argv[n + 1]
 
-        options[k] = coerce(v)
+        options[k] = utils.coerce(v)
 
     return options
 
 
 def main(help, funs):
-    global the
     saved = {}
     fails = 0
 
     for k, v in cli(settings(help)).items():
-        the[k] = v
+        globals.the[k] = v
         saved[k] = v
 
-    if the["help"]:
+    if globals.the["help"]:
         print(help)
     else:
         for what in funs.keys():
-            if the["go"] == "all" or what == the["go"]:
+            if globals.the["go"] == "all" or what == globals.the["go"]:
                 for k, v in saved.items():
-                    the[k] = v
+                    globals.the[k] = v
 
-                if not funs[what]():
+                if funs[what]() == False:
                     fails += 1
                     print("❌ fail:" + what)
                 else:
@@ -59,11 +58,11 @@ def main(help, funs):
 
 
 if __name__ == '__main__':
-    eg("the", "show settings", eg_the)
-    eg("sym", "check syms", eg_sym)
-    eg("num", "check nums", eg_num)
-    eg("csv", "read from csv", eg_csv)
-    eg("data", "read DATA csv", eg_data)
-    eg("stats", "stats from DATA", eg_stats)
+    examples.eg("the", "show settings", examples.eg_the)
+    examples.eg("sym", "check syms", examples.eg_sym)
+    examples.eg("num", "check nums", examples.eg_num)
+    examples.eg("csv", "read from csv", examples.eg_csv)
+    examples.eg("data", "read DATA csv", examples.eg_data)
+    examples.eg("stats", "stats from DATA", examples.eg_stats)
 
-    main(help, egs)
+    main(globals.help, examples.egs)

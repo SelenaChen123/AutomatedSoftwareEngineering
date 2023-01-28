@@ -1,8 +1,8 @@
-from globals import the, help
-from sym import SYM
-from num import NUM
-from data import DATA
-from utils import csv
+import globals
+import sym
+import num
+import data
+import utils
 
 
 global egs
@@ -10,33 +10,31 @@ egs = {}
 
 
 def eg(key, str, fun):
-    global help
-
     egs[key] = fun
-    help += "  -g  {}\t{}\n".format(key, str)
+    globals.help += "  -g  {}\t{}\n".format(key, str)
 
 
 def eg_the():
-    print(str(the))
-    return the
+    print(str(globals.the))
+    return globals.the
 
 
 def eg_sym():
-    sym = SYM()
+    sym1 = sym.SYM()
 
     for x in ["a", "a", "a", "a", "b", "b", "c"]:
-        sym.add(x)
+        sym1.add(x)
 
-    return "a" == sym.mid() and 1.379 == round(sym.div(), 3)
+    return "a" == sym1.mid() and 1.379 == round(sym1.div(), 3)
 
 
 def eg_num():
-    num = NUM()
+    num1 = num.NUM()
 
     for x in [1, 1, 1, 1, 2, 2, 3]:
-        num.add(x)
+        num1.add(x)
 
-    return 11 / 7 == num.mid() and 0.787 == round(num.div(), 3)
+    return 11 / 7 == num1.mid() and 0.787 == round(num1.div(), 3)
 
 
 def eg_csv():
@@ -48,20 +46,20 @@ def eg_csv():
 
         n += len(t)
 
-    csv(the["file"], function)
+    utils.csv(globals.the["file"], function)
 
     return n == 8 * 399
 
 
 def eg_data():
-    data = DATA(the["file"])
+    data1 = data.DATA(globals.the["file"])
 
-    return len(data.rows) == 398 and data.cols.y[1].w == -1 and data.cols.x[1].at == 1 and len(data.cols.x) == 4
+    return len(data1.rows) == 398 and data1.cols.y[1].w == -1 and data1.cols.x[1].at == 1 and len(data1.cols.x) == 4
 
 
 def eg_stats():
-    data = DATA(the["file"])
+    data1 = data.DATA(globals.the["file"])
 
-    for k, cols in enumerate([data.cols.y, data.cols.x]):
-        print(k, "mid", data.stats("mid", cols, 2))
-        print("", "div", data.stats("div", cols, 2))
+    for k, cols in enumerate([data1.cols.y, data1.cols.x]):
+        print(k, "mid", data1.stats("mid", cols, 2))
+        print("", "div", data1.stats("div", cols, 2))

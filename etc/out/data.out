@@ -3,4 +3,9 @@
 ✅ pass:sym
 ✅ pass:num
 ✅ pass:csv
-❌ fail:data
+✅ pass:data
+0 mid {'Acc+': 15.57, 'Lbs-': 2970.42, 'Mpg+': 23.84}
+ div {'Acc+': 2.76, 'Lbs-': 846.84, 'Mpg+': 8.34}
+1 mid {'Clndrs': 5.45, 'Model': 76.01, 'Volume': 193.43, 'origin': 1}
+ div {'Clndrs': 1.7, 'Model': 3.7, 'Volume': 104.27, 'origin': 1.33}
+✅ pass:stats

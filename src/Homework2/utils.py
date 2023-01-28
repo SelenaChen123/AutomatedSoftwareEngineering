@@ -4,9 +4,10 @@ import re
 def map(t, fun):
     u = {}
 
-    for k, v in t.items():
+    for k, v in enumerate(t):
         v, k = fun(v)
-        if k != None and k != False:
+
+        if k and k != False:
             u[k] = v
         else:
             u[1 + len(u)] = v
@@ -19,7 +20,8 @@ def kap(t, fun):
 
     for k, v in t.items():
         v, k = fun(k, v)
-        if k != None and k != False:
+
+        if k and k != False:
             u[k] = v
         else:
             u[1 + len(u)] = v

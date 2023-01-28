@@ -1,6 +1,6 @@
-from cols import COLS
-from row import ROW
-from utils import csv, map, kap
+import cols
+import row
+import utils
 
 
 class DATA:
@@ -9,41 +9,30 @@ class DATA:
         self.rows = []
         self.cols = None
 
-        if type(src) == "string":
-            csv(src, self.add())
+        if type(src) == str:
+            utils.csv(src, self.add)
         else:
-            if type(src) == list:
-                m = map(src, self.add)
-            else:
-                m = map({}, self.add)
+            map(src or [], self.add)
 
     def add(self, t):
         if self.cols:
-            if not t.cells:
-                t = ROW(t)
+            if not hasattr(t, "cells"):
+                t = row.ROW(t)
 
             self.rows.append(t)
             self.cols.add(t)
         else:
-            self.cols = COLS(t)
+            self.cols = cols.COLS(t)
 
     def clone(self, init):
         data = DATA([self.cols.names])
-
-        if type(init) == list:
-            map(init, data.add)
-        else:
-            map([], data.add)
+        map(init or [], data.add)
 
         return data
 
-    def stats(self, what, cols, func):
-        if what == "mid":
-            func = getattr(globals()["SYM"](), ("mid"))
-        else:
-            func = getattr(globals()["SYM"](), ("div"))
+    def stats(self, what, cols, nPlaces):
+        def fun(col):
+            return round(getattr(col, what or "mid")(), nPlaces), col.txt
 
-        if type(cols) == "COLS":
-            return kap(cols, func)
-        else:
-            return kap(self.cols.y, func)
+        mapped = utils.map(cols or self.cols.y, fun)
+        return {k: mapped[k] for k in sorted(mapped.keys())}
