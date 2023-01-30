@@ -59,3 +59,6 @@ def csv(sFilename, fun):
                 t.append(coerce(s1))
 
             fun(t)
+
+def show(node, what, cols, nPlaces, lvl):
+    return 0

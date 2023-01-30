@@ -44,20 +44,34 @@ def eg_data():
 
 
 def eg_clone():
-    return 0
+    data1 = data.DATA(globals.the["file"])
+    data2 = data1.clone(data1.rows)
+    return len(data1.rows) == len(data2.rows) and data1.cols.y[1].w == data2.cols.y[1].w and data1.cols.x[1].at == data2.cols.x[1].at and data1.cols.x == data2.cols.x
 
 
 def eg_around():
-    return 0
+    data1 = data.DATA(globals.the["file"])
+    print(0, 0, str(data1.rows[1].cells))
+
+    for n, t in enumerate(data1.around(data1.rows[1])):
+        if n % 50 == 0:
+            print(n, round(t.dist, 2), str(t.rows.cells))
 
 
 def eg_half():
-    return 0
+    data1 = data.DATA(globals.the["file"])
+    left, right, A, B, mid, c = data1.half()
+    print(left, right, data1.rows)
+    print(str(A.cells), c)
+    print(str(mid.cells))
+    print(str(B.cells))
 
 
 def eg_cluster():
-    return 0
+    data1 = data.DATA(globals.the["file"])
+    utils.show(data1.cluster(), "mid", data1.cols.y, 1)
 
 
 def eg_optimize():
-    return 0
+    data1 = data.DATA(globals.the["file"])
+    utils.show(data1.sway(), "mid", data1.cols.y, 1)
