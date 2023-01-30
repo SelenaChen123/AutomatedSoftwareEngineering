@@ -1,9 +1,9 @@
-import sys
-import re
-
 import globals
 import utils
 import examples
+
+import sys
+import re
 
 
 def settings(s):
