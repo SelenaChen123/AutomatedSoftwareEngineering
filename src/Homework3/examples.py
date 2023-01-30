@@ -46,7 +46,7 @@ def eg_data():
 def eg_clone():
     data1 = data.DATA(globals.the["file"])
     data2 = data1.clone(data1.rows)
-    return len(data1.rows) == len(data2.rows) and data1.cols.y[1].w == data2.cols.y[1].w and data1.cols.x[1].at == data2.cols.x[1].at and data1.cols.x == data2.cols.x
+    return len(data1.rows) == len(data2.rows) and data1.cols.y[1].w == data2.cols.y[1].w and data1.cols.x[1].at == data2.cols.x[1].at and len(data1.cols.x) == len(data2.cols.x)
 
 
 def eg_around():
@@ -61,7 +61,7 @@ def eg_around():
 def eg_half():
     data1 = data.DATA(globals.the["file"])
     left, right, A, B, mid, c = data1.half()
-    print(left, right, data1.rows)
+    print(len(left), len(right), len(data1.rows))
     print(str(A.cells), c)
     print(str(mid.cells))
     print(str(B.cells))
