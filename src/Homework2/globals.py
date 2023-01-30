@@ -3,7 +3,7 @@ global help
 
 the = {}
 help = """
-data.lua : an example csv reader script
+data.py : an example csv reader script
 Copyright (c) 2023 MIT
 Tim Menzies <timm@ieee.org>
 Selena Chen <schen53@ncsu.edu>
