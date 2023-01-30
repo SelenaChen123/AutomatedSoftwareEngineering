@@ -44,8 +44,3 @@ Implemented COLS and DATA Classes that helps to create and store NUM and SYM obj
     To run all Test case:
   
    `python main.py -g all`
-
-## Contributors:
-1. <a href="https://github.com/amsauerb" target="_blank">Andrew Sauerbrei</a>
-2. <a href="https://github.com/SelenaChen123" target="_blank">Senlena Chen</a>
-3. <a href="https://github.com/Arun152k" target="_blank">Arun Kumar Ramesh</a>
