@@ -10,7 +10,7 @@ Selena Chen <schen53@ncsu.edu>
 Arun Ramesh <arames25@ncsu.edu>
 Andrew Sauerbrei <amsauerb@ncsu.edu>
 
-USAGE:   data.lua  [OPTIONS] [-g ACTION]
+USAGE:   data.py  [OPTIONS] [-g ACTION]
 
 OPTIONS:
   -d  --dump  on crash, dump stack = false

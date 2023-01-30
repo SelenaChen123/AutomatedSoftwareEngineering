@@ -5,42 +5,38 @@
 [![Code Size](https://img.shields.io/github/languages/code-size/SelenaChen123/AutomatedSoftwareEngineering)](https://github.com/SelenaChen123/AutomatedSoftwareEngineering)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-Coursework for CSC 591
+Coursework for NCSU's Spring 2023 CSC 591 021 course, based on the instructor's Lua-based semi-supervised, multi-objective, model-based explanation system.
 
-A Python-based command-line parser to read and manipulate .csv files developed based on the lua script shared in class.
+## Installation Instructions
 
-## HW1
-Implemented NUM and SYM Classes to read Numeric and Symbolic Columns of a .csv file respectively.
+1. Download and install the latest [Python](https://www.python.org/downloads/) version (Python 3.11). Check your Python version using: 
 
-## HW2
-Implemented COLS and DATA Classes that helps to create and store NUM and SYM objects.
+    `python --version`
 
-## Step to set-up and run the HW in your local machine
-
-1. Download and install the latest [Python](https://www.python.org/downloads/) version
-
-2. Check your Python version using: 
-
-   `python --version`
-
-3. Clone the repository using:
+2. Clone the repository from:
 
     `https://github.com/SelenaChen123/AutomatedSoftwareEngineering`
 
-4. Go to the specific Homework folder. For instance if you you want to run tests in HW1, use:
-  
-    `cd src\docs\Homework1`
-   
-     All Homework files are in the src folder 
+## How to Run the Scripts
 
-5. To get help:
-   
-    `python main.py -h` 
+1. Navigate to the scripts by running:
 
-6. To run a specific Test:
+    `cd src/[folder]`
+
+    where `folder` is the name of the folder containing the scripts.
+
+2. Run the script by calling:
   
-   `python main.py -g <test-case-name>`
+    `python main.py [OPTIONS] [-g ACTION]`
+
+3. To get the list of actions, run:
+   
+    `python main.py -h`
   
-    To run all Test case:
+4. To run all tests, run:
   
    `python main.py -g all`
+
+5. To run a specific test, run:
+  
+   `python main.py -g [TEST]`
