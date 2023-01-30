@@ -4,6 +4,7 @@
 [![Repo Size](https://img.shields.io/github/repo-size/SelenaChen123/AutomatedSoftwareEngineering)](https://github.com/SelenaChen123/AutomatedSoftwareEngineering)
 [![Code Size](https://img.shields.io/github/languages/code-size/SelenaChen123/AutomatedSoftwareEngineering)](https://github.com/SelenaChen123/AutomatedSoftwareEngineering)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![DOI](https://zenodo.org/badge/589330639.svg)](https://zenodo.org/badge/latestdoi/589330639)
 
 Coursework for NCSU's Spring 2023 CSC 591 021 course, based on the instructor's Lua-based semi-supervised, multi-objective, model-based explanation system.
 
