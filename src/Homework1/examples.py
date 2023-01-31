@@ -10,6 +10,14 @@ egs = {}
 
 
 def eg(key, str, fun):
+    """
+    Registers an example.
+
+    Args:
+        key (str): Name of the example.
+        str (str): Description of the example.
+        fun (function): Example function to be registered.
+    """
     egs[key] = fun
     globals.help += "  -g  {}\t{}\n".format(key, str)
 
