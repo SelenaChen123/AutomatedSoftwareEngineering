@@ -60,6 +60,77 @@ class DATA:
 
         return sorted(map(rows or self.rows, function), key=cmp_to_key(lt))
 
+    
+    def better(self, row1, row2):
+         s1, s2, ys, x, y = 0, 0, self.cols.y, None, None
+         for col in ys:
+            
+            x = col.norm(row1.cells[col.at])
+            y = col.norm(row2.cells[col.at])
+            s1 = s1 - (col.w ** (x-y)/len(ys))
+            s2 = s2 - (col.w ** (x-y)/len(ys)) 
+         if s1/len(ys) < s2/len(ys):
+            return True
+         return False
+
+    def half(self,row, cols, above):
+
+        mid = None
+        def cosine(a,b,c):
+            x1 = (a**2 + b**2 + c**2)/(2*c)
+            x2 = max(0, min(1, x1))
+            y  = (a**2 - x2**2)**0.5
+            return x2,y
+
+        def project(row):
+            return {"row":row, "dist":cosine(dist(row, A), dist(row, B), c)}
+
+        def dist(row1, row2):
+            return self.dist(row1, row2, cols)
+        
+        def lt(a, b):
+            return a["dist"] < b["dist"]
+
+        def many(t,n):
+            u = {}
+            for i in range(0,n):
+                u[1+len(u)] = any(t)
+            return u
+        
+        def any(t):
+            return t[rint(len(t))]
+
+        def rint(lo, hi):
+            return (0.5 + rand(lo,hi))//1       
+
+        def rand(lo,hi):
+            Seed=937162211
+            if lo == None:
+                lo = 0
+            if high == None:
+                hi = 1 
+            Seed = (16807 * Seed) % 2147483647
+            return lo + (hi-lo) * Seed / 2147483647
+
+        rows = rows or self.rows
+        some = many(rows, globals.the["sample"])
+
+        A = above or any(above)
+        B = self.around(A, some)[(globals.the["Far"] * len(rows))//1].row
+        c = dist(A,B)
+
+        left, right = [], []
+        tmps = sorted(map(rows, project), key=cmp_to_key(lt))
+        
+        for n, tmp in tmps.items():
+            if n < len(rows)//2:
+                left.append(tmp.row)
+                mid = tmp.row
+            else:
+                right.append(tmp.row)
+        
+        return left, right, A, B, mid, c
+        
     def cluster(self, rows, min, cols, above):
         node = {"data": self.clone(rows or self.rows)}
 
