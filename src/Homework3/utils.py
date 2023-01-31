@@ -59,3 +59,14 @@ def csv(sFilename, fun):
                 t.append(coerce(s1))
 
             fun(t)
+
+def show(node, what, cols, nPlaces, lvl = 0):
+    if node:
+        lvl = lvl if lvl != 0  else 0
+        for i in lvl:
+            print("|", end=" ")
+        print(len(node.data.rows) + " ", end = " ")
+        print((not node.left or lvl == 0) and str(node.data.stats("mid", node.data.cols.y, nPlaces)) or "")
+        lvl += 1
+        show(node.left, what, cols, nPlaces, lvl)
+        show(node.right, what, cols, nPlaces,lvl)
