@@ -107,7 +107,7 @@ class DATA:
             Seed=937162211
             if lo == None:
                 lo = 0
-            if high == None:
+            if hi == None:
                 hi = 1 
             Seed = (16807 * Seed) % 2147483647
             return lo + (hi-lo) * Seed / 2147483647
