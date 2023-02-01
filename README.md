@@ -6,7 +6,39 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![DOI](https://zenodo.org/badge/589330639.svg)](https://zenodo.org/badge/latestdoi/589330639)
 
-Coursework for NCSU's Spring 2023 CSC 591 021 course, based on the instructor's Lua-based semi-supervised, multi-objective, model-based explanation system.
+Coursework for NCSU's Spring 2023 CSC 591 021 course, based on the instructor's semi-supervised, multi-objective, model-based explanation system written in Lua.
+
+## Repo Structure
+
+```
+├── .github
+│   └── workflows
+│       └── tests.yml       # On each push, runs tests and reports a failure if any tests produce a non-zero error code
+├── docs                    # HTML documentation files for each homework
+│   ├── Homework1
+│   |   └── ...
+│   ├── Homework2
+│   |   └── ...
+│   └── Homework3
+│       └── ...
+├── etc
+│   ├── data                # Input data files for the scripts
+│   |   └── ...
+│   └── out                 # Output of the scripts
+│       └── ...
+├── src                     # Python source code for each homework
+│   ├── Homework1
+│   |   └── ...
+│   ├── Homework2
+│   |   └── ...
+│   └── Homework3
+│       └── ...
+├── .gitignore              # List of files to never commit
+├── CITATION.cff            # Bibliography information
+├── LICENSE.md              # MIT license
+└── README.md               # Top-level repo documentation
+
+```
 
 ## Installation Instructions
 
@@ -30,7 +62,7 @@ Coursework for NCSU's Spring 2023 CSC 591 021 course, based on the instructor's 
   
     `python main.py [OPTIONS] [-g ACTION]`
 
-3. To get the list of actions, run:
+3. To get the list of options and actions, run:
    
     `python main.py -h`
   
@@ -41,3 +73,9 @@ Coursework for NCSU's Spring 2023 CSC 591 021 course, based on the instructor's 
 5. To run a specific test, run:
   
    `python main.py -g [TEST]`
+
+## Contributors
+
+- <a href="https://github.com/SelenaChen123" target="_blank">Selena Chen</a>
+- <a href="https://github.com/Arun152k" target="_blank">Arun Kumar Ramesh</a>
+- <a href="https://github.com/amsauerb" target="_blank">Andrew Sauerbrei</a>
