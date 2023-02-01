@@ -53,9 +53,9 @@ def eg_around():
     data1 = data.DATA(globals.the["file"])
     print(0, 0, str(data1.rows[1].cells))
 
-    for n, t in enumerate(data1.around(data1.rows[1])):
+    for n, t in enumerate(data1.around(data1.rows[1], data1.rows, data1.cols)):
         if n % 50 == 0:
-            print(n, round(t.dist, 2), str(t.rows.cells))
+            print(n, t, str(data1.rows[n].cells))
 
 
 def eg_half():

@@ -15,7 +15,7 @@ class DATA:
         if type(src) == str:
             utils.csv(src, self.add)
         else:
-            map(src or [], self.add)
+            utils.map(src or [], self.add)
 
     def add(self, t):
         if self.cols:
@@ -29,7 +29,7 @@ class DATA:
 
     def clone(self, init):
         data = DATA([self.cols.names])
-        map(init or [], data.add)
+        utils.map(init or [], data.add)
 
         return data
 
@@ -40,14 +40,19 @@ class DATA:
         mapped = utils.map(cols or self.cols.y, fun)
         return {k: mapped[k] for k in sorted(mapped.keys())}
 
-    def dist(self, row1, row2, cols, n, d):
+    def dist(self, row1, row2, cols):
         n = 0
         d = 0
-
-        for _, col in enumerate(cols or self.cols.x):
-            n += 1
-            d += col.dist(row1.cells[col.at],
-                          row2.cells[col.at]) ** globals.the["p"]
+        if cols:
+            for _, col in enumerate(self.cols.x):
+                n += 1
+                d += col.dist(row1.cells[col.at],
+                              row2.cells[col.at]) ** globals.the["p"]
+        else:
+            for _, col in enumerate(self.cols.x):
+                n += 1
+                d += col.dist(row1.cells[col.at],
+                              row2.cells[col.at]) ** globals.the["p"]
 
         return (d / n) ** (1 / globals.the["p"])
 
@@ -58,7 +63,7 @@ class DATA:
         def lt(a, b):
             return a["dist"] < b["dist"]
 
-        return sorted(map(rows or self.rows, function), key=cmp_to_key(lt))
+        return sorted(utils.map(rows or self.rows, function), key=cmp_to_key(lt))
 
     
     def better(self, row1, row2):
@@ -120,7 +125,7 @@ class DATA:
         c = dist(A,B)
 
         left, right = [], []
-        tmps = sorted(map(rows, project), key=cmp_to_key(lt))
+        tmps = sorted(utils.map(rows, project), key=cmp_to_key(lt))
         
         for n, tmp in tmps.items():
             if n < len(rows)//2:
