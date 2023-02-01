@@ -13,7 +13,7 @@ Coursework for NCSU's Spring 2023 CSC 591 021 course, based on the instructor's 
 ```
 ├── .github
 │   └── workflows
-│       └── tests.yml       # On each push, runs tests and reports a failure if any tests produce a non-zero error code
+│       └── tests.yml       # Runs tests on each push and reports failures
 ├── docs                    # HTML documentation files for each homework
 │   ├── Homework1
 │   |   └── ...
