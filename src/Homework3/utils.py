@@ -10,7 +10,7 @@ def map(t, fun):
         if k and k != False:
             u[k] = v
         else:
-            u[1 + len(u)] = v
+            u[len(u)] = v
 
     return u
 
@@ -60,13 +60,15 @@ def csv(sFilename, fun):
 
             fun(t)
 
-def show(node, what, cols, nPlaces, lvl = 0):
+
+def show(node, what, cols, nPlaces, lvl=0):
     if node:
-        lvl = lvl if lvl != 0  else 0
+        lvl = lvl if lvl != 0 else 0
         for i in lvl:
             print("|", end=" ")
-        print(len(node.data.rows) + " ", end = " ")
-        print((not node.left or lvl == 0) and str(node.data.stats("mid", node.data.cols.y, nPlaces)) or "")
+        print(len(node.data.rows) + " ", end=" ")
+        print((not node.left or lvl == 0) and str(
+            node.data.stats("mid", node.data.cols.y, nPlaces)) or "")
         lvl += 1
         show(node.left, what, cols, nPlaces, lvl)
-        show(node.right, what, cols, nPlaces,lvl)
+        show(node.right, what, cols, nPlaces, lvl)

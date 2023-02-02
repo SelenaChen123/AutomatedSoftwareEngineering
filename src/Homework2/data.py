@@ -12,7 +12,7 @@ class DATA:
         if type(src) == str:
             utils.csv(src, self.add)
         else:
-            map(src or [], self.add)
+            utils.map(src or [], self.add)
 
     def add(self, t):
         if self.cols:
@@ -26,7 +26,7 @@ class DATA:
 
     def clone(self, init):
         data = DATA([self.cols.names])
-        map(init or [], data.add)
+        utils.map(init or [], data.add)
 
         return data
 
