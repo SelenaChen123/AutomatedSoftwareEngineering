@@ -9,9 +9,9 @@ class NUM():
         self.n = 0
         self.mu = 0
         self.m2 = 0
-        self.hi = sys.maxsize
-        self.lo = -sys.maxsize
-        self.w = self.txt.find("-$")
+        self.lo = sys.maxsize
+        self.hi = -sys.maxsize
+        self.w = self.txt.find("-")
 
     def add(self, n):
         if n != "?":

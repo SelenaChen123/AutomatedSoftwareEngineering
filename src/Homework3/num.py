@@ -9,16 +9,16 @@ class NUM():
         self.n = 0
         self.mu = 0
         self.m2 = 0
-        self.hi = sys.maxsize
-        self.lo = -sys.maxsize
+        self.lo = sys.maxsize
+        self.hi = -sys.maxsize
         self.w = self.txt.find("-")
 
     def add(self, n):
         if n != "?":
-            self.n = self.n + 1
+            self.n += 1
             d = n - self.mu
-            self.mu = self.mu + d / self.n
-            self.m2 = self.m2 + d * (n - self.mu)
+            self.mu += d / self.n
+            self.m2 += d * (n - self.mu)
             self.lo = min(n, self.lo)
             self.hi = max(n, self.hi)
 

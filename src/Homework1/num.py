@@ -7,8 +7,8 @@ class NUM():
         self.n = 0
         self.mu = 0
         self.m2 = 0
-        self.hi = sys.maxsize
-        self.lo = -sys.maxsize
+        self.lo = sys.maxsize
+        self.hi = -sys.maxsize
 
     def add(self, n):
         if n != "?":

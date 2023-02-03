@@ -68,8 +68,8 @@ class DATA:
         for col in ys:
             x = col.norm(row1.cells[col.at])
             y = col.norm(row2.cells[col.at])
-            s1 = s1 - (col.w ** (x - y) / len(ys))
-            s2 = s2 - (col.w ** (x - y) / len(ys))
+            s1 -= math.exp(col.w * (x - y) / len(ys))
+            s2 -= math.exp(col.w * (y - x) / len(ys))
 
         return s1 / len(ys) < s2 / len(ys)
 
