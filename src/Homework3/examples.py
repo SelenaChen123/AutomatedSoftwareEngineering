@@ -52,9 +52,9 @@ def eg_clone():
 
 def eg_around():
     data1 = data.DATA(globals.the["file"])
-    print(0, 0, str(data1.rows[1].cells))
+    print(0, 0, str(data1.rows[0].cells))
 
-    for n, t in enumerate(data1.around(data1.rows[1])):
+    for n, t in enumerate(data1.around(data1.rows[0]), 1):
         if n % 50 == 0:
             print(n, round(t["dist"], 2), str(t["row"].cells))
 

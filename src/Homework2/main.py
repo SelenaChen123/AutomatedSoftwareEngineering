@@ -52,9 +52,9 @@ def main(help, funs):
 
                 if funs[what]() == False:
                     fails += 1
-                    print("❌ fail:" + what)
+                    print("❌ fail: " + what)
                 else:
-                    print("✅ pass:" + what)
+                    print("✅ pass: " + what)
 
 
 if __name__ == '__main__':

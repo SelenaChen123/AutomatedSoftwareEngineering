@@ -52,9 +52,9 @@ def main(help, funs):
 
                 if funs[what]() == False:
                     fails += 1
-                    print("❌ fail:" + what)
+                    print("❌ fail: " + what)
                 else:
-                    print("✅ pass:" + what)
+                    print("✅ pass: " + what)
 
 
 if __name__ == '__main__':
@@ -66,6 +66,7 @@ if __name__ == '__main__':
     examples.eg("around", "sorting nearest neighbors", examples.eg_around)
     examples.eg("half", "1-level bi-clustering", examples.eg_half)
     examples.eg("cluster", "N-level bi-clustering", examples.eg_cluster)
-    examples.eg("optimize", "semi-supervised optimization", examples.eg_optimize)
+    examples.eg("optimize", "semi-supervised optimization",
+                examples.eg_optimize)
 
     main(globals.help, examples.egs)

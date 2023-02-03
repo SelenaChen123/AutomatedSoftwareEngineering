@@ -10,7 +10,7 @@ Selena Chen <schen53@ncsu.edu>
 Arun Ramesh <arames25@ncsu.edu>
 Andrew Sauerbrei <amsauerb@ncsu.edu>
 
-USAGE:   data.py  [OPTIONS] [-g ACTION]
+USAGE:   cluster.py  [OPTIONS] [-g ACTION]
 
 OPTIONS:
   -d  --dump    on crash, dump stack   = false
@@ -22,5 +22,6 @@ OPTIONS:
   -p  --p       distance coefficient   = 2
   -s  --seed    random number seed     = 937162211
   -S  --Sample  sampling data size     = 512
+
 ACTIONS:
 """
