@@ -72,7 +72,7 @@ class DATA:
             s2 -= math.exp(col.w * (y - x) / len(ys))
 
         return s1 / len(ys) < s2 / len(ys)
-
+    
     def half(self, rows=[], cols=None, above=None):
         mid = None
 
@@ -87,7 +87,7 @@ class DATA:
         left = []
         right = []
 
-        for n, tmp in enumerate(sorted(map(project, rows or self.rows), key=cmp_to_key(utils.lt))):
+        for n, tmp in enumerate(sorted(map(project, rows or self.rows), key=lambda d : d["dist"])):
             if n < len(rows or self.rows) // 2:
                 left.append(tmp["row"])
                 mid = tmp["row"]
@@ -95,6 +95,7 @@ class DATA:
                 right.append(tmp["row"])
 
         return left, right, A, B, mid, c
+
 
     def cluster(self, rows=[], min=0, cols=None, above=[]):
         node = {"data": self.clone(rows or self.rows)}
