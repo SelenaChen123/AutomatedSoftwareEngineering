@@ -58,7 +58,7 @@ class DATA:
         def function(row2):
             return {"row": row2, "dist": self.dist(row1, row2, cols)}
 
-        return sorted(map(function, rows or self.rows), key=cmp_to_key(utils.lt))
+        return sorted(map(function, rows or self.rows), key=lambda d : d["dist"])
 
     def better(self, row1, row2):
         s1 = 0
