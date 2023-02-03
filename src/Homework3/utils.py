@@ -1,6 +1,6 @@
 import random
 import re
-
+import math
 import globals
 
 
@@ -47,16 +47,22 @@ def cosine(a, b, c):
 
     return x2, y
 
+def rand(lo=0,hi=1):  
+  Seed = (16807 * globals.the["seed"]) % 2147483647
+  return lo + (hi-lo) * Seed / 2147483647
+
+def rnd(n, nPlaces = 3):  
+    mult = 10**(nPlaces)
+    return math.floor((n * mult + 0.5) / mult)
 
 def many(t, n):
-    random.seed(globals.the["seed"])
-
     return [any(t) for _ in range(0, n)]
 
+def rint(lo,hi):
+    return math.floor(0.5 + rand(lo,hi))
 
 def any(t):
-    return t[random.randrange(len(t))]
-
+    return t[rint(0,len(t)-1)]
 
 def show(node, what, cols, nPlaces, lvl=0):
     if "data" in node:
