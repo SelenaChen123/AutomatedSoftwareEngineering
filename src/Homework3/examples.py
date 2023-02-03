@@ -56,7 +56,7 @@ def eg_around():
 
     for n, t in enumerate(data1.around(data1.rows[1])):
         if n % 50 == 0:
-            print(n, t, str(data1.rows[n].cells))
+            print(n, round(t["dist"], 2), str(t["row"].cells))
 
 
 def eg_half():

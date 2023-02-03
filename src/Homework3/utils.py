@@ -1,36 +1,7 @@
+import random
 import re
 
-
-def map(t, fun):
-    u = {}
-
-    for k, v in enumerate(t):
-        v, k = fun(v)
-
-        if k and k != False:
-            u[k] = v
-        else:
-            u[len(u)] = v
-
-    return u
-
-
-def kap(t, fun):
-    u = {}
-
-    for k, v in t.items():
-        v, k = fun(k, v)
-
-        if k and k != False:
-            u[k] = v
-        else:
-            u[1 + len(u)] = v
-
-    return u
-
-
-def keys(self, t):
-    return sorted(self.kap(t.keys()))
+import globals
 
 
 def coerce(s):
@@ -61,14 +32,41 @@ def csv(sFilename, fun):
             fun(t)
 
 
+def lt(a, b):
+    return a["dist"] < b["dist"]
+
+
+def cosine(a, b, c):
+    x1 = (a ** 2 + c ** 2 - b ** 2)
+
+    if c != 0:
+        x1 = x1 / (2 * c)
+
+    x2 = max(0, min(1, x1))
+    y = (a ** 2 - x2 ** 2) ** 0.5
+
+    return x2, y
+
+
+def many(t, n):
+    random.seed(globals.the["seed"])
+
+    return [any(t) for _ in range(0, n)]
+
+
+def any(t):
+    return t[random.randrange(len(t))]
+
+
 def show(node, what, cols, nPlaces, lvl=0):
-    if node:
-        lvl = lvl if lvl != 0 else 0
-        for i in lvl:
-            print("|", end=" ")
-        print(len(node.data.rows) + " ", end=" ")
-        print((not node.left or lvl == 0) and str(
-            node.data.stats("mid", node.data.cols.y, nPlaces)) or "")
-        lvl += 1
-        show(node.left, what, cols, nPlaces, lvl)
-        show(node.right, what, cols, nPlaces, lvl)
+    if "data" in node:
+        print("{} {}  ".format("| " * lvl, len(node["data"].rows)), end="")
+
+        print(node["data"].stats("mid", node["data"].cols.y, nPlaces)
+              if "left" not in node or lvl == 0 else "")
+
+        if "left" in node:
+            show(node["left"], what, cols, nPlaces, lvl + 1)
+
+        if "right" in node:
+            show(node["right"], what, cols, nPlaces, lvl + 1)
