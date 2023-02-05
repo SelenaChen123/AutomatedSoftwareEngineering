@@ -23,11 +23,24 @@ def eg(key, str, fun):
 
 
 def eg_the():
+    """
+    Example determining if the globals panel 
+        Loads correctly
+
+    Returns:
+        dict: Dictionary containing the globals values
+    """
     print(str(globals.the))
     return globals.the
 
 
 def eg_rand():
+    """
+    Example testing the random seed value from globals
+
+    Returns:
+        bool: boolean determining if m1 is equal to m2 and if m1 rounds to 0.5
+    """
     num1 = num.NUM()
     num2 = num.NUM()
 
@@ -46,6 +59,13 @@ def eg_rand():
 
 
 def eg_sym():
+    """
+    Example testing the symbol type from sym.py
+
+    Returns:
+        bool: boolean determining if the sym1.mid() method returns "a" and if
+            sym1.div() method rounds to 1.379
+    """
     sym1 = sym.SYM()
 
     for x in ["a", "a", "a", "a", "b", "b", "c"]:
@@ -55,6 +75,13 @@ def eg_sym():
 
 
 def eg_num():
+    """
+    Example testing the number type from num.py
+
+    Returns:
+        bool: boolean determining if the num1.mid() method returns 11/7 and if
+            num1.div() method rounds to 0.787
+    """
     num1 = num.NUM()
 
     for x in [1, 1, 1, 1, 2, 2, 3]:

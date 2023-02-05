@@ -1,6 +1,11 @@
 global the
 global help
 
+"""
+Contains the flags for the command line args
+Contains a dictionary that is used to help parse and use
+  the flags that the command line specifies
+"""
 
 the = {}
 help = """
