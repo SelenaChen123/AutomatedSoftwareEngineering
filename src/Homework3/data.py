@@ -79,10 +79,11 @@ class DATA:
         def project(row):
             return {"row": row, "dist": utils.cosine(self.dist(row, A, cols), self.dist(row, B, cols), c)}
 
-        some = utils.many(rows or self.rows, globals.the["Sample"])
+        rows =  rows or self.rows
+        some = utils.many(rows, globals.the["Sample"])
         A = above or utils.any(some)
         B = self.around(A, some)[math.floor(
-            globals.the["Far"] * len(rows))]["row"]
+            globals.the["Far"] * len(rows))-1]["row"]
         c = self.dist(A, B, cols)
         left = []
         right = []

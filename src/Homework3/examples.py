@@ -76,3 +76,7 @@ def eg_cluster():
 def eg_optimize():
     data1 = data.DATA(globals.the["file"])
     utils.show(data1.sway(), "mid", data1.cols.y, 1)
+
+
+eg_around()
+eg_half()
