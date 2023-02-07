@@ -8,13 +8,13 @@ import examples
 
 def settings(s):
     """
-    Parse help string to extract a table of options
+    Parses the global help string to extract a dictionary of options.
 
     Args:
-        s (str): string containing the globals options to be parsed
+        s (str): String containing the global options to be parsed.
 
     Returns:
-        dict: dictionary containing the globals options 
+        dict: Dictionary containing the global options.
     """
     t = {}
 
@@ -27,13 +27,13 @@ def settings(s):
 
 def cli(options):
     """
-    Update key/values in "t" from command-line flag
+    Updates "t" with the global options from the command line.
 
     Args:
-        options (dict): dictionary containing the globals options
+        options (dict): Dictionary containing the global options.
 
     Returns:
-        dict: Modified dictionary containing the globals options that were used on the command line
+        dict: Modified dictionary containing the global options from the command line.
     """
     for k, v in options.items():
         v = str(v).lower()
@@ -54,13 +54,11 @@ def cli(options):
 
 def main(help, funs):
     """
-    Fills in the settings, updates them from the command line, runs the start
-        up actions and returns the number of tests crashed to the operating system
-        It also resets the random number seed and the settings
+    Fills in the global dictionary, updates them from the command line, runs the examples, prints the number of tests that failed, and resets the random number seed and settings.
 
     Args:
-        help (str): string containing the globals options from globals.py
-        funs (dict): contains the list of examples to be run to test the program
+        help (str): String containing the default global options.
+        funs (dict): Contains the list of examples to be run as tests.
     """
     saved = {}
     fails = 0
@@ -86,10 +84,7 @@ def main(help, funs):
 
 if __name__ == '__main__':
     """
-    Runs when the command line runs the main.py command
-    Generates the different tests from examples.py, then 
-        sends the globals.help string and the dictionary
-        of tests to the main function
+    Starting point of the program. Generates examples and calls the main function.
     """
     examples.eg("the", "show settings", examples.eg_the)
     examples.eg("rand", "generate, reset, regenerate same", examples.eg_rand)

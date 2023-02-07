@@ -26,8 +26,7 @@
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">from functools import cmp_to_key
-import math
+<pre><code class="python">import math
 
 import globals
 import cols
@@ -86,7 +85,7 @@ class DATA:
         def function(row2):
             return {&#34;row&#34;: row2, &#34;dist&#34;: self.dist(row1, row2, cols)}
 
-        return sorted(map(function, rows or self.rows), key=cmp_to_key(utils.lt))
+        return sorted(map(function, rows or self.rows), key=lambda d: d[&#34;dist&#34;])
 
     def better(self, row1, row2):
         s1 = 0
@@ -110,12 +109,12 @@ class DATA:
         some = utils.many(rows or self.rows, globals.the[&#34;Sample&#34;])
         A = above or utils.any(some)
         B = self.around(A, some)[math.floor(
-            globals.the[&#34;Far&#34;] * len(rows))][&#34;row&#34;]
+            globals.the[&#34;Far&#34;] * len(rows or self.rows)) - 1][&#34;row&#34;]
         c = self.dist(A, B, cols)
         left = []
         right = []
 
-        for n, tmp in enumerate(sorted(map(project, rows or self.rows), key=cmp_to_key(utils.lt))):
+        for n, tmp in enumerate(sorted(map(project, rows or self.rows), key=lambda d: d[&#34;dist&#34;]), 1):
             if n &lt; len(rows or self.rows) // 2:
                 left.append(tmp[&#34;row&#34;])
                 mid = tmp[&#34;row&#34;]
@@ -224,7 +223,7 @@ class DATA:
         def function(row2):
             return {&#34;row&#34;: row2, &#34;dist&#34;: self.dist(row1, row2, cols)}
 
-        return sorted(map(function, rows or self.rows), key=cmp_to_key(utils.lt))
+        return sorted(map(function, rows or self.rows), key=lambda d: d[&#34;dist&#34;])
 
     def better(self, row1, row2):
         s1 = 0
@@ -248,12 +247,12 @@ class DATA:
         some = utils.many(rows or self.rows, globals.the[&#34;Sample&#34;])
         A = above or utils.any(some)
         B = self.around(A, some)[math.floor(
-            globals.the[&#34;Far&#34;] * len(rows))][&#34;row&#34;]
+            globals.the[&#34;Far&#34;] * len(rows or self.rows)) - 1][&#34;row&#34;]
         c = self.dist(A, B, cols)
         left = []
         right = []
 
-        for n, tmp in enumerate(sorted(map(project, rows or self.rows), key=cmp_to_key(utils.lt))):
+        for n, tmp in enumerate(sorted(map(project, rows or self.rows), key=lambda d: d[&#34;dist&#34;]), 1):
             if n &lt; len(rows or self.rows) // 2:
                 left.append(tmp[&#34;row&#34;])
                 mid = tmp[&#34;row&#34;]
@@ -326,7 +325,7 @@ class DATA:
     def function(row2):
         return {&#34;row&#34;: row2, &#34;dist&#34;: self.dist(row1, row2, cols)}
 
-    return sorted(map(function, rows or self.rows), key=cmp_to_key(utils.lt))</code></pre>
+    return sorted(map(function, rows or self.rows), key=lambda d: d[&#34;dist&#34;])</code></pre>
 </details>
 </dd>
 <dt id="Homework3.data.DATA.better"><code class="name flex">
@@ -433,12 +432,12 @@ class DATA:
     some = utils.many(rows or self.rows, globals.the[&#34;Sample&#34;])
     A = above or utils.any(some)
     B = self.around(A, some)[math.floor(
-        globals.the[&#34;Far&#34;] * len(rows))][&#34;row&#34;]
+        globals.the[&#34;Far&#34;] * len(rows or self.rows)) - 1][&#34;row&#34;]
     c = self.dist(A, B, cols)
     left = []
     right = []
 
-    for n, tmp in enumerate(sorted(map(project, rows or self.rows), key=cmp_to_key(utils.lt))):
+    for n, tmp in enumerate(sorted(map(project, rows or self.rows), key=lambda d: d[&#34;dist&#34;]), 1):
         if n &lt; len(rows or self.rows) // 2:
             left.append(tmp[&#34;row&#34;])
             mid = tmp[&#34;row&#34;]

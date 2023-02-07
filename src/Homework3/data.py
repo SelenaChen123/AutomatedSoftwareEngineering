@@ -1,4 +1,3 @@
-from functools import cmp_to_key
 import math
 
 import globals
@@ -58,7 +57,7 @@ class DATA:
         def function(row2):
             return {"row": row2, "dist": self.dist(row1, row2, cols)}
 
-        return sorted(map(function, rows or self.rows), key=lambda d : d["dist"])
+        return sorted(map(function, rows or self.rows), key=lambda d: d["dist"])
 
     def better(self, row1, row2):
         s1 = 0
@@ -72,23 +71,22 @@ class DATA:
             s2 -= math.exp(col.w * (y - x) / len(ys))
 
         return s1 / len(ys) < s2 / len(ys)
-    
+
     def half(self, rows=[], cols=None, above=None):
         mid = None
 
         def project(row):
             return {"row": row, "dist": utils.cosine(self.dist(row, A, cols), self.dist(row, B, cols), c)}
 
-        rows =  rows or self.rows
-        some = utils.many(rows, globals.the["Sample"])
+        some = utils.many(rows or self.rows, globals.the["Sample"])
         A = above or utils.any(some)
         B = self.around(A, some)[math.floor(
-            globals.the["Far"] * len(rows))-1]["row"]
+            globals.the["Far"] * len(rows or self.rows)) - 1]["row"]
         c = self.dist(A, B, cols)
         left = []
         right = []
 
-        for n, tmp in enumerate(sorted(map(project, rows or self.rows), key=lambda d : d["dist"])):
+        for n, tmp in enumerate(sorted(map(project, rows or self.rows), key=lambda d: d["dist"]), 1):
             if n < len(rows or self.rows) // 2:
                 left.append(tmp["row"])
                 mid = tmp["row"]
@@ -96,7 +94,6 @@ class DATA:
                 right.append(tmp["row"])
 
         return left, right, A, B, mid, c
-
 
     def cluster(self, rows=[], min=0, cols=None, above=[]):
         node = {"data": self.clone(rows or self.rows)}

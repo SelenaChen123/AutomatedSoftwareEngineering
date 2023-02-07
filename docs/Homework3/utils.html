@@ -26,10 +26,11 @@
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">import random
-import re
+<pre><code class="python">import re
+import math
 
-import globals
+
+seed = 937162211
 
 
 def coerce(s):
@@ -76,14 +77,23 @@ def cosine(a, b, c):
     return x2, y
 
 
-def many(t, n):
-    random.seed(globals.the[&#34;seed&#34;])
+def rand(lo=0, hi=1):
+    global seed
+    seed = (16807 * seed) % 2147483647
 
+    return lo + (hi - lo) * seed / 2147483647
+
+
+def rint(lo, hi=1):
+    return math.floor(0.5 + rand(lo, hi))
+
+
+def many(t, n):
     return [any(t) for _ in range(0, n)]
 
 
 def any(t):
-    return t[random.randrange(len(t))]
+    return t[rint(len(t))-1]
 
 
 def show(node, what, cols, nPlaces, lvl=0):
@@ -117,7 +127,7 @@ def show(node, what, cols, nPlaces, lvl=0):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def any(t):
-    return t[random.randrange(len(t))]</code></pre>
+    return t[rint(len(t))-1]</code></pre>
 </details>
 </dd>
 <dt id="Homework3.utils.coerce"><code class="name flex">
@@ -210,9 +220,36 @@ def show(node, what, cols, nPlaces, lvl=0):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def many(t, n):
-    random.seed(globals.the[&#34;seed&#34;])
-
     return [any(t) for _ in range(0, n)]</code></pre>
+</details>
+</dd>
+<dt id="Homework3.utils.rand"><code class="name flex">
+<span>def <span class="ident">rand</span></span>(<span>lo=0, hi=1)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def rand(lo=0, hi=1):
+    global seed
+    seed = (16807 * seed) % 2147483647
+
+    return lo + (hi - lo) * seed / 2147483647</code></pre>
+</details>
+</dd>
+<dt id="Homework3.utils.rint"><code class="name flex">
+<span>def <span class="ident">rint</span></span>(<span>lo, hi=1)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def rint(lo, hi=1):
+    return math.floor(0.5 + rand(lo, hi))</code></pre>
 </details>
 </dd>
 <dt id="Homework3.utils.show"><code class="name flex">
@@ -262,6 +299,8 @@ def show(node, what, cols, nPlaces, lvl=0):
 <li><code><a title="Homework3.utils.csv" href="#Homework3.utils.csv">csv</a></code></li>
 <li><code><a title="Homework3.utils.lt" href="#Homework3.utils.lt">lt</a></code></li>
 <li><code><a title="Homework3.utils.many" href="#Homework3.utils.many">many</a></code></li>
+<li><code><a title="Homework3.utils.rand" href="#Homework3.utils.rand">rand</a></code></li>
+<li><code><a title="Homework3.utils.rint" href="#Homework3.utils.rint">rint</a></code></li>
 <li><code><a title="Homework3.utils.show" href="#Homework3.utils.show">show</a></code></li>
 </ul>
 </li>

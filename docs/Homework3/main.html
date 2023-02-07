@@ -80,9 +80,9 @@ def main(help, funs):
 
                 if funs[what]() == False:
                     fails += 1
-                    print(&#34;❌ fail:&#34; + what)
+                    print(&#34;❌ fail: &#34; + what)
                 else:
-                    print(&#34;✅ pass:&#34; + what)
+                    print(&#34;✅ pass: &#34; + what)
 
 
 if __name__ == &#39;__main__&#39;:
@@ -94,7 +94,8 @@ if __name__ == &#39;__main__&#39;:
     examples.eg(&#34;around&#34;, &#34;sorting nearest neighbors&#34;, examples.eg_around)
     examples.eg(&#34;half&#34;, &#34;1-level bi-clustering&#34;, examples.eg_half)
     examples.eg(&#34;cluster&#34;, &#34;N-level bi-clustering&#34;, examples.eg_cluster)
-    examples.eg(&#34;optimize&#34;, &#34;semi-supervised optimization&#34;, examples.eg_optimize)
+    examples.eg(&#34;optimize&#34;, &#34;semi-supervised optimization&#34;,
+                examples.eg_optimize)
 
     main(globals.help, examples.egs)</code></pre>
 </details>
@@ -160,9 +161,9 @@ if __name__ == &#39;__main__&#39;:
 
                 if funs[what]() == False:
                     fails += 1
-                    print(&#34;❌ fail:&#34; + what)
+                    print(&#34;❌ fail: &#34; + what)
                 else:
-                    print(&#34;✅ pass:&#34; + what)</code></pre>
+                    print(&#34;✅ pass: &#34; + what)</code></pre>
 </details>
 </dd>
 <dt id="Homework3.main.settings"><code class="name flex">

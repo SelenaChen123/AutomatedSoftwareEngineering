@@ -1,7 +1,8 @@
-import random
 import re
 import math
-import globals
+
+
+seed = 937162211
 
 
 def coerce(s):
@@ -47,27 +48,25 @@ def cosine(a, b, c):
 
     return x2, y
 
-Seed=937162211
 
-def rand(lo,hi):
-  global Seed
-  lo  = lo or 0
-  hi = hi or 1  
-  Seed = (16807 * Seed) % 2147483647
-  return lo + (hi-lo) * Seed / 2147483647
+def rand(lo=0, hi=1):
+    global seed
+    seed = (16807 * seed) % 2147483647
 
-def rnd(n, nPlaces = 3):  
-    mult = 10**(nPlaces)
-    return math.floor((n * mult + 0.5) / mult)
+    return lo + (hi - lo) * seed / 2147483647
+
+
+def rint(lo, hi=1):
+    return math.floor(0.5 + rand(lo, hi))
+
 
 def many(t, n):
     return [any(t) for _ in range(0, n)]
 
-def rint(lo,hi = None):
-    return math.floor(0.5 + rand(lo,hi))
 
 def any(t):
     return t[rint(len(t))-1]
+
 
 def show(node, what, cols, nPlaces, lvl=0):
     if "data" in node:

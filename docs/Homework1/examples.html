@@ -38,7 +38,8 @@ egs = {}
 
 
 def eg(key, str, fun):
-    &#34;&#34;&#34;Registers an example.
+    &#34;&#34;&#34;
+    Registers an example.
 
     Args:
         key (str): Name of the example.
@@ -50,11 +51,24 @@ def eg(key, str, fun):
 
 
 def eg_the():
+    &#34;&#34;&#34;
+    Example determining if the globals load correctly.
+
+    Returns:
+        dict: Dictionary containing the global values.
+    &#34;&#34;&#34;
     print(str(globals.the))
+
     return globals.the
 
 
 def eg_rand():
+    &#34;&#34;&#34;
+    Example testing the random seed value from the globals.
+
+    Returns:
+        bool: Boolean determining if m1 is equal to m2 and if m1 rounds to 0.5.
+    &#34;&#34;&#34;
     num1 = num.NUM()
     num2 = num.NUM()
 
@@ -73,6 +87,13 @@ def eg_rand():
 
 
 def eg_sym():
+    &#34;&#34;&#34;
+    Example testing the symbol type from sym.py.
+
+    Returns:
+        bool: Boolean determining if the sym1.mid() method returns &#34;a&#34; and if
+            sym1.div() method rounds to 1.379.
+    &#34;&#34;&#34;
     sym1 = sym.SYM()
 
     for x in [&#34;a&#34;, &#34;a&#34;, &#34;a&#34;, &#34;a&#34;, &#34;b&#34;, &#34;b&#34;, &#34;c&#34;]:
@@ -82,6 +103,13 @@ def eg_sym():
 
 
 def eg_num():
+    &#34;&#34;&#34;
+    Example testing the number type from num.py.
+
+    Returns:
+        bool: Boolean determining if the num1.mid() method returns 11/7 and if
+            num1.div() method rounds to 0.787.
+    &#34;&#34;&#34;
     num1 = num.NUM()
 
     for x in [1, 1, 1, 1, 2, 2, 3]:
@@ -116,7 +144,8 @@ def eg_num():
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def eg(key, str, fun):
-    &#34;&#34;&#34;Registers an example.
+    &#34;&#34;&#34;
+    Registers an example.
 
     Args:
         key (str): Name of the example.
@@ -131,12 +160,25 @@ def eg_num():
 <span>def <span class="ident">eg_num</span></span>(<span>)</span>
 </code></dt>
 <dd>
-<div class="desc"></div>
+<div class="desc"><p>Example testing the number type from num.py.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>bool</code></dt>
+<dd>Boolean determining if the num1.mid() method returns 11/7 and if
+num1.div() method rounds to 0.787.</dd>
+</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def eg_num():
+    &#34;&#34;&#34;
+    Example testing the number type from num.py.
+
+    Returns:
+        bool: Boolean determining if the num1.mid() method returns 11/7 and if
+            num1.div() method rounds to 0.787.
+    &#34;&#34;&#34;
     num1 = num.NUM()
 
     for x in [1, 1, 1, 1, 2, 2, 3]:
@@ -149,12 +191,23 @@ def eg_num():
 <span>def <span class="ident">eg_rand</span></span>(<span>)</span>
 </code></dt>
 <dd>
-<div class="desc"></div>
+<div class="desc"><p>Example testing the random seed value from the globals.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>bool</code></dt>
+<dd>Boolean determining if m1 is equal to m2 and if m1 rounds to 0.5.</dd>
+</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def eg_rand():
+    &#34;&#34;&#34;
+    Example testing the random seed value from the globals.
+
+    Returns:
+        bool: Boolean determining if m1 is equal to m2 and if m1 rounds to 0.5.
+    &#34;&#34;&#34;
     num1 = num.NUM()
     num2 = num.NUM()
 
@@ -176,12 +229,25 @@ def eg_num():
 <span>def <span class="ident">eg_sym</span></span>(<span>)</span>
 </code></dt>
 <dd>
-<div class="desc"></div>
+<div class="desc"><p>Example testing the symbol type from sym.py.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>bool</code></dt>
+<dd>Boolean determining if the sym1.mid() method returns "a" and if
+sym1.div() method rounds to 1.379.</dd>
+</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def eg_sym():
+    &#34;&#34;&#34;
+    Example testing the symbol type from sym.py.
+
+    Returns:
+        bool: Boolean determining if the sym1.mid() method returns &#34;a&#34; and if
+            sym1.div() method rounds to 1.379.
+    &#34;&#34;&#34;
     sym1 = sym.SYM()
 
     for x in [&#34;a&#34;, &#34;a&#34;, &#34;a&#34;, &#34;a&#34;, &#34;b&#34;, &#34;b&#34;, &#34;c&#34;]:
@@ -194,13 +260,25 @@ def eg_num():
 <span>def <span class="ident">eg_the</span></span>(<span>)</span>
 </code></dt>
 <dd>
-<div class="desc"></div>
+<div class="desc"><p>Example determining if the globals load correctly.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>dict</code></dt>
+<dd>Dictionary containing the global values.</dd>
+</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def eg_the():
+    &#34;&#34;&#34;
+    Example determining if the globals load correctly.
+
+    Returns:
+        dict: Dictionary containing the global values.
+    &#34;&#34;&#34;
     print(str(globals.the))
+
     return globals.the</code></pre>
 </details>
 </dd>

@@ -80,9 +80,9 @@ def eg_clone():
 
 def eg_around():
     data1 = data.DATA(globals.the[&#34;file&#34;])
-    print(0, 0, str(data1.rows[1].cells))
+    print(0, 0, str(data1.rows[0].cells))
 
-    for n, t in enumerate(data1.around(data1.rows[1])):
+    for n, t in enumerate(data1.around(data1.rows[0]), 1):
         if n % 50 == 0:
             print(n, round(t[&#34;dist&#34;], 2), str(t[&#34;row&#34;].cells))
 
@@ -100,7 +100,7 @@ def eg_cluster():
     data1 = data.DATA(globals.the[&#34;file&#34;])
     utils.show(data1.cluster(), &#34;mid&#34;, data1.cols.y, 1)
 
-
+ 
 def eg_optimize():
     data1 = data.DATA(globals.the[&#34;file&#34;])
     utils.show(data1.sway(), &#34;mid&#34;, data1.cols.y, 1)</code></pre>
@@ -138,9 +138,9 @@ def eg_optimize():
 </summary>
 <pre><code class="python">def eg_around():
     data1 = data.DATA(globals.the[&#34;file&#34;])
-    print(0, 0, str(data1.rows[1].cells))
+    print(0, 0, str(data1.rows[0].cells))
 
-    for n, t in enumerate(data1.around(data1.rows[1])):
+    for n, t in enumerate(data1.around(data1.rows[0]), 1):
         if n % 50 == 0:
             print(n, round(t[&#34;dist&#34;], 2), str(t[&#34;row&#34;].cells))</code></pre>
 </details>

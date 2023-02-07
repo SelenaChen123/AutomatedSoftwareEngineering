@@ -27,6 +27,17 @@
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def map(t, fun):
+    &#34;&#34;&#34;
+    Map a function &#34;fun(v)&#34; over list (skip all nil results)
+
+    Args:
+        t (dict): dictionary containing the list of items to be mapped
+        fun (func): a function that will map the items in t
+
+    Returns:
+        dict: dictionary that functions as a map of items to their values 
+            from the function &#34;fun(v)&#34; 
+    &#34;&#34;&#34;
     u = {}
 
     for k, v in t.items():
@@ -40,6 +51,17 @@
 
 
 def kap(t, fun):
+    &#34;&#34;&#34;
+    Map a function &#34;fun(k,v)&#34; over list (skip all nil results)
+
+    Args:
+        t (dict): dictionary containing the list of items to be mapped
+        fun (func): a function that will map the items in t
+
+    Returns:
+        dict: dictionary that functions as a map of items to their values 
+            from the function &#34;fun(k,v)&#34; 
+    &#34;&#34;&#34;
     u = {}
 
     for k, v in t.items():
@@ -53,10 +75,28 @@ def kap(t, fun):
 
 
 def keys(self, t):
+    &#34;&#34;&#34;
+    Return the list of table keys, sorted
+
+    Args:
+        t (dict): list of values
+
+    Returns:
+        dict: a version of the dictionary sorted by key
+    &#34;&#34;&#34;
     return sorted(self.kap(t.keys()))
 
 
 def coerce(s):
+    &#34;&#34;&#34;
+    Return int or float or bool or string from &#34;s&#34;
+
+    Args:
+        s (string): string that results in one of four different variable outputs
+
+    Returns:
+        int,float,bool,str: returns a value according to what the string has
+    &#34;&#34;&#34;
     if s == &#34;true&#34;:
         return True
     elif s == &#34;false&#34;:
@@ -82,12 +122,31 @@ def coerce(s):
 <span>def <span class="ident">coerce</span></span>(<span>s)</span>
 </code></dt>
 <dd>
-<div class="desc"></div>
+<div class="desc"><p>Return int or float or bool or string from "s"</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>s</code></strong> :&ensp;<code>string</code></dt>
+<dd>string that results in one of four different variable outputs</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>int,float,bool,str</code></dt>
+<dd>returns a value according to what the string has</dd>
+</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def coerce(s):
+    &#34;&#34;&#34;
+    Return int or float or bool or string from &#34;s&#34;
+
+    Args:
+        s (string): string that results in one of four different variable outputs
+
+    Returns:
+        int,float,bool,str: returns a value according to what the string has
+    &#34;&#34;&#34;
     if s == &#34;true&#34;:
         return True
     elif s == &#34;false&#34;:
@@ -106,12 +165,36 @@ def coerce(s):
 <span>def <span class="ident">kap</span></span>(<span>t, fun)</span>
 </code></dt>
 <dd>
-<div class="desc"></div>
+<div class="desc"><p>Map a function "fun(k,v)" over list (skip all nil results)</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>t</code></strong> :&ensp;<code>dict</code></dt>
+<dd>dictionary containing the list of items to be mapped</dd>
+<dt><strong><code>fun</code></strong> :&ensp;<code>func</code></dt>
+<dd>a function that will map the items in t</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>dict</code></dt>
+<dd>dictionary that functions as a map of items to their values
+from the function "fun(k,v)"</dd>
+</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def kap(t, fun):
+    &#34;&#34;&#34;
+    Map a function &#34;fun(k,v)&#34; over list (skip all nil results)
+
+    Args:
+        t (dict): dictionary containing the list of items to be mapped
+        fun (func): a function that will map the items in t
+
+    Returns:
+        dict: dictionary that functions as a map of items to their values 
+            from the function &#34;fun(k,v)&#34; 
+    &#34;&#34;&#34;
     u = {}
 
     for k, v in t.items():
@@ -128,12 +211,31 @@ def coerce(s):
 <span>def <span class="ident">keys</span></span>(<span>self, t)</span>
 </code></dt>
 <dd>
-<div class="desc"></div>
+<div class="desc"><p>Return the list of table keys, sorted</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>t</code></strong> :&ensp;<code>dict</code></dt>
+<dd>list of values</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>dict</code></dt>
+<dd>a version of the dictionary sorted by key</dd>
+</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def keys(self, t):
+    &#34;&#34;&#34;
+    Return the list of table keys, sorted
+
+    Args:
+        t (dict): list of values
+
+    Returns:
+        dict: a version of the dictionary sorted by key
+    &#34;&#34;&#34;
     return sorted(self.kap(t.keys()))</code></pre>
 </details>
 </dd>
@@ -141,12 +243,36 @@ def coerce(s):
 <span>def <span class="ident">map</span></span>(<span>t, fun)</span>
 </code></dt>
 <dd>
-<div class="desc"></div>
+<div class="desc"><p>Map a function "fun(v)" over list (skip all nil results)</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>t</code></strong> :&ensp;<code>dict</code></dt>
+<dd>dictionary containing the list of items to be mapped</dd>
+<dt><strong><code>fun</code></strong> :&ensp;<code>func</code></dt>
+<dd>a function that will map the items in t</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>dict</code></dt>
+<dd>dictionary that functions as a map of items to their values
+from the function "fun(v)"</dd>
+</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def map(t, fun):
+    &#34;&#34;&#34;
+    Map a function &#34;fun(v)&#34; over list (skip all nil results)
+
+    Args:
+        t (dict): dictionary containing the list of items to be mapped
+        fun (func): a function that will map the items in t
+
+    Returns:
+        dict: dictionary that functions as a map of items to their values 
+            from the function &#34;fun(v)&#34; 
+    &#34;&#34;&#34;
     u = {}
 
     for k, v in t.items():
