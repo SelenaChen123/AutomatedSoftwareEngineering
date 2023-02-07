@@ -2,8 +2,14 @@ import math
 
 
 class SYM():
+    """
+    Summarize a stream of symbols
+    """
 
     def __init__(self, at=0, txt=""):
+        """
+        Constructor
+        """
         self.at = at
         self.txt = txt
         self.n = 0
@@ -12,6 +18,12 @@ class SYM():
         self.mode = None
 
     def add(self, x):
+        """
+        Update counts of things that have been seen so far
+
+        Args:
+            x (str): string that we are seeing if the sym object has seen
+        """
         if x != "?":
             self.n += 1
             self.has[x] = 1 + self.has.get(x, 0)
@@ -19,9 +31,21 @@ class SYM():
                 self.most, self.mode = self.has[x], x
 
     def mid(self):
+        """
+        Return the mode
+
+        Returns:
+            int: mean of the sym object
+        """
         return self.mode
 
     def div(self):
+        """
+        Return the entropy
+
+        Returns:
+            float: the entropy of the sym object
+        """
         def fun(p):
             return p * math.log(p, 2)
 

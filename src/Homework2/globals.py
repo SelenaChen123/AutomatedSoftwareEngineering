@@ -1,6 +1,10 @@
 global the
 global help
 
+"""
+Contains the help text and a dictionary of the global option values from the command line.
+"""
+
 the = {}
 help = """
 data.py : an example csv reader script
