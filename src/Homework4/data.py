@@ -68,7 +68,7 @@ class DATA:
         Reports the mid or div of the columns.
 
         Args:
-            what (str): Either mid or div.
+            what (str): Either "mid" or "div". Defaults to "mid".
             cols (list): Columns that the stats are being taken from. Defaults to DATA.cols.y.
             nPlaces (int): Number of places to round the stats to.
         """
@@ -85,7 +85,7 @@ class DATA:
         Args:
             row1 (ROW): First ROW to calculate the distance from.
             row2 (ROW): Second ROW to calculate the distance from.
-            cols (COLS, optional): Factory that manages the locations of the rows. Defaults to None.
+            cols (COLS, optional): Factory that manages the locations of the rows. Defaults to DATA.cols.x.
 
         Returns:
             float: Distance from row1 to row2.

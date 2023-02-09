@@ -41,7 +41,7 @@ class DATA:
         Constructor.
 
         Args:
-            src (str/list): Filename or list of data that DATA will be populated with. Defaults to [].
+            src (str/list, optional): Filename or list of data that DATA will be populated with. Defaults to [].
         &#34;&#34;&#34;
 
         self.rows = []
@@ -75,10 +75,10 @@ class DATA:
         Returns a DATA with the same structure.
 
         Args:
-            init (list): Rows of the DATA to be cloned. Defaults to [].
+            init (list, optional): Rows of the DATA to be cloned. Defaults to [].
 
         Returns:
-            data (DATA): Cloned DATA.
+            DATA: Cloned DATA.
         &#34;&#34;&#34;
 
         data = DATA([self.cols.names])
@@ -93,7 +93,7 @@ class DATA:
         Reports the mid or div of the columns.
 
         Args:
-            what (str): Either mid or div.
+            what (str): Either &#34;mid&#34; or &#34;div&#34;. Defaults to &#34;mid&#34;.
             cols (list): Columns that the stats are being taken from. Defaults to DATA.cols.y.
             nPlaces (int): Number of places to round the stats to.
         &#34;&#34;&#34;
@@ -121,7 +121,7 @@ class DATA:
 <div class="desc"><p>Stores rows, summarized into columns.</p>
 <p>Constructor.</p>
 <h2 id="args">Args</h2>
-<p>src (str/list): Filename or list of data that DATA will be populated with. Defaults to [].</p></div>
+<p>src (str/list, optional): Filename or list of data that DATA will be populated with. Defaults to [].</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -136,7 +136,7 @@ class DATA:
         Constructor.
 
         Args:
-            src (str/list): Filename or list of data that DATA will be populated with. Defaults to [].
+            src (str/list, optional): Filename or list of data that DATA will be populated with. Defaults to [].
         &#34;&#34;&#34;
 
         self.rows = []
@@ -170,10 +170,10 @@ class DATA:
         Returns a DATA with the same structure.
 
         Args:
-            init (list): Rows of the DATA to be cloned. Defaults to [].
+            init (list, optional): Rows of the DATA to be cloned. Defaults to [].
 
         Returns:
-            data (DATA): Cloned DATA.
+            DATA: Cloned DATA.
         &#34;&#34;&#34;
 
         data = DATA([self.cols.names])
@@ -188,7 +188,7 @@ class DATA:
         Reports the mid or div of the columns.
 
         Args:
-            what (str): Either mid or div.
+            what (str): Either &#34;mid&#34; or &#34;div&#34;. Defaults to &#34;mid&#34;.
             cols (list): Columns that the stats are being taken from. Defaults to DATA.cols.y.
             nPlaces (int): Number of places to round the stats to.
         &#34;&#34;&#34;
@@ -239,11 +239,14 @@ class DATA:
 <div class="desc"><p>Returns a DATA with the same structure.</p>
 <h2 id="args">Args</h2>
 <dl>
-<dt><strong><code>init</code></strong> :&ensp;<code>list</code></dt>
+<dt><strong><code>init</code></strong> :&ensp;<code>list</code>, optional</dt>
 <dd>Rows of the DATA to be cloned. Defaults to [].</dd>
 </dl>
 <h2 id="returns">Returns</h2>
-<p>data (DATA): Cloned DATA.</p></div>
+<dl>
+<dt><code><a title="Homework2.data.DATA" href="#Homework2.data.DATA">DATA</a></code></dt>
+<dd>Cloned DATA.</dd>
+</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -253,10 +256,10 @@ class DATA:
     Returns a DATA with the same structure.
 
     Args:
-        init (list): Rows of the DATA to be cloned. Defaults to [].
+        init (list, optional): Rows of the DATA to be cloned. Defaults to [].
 
     Returns:
-        data (DATA): Cloned DATA.
+        DATA: Cloned DATA.
     &#34;&#34;&#34;
 
     data = DATA([self.cols.names])
@@ -275,7 +278,7 @@ class DATA:
 <h2 id="args">Args</h2>
 <dl>
 <dt><strong><code>what</code></strong> :&ensp;<code>str</code></dt>
-<dd>Either mid or div.</dd>
+<dd>Either "mid" or "div". Defaults to "mid".</dd>
 <dt><strong><code>cols</code></strong> :&ensp;<code>list</code></dt>
 <dd>Columns that the stats are being taken from. Defaults to DATA.cols.y.</dd>
 <dt><strong><code>nPlaces</code></strong> :&ensp;<code>int</code></dt>
@@ -290,7 +293,7 @@ class DATA:
     Reports the mid or div of the columns.
 
     Args:
-        what (str): Either mid or div.
+        what (str): Either &#34;mid&#34; or &#34;div&#34;. Defaults to &#34;mid&#34;.
         cols (list): Columns that the stats are being taken from. Defaults to DATA.cols.y.
         nPlaces (int): Number of places to round the stats to.
     &#34;&#34;&#34;

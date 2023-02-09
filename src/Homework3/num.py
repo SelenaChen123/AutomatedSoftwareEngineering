@@ -9,6 +9,10 @@ class NUM():
     def __init__(self, at=0, txt=""):
         """
         Constructor.
+
+        Args:
+            at (int, optional): Column position. Defaults to 0.
+            txt (str, optional): Name. Defaults to "".
         """
 
         self.at = at
@@ -22,7 +26,7 @@ class NUM():
 
     def add(self, n):
         """
-        Adds n and update hi, lo, and other values needed for standard deviation.
+        Adds n and updates lo, hi, and other values needed for standard deviation.
 
         Args:
             n (int): Value to be added.
@@ -41,7 +45,7 @@ class NUM():
         Returns the mean.
 
         Returns:
-            int: Mean.
+            float: Mean.
         """
 
         return self.mu
@@ -80,11 +84,11 @@ class NUM():
         Returns the distance between n1 and n2.
 
         Args:
-            n1 (): _description_
-            n2 (_type_): _description_
+            n1 (int/float): First number to calculate the distance from.
+            n2 (int/float): Second number to calculate the distance from.
 
         Returns:
-            float: _description_
+            float: Distance between n1 and n2.
         """
 
         if n1 == "?" and n2 == "?":

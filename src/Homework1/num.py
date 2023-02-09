@@ -19,7 +19,7 @@ class NUM():
 
     def add(self, n):
         """
-        Adds n and update hi, lo, and other values needed for standard deviation.
+        Adds n and updates lo, hi, and other values needed for standard deviation.
 
         Args:
             n (int): Value to be added.
@@ -38,7 +38,7 @@ class NUM():
         Returns the mean.
 
         Returns:
-            int: Mean.
+            float: Mean.
         """
 
         return self.mu

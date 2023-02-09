@@ -26,10 +26,10 @@
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">import globals
-import sym
+<pre><code class="python">import data
+import globals
 import num
-import data
+import sym
 import utils
 
 
@@ -42,8 +42,8 @@ def eg(key, str, fun):
     Registers an example.
 
     Args:
-        key (str): Name of the example.
-        str (str): Description of the example.
+        key (str): Name of the example to be registered.
+        str (str): Description of the example to be registered.
         fun (function): Example function to be registered.
     &#34;&#34;&#34;
 
@@ -53,7 +53,7 @@ def eg(key, str, fun):
 
 def eg_the():
     &#34;&#34;&#34;
-    Example determining if the globals load correctly.
+    Example testing loading globals.
 
     Returns:
         dict: Dictionary containing the global values.
@@ -66,7 +66,7 @@ def eg_the():
 
 def eg_sym():
     &#34;&#34;&#34;
-    Example testing the symbol type from sym.py.
+    Example testing SYM.
 
     Returns:
         bool: True if SYM.mid() = &#34;a&#34; and SYM.div() rounds to 1.379, False otherwise.
@@ -82,7 +82,7 @@ def eg_sym():
 
 def eg_num():
     &#34;&#34;&#34;
-    Example testing the number type from num.py.
+    Example testing NUM.
 
     Returns:
         bool: True if NUM.mid() = 11/7 and NUM.div() rounds to 0.787, False otherwise.
@@ -118,20 +118,20 @@ def eg_csv():
 
 def eg_data():
     &#34;&#34;&#34;
-    Example testing if DATA is working properly.
+    Example testing DATA.
 
     Returns:
-        bool: True if DATA has the correct number of rows and certain data points are correct, False otherwise. 
+        bool: True if DATA has the correct number of rows, certain column weights are correct, certain column locations are correct, and certain column lengths are correct, False otherwise.
     &#34;&#34;&#34;
 
     data1 = data.DATA(globals.the[&#34;file&#34;])
-    
+
     return len(data1.rows) == 398 and data1.cols.y[0].w == -1 and data1.cols.x[1].at == 1 and len(data1.cols.x) == 4
 
 
 def eg_stats():
     &#34;&#34;&#34;
-    Example testing if DATA.stats() is working properly.
+    Example testing DATA.stats().
     &#34;&#34;&#34;
 
     data1 = data.DATA(globals.the[&#34;file&#34;])
@@ -156,9 +156,9 @@ def eg_stats():
 <h2 id="args">Args</h2>
 <dl>
 <dt><strong><code>key</code></strong> :&ensp;<code>str</code></dt>
-<dd>Name of the example.</dd>
+<dd>Name of the example to be registered.</dd>
 <dt><strong><code>str</code></strong> :&ensp;<code>str</code></dt>
-<dd>Description of the example.</dd>
+<dd>Description of the example to be registered.</dd>
 <dt><strong><code>fun</code></strong> :&ensp;<code>function</code></dt>
 <dd>Example function to be registered.</dd>
 </dl></div>
@@ -171,8 +171,8 @@ def eg_stats():
     Registers an example.
 
     Args:
-        key (str): Name of the example.
-        str (str): Description of the example.
+        key (str): Name of the example to be registered.
+        str (str): Description of the example to be registered.
         fun (function): Example function to be registered.
     &#34;&#34;&#34;
 
@@ -218,11 +218,11 @@ def eg_stats():
 <span>def <span class="ident">eg_data</span></span>(<span>)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Example testing if DATA is working properly.</p>
+<div class="desc"><p>Example testing DATA.</p>
 <h2 id="returns">Returns</h2>
 <dl>
 <dt><code>bool</code></dt>
-<dd>True if DATA has the correct number of rows and certain data points are correct, False otherwise.</dd>
+<dd>True if DATA has the correct number of rows, certain column weights are correct, certain column locations are correct, and certain column lengths are correct, False otherwise.</dd>
 </dl></div>
 <details class="source">
 <summary>
@@ -230,14 +230,14 @@ def eg_stats():
 </summary>
 <pre><code class="python">def eg_data():
     &#34;&#34;&#34;
-    Example testing if DATA is working properly.
+    Example testing DATA.
 
     Returns:
-        bool: True if DATA has the correct number of rows and certain data points are correct, False otherwise. 
+        bool: True if DATA has the correct number of rows, certain column weights are correct, certain column locations are correct, and certain column lengths are correct, False otherwise.
     &#34;&#34;&#34;
 
     data1 = data.DATA(globals.the[&#34;file&#34;])
-    
+
     return len(data1.rows) == 398 and data1.cols.y[0].w == -1 and data1.cols.x[1].at == 1 and len(data1.cols.x) == 4</code></pre>
 </details>
 </dd>
@@ -245,7 +245,7 @@ def eg_stats():
 <span>def <span class="ident">eg_num</span></span>(<span>)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Example testing the number type from num.py.</p>
+<div class="desc"><p>Example testing NUM.</p>
 <h2 id="returns">Returns</h2>
 <dl>
 <dt><code>bool</code></dt>
@@ -257,7 +257,7 @@ def eg_stats():
 </summary>
 <pre><code class="python">def eg_num():
     &#34;&#34;&#34;
-    Example testing the number type from num.py.
+    Example testing NUM.
 
     Returns:
         bool: True if NUM.mid() = 11/7 and NUM.div() rounds to 0.787, False otherwise.
@@ -275,14 +275,14 @@ def eg_stats():
 <span>def <span class="ident">eg_stats</span></span>(<span>)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Example testing if DATA.stats() is working properly.</p></div>
+<div class="desc"><p>Example testing DATA.stats().</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def eg_stats():
     &#34;&#34;&#34;
-    Example testing if DATA.stats() is working properly.
+    Example testing DATA.stats().
     &#34;&#34;&#34;
 
     data1 = data.DATA(globals.the[&#34;file&#34;])
@@ -296,7 +296,7 @@ def eg_stats():
 <span>def <span class="ident">eg_sym</span></span>(<span>)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Example testing the symbol type from sym.py.</p>
+<div class="desc"><p>Example testing SYM.</p>
 <h2 id="returns">Returns</h2>
 <dl>
 <dt><code>bool</code></dt>
@@ -308,7 +308,7 @@ def eg_stats():
 </summary>
 <pre><code class="python">def eg_sym():
     &#34;&#34;&#34;
-    Example testing the symbol type from sym.py.
+    Example testing SYM.
 
     Returns:
         bool: True if SYM.mid() = &#34;a&#34; and SYM.div() rounds to 1.379, False otherwise.
@@ -326,7 +326,7 @@ def eg_stats():
 <span>def <span class="ident">eg_the</span></span>(<span>)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Example determining if the globals load correctly.</p>
+<div class="desc"><p>Example testing loading globals.</p>
 <h2 id="returns">Returns</h2>
 <dl>
 <dt><code>dict</code></dt>
@@ -338,7 +338,7 @@ def eg_stats():
 </summary>
 <pre><code class="python">def eg_the():
     &#34;&#34;&#34;
-    Example determining if the globals load correctly.
+    Example testing loading globals.
 
     Returns:
         dict: Dictionary containing the global values.

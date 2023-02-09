@@ -1,7 +1,7 @@
-import globals
-import sym
-import num
 import data
+import globals
+import num
+import sym
 import utils
 
 
@@ -14,8 +14,8 @@ def eg(key, str, fun):
     Registers an example.
 
     Args:
-        key (str): Name of the example.
-        str (str): Description of the example.
+        key (str): Name of the example to be registered.
+        str (str): Description of the example to be registered.
         fun (function): Example function to be registered.
     """
 
@@ -25,7 +25,7 @@ def eg(key, str, fun):
 
 def eg_the():
     """
-    Example determining if the globals load correctly.
+    Example testing loading globals.
 
     Returns:
         dict: Dictionary containing the global values.
@@ -38,7 +38,7 @@ def eg_the():
 
 def eg_sym():
     """
-    Example testing the symbol type from sym.py.
+    Example testing SYM.
 
     Returns:
         bool: True if SYM.mid() = "a" and SYM.div() rounds to 1.379, False otherwise.
@@ -54,7 +54,7 @@ def eg_sym():
 
 def eg_num():
     """
-    Example testing the number type from num.py.
+    Example testing NUM.
 
     Returns:
         bool: True if NUM.mid() = 11/7 and NUM.div() rounds to 0.787, False otherwise.
@@ -90,20 +90,20 @@ def eg_csv():
 
 def eg_data():
     """
-    Example testing if DATA is working properly.
+    Example testing DATA.
 
     Returns:
-        bool: True if DATA has the correct number of rows and certain data points are correct, False otherwise. 
+        bool: True if DATA has the correct number of rows, certain column weights are correct, certain column locations are correct, and certain column lengths are correct, False otherwise.
     """
 
     data1 = data.DATA(globals.the["file"])
-    
+
     return len(data1.rows) == 398 and data1.cols.y[0].w == -1 and data1.cols.x[1].at == 1 and len(data1.cols.x) == 4
 
 
 def eg_stats():
     """
-    Example testing if DATA.stats() is working properly.
+    Example testing DATA.stats().
     """
 
     data1 = data.DATA(globals.the["file"])

@@ -1,7 +1,7 @@
 import math
 
-import globals
 import cols
+import globals
 import row
 import utils
 
@@ -16,7 +16,7 @@ class DATA:
         Constructor.
 
         Args:
-            src (str/list): Filename or list of data that DATA will be populated with. Defaults to [].
+            src (str/list, optional): Filename or list of data that DATA will be populated with. Defaults to [].
         """
 
         self.rows = []
@@ -50,10 +50,10 @@ class DATA:
         Returns a DATA with the same structure.
 
         Args:
-            init (list): Rows of the DATA to be cloned. Defaults to [].
+            init (list, optional): Rows of the DATA to be cloned. Defaults to [].
 
         Returns:
-            data (DATA): Cloned DATA.
+            DATA: Cloned DATA.
         """
 
         data = DATA([self.cols.names])
@@ -68,7 +68,7 @@ class DATA:
         Reports the mid or div of the columns.
 
         Args:
-            what (str): Either mid or div.
+            what (str): Either "mid" or "div". Defaults to "mid".
             cols (list): Columns that the stats are being taken from. Defaults to DATA.cols.y.
             nPlaces (int): Number of places to round the stats to.
         """
@@ -85,7 +85,7 @@ class DATA:
         Args:
             row1 (ROW): First ROW to calculate the distance from.
             row2 (ROW): Second ROW to calculate the distance from.
-            cols (COLS, optional): Factory that manages the locations of the rows. Defaults to None.
+            cols (COLS, optional): Factory that manages the locations of the rows. Defaults to DATA.cols.x.
 
         Returns:
             float: Distance from row1 to row2.
@@ -150,12 +150,12 @@ class DATA:
             above (ROW, optional): Single chosen ROW. Defaults to None.
 
         Returns:
-            left (list): Left half of the ROWs.
-            right (list): Right half of the ROWs.
-            A (ROW): Single chosen ROW to calculate the distance from.
-            B (ROW): Single chosen ROW around A to calculate the distance from.
-            mid (ROW): Middle ROW of the ROWs.
-            c (float): Distance from A to B.
+            list: Left half of the ROWs.
+            list: Right half of the ROWs.
+            ROW: Single chosen ROW to calculate the distance from.
+            ROW: Single chosen ROW around A to calculate the distance from.
+            ROW: Middle ROW of the ROWs.
+            float: Distance from A to B.
         """
 
         def project(row):
@@ -189,7 +189,7 @@ class DATA:
             above (ROW, optional): Single chosen ROW. Defaults to [].
 
         Returns:
-            node (dict): Dictionary of remaining DATA to be recursively halved.
+            dict: Dictionary of remaining DATA to be recursively halved.
         """
 
         node = {"data": self.clone(rows or self.rows)}
@@ -216,7 +216,7 @@ class DATA:
             above (ROW, optional): Single chosen ROW. Defaults to [].
 
         Returns:
-            node (dict): Dictionary of remaining DATA to recursively return the best half of.
+            dict: Dictionary of remaining DATA to recursively return the best half of.
         """
 
         node = {"data": self.clone(rows or self.rows)}

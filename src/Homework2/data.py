@@ -13,7 +13,7 @@ class DATA:
         Constructor.
 
         Args:
-            src (str/list): Filename or list of data that DATA will be populated with. Defaults to [].
+            src (str/list, optional): Filename or list of data that DATA will be populated with. Defaults to [].
         """
 
         self.rows = []
@@ -47,10 +47,10 @@ class DATA:
         Returns a DATA with the same structure.
 
         Args:
-            init (list): Rows of the DATA to be cloned. Defaults to [].
+            init (list, optional): Rows of the DATA to be cloned. Defaults to [].
 
         Returns:
-            data (DATA): Cloned DATA.
+            DATA: Cloned DATA.
         """
 
         data = DATA([self.cols.names])
@@ -65,7 +65,7 @@ class DATA:
         Reports the mid or div of the columns.
 
         Args:
-            what (str): Either mid or div.
+            what (str): Either "mid" or "div". Defaults to "mid".
             cols (list): Columns that the stats are being taken from. Defaults to DATA.cols.y.
             nPlaces (int): Number of places to round the stats to.
         """

@@ -41,7 +41,7 @@ class SYM():
         Returns the mode.
 
         Returns:
-            int: Mode.
+            str: Mode.
         """
 
         return self.mode
