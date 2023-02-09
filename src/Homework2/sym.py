@@ -3,13 +3,18 @@ import math
 
 class SYM():
     """
-    Summarize a stream of symbols
+    Summarize a stream of symbols.
     """
 
     def __init__(self, at=0, txt=""):
         """
-        Constructor
+        Constructor.
+
+        Args:
+            at (int, optional): Column position. Defaults to 0.
+            txt (str, optional): Name. Defaults to "".
         """
+
         self.at = at
         self.txt = txt
         self.n = 0
@@ -19,11 +24,12 @@ class SYM():
 
     def add(self, x):
         """
-        Update counts of things that have been seen so far
+        Updates the count of the things that have been seen so far.
 
         Args:
-            x (str): string that we are seeing if the sym object has seen
+            x (str): Thing to check if we've seen so far.
         """
+
         if x != "?":
             self.n += 1
             self.has[x] = 1 + self.has.get(x, 0)
@@ -32,20 +38,22 @@ class SYM():
 
     def mid(self):
         """
-        Return the mode
+        Returns the mode.
 
         Returns:
-            int: mean of the sym object
+            int: Mode.
         """
+
         return self.mode
 
     def div(self):
         """
-        Return the entropy
+        Returns the entropy.
 
         Returns:
-            float: the entropy of the sym object
+            float: Entropy.
         """
+
         def fun(p):
             return p * math.log(p, 2)
 

@@ -1,20 +1,22 @@
+import re
+
 import num
 import sym
-
-import re
 
 
 class COLS:
     """
-    Factory for managing a set of NUMs or SYMs
+    Factory for managing NUMs and SYMs.
     """
+
     def __init__(self, t):
         """
-        Constructor: generate NUMs and SYMs from column names
+        Constructor.
 
         Args:
-            t (list): the column of data
+            t (list): Column of data.
         """
+
         self.names = t
         self.all = []
         self.x = []
@@ -40,10 +42,11 @@ class COLS:
 
     def add(self, row):
         """
-        Update the (not skipped) columns with details from "row"
+        Updates the (not skipped) columns with data from row.
 
         Args:
-            row (Row): Row object to add data to the column from
+            row (ROW): Row to add data to the column from.
         """
+
         for col in self.x + self.y:
             col.add(row.cells[col.at])

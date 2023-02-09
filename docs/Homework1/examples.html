@@ -46,6 +46,7 @@ def eg(key, str, fun):
         str (str): Description of the example.
         fun (function): Example function to be registered.
     &#34;&#34;&#34;
+
     egs[key] = fun
     globals.help += &#34;  -g  {}\t{}\n&#34;.format(key, str)
 
@@ -57,6 +58,7 @@ def eg_the():
     Returns:
         dict: Dictionary containing the global values.
     &#34;&#34;&#34;
+
     print(str(globals.the))
 
     return globals.the
@@ -67,8 +69,9 @@ def eg_rand():
     Example testing the random seed value from the globals.
 
     Returns:
-        bool: Boolean determining if m1 is equal to m2 and if m1 rounds to 0.5.
+        bool: True if m1 = m2 and m1 rounds to 0.5, False otherwise.
     &#34;&#34;&#34;
+
     num1 = num.NUM()
     num2 = num.NUM()
 
@@ -91,9 +94,9 @@ def eg_sym():
     Example testing the symbol type from sym.py.
 
     Returns:
-        bool: Boolean determining if the sym1.mid() method returns &#34;a&#34; and if
-            sym1.div() method rounds to 1.379.
+        bool: True if SYM.mid() = &#34;a&#34; and SYM.div() rounds to 1.379, False otherwise.
     &#34;&#34;&#34;
+
     sym1 = sym.SYM()
 
     for x in [&#34;a&#34;, &#34;a&#34;, &#34;a&#34;, &#34;a&#34;, &#34;b&#34;, &#34;b&#34;, &#34;c&#34;]:
@@ -107,9 +110,9 @@ def eg_num():
     Example testing the number type from num.py.
 
     Returns:
-        bool: Boolean determining if the num1.mid() method returns 11/7 and if
-            num1.div() method rounds to 0.787.
+        bool: True if NUM.mid() = 11/7 and NUM.div() rounds to 0.787, False otherwise.
     &#34;&#34;&#34;
+
     num1 = num.NUM()
 
     for x in [1, 1, 1, 1, 2, 2, 3]:
@@ -152,6 +155,7 @@ def eg_num():
         str (str): Description of the example.
         fun (function): Example function to be registered.
     &#34;&#34;&#34;
+
     egs[key] = fun
     globals.help += &#34;  -g  {}\t{}\n&#34;.format(key, str)</code></pre>
 </details>
@@ -164,8 +168,7 @@ def eg_num():
 <h2 id="returns">Returns</h2>
 <dl>
 <dt><code>bool</code></dt>
-<dd>Boolean determining if the num1.mid() method returns 11/7 and if
-num1.div() method rounds to 0.787.</dd>
+<dd>True if NUM.mid() = 11/7 and NUM.div() rounds to 0.787, False otherwise.</dd>
 </dl></div>
 <details class="source">
 <summary>
@@ -176,9 +179,9 @@ num1.div() method rounds to 0.787.</dd>
     Example testing the number type from num.py.
 
     Returns:
-        bool: Boolean determining if the num1.mid() method returns 11/7 and if
-            num1.div() method rounds to 0.787.
+        bool: True if NUM.mid() = 11/7 and NUM.div() rounds to 0.787, False otherwise.
     &#34;&#34;&#34;
+
     num1 = num.NUM()
 
     for x in [1, 1, 1, 1, 2, 2, 3]:
@@ -195,7 +198,7 @@ num1.div() method rounds to 0.787.</dd>
 <h2 id="returns">Returns</h2>
 <dl>
 <dt><code>bool</code></dt>
-<dd>Boolean determining if m1 is equal to m2 and if m1 rounds to 0.5.</dd>
+<dd>True if m1 = m2 and m1 rounds to 0.5, False otherwise.</dd>
 </dl></div>
 <details class="source">
 <summary>
@@ -206,8 +209,9 @@ num1.div() method rounds to 0.787.</dd>
     Example testing the random seed value from the globals.
 
     Returns:
-        bool: Boolean determining if m1 is equal to m2 and if m1 rounds to 0.5.
+        bool: True if m1 = m2 and m1 rounds to 0.5, False otherwise.
     &#34;&#34;&#34;
+
     num1 = num.NUM()
     num2 = num.NUM()
 
@@ -233,8 +237,7 @@ num1.div() method rounds to 0.787.</dd>
 <h2 id="returns">Returns</h2>
 <dl>
 <dt><code>bool</code></dt>
-<dd>Boolean determining if the sym1.mid() method returns "a" and if
-sym1.div() method rounds to 1.379.</dd>
+<dd>True if SYM.mid() = "a" and SYM.div() rounds to 1.379, False otherwise.</dd>
 </dl></div>
 <details class="source">
 <summary>
@@ -245,9 +248,9 @@ sym1.div() method rounds to 1.379.</dd>
     Example testing the symbol type from sym.py.
 
     Returns:
-        bool: Boolean determining if the sym1.mid() method returns &#34;a&#34; and if
-            sym1.div() method rounds to 1.379.
+        bool: True if SYM.mid() = &#34;a&#34; and SYM.div() rounds to 1.379, False otherwise.
     &#34;&#34;&#34;
+
     sym1 = sym.SYM()
 
     for x in [&#34;a&#34;, &#34;a&#34;, &#34;a&#34;, &#34;a&#34;, &#34;b&#34;, &#34;b&#34;, &#34;c&#34;]:
@@ -277,6 +280,7 @@ sym1.div() method rounds to 1.379.</dd>
     Returns:
         dict: Dictionary containing the global values.
     &#34;&#34;&#34;
+
     print(str(globals.the))
 
     return globals.the</code></pre>

@@ -30,8 +30,19 @@
 
 
 class SYM():
+    &#34;&#34;&#34;
+    Summarize a stream of symbols.
+    &#34;&#34;&#34;
 
     def __init__(self, at=0, txt=&#34;&#34;):
+        &#34;&#34;&#34;
+        Constructor.
+
+        Args:
+            at (int, optional): Column position. Defaults to 0.
+            txt (str, optional): Name. Defaults to &#34;&#34;.
+        &#34;&#34;&#34;
+
         self.at = at
         self.txt = txt
         self.n = 0
@@ -40,6 +51,13 @@ class SYM():
         self.mode = None
 
     def add(self, x):
+        &#34;&#34;&#34;
+        Updates the count of the things that have been seen so far.
+
+        Args:
+            x (str): Thing to check if we&#39;ve seen so far.
+        &#34;&#34;&#34;
+
         if x != &#34;?&#34;:
             self.n += 1
             self.has[x] = 1 + self.has.get(x, 0)
@@ -47,9 +65,23 @@ class SYM():
                 self.most, self.mode = self.has[x], x
 
     def mid(self):
+        &#34;&#34;&#34;
+        Returns the mode.
+
+        Returns:
+            int: Mode.
+        &#34;&#34;&#34;
+
         return self.mode
 
     def div(self):
+        &#34;&#34;&#34;
+        Returns the entropy.
+
+        Returns:
+            float: Entropy.
+        &#34;&#34;&#34;
+
         def fun(p):
             return p * math.log(p, 2)
 
@@ -74,14 +106,33 @@ class SYM():
 <span>(</span><span>at=0, txt='')</span>
 </code></dt>
 <dd>
-<div class="desc"></div>
+<div class="desc"><p>Summarize a stream of symbols.</p>
+<p>Constructor.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>at</code></strong> :&ensp;<code>int</code>, optional</dt>
+<dd>Column position. Defaults to 0.</dd>
+<dt><strong><code>txt</code></strong> :&ensp;<code>str</code>, optional</dt>
+<dd>Name. Defaults to "".</dd>
+</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">class SYM():
+    &#34;&#34;&#34;
+    Summarize a stream of symbols.
+    &#34;&#34;&#34;
 
     def __init__(self, at=0, txt=&#34;&#34;):
+        &#34;&#34;&#34;
+        Constructor.
+
+        Args:
+            at (int, optional): Column position. Defaults to 0.
+            txt (str, optional): Name. Defaults to &#34;&#34;.
+        &#34;&#34;&#34;
+
         self.at = at
         self.txt = txt
         self.n = 0
@@ -90,6 +141,13 @@ class SYM():
         self.mode = None
 
     def add(self, x):
+        &#34;&#34;&#34;
+        Updates the count of the things that have been seen so far.
+
+        Args:
+            x (str): Thing to check if we&#39;ve seen so far.
+        &#34;&#34;&#34;
+
         if x != &#34;?&#34;:
             self.n += 1
             self.has[x] = 1 + self.has.get(x, 0)
@@ -97,9 +155,23 @@ class SYM():
                 self.most, self.mode = self.has[x], x
 
     def mid(self):
+        &#34;&#34;&#34;
+        Returns the mode.
+
+        Returns:
+            int: Mode.
+        &#34;&#34;&#34;
+
         return self.mode
 
     def div(self):
+        &#34;&#34;&#34;
+        Returns the entropy.
+
+        Returns:
+            float: Entropy.
+        &#34;&#34;&#34;
+
         def fun(p):
             return p * math.log(p, 2)
 
@@ -115,12 +187,24 @@ class SYM():
 <span>def <span class="ident">add</span></span>(<span>self, x)</span>
 </code></dt>
 <dd>
-<div class="desc"></div>
+<div class="desc"><p>Updates the count of the things that have been seen so far.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>x</code></strong> :&ensp;<code>str</code></dt>
+<dd>Thing to check if we've seen so far.</dd>
+</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def add(self, x):
+    &#34;&#34;&#34;
+    Updates the count of the things that have been seen so far.
+
+    Args:
+        x (str): Thing to check if we&#39;ve seen so far.
+    &#34;&#34;&#34;
+
     if x != &#34;?&#34;:
         self.n += 1
         self.has[x] = 1 + self.has.get(x, 0)
@@ -132,12 +216,24 @@ class SYM():
 <span>def <span class="ident">div</span></span>(<span>self)</span>
 </code></dt>
 <dd>
-<div class="desc"></div>
+<div class="desc"><p>Returns the entropy.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>float</code></dt>
+<dd>Entropy.</dd>
+</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def div(self):
+    &#34;&#34;&#34;
+    Returns the entropy.
+
+    Returns:
+        float: Entropy.
+    &#34;&#34;&#34;
+
     def fun(p):
         return p * math.log(p, 2)
 
@@ -152,12 +248,24 @@ class SYM():
 <span>def <span class="ident">mid</span></span>(<span>self)</span>
 </code></dt>
 <dd>
-<div class="desc"></div>
+<div class="desc"><p>Returns the mode.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>int</code></dt>
+<dd>Mode.</dd>
+</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def mid(self):
+    &#34;&#34;&#34;
+    Returns the mode.
+
+    Returns:
+        int: Mode.
+    &#34;&#34;&#34;
+
     return self.mode</code></pre>
 </details>
 </dd>

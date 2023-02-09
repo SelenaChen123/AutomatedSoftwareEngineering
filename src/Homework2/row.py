@@ -1,12 +1,14 @@
 class ROW:
     """
-    Store one record
+    Stores one record.
     """
+
     def __init__(self, t):
         """
-        Constructor
+        Constructor.
 
         Args:
-            t (list): data to add to the cells of the row
+            t (list): Data to add to the ROW.
         """
+
         self.cells = t

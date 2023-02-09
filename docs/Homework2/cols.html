@@ -26,15 +26,25 @@
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">import num
-import sym
+<pre><code class="python">import re
 
-import re
+import num
+import sym
 
 
 class COLS:
+    &#34;&#34;&#34;
+    Factory for managing NUMs and SYMs.
+    &#34;&#34;&#34;
 
     def __init__(self, t):
+        &#34;&#34;&#34;
+        Constructor.
+
+        Args:
+            t (list): Column of data.
+        &#34;&#34;&#34;
+
         self.names = t
         self.all = []
         self.x = []
@@ -59,6 +69,13 @@ class COLS:
                     self.x.append(col)
 
     def add(self, row):
+        &#34;&#34;&#34;
+        Updates the (not skipped) columns with data from row.
+
+        Args:
+            row (ROW): Row to add data to the column from.
+        &#34;&#34;&#34;
+
         for col in self.x + self.y:
             col.add(row.cells[col.at])</code></pre>
 </details>
@@ -77,14 +94,30 @@ class COLS:
 <span>(</span><span>t)</span>
 </code></dt>
 <dd>
-<div class="desc"></div>
+<div class="desc"><p>Factory for managing NUMs and SYMs.</p>
+<p>Constructor.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>t</code></strong> :&ensp;<code>list</code></dt>
+<dd>Column of data.</dd>
+</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">class COLS:
+    &#34;&#34;&#34;
+    Factory for managing NUMs and SYMs.
+    &#34;&#34;&#34;
 
     def __init__(self, t):
+        &#34;&#34;&#34;
+        Constructor.
+
+        Args:
+            t (list): Column of data.
+        &#34;&#34;&#34;
+
         self.names = t
         self.all = []
         self.x = []
@@ -109,6 +142,13 @@ class COLS:
                     self.x.append(col)
 
     def add(self, row):
+        &#34;&#34;&#34;
+        Updates the (not skipped) columns with data from row.
+
+        Args:
+            row (ROW): Row to add data to the column from.
+        &#34;&#34;&#34;
+
         for col in self.x + self.y:
             col.add(row.cells[col.at])</code></pre>
 </details>
@@ -118,12 +158,24 @@ class COLS:
 <span>def <span class="ident">add</span></span>(<span>self, row)</span>
 </code></dt>
 <dd>
-<div class="desc"></div>
+<div class="desc"><p>Updates the (not skipped) columns with data from row.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>row</code></strong> :&ensp;<code>ROW</code></dt>
+<dd>Row to add data to the column from.</dd>
+</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def add(self, row):
+    &#34;&#34;&#34;
+    Updates the (not skipped) columns with data from row.
+
+    Args:
+        row (ROW): Row to add data to the column from.
+    &#34;&#34;&#34;
+
     for col in self.x + self.y:
         col.add(row.cells[col.at])</code></pre>
 </details>

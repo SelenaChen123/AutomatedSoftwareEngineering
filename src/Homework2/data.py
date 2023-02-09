@@ -5,30 +5,34 @@ import utils
 
 class DATA:
     """
-    Store many rows, summarized into columns
+    Stores rows, summarized into columns.
     """
-    def __init__(self, src):
+
+    def __init__(self, src=[]):
         """
-        A container of `i.rows`, to be summarized in `i.cols`
+        Constructor.
 
         Args:
-            src (string/list): the filename or list of data that the data object will be populated by
+            src (str/list): Filename or list of data that DATA will be populated with. Defaults to [].
         """
+
         self.rows = []
         self.cols = None
 
         if type(src) == str:
             utils.csv(src, self.add)
         else:
-            utils.map(src or [], self.add)
+            for v in src:
+                self.add(v)
 
     def add(self, t):
         """
-        Add a new row, update column headers
+        Adds a new row and updates column headers.
 
         Args:
-            t (list): the daat that will either be added to a row or to the column headers
+            t (list): Data that will either be added to a row or the column headers.
         """
+
         if self.cols:
             if not hasattr(t, "cells"):
                 t = row.ROW(t)
@@ -38,32 +42,35 @@ class DATA:
         else:
             self.cols = cols.COLS(t)
 
-    def clone(self, init):
+    def clone(self, init=[]):
         """
-        Return a Data object with the same structure
+        Returns a DATA with the same structure.
 
         Args:
-            init (Data): the original Data object
+            init (list): Rows of the DATA to be cloned. Defaults to [].
 
         Returns:
-            Data: the cloned data object
+            data (DATA): Cloned DATA.
         """
+
         data = DATA([self.cols.names])
-        utils.map(init or [], data.add)
+
+        for v in init:
+            data.add(v)
 
         return data
 
     def stats(self, what, cols, nPlaces):
         """
-        Reports mid or div of the columns (defaults to i.cols.y)
+        Reports the mid or div of the columns.
 
         Args:
-            what (string): the function to be done, either mid or div
-            cols (list): the columns that stats are being taken from
-            nPlaces (int): number of places to round the stat to
+            what (str): Either mid or div.
+            cols (list): Columns that the stats are being taken from. Defaults to DATA.cols.y.
+            nPlaces (int): Number of places to round the stats to.
         """
+
         def fun(col):
             return round(getattr(col, what or "mid")(), nPlaces), col.txt
 
-        mapped = utils.map(cols or self.cols.y, fun)
-        return {k: mapped[k] for k in sorted(mapped.keys())}
+        return {k[1]: k[0] for k in sorted(list(map(fun, cols or self.cols.y)), key=lambda tuple: tuple[1])}

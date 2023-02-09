@@ -32,17 +32,35 @@ import utils
 
 
 class DATA:
+    &#34;&#34;&#34;
+    Stores rows, summarized into columns.
+    &#34;&#34;&#34;
 
-    def __init__(self, src):
+    def __init__(self, src=[]):
+        &#34;&#34;&#34;
+        Constructor.
+
+        Args:
+            src (str/list): Filename or list of data that DATA will be populated with. Defaults to [].
+        &#34;&#34;&#34;
+
         self.rows = []
         self.cols = None
 
         if type(src) == str:
             utils.csv(src, self.add)
         else:
-            utils.map(src or [], self.add)
+            for v in src:
+                self.add(v)
 
     def add(self, t):
+        &#34;&#34;&#34;
+        Adds a new row and updates column headers.
+
+        Args:
+            t (list): Data that will either be added to a row or the column headers.
+        &#34;&#34;&#34;
+
         if self.cols:
             if not hasattr(t, &#34;cells&#34;):
                 t = row.ROW(t)
@@ -52,18 +70,38 @@ class DATA:
         else:
             self.cols = cols.COLS(t)
 
-    def clone(self, init):
+    def clone(self, init=[]):
+        &#34;&#34;&#34;
+        Returns a DATA with the same structure.
+
+        Args:
+            init (list): Rows of the DATA to be cloned. Defaults to [].
+
+        Returns:
+            data (DATA): Cloned DATA.
+        &#34;&#34;&#34;
+
         data = DATA([self.cols.names])
-        utils.map(init or [], data.add)
+
+        for v in init:
+            data.add(v)
 
         return data
 
     def stats(self, what, cols, nPlaces):
+        &#34;&#34;&#34;
+        Reports the mid or div of the columns.
+
+        Args:
+            what (str): Either mid or div.
+            cols (list): Columns that the stats are being taken from. Defaults to DATA.cols.y.
+            nPlaces (int): Number of places to round the stats to.
+        &#34;&#34;&#34;
+
         def fun(col):
             return round(getattr(col, what or &#34;mid&#34;)(), nPlaces), col.txt
 
-        mapped = utils.map(cols or self.cols.y, fun)
-        return {k: mapped[k] for k in sorted(mapped.keys())}</code></pre>
+        return {k[1]: k[0] for k in sorted(list(map(fun, cols or self.cols.y)), key=lambda tuple: tuple[1])}</code></pre>
 </details>
 </section>
 <section>
@@ -77,26 +115,47 @@ class DATA:
 <dl>
 <dt id="Homework2.data.DATA"><code class="flex name class">
 <span>class <span class="ident">DATA</span></span>
-<span>(</span><span>src)</span>
+<span>(</span><span>src=[])</span>
 </code></dt>
 <dd>
-<div class="desc"></div>
+<div class="desc"><p>Stores rows, summarized into columns.</p>
+<p>Constructor.</p>
+<h2 id="args">Args</h2>
+<p>src (str/list): Filename or list of data that DATA will be populated with. Defaults to [].</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">class DATA:
+    &#34;&#34;&#34;
+    Stores rows, summarized into columns.
+    &#34;&#34;&#34;
 
-    def __init__(self, src):
+    def __init__(self, src=[]):
+        &#34;&#34;&#34;
+        Constructor.
+
+        Args:
+            src (str/list): Filename or list of data that DATA will be populated with. Defaults to [].
+        &#34;&#34;&#34;
+
         self.rows = []
         self.cols = None
 
         if type(src) == str:
             utils.csv(src, self.add)
         else:
-            utils.map(src or [], self.add)
+            for v in src:
+                self.add(v)
 
     def add(self, t):
+        &#34;&#34;&#34;
+        Adds a new row and updates column headers.
+
+        Args:
+            t (list): Data that will either be added to a row or the column headers.
+        &#34;&#34;&#34;
+
         if self.cols:
             if not hasattr(t, &#34;cells&#34;):
                 t = row.ROW(t)
@@ -106,18 +165,38 @@ class DATA:
         else:
             self.cols = cols.COLS(t)
 
-    def clone(self, init):
+    def clone(self, init=[]):
+        &#34;&#34;&#34;
+        Returns a DATA with the same structure.
+
+        Args:
+            init (list): Rows of the DATA to be cloned. Defaults to [].
+
+        Returns:
+            data (DATA): Cloned DATA.
+        &#34;&#34;&#34;
+
         data = DATA([self.cols.names])
-        utils.map(init or [], data.add)
+
+        for v in init:
+            data.add(v)
 
         return data
 
     def stats(self, what, cols, nPlaces):
+        &#34;&#34;&#34;
+        Reports the mid or div of the columns.
+
+        Args:
+            what (str): Either mid or div.
+            cols (list): Columns that the stats are being taken from. Defaults to DATA.cols.y.
+            nPlaces (int): Number of places to round the stats to.
+        &#34;&#34;&#34;
+
         def fun(col):
             return round(getattr(col, what or &#34;mid&#34;)(), nPlaces), col.txt
 
-        mapped = utils.map(cols or self.cols.y, fun)
-        return {k: mapped[k] for k in sorted(mapped.keys())}</code></pre>
+        return {k[1]: k[0] for k in sorted(list(map(fun, cols or self.cols.y)), key=lambda tuple: tuple[1])}</code></pre>
 </details>
 <h3>Methods</h3>
 <dl>
@@ -125,12 +204,24 @@ class DATA:
 <span>def <span class="ident">add</span></span>(<span>self, t)</span>
 </code></dt>
 <dd>
-<div class="desc"></div>
+<div class="desc"><p>Adds a new row and updates column headers.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>t</code></strong> :&ensp;<code>list</code></dt>
+<dd>Data that will either be added to a row or the column headers.</dd>
+</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def add(self, t):
+    &#34;&#34;&#34;
+    Adds a new row and updates column headers.
+
+    Args:
+        t (list): Data that will either be added to a row or the column headers.
+    &#34;&#34;&#34;
+
     if self.cols:
         if not hasattr(t, &#34;cells&#34;):
             t = row.ROW(t)
@@ -142,17 +233,36 @@ class DATA:
 </details>
 </dd>
 <dt id="Homework2.data.DATA.clone"><code class="name flex">
-<span>def <span class="ident">clone</span></span>(<span>self, init)</span>
+<span>def <span class="ident">clone</span></span>(<span>self, init=[])</span>
 </code></dt>
 <dd>
-<div class="desc"></div>
+<div class="desc"><p>Returns a DATA with the same structure.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>init</code></strong> :&ensp;<code>list</code></dt>
+<dd>Rows of the DATA to be cloned. Defaults to [].</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>data (DATA): Cloned DATA.</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def clone(self, init):
+<pre><code class="python">def clone(self, init=[]):
+    &#34;&#34;&#34;
+    Returns a DATA with the same structure.
+
+    Args:
+        init (list): Rows of the DATA to be cloned. Defaults to [].
+
+    Returns:
+        data (DATA): Cloned DATA.
+    &#34;&#34;&#34;
+
     data = DATA([self.cols.names])
-    utils.map(init or [], data.add)
+
+    for v in init:
+        data.add(v)
 
     return data</code></pre>
 </details>
@@ -161,17 +271,34 @@ class DATA:
 <span>def <span class="ident">stats</span></span>(<span>self, what, cols, nPlaces)</span>
 </code></dt>
 <dd>
-<div class="desc"></div>
+<div class="desc"><p>Reports the mid or div of the columns.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>what</code></strong> :&ensp;<code>str</code></dt>
+<dd>Either mid or div.</dd>
+<dt><strong><code>cols</code></strong> :&ensp;<code>list</code></dt>
+<dd>Columns that the stats are being taken from. Defaults to DATA.cols.y.</dd>
+<dt><strong><code>nPlaces</code></strong> :&ensp;<code>int</code></dt>
+<dd>Number of places to round the stats to.</dd>
+</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def stats(self, what, cols, nPlaces):
+    &#34;&#34;&#34;
+    Reports the mid or div of the columns.
+
+    Args:
+        what (str): Either mid or div.
+        cols (list): Columns that the stats are being taken from. Defaults to DATA.cols.y.
+        nPlaces (int): Number of places to round the stats to.
+    &#34;&#34;&#34;
+
     def fun(col):
         return round(getattr(col, what or &#34;mid&#34;)(), nPlaces), col.txt
 
-    mapped = utils.map(cols or self.cols.y, fun)
-    return {k: mapped[k] for k in sorted(mapped.keys())}</code></pre>
+    return {k[1]: k[0] for k in sorted(list(map(fun, cols or self.cols.y)), key=lambda tuple: tuple[1])}</code></pre>
 </details>
 </dd>
 </dl>

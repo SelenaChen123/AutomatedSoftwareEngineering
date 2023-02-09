@@ -29,39 +29,17 @@
 <pre><code class="python">import re
 
 
-def map(t, fun):
-    u = {}
-
-    for k, v in enumerate(t):
-        v, k = fun(v)
-
-        if k and k != False:
-            u[k] = v
-        else:
-            u[1 + len(u)] = v
-
-    return u
-
-
-def kap(t, fun):
-    u = {}
-
-    for k, v in t.items():
-        v, k = fun(k, v)
-
-        if k and k != False:
-            u[k] = v
-        else:
-            u[1 + len(u)] = v
-
-    return u
-
-
-def keys(self, t):
-    return sorted(self.kap(t.keys()))
-
-
 def coerce(s):
+    &#34;&#34;&#34;
+    Coerces a str s into an int, float, bool, or trimmed str.
+
+    Args:
+        s (str): Str to be coerced into an int, float, bool, or trimmed str.
+
+    Returns:
+        int/float/bool/str: int, float, bool, or trimmed str version of s.
+    &#34;&#34;&#34;
+
     if s == &#34;true&#34;:
         return True
     elif s == &#34;false&#34;:
@@ -77,6 +55,14 @@ def coerce(s):
 
 
 def csv(sFilename, fun):
+    &#34;&#34;&#34;
+    Calls the function fun on the rows after coercing the cell text.
+
+    Args:
+        sFilename (str): Filename of the csv file.
+        fun (function): Function to be performed on each row of the csv file.
+    &#34;&#34;&#34;
+
     with open(sFilename) as src:
         lines = src.readlines()
 
@@ -100,12 +86,29 @@ def csv(sFilename, fun):
 <span>def <span class="ident">coerce</span></span>(<span>s)</span>
 </code></dt>
 <dd>
-<div class="desc"></div>
+<div class="desc"><p>Coerces a str s into an int, float, bool, or trimmed str.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>s</code></strong> :&ensp;<code>str</code></dt>
+<dd>Str to be coerced into an int, float, bool, or trimmed str.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>int/float/bool/str: int, float, bool, or trimmed str version of s.</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def coerce(s):
+    &#34;&#34;&#34;
+    Coerces a str s into an int, float, bool, or trimmed str.
+
+    Args:
+        s (str): Str to be coerced into an int, float, bool, or trimmed str.
+
+    Returns:
+        int/float/bool/str: int, float, bool, or trimmed str version of s.
+    &#34;&#34;&#34;
+
     if s == &#34;true&#34;:
         return True
     elif s == &#34;false&#34;:
@@ -124,12 +127,27 @@ def csv(sFilename, fun):
 <span>def <span class="ident">csv</span></span>(<span>sFilename, fun)</span>
 </code></dt>
 <dd>
-<div class="desc"></div>
+<div class="desc"><p>Calls the function fun on the rows after coercing the cell text.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>sFilename</code></strong> :&ensp;<code>str</code></dt>
+<dd>Filename of the csv file.</dd>
+<dt><strong><code>fun</code></strong> :&ensp;<code>function</code></dt>
+<dd>Function to be performed on each row of the csv file.</dd>
+</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def csv(sFilename, fun):
+    &#34;&#34;&#34;
+    Calls the function fun on the rows after coercing the cell text.
+
+    Args:
+        sFilename (str): Filename of the csv file.
+        fun (function): Function to be performed on each row of the csv file.
+    &#34;&#34;&#34;
+
     with open(sFilename) as src:
         lines = src.readlines()
 
@@ -140,65 +158,6 @@ def csv(sFilename, fun):
                 t.append(coerce(s1))
 
             fun(t)</code></pre>
-</details>
-</dd>
-<dt id="Homework2.utils.kap"><code class="name flex">
-<span>def <span class="ident">kap</span></span>(<span>t, fun)</span>
-</code></dt>
-<dd>
-<div class="desc"></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def kap(t, fun):
-    u = {}
-
-    for k, v in t.items():
-        v, k = fun(k, v)
-
-        if k and k != False:
-            u[k] = v
-        else:
-            u[1 + len(u)] = v
-
-    return u</code></pre>
-</details>
-</dd>
-<dt id="Homework2.utils.keys"><code class="name flex">
-<span>def <span class="ident">keys</span></span>(<span>self, t)</span>
-</code></dt>
-<dd>
-<div class="desc"></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def keys(self, t):
-    return sorted(self.kap(t.keys()))</code></pre>
-</details>
-</dd>
-<dt id="Homework2.utils.map"><code class="name flex">
-<span>def <span class="ident">map</span></span>(<span>t, fun)</span>
-</code></dt>
-<dd>
-<div class="desc"></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def map(t, fun):
-    u = {}
-
-    for k, v in enumerate(t):
-        v, k = fun(v)
-
-        if k and k != False:
-            u[k] = v
-        else:
-            u[1 + len(u)] = v
-
-    return u</code></pre>
 </details>
 </dd>
 </dl>
@@ -221,9 +180,6 @@ def csv(sFilename, fun):
 <ul class="">
 <li><code><a title="Homework2.utils.coerce" href="#Homework2.utils.coerce">coerce</a></code></li>
 <li><code><a title="Homework2.utils.csv" href="#Homework2.utils.csv">csv</a></code></li>
-<li><code><a title="Homework2.utils.kap" href="#Homework2.utils.kap">kap</a></code></li>
-<li><code><a title="Homework2.utils.keys" href="#Homework2.utils.keys">keys</a></code></li>
-<li><code><a title="Homework2.utils.map" href="#Homework2.utils.map">map</a></code></li>
 </ul>
 </li>
 </ul>

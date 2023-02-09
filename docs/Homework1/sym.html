@@ -31,13 +31,14 @@
 
 class SYM():
     &#34;&#34;&#34;
-    Summarize a stream of symbols
+    Summarize a stream of symbols.
     &#34;&#34;&#34;
 
     def __init__(self):
         &#34;&#34;&#34;
-        Constructor
+        Constructor.
         &#34;&#34;&#34;
+
         self.n = 0
         self.has = {}
         self.most = 0
@@ -45,11 +46,12 @@ class SYM():
 
     def add(self, x):
         &#34;&#34;&#34;
-        Update counts of things that have been seen so far
+        Updates the count of the things that have been seen so far.
 
         Args:
-            x (str): string that we are seeing if the sym object has seen
+            x (str): Thing to check if we&#39;ve seen so far.
         &#34;&#34;&#34;
+
         if x != &#34;?&#34;:
             self.n += 1
             self.has[x] = 1 + self.has.get(x, 0)
@@ -58,20 +60,22 @@ class SYM():
 
     def mid(self):
         &#34;&#34;&#34;
-        Return the mode
+        Returns the mode.
 
         Returns:
-            int: mean of the sym object
+            int: Mode.
         &#34;&#34;&#34;
+
         return self.mode
 
     def div(self):
         &#34;&#34;&#34;
-        Return the entropy
+        Returns the entropy.
 
         Returns:
-            float: the entropy of the sym object
+            float: Entropy.
         &#34;&#34;&#34;
+
         def fun(p):
             return p * math.log(p, 2)
 
@@ -95,21 +99,22 @@ class SYM():
 <span>class <span class="ident">SYM</span></span>
 </code></dt>
 <dd>
-<div class="desc"><p>Summarize a stream of symbols</p>
-<p>Constructor</p></div>
+<div class="desc"><p>Summarize a stream of symbols.</p>
+<p>Constructor.</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">class SYM():
     &#34;&#34;&#34;
-    Summarize a stream of symbols
+    Summarize a stream of symbols.
     &#34;&#34;&#34;
 
     def __init__(self):
         &#34;&#34;&#34;
-        Constructor
+        Constructor.
         &#34;&#34;&#34;
+
         self.n = 0
         self.has = {}
         self.most = 0
@@ -117,11 +122,12 @@ class SYM():
 
     def add(self, x):
         &#34;&#34;&#34;
-        Update counts of things that have been seen so far
+        Updates the count of the things that have been seen so far.
 
         Args:
-            x (str): string that we are seeing if the sym object has seen
+            x (str): Thing to check if we&#39;ve seen so far.
         &#34;&#34;&#34;
+
         if x != &#34;?&#34;:
             self.n += 1
             self.has[x] = 1 + self.has.get(x, 0)
@@ -130,20 +136,22 @@ class SYM():
 
     def mid(self):
         &#34;&#34;&#34;
-        Return the mode
+        Returns the mode.
 
         Returns:
-            int: mean of the sym object
+            int: Mode.
         &#34;&#34;&#34;
+
         return self.mode
 
     def div(self):
         &#34;&#34;&#34;
-        Return the entropy
+        Returns the entropy.
 
         Returns:
-            float: the entropy of the sym object
+            float: Entropy.
         &#34;&#34;&#34;
+
         def fun(p):
             return p * math.log(p, 2)
 
@@ -159,11 +167,11 @@ class SYM():
 <span>def <span class="ident">add</span></span>(<span>self, x)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Update counts of things that have been seen so far</p>
+<div class="desc"><p>Updates the count of the things that have been seen so far.</p>
 <h2 id="args">Args</h2>
 <dl>
 <dt><strong><code>x</code></strong> :&ensp;<code>str</code></dt>
-<dd>string that we are seeing if the sym object has seen</dd>
+<dd>Thing to check if we've seen so far.</dd>
 </dl></div>
 <details class="source">
 <summary>
@@ -171,11 +179,12 @@ class SYM():
 </summary>
 <pre><code class="python">def add(self, x):
     &#34;&#34;&#34;
-    Update counts of things that have been seen so far
+    Updates the count of the things that have been seen so far.
 
     Args:
-        x (str): string that we are seeing if the sym object has seen
+        x (str): Thing to check if we&#39;ve seen so far.
     &#34;&#34;&#34;
+
     if x != &#34;?&#34;:
         self.n += 1
         self.has[x] = 1 + self.has.get(x, 0)
@@ -187,11 +196,11 @@ class SYM():
 <span>def <span class="ident">div</span></span>(<span>self)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Return the entropy</p>
+<div class="desc"><p>Returns the entropy.</p>
 <h2 id="returns">Returns</h2>
 <dl>
 <dt><code>float</code></dt>
-<dd>the entropy of the sym object</dd>
+<dd>Entropy.</dd>
 </dl></div>
 <details class="source">
 <summary>
@@ -199,11 +208,12 @@ class SYM():
 </summary>
 <pre><code class="python">def div(self):
     &#34;&#34;&#34;
-    Return the entropy
+    Returns the entropy.
 
     Returns:
-        float: the entropy of the sym object
+        float: Entropy.
     &#34;&#34;&#34;
+
     def fun(p):
         return p * math.log(p, 2)
 
@@ -218,11 +228,11 @@ class SYM():
 <span>def <span class="ident">mid</span></span>(<span>self)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Return the mode</p>
+<div class="desc"><p>Returns the mode.</p>
 <h2 id="returns">Returns</h2>
 <dl>
 <dt><code>int</code></dt>
-<dd>mean of the sym object</dd>
+<dd>Mode.</dd>
 </dl></div>
 <details class="source">
 <summary>
@@ -230,11 +240,12 @@ class SYM():
 </summary>
 <pre><code class="python">def mid(self):
     &#34;&#34;&#34;
-    Return the mode
+    Returns the mode.
 
     Returns:
-        int: mean of the sym object
+        int: Mode.
     &#34;&#34;&#34;
+
     return self.mode</code></pre>
 </details>
 </dd>

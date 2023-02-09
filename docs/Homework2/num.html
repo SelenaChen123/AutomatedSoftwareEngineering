@@ -30,8 +30,15 @@
 
 
 class NUM():
+    &#34;&#34;&#34;
+    Summarizes a stream of numbers.
+    &#34;&#34;&#34;
 
     def __init__(self, at=0, txt=&#34;&#34;):
+        &#34;&#34;&#34;
+        Constructor.
+        &#34;&#34;&#34;
+
         self.at = at
         self.txt = txt
         self.n = 0
@@ -39,9 +46,16 @@ class NUM():
         self.m2 = 0
         self.lo = sys.maxsize
         self.hi = -sys.maxsize
-        self.w = self.txt.find(&#34;-&#34;)
+        self.w = -1 if &#34;-&#34; in self.txt else 1
 
     def add(self, n):
+        &#34;&#34;&#34;
+        Adds n and update hi, lo, and other values needed for standard deviation.
+
+        Args:
+            n (int): Value to be added.
+        &#34;&#34;&#34;
+
         if n != &#34;?&#34;:
             self.n = self.n + 1
             d = n - self.mu
@@ -51,9 +65,23 @@ class NUM():
             self.hi = max(n, self.hi)
 
     def mid(self):
+        &#34;&#34;&#34;
+        Returns the mean.
+
+        Returns:
+            int: Mean.
+        &#34;&#34;&#34;
+
         return self.mu
 
     def div(self):
+        &#34;&#34;&#34;
+        Returns the standard deviation using Welford&#39;s algorithm.
+
+        Returns:
+            float: Standard deviation using Welford&#39;s algorithm.
+        &#34;&#34;&#34;
+
         if (self.m2 &lt; 0 or self.n &lt; 2):
             return 0
         else:
@@ -74,14 +102,22 @@ class NUM():
 <span>(</span><span>at=0, txt='')</span>
 </code></dt>
 <dd>
-<div class="desc"></div>
+<div class="desc"><p>Summarizes a stream of numbers.</p>
+<p>Constructor.</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">class NUM():
+    &#34;&#34;&#34;
+    Summarizes a stream of numbers.
+    &#34;&#34;&#34;
 
     def __init__(self, at=0, txt=&#34;&#34;):
+        &#34;&#34;&#34;
+        Constructor.
+        &#34;&#34;&#34;
+
         self.at = at
         self.txt = txt
         self.n = 0
@@ -89,9 +125,16 @@ class NUM():
         self.m2 = 0
         self.lo = sys.maxsize
         self.hi = -sys.maxsize
-        self.w = self.txt.find(&#34;-&#34;)
+        self.w = -1 if &#34;-&#34; in self.txt else 1
 
     def add(self, n):
+        &#34;&#34;&#34;
+        Adds n and update hi, lo, and other values needed for standard deviation.
+
+        Args:
+            n (int): Value to be added.
+        &#34;&#34;&#34;
+
         if n != &#34;?&#34;:
             self.n = self.n + 1
             d = n - self.mu
@@ -101,9 +144,23 @@ class NUM():
             self.hi = max(n, self.hi)
 
     def mid(self):
+        &#34;&#34;&#34;
+        Returns the mean.
+
+        Returns:
+            int: Mean.
+        &#34;&#34;&#34;
+
         return self.mu
 
     def div(self):
+        &#34;&#34;&#34;
+        Returns the standard deviation using Welford&#39;s algorithm.
+
+        Returns:
+            float: Standard deviation using Welford&#39;s algorithm.
+        &#34;&#34;&#34;
+
         if (self.m2 &lt; 0 or self.n &lt; 2):
             return 0
         else:
@@ -115,12 +172,24 @@ class NUM():
 <span>def <span class="ident">add</span></span>(<span>self, n)</span>
 </code></dt>
 <dd>
-<div class="desc"></div>
+<div class="desc"><p>Adds n and update hi, lo, and other values needed for standard deviation.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>n</code></strong> :&ensp;<code>int</code></dt>
+<dd>Value to be added.</dd>
+</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def add(self, n):
+    &#34;&#34;&#34;
+    Adds n and update hi, lo, and other values needed for standard deviation.
+
+    Args:
+        n (int): Value to be added.
+    &#34;&#34;&#34;
+
     if n != &#34;?&#34;:
         self.n = self.n + 1
         d = n - self.mu
@@ -134,12 +203,24 @@ class NUM():
 <span>def <span class="ident">div</span></span>(<span>self)</span>
 </code></dt>
 <dd>
-<div class="desc"></div>
+<div class="desc"><p>Returns the standard deviation using Welford's algorithm.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>float</code></dt>
+<dd>Standard deviation using Welford's algorithm.</dd>
+</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def div(self):
+    &#34;&#34;&#34;
+    Returns the standard deviation using Welford&#39;s algorithm.
+
+    Returns:
+        float: Standard deviation using Welford&#39;s algorithm.
+    &#34;&#34;&#34;
+
     if (self.m2 &lt; 0 or self.n &lt; 2):
         return 0
     else:
@@ -150,12 +231,24 @@ class NUM():
 <span>def <span class="ident">mid</span></span>(<span>self)</span>
 </code></dt>
 <dd>
-<div class="desc"></div>
+<div class="desc"><p>Returns the mean.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>int</code></dt>
+<dd>Mean.</dd>
+</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def mid(self):
+    &#34;&#34;&#34;
+    Returns the mean.
+
+    Returns:
+        int: Mean.
+    &#34;&#34;&#34;
+
     return self.mu</code></pre>
 </details>
 </dd>

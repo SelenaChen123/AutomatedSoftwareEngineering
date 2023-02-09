@@ -31,13 +31,14 @@
 
 class NUM():
     &#34;&#34;&#34;
-    Summarizes a string of numbers
+    Summarizes a stream of numbers.
     &#34;&#34;&#34;
 
     def __init__(self):
         &#34;&#34;&#34;
-        Constructor
+        Constructor.
         &#34;&#34;&#34;
+
         self.n = 0
         self.mu = 0
         self.m2 = 0
@@ -46,12 +47,12 @@ class NUM():
 
     def add(self, n):
         &#34;&#34;&#34;
-        Add &#34;n&#34; to the current num, update hi, lo, and other 
-            values needed for standard deviation
+        Adds n and update hi, lo, and other values needed for standard deviation.
 
         Args:
-            n (int): value to be added to the num object
+            n (int): Value to be added.
         &#34;&#34;&#34;
+
         if n != &#34;?&#34;:
             self.n = self.n + 1
             d = n - self.mu
@@ -62,20 +63,22 @@ class NUM():
 
     def mid(self):
         &#34;&#34;&#34;
-        Return the mean
+        Returns the mean.
 
         Returns:
-            int: mean of the num object
+            int: Mean.
         &#34;&#34;&#34;
+
         return self.mu
 
     def div(self):
         &#34;&#34;&#34;
-        Return standard deviation using Welford&#39;s algorithm
+        Returns the standard deviation using Welford&#39;s algorithm.
 
         Returns:
-            float: returns the standard deviation of the num object
+            float: Standard deviation using Welford&#39;s algorithm.
         &#34;&#34;&#34;
+
         if (self.m2 &lt; 0 or self.n &lt; 2):
             return 0
         else:
@@ -95,21 +98,22 @@ class NUM():
 <span>class <span class="ident">NUM</span></span>
 </code></dt>
 <dd>
-<div class="desc"><p>Summarizes a string of numbers</p>
-<p>Constructor</p></div>
+<div class="desc"><p>Summarizes a stream of numbers.</p>
+<p>Constructor.</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">class NUM():
     &#34;&#34;&#34;
-    Summarizes a string of numbers
+    Summarizes a stream of numbers.
     &#34;&#34;&#34;
 
     def __init__(self):
         &#34;&#34;&#34;
-        Constructor
+        Constructor.
         &#34;&#34;&#34;
+
         self.n = 0
         self.mu = 0
         self.m2 = 0
@@ -118,12 +122,12 @@ class NUM():
 
     def add(self, n):
         &#34;&#34;&#34;
-        Add &#34;n&#34; to the current num, update hi, lo, and other 
-            values needed for standard deviation
+        Adds n and update hi, lo, and other values needed for standard deviation.
 
         Args:
-            n (int): value to be added to the num object
+            n (int): Value to be added.
         &#34;&#34;&#34;
+
         if n != &#34;?&#34;:
             self.n = self.n + 1
             d = n - self.mu
@@ -134,20 +138,22 @@ class NUM():
 
     def mid(self):
         &#34;&#34;&#34;
-        Return the mean
+        Returns the mean.
 
         Returns:
-            int: mean of the num object
+            int: Mean.
         &#34;&#34;&#34;
+
         return self.mu
 
     def div(self):
         &#34;&#34;&#34;
-        Return standard deviation using Welford&#39;s algorithm
+        Returns the standard deviation using Welford&#39;s algorithm.
 
         Returns:
-            float: returns the standard deviation of the num object
+            float: Standard deviation using Welford&#39;s algorithm.
         &#34;&#34;&#34;
+
         if (self.m2 &lt; 0 or self.n &lt; 2):
             return 0
         else:
@@ -159,12 +165,11 @@ class NUM():
 <span>def <span class="ident">add</span></span>(<span>self, n)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Add "n" to the current num, update hi, lo, and other
-values needed for standard deviation</p>
+<div class="desc"><p>Adds n and update hi, lo, and other values needed for standard deviation.</p>
 <h2 id="args">Args</h2>
 <dl>
 <dt><strong><code>n</code></strong> :&ensp;<code>int</code></dt>
-<dd>value to be added to the num object</dd>
+<dd>Value to be added.</dd>
 </dl></div>
 <details class="source">
 <summary>
@@ -172,12 +177,12 @@ values needed for standard deviation</p>
 </summary>
 <pre><code class="python">def add(self, n):
     &#34;&#34;&#34;
-    Add &#34;n&#34; to the current num, update hi, lo, and other 
-        values needed for standard deviation
+    Adds n and update hi, lo, and other values needed for standard deviation.
 
     Args:
-        n (int): value to be added to the num object
+        n (int): Value to be added.
     &#34;&#34;&#34;
+
     if n != &#34;?&#34;:
         self.n = self.n + 1
         d = n - self.mu
@@ -191,11 +196,11 @@ values needed for standard deviation</p>
 <span>def <span class="ident">div</span></span>(<span>self)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Return standard deviation using Welford's algorithm</p>
+<div class="desc"><p>Returns the standard deviation using Welford's algorithm.</p>
 <h2 id="returns">Returns</h2>
 <dl>
 <dt><code>float</code></dt>
-<dd>returns the standard deviation of the num object</dd>
+<dd>Standard deviation using Welford's algorithm.</dd>
 </dl></div>
 <details class="source">
 <summary>
@@ -203,11 +208,12 @@ values needed for standard deviation</p>
 </summary>
 <pre><code class="python">def div(self):
     &#34;&#34;&#34;
-    Return standard deviation using Welford&#39;s algorithm
+    Returns the standard deviation using Welford&#39;s algorithm.
 
     Returns:
-        float: returns the standard deviation of the num object
+        float: Standard deviation using Welford&#39;s algorithm.
     &#34;&#34;&#34;
+
     if (self.m2 &lt; 0 or self.n &lt; 2):
         return 0
     else:
@@ -218,11 +224,11 @@ values needed for standard deviation</p>
 <span>def <span class="ident">mid</span></span>(<span>self)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Return the mean</p>
+<div class="desc"><p>Returns the mean.</p>
 <h2 id="returns">Returns</h2>
 <dl>
 <dt><code>int</code></dt>
-<dd>mean of the num object</dd>
+<dd>Mean.</dd>
 </dl></div>
 <details class="source">
 <summary>
@@ -230,11 +236,12 @@ values needed for standard deviation</p>
 </summary>
 <pre><code class="python">def mid(self):
     &#34;&#34;&#34;
-    Return the mean
+    Returns the mean.
 
     Returns:
-        int: mean of the num object
+        int: Mean.
     &#34;&#34;&#34;
+
     return self.mu</code></pre>
 </details>
 </dd>

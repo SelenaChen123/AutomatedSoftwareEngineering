@@ -3,13 +3,14 @@ import sys
 
 class NUM():
     """
-    Summarizes a string of numbers
+    Summarizes a stream of numbers.
     """
 
     def __init__(self, at=0, txt=""):
         """
-        Constructor
+        Constructor.
         """
+
         self.at = at
         self.txt = txt
         self.n = 0
@@ -17,16 +18,16 @@ class NUM():
         self.m2 = 0
         self.lo = sys.maxsize
         self.hi = -sys.maxsize
-        self.w = self.txt.find("-")
+        self.w = -1 if "-" in self.txt else 1
 
     def add(self, n):
         """
-        Add "n" to the current num, update hi, lo, and other 
-            values needed for standard deviation
+        Adds n and update hi, lo, and other values needed for standard deviation.
 
         Args:
-            n (int): value to be added to the num object
+            n (int): Value to be added.
         """
+
         if n != "?":
             self.n = self.n + 1
             d = n - self.mu
@@ -37,20 +38,22 @@ class NUM():
 
     def mid(self):
         """
-        Return the mean
+        Returns the mean.
 
         Returns:
-            int: mean of the num object
+            int: Mean.
         """
+
         return self.mu
 
     def div(self):
         """
-        Return standard deviation using Welford's algorithm
+        Returns the standard deviation using Welford's algorithm.
 
         Returns:
-            float: returns the standard deviation of the num object
+            float: Standard deviation using Welford's algorithm.
         """
+
         if (self.m2 < 0 or self.n < 2):
             return 0
         else:

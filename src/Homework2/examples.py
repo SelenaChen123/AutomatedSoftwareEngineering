@@ -18,6 +18,7 @@ def eg(key, str, fun):
         str (str): Description of the example.
         fun (function): Example function to be registered.
     """
+
     egs[key] = fun
     globals.help += "  -g  {}\t{}\n".format(key, str)
 
@@ -29,7 +30,9 @@ def eg_the():
     Returns:
         dict: Dictionary containing the global values.
     """
+
     print(str(globals.the))
+
     return globals.the
 
 
@@ -38,9 +41,9 @@ def eg_sym():
     Example testing the symbol type from sym.py.
 
     Returns:
-        bool: Boolean determining if the sym1.mid() method returns "a" and if
-            sym1.div() method rounds to 1.379.
+        bool: True if SYM.mid() = "a" and SYM.div() rounds to 1.379, False otherwise.
     """
+
     sym1 = sym.SYM()
 
     for x in ["a", "a", "a", "a", "b", "b", "c"]:
@@ -54,9 +57,9 @@ def eg_num():
     Example testing the number type from num.py.
 
     Returns:
-        bool: Boolean determining if the num1.mid() method returns 11/7 and if
-            num1.div() method rounds to 0.787.
+        bool: True if NUM.mid() = 11/7 and NUM.div() rounds to 0.787, False otherwise.
     """
+
     num1 = num.NUM()
 
     for x in [1, 1, 1, 1, 2, 2, 3]:
@@ -67,17 +70,17 @@ def eg_num():
 
 def eg_csv():
     """
-    Example testing the function to draw input from a .csv file
+    Example testing drawing input from a csv file.
 
     Returns:
-        bool: checks if the length of the output from the csv function is correct 
+        bool: True if the length of the file is correct, False otherwise.
     """
+
     global n
     n = 0
 
     def function(t):
         global n
-
         n += len(t)
 
     utils.csv(globals.the["file"], function)
@@ -87,21 +90,22 @@ def eg_csv():
 
 def eg_data():
     """
-    Example to see if the Data object type is working properly
+    Example testing if DATA is working properly.
 
     Returns:
-        bool: checks if the outputted Data object has the correct number of rows and
-            if certain data in those rows is accurate 
+        bool: True if DATA has the correct number of rows and certain data points are correct, False otherwise. 
     """
-    data1 = data.DATA(globals.the["file"])
 
-    return len(data1.rows) == 398 and data1.cols.y[1].w == -1 and data1.cols.x[1].at == 1 and len(data1.cols.x) == 4
+    data1 = data.DATA(globals.the["file"])
+    
+    return len(data1.rows) == 398 and data1.cols.y[0].w == -1 and data1.cols.x[1].at == 1 and len(data1.cols.x) == 4
 
 
 def eg_stats():
     """
-    Example testing the stats function of the data object
+    Example testing if DATA.stats() is working properly.
     """
+
     data1 = data.DATA(globals.the["file"])
 
     for k, cols in enumerate([data1.cols.y, data1.cols.x]):

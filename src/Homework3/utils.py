@@ -1,5 +1,5 @@
-import re
 import math
+import re
 
 
 seed = 937162211
@@ -44,7 +44,7 @@ def cosine(a, b, c):
         x1 = x1 / (2 * c)
 
     x2 = max(0, min(1, x1))
-    y = (a ** 2 - x2 ** 2) ** 0.5
+    y = abs(a ** 2 - x2 ** 2) ** 0.5
 
     return x2, y
 
@@ -56,7 +56,7 @@ def rand(lo=0, hi=1):
     return lo + (hi - lo) * seed / 2147483647
 
 
-def rint(lo, hi=1):
+def rint(lo=0, hi=1):
     return math.floor(0.5 + rand(lo, hi))
 
 
@@ -65,7 +65,8 @@ def many(t, n):
 
 
 def any(t):
-    return t[rint(len(t))-1]
+    # return t[rint(0, len(t) - 1)]
+    return t[rint(len(t)) - 1]
 
 
 def show(node, what, cols, nPlaces, lvl=0):

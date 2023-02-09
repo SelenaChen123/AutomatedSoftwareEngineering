@@ -26,15 +26,25 @@
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">import globals
+<pre><code class="python">import sys
+import re
+
+import globals
 import utils
 import examples
 
-import sys
-import re
-
 
 def settings(s):
+    &#34;&#34;&#34;
+    Parses the global help string to extract a dictionary of options.
+
+    Args:
+        s (str): String containing the global options to be parsed.
+
+    Returns:
+        dict: Dictionary containing the global options.
+    &#34;&#34;&#34;
+
     t = {}
 
     for item in re.findall(&#34;\n[\s]+[-][\S]+[\s]+[-][-]([\S]+)[^\n]+= ([\S]+)&#34;, s):
@@ -45,6 +55,16 @@ def settings(s):
 
 
 def cli(options):
+    &#34;&#34;&#34;
+    Updates t with the global options from the command line.
+
+    Args:
+        options (dict): Dictionary containing the global options.
+
+    Returns:
+        dict: Modified dictionary containing the global options from the command line.
+    &#34;&#34;&#34;
+
     for k, v in options.items():
         v = str(v).lower()
 
@@ -63,6 +83,14 @@ def cli(options):
 
 
 def main(help, funs):
+    &#34;&#34;&#34;
+    Fills in the global dictionary, updates them from the command line, runs the examples, prints the number of tests that failed, and resets the random number seed and settings.
+
+    Args:
+        help (str): String containing the default global options.
+        funs (dict): Contains the list of examples to be run as tests.
+    &#34;&#34;&#34;
+
     saved = {}
     fails = 0
 
@@ -73,7 +101,7 @@ def main(help, funs):
     if globals.the[&#34;help&#34;]:
         print(help)
     else:
-        for what in funs.keys():
+        for what in funs:
             if globals.the[&#34;go&#34;] == &#34;all&#34; or what == globals.the[&#34;go&#34;]:
                 for k, v in saved.items():
                     globals.the[k] = v
@@ -86,6 +114,10 @@ def main(help, funs):
 
 
 if __name__ == &#39;__main__&#39;:
+    &#34;&#34;&#34;
+    Starting point of the program. Generates examples and calls the main function.
+    &#34;&#34;&#34;
+
     examples.eg(&#34;the&#34;, &#34;show settings&#34;, examples.eg_the)
     examples.eg(&#34;sym&#34;, &#34;check syms&#34;, examples.eg_sym)
     examples.eg(&#34;num&#34;, &#34;check nums&#34;, examples.eg_num)
@@ -107,12 +139,32 @@ if __name__ == &#39;__main__&#39;:
 <span>def <span class="ident">cli</span></span>(<span>options)</span>
 </code></dt>
 <dd>
-<div class="desc"></div>
+<div class="desc"><p>Updates t with the global options from the command line.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>options</code></strong> :&ensp;<code>dict</code></dt>
+<dd>Dictionary containing the global options.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>dict</code></dt>
+<dd>Modified dictionary containing the global options from the command line.</dd>
+</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def cli(options):
+    &#34;&#34;&#34;
+    Updates t with the global options from the command line.
+
+    Args:
+        options (dict): Dictionary containing the global options.
+
+    Returns:
+        dict: Modified dictionary containing the global options from the command line.
+    &#34;&#34;&#34;
+
     for k, v in options.items():
         v = str(v).lower()
 
@@ -134,12 +186,27 @@ if __name__ == &#39;__main__&#39;:
 <span>def <span class="ident">main</span></span>(<span>help, funs)</span>
 </code></dt>
 <dd>
-<div class="desc"></div>
+<div class="desc"><p>Fills in the global dictionary, updates them from the command line, runs the examples, prints the number of tests that failed, and resets the random number seed and settings.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>help</code></strong> :&ensp;<code>str</code></dt>
+<dd>String containing the default global options.</dd>
+<dt><strong><code>funs</code></strong> :&ensp;<code>dict</code></dt>
+<dd>Contains the list of examples to be run as tests.</dd>
+</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def main(help, funs):
+    &#34;&#34;&#34;
+    Fills in the global dictionary, updates them from the command line, runs the examples, prints the number of tests that failed, and resets the random number seed and settings.
+
+    Args:
+        help (str): String containing the default global options.
+        funs (dict): Contains the list of examples to be run as tests.
+    &#34;&#34;&#34;
+
     saved = {}
     fails = 0
 
@@ -150,7 +217,7 @@ if __name__ == &#39;__main__&#39;:
     if globals.the[&#34;help&#34;]:
         print(help)
     else:
-        for what in funs.keys():
+        for what in funs:
             if globals.the[&#34;go&#34;] == &#34;all&#34; or what == globals.the[&#34;go&#34;]:
                 for k, v in saved.items():
                     globals.the[k] = v
@@ -166,12 +233,32 @@ if __name__ == &#39;__main__&#39;:
 <span>def <span class="ident">settings</span></span>(<span>s)</span>
 </code></dt>
 <dd>
-<div class="desc"></div>
+<div class="desc"><p>Parses the global help string to extract a dictionary of options.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>s</code></strong> :&ensp;<code>str</code></dt>
+<dd>String containing the global options to be parsed.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>dict</code></dt>
+<dd>Dictionary containing the global options.</dd>
+</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def settings(s):
+    &#34;&#34;&#34;
+    Parses the global help string to extract a dictionary of options.
+
+    Args:
+        s (str): String containing the global options to be parsed.
+
+    Returns:
+        dict: Dictionary containing the global options.
+    &#34;&#34;&#34;
+
     t = {}
 
     for item in re.findall(&#34;\n[\s]+[-][\S]+[\s]+[-][-]([\S]+)[^\n]+= ([\S]+)&#34;, s):

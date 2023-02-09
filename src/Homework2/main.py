@@ -1,9 +1,9 @@
+import sys
+import re
+
 import globals
 import utils
 import examples
-
-import sys
-import re
 
 
 def settings(s):
@@ -16,6 +16,7 @@ def settings(s):
     Returns:
         dict: Dictionary containing the global options.
     """
+
     t = {}
 
     for item in re.findall("\n[\s]+[-][\S]+[\s]+[-][-]([\S]+)[^\n]+= ([\S]+)", s):
@@ -27,7 +28,7 @@ def settings(s):
 
 def cli(options):
     """
-    Updates "t" with the global options from the command line.
+    Updates t with the global options from the command line.
 
     Args:
         options (dict): Dictionary containing the global options.
@@ -35,6 +36,7 @@ def cli(options):
     Returns:
         dict: Modified dictionary containing the global options from the command line.
     """
+
     for k, v in options.items():
         v = str(v).lower()
 
@@ -60,6 +62,7 @@ def main(help, funs):
         help (str): String containing the default global options.
         funs (dict): Contains the list of examples to be run as tests.
     """
+
     saved = {}
     fails = 0
 
@@ -70,7 +73,7 @@ def main(help, funs):
     if globals.the["help"]:
         print(help)
     else:
-        for what in funs.keys():
+        for what in funs:
             if globals.the["go"] == "all" or what == globals.the["go"]:
                 for k, v in saved.items():
                     globals.the[k] = v
@@ -86,6 +89,7 @@ if __name__ == '__main__':
     """
     Starting point of the program. Generates examples and calls the main function.
     """
+
     examples.eg("the", "show settings", examples.eg_the)
     examples.eg("sym", "check syms", examples.eg_sym)
     examples.eg("num", "check nums", examples.eg_num)

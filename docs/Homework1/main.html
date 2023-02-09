@@ -44,6 +44,7 @@ def settings(s):
     Returns:
         dict: Dictionary containing the global options.
     &#34;&#34;&#34;
+
     t = {}
 
     for item in re.findall(&#34;\n[\s]+[-][\S]+[\s]+[-][-]([\S]+)[^\n]+= ([\S]+)&#34;, s):
@@ -55,7 +56,7 @@ def settings(s):
 
 def cli(options):
     &#34;&#34;&#34;
-    Updates &#34;t&#34; with the global options from the command line.
+    Updates t with the global options from the command line.
 
     Args:
         options (dict): Dictionary containing the global options.
@@ -63,6 +64,7 @@ def cli(options):
     Returns:
         dict: Modified dictionary containing the global options from the command line.
     &#34;&#34;&#34;
+
     for k, v in options.items():
         v = str(v).lower()
 
@@ -88,6 +90,7 @@ def main(help, funs):
         help (str): String containing the default global options.
         funs (dict): Contains the list of examples to be run as tests.
     &#34;&#34;&#34;
+
     saved = {}
     fails = 0
 
@@ -98,7 +101,7 @@ def main(help, funs):
     if globals.the[&#34;help&#34;]:
         print(help)
     else:
-        for what in funs.keys():
+        for what in funs:
             if globals.the[&#34;go&#34;] == &#34;all&#34; or what == globals.the[&#34;go&#34;]:
                 for k, v in saved.items():
                     globals.the[k] = v
@@ -114,6 +117,7 @@ if __name__ == &#39;__main__&#39;:
     &#34;&#34;&#34;
     Starting point of the program. Generates examples and calls the main function.
     &#34;&#34;&#34;
+
     examples.eg(&#34;the&#34;, &#34;show settings&#34;, examples.eg_the)
     examples.eg(&#34;rand&#34;, &#34;generate, reset, regenerate same&#34;, examples.eg_rand)
     examples.eg(&#34;sym&#34;, &#34;check syms&#34;, examples.eg_sym)
@@ -133,7 +137,7 @@ if __name__ == &#39;__main__&#39;:
 <span>def <span class="ident">cli</span></span>(<span>options)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Updates "t" with the global options from the command line.</p>
+<div class="desc"><p>Updates t with the global options from the command line.</p>
 <h2 id="args">Args</h2>
 <dl>
 <dt><strong><code>options</code></strong> :&ensp;<code>dict</code></dt>
@@ -150,7 +154,7 @@ if __name__ == &#39;__main__&#39;:
 </summary>
 <pre><code class="python">def cli(options):
     &#34;&#34;&#34;
-    Updates &#34;t&#34; with the global options from the command line.
+    Updates t with the global options from the command line.
 
     Args:
         options (dict): Dictionary containing the global options.
@@ -158,6 +162,7 @@ if __name__ == &#39;__main__&#39;:
     Returns:
         dict: Modified dictionary containing the global options from the command line.
     &#34;&#34;&#34;
+
     for k, v in options.items():
         v = str(v).lower()
 
@@ -199,6 +204,7 @@ if __name__ == &#39;__main__&#39;:
         help (str): String containing the default global options.
         funs (dict): Contains the list of examples to be run as tests.
     &#34;&#34;&#34;
+
     saved = {}
     fails = 0
 
@@ -209,7 +215,7 @@ if __name__ == &#39;__main__&#39;:
     if globals.the[&#34;help&#34;]:
         print(help)
     else:
-        for what in funs.keys():
+        for what in funs:
             if globals.the[&#34;go&#34;] == &#34;all&#34; or what == globals.the[&#34;go&#34;]:
                 for k, v in saved.items():
                     globals.the[k] = v
@@ -250,6 +256,7 @@ if __name__ == &#39;__main__&#39;:
     Returns:
         dict: Dictionary containing the global options.
     &#34;&#34;&#34;
+
     t = {}
 
     for item in re.findall(&#34;\n[\s]+[-][\S]+[\s]+[-][-]([\S]+)[^\n]+= ([\S]+)&#34;, s):

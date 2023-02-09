@@ -2,8 +2,15 @@ import sys
 
 
 class NUM():
+    """
+    Summarizes a stream of numbers.
+    """
 
     def __init__(self, at=0, txt=""):
+        """
+        Constructor.
+        """
+
         self.at = at
         self.txt = txt
         self.n = 0
@@ -11,9 +18,16 @@ class NUM():
         self.m2 = 0
         self.lo = sys.maxsize
         self.hi = -sys.maxsize
-        self.w = self.txt.find("-")
+        self.w = -1 if "-" in txt else 1
 
     def add(self, n):
+        """
+        Adds n and update hi, lo, and other values needed for standard deviation.
+
+        Args:
+            n (int): Value to be added.
+        """
+
         if n != "?":
             self.n += 1
             d = n - self.mu
@@ -23,21 +37,56 @@ class NUM():
             self.hi = max(n, self.hi)
 
     def mid(self):
+        """
+        Returns the mean.
+
+        Returns:
+            int: Mean.
+        """
+
         return self.mu
 
     def div(self):
+        """
+        Returns the standard deviation using Welford's algorithm.
+
+        Returns:
+            float: Standard deviation using Welford's algorithm.
+        """
+
         if (self.m2 < 0 or self.n < 2):
             return 0
         else:
             return (self.m2 / (self.n - 1)) ** 0.5
 
     def norm(self, n):
+        """
+        Normalizes n.
+
+        Args:
+            n (int/float): Number to be normalized.
+
+        Returns:
+            float: Normalized version of n.
+        """
+
         if n == "?":
             return n
         else:
             return (n - self.lo) / (self.hi - self.lo + 1e-32)
 
     def dist(self, n1, n2):
+        """
+        Returns the distance between n1 and n2.
+
+        Args:
+            n1 (): _description_
+            n2 (_type_): _description_
+
+        Returns:
+            float: _description_
+        """
+
         if n1 == "?" and n2 == "?":
             return 1
 

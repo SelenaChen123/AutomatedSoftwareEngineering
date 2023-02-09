@@ -18,6 +18,7 @@ def eg(key, str, fun):
         str (str): Description of the example.
         fun (function): Example function to be registered.
     """
+
     egs[key] = fun
     globals.help += "  -g  {}\t{}\n".format(key, str)
 
@@ -29,6 +30,7 @@ def eg_the():
     Returns:
         dict: Dictionary containing the global values.
     """
+
     print(str(globals.the))
 
     return globals.the
@@ -39,8 +41,9 @@ def eg_rand():
     Example testing the random seed value from the globals.
 
     Returns:
-        bool: Boolean determining if m1 is equal to m2 and if m1 rounds to 0.5.
+        bool: True if m1 = m2 and m1 rounds to 0.5, False otherwise.
     """
+
     num1 = num.NUM()
     num2 = num.NUM()
 
@@ -63,9 +66,9 @@ def eg_sym():
     Example testing the symbol type from sym.py.
 
     Returns:
-        bool: Boolean determining if the sym1.mid() method returns "a" and if
-            sym1.div() method rounds to 1.379.
+        bool: True if SYM.mid() = "a" and SYM.div() rounds to 1.379, False otherwise.
     """
+
     sym1 = sym.SYM()
 
     for x in ["a", "a", "a", "a", "b", "b", "c"]:
@@ -79,9 +82,9 @@ def eg_num():
     Example testing the number type from num.py.
 
     Returns:
-        bool: Boolean determining if the num1.mid() method returns 11/7 and if
-            num1.div() method rounds to 0.787.
+        bool: True if NUM.mid() = 11/7 and NUM.div() rounds to 0.787, False otherwise.
     """
+
     num1 = num.NUM()
 
     for x in [1, 1, 1, 1, 2, 2, 3]:
