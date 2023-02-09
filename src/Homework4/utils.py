@@ -268,8 +268,19 @@ def show(node, what, cols, nPlaces, lvl=0):
         lvl (int, optional): Current tree level. Defaults to 0.
     """
 
-    print("Not yet implemented")
-    return 0
+    if "data" in node:
+        print("{} {}  ".format("| " * lvl, end="")
+              
+        print(if "left" not in node and node.data.rows.cells[len(node.data.rows[len(node.data.rows)])])
+
+        print(node["data"].stats("mid", node["data"].cols.y, nPlaces)
+              if "left" not in node and  else "")
+
+        if "left" in node:
+            show(node["left"], what, cols, nPlaces, lvl + 1)
+
+        if "right" in node:
+            show(node["right"], what, cols, nPlaces, lvl + 1)
 
 def doFile(sFile):
     return 0
