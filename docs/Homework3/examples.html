@@ -129,6 +129,7 @@ def eg_around():
     &#34;&#34;&#34;
 
     data1 = data.DATA(globals.the[&#34;file&#34;])
+
     print(0, 0, str(data1.rows[0].cells))
 
     for n, t in enumerate(data1.around(data1.rows[0]), 1):
@@ -143,6 +144,7 @@ def eg_half():
 
     data1 = data.DATA(globals.the[&#34;file&#34;])
     left, right, A, B, mid, c = data1.half()
+
     print(len(left), len(right), len(data1.rows))
     print(str(A.cells), c)
     print(str(mid.cells))
@@ -155,6 +157,7 @@ def eg_cluster():
     &#34;&#34;&#34;
 
     data1 = data.DATA(globals.the[&#34;file&#34;])
+
     utils.show(data1.cluster(), &#34;mid&#34;, data1.cols.y, 1)
 
 
@@ -164,6 +167,7 @@ def eg_optimize():
     &#34;&#34;&#34;
 
     data1 = data.DATA(globals.the[&#34;file&#34;])
+
     utils.show(data1.sway(), &#34;mid&#34;, data1.cols.y, 1)</code></pre>
 </details>
 </section>
@@ -221,6 +225,7 @@ def eg_optimize():
     &#34;&#34;&#34;
 
     data1 = data.DATA(globals.the[&#34;file&#34;])
+
     print(0, 0, str(data1.rows[0].cells))
 
     for n, t in enumerate(data1.around(data1.rows[0]), 1):
@@ -271,6 +276,7 @@ def eg_optimize():
     &#34;&#34;&#34;
 
     data1 = data.DATA(globals.the[&#34;file&#34;])
+
     utils.show(data1.cluster(), &#34;mid&#34;, data1.cols.y, 1)</code></pre>
 </details>
 </dd>
@@ -317,6 +323,7 @@ def eg_optimize():
 
     data1 = data.DATA(globals.the[&#34;file&#34;])
     left, right, A, B, mid, c = data1.half()
+
     print(len(left), len(right), len(data1.rows))
     print(str(A.cells), c)
     print(str(mid.cells))
@@ -368,6 +375,7 @@ def eg_optimize():
     &#34;&#34;&#34;
 
     data1 = data.DATA(globals.the[&#34;file&#34;])
+
     utils.show(data1.sway(), &#34;mid&#34;, data1.cols.y, 1)</code></pre>
 </details>
 </dd>

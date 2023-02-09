@@ -1,6 +1,7 @@
 import globals
 import num
 import sym
+import utils
 
 
 global egs
@@ -18,7 +19,9 @@ def eg(key, str, fun):
     """
 
     egs[key] = fun
-    globals.help += "  -g  {}\t{}\n".format(key, str)
+    action = "-g  {}".format(key)
+    globals.help += "  {}\t\t{}\n".format(action, str) if len(
+        action) < 13 else "  {}\t{}\n".format(action, str)
 
 
 def eg_the():
@@ -39,8 +42,11 @@ def eg_copy():
     Example testing copy().
     """
 
-    print("Not yet implemented")
-    return 0
+    t1 = {"a": 1, "b": {"c": 2, "d": [3]}}
+    t2 = utils.copy(t1)
+    t2["b"]["d"][0] = 10000
+
+    print("b4", t1, "\nafter", t2)
 
 
 def eg_sym():
@@ -80,8 +86,10 @@ def eg_repcols():
     Example testing repCols().
     """
 
-    print("Not yet implemented")
-    return 0
+    t = utils.repCols(utils.dofile(globals.the["file"]).cols)
+
+    print(t.cols.all)
+    print(t.rows)
 
 
 def eg_synonyms():
@@ -89,8 +97,7 @@ def eg_synonyms():
     Example testing DATA.cluster() on repCols().
     """
 
-    print("Not yet implemented")
-    return 0
+    utils.show(utils.repCols(utils.dofile(globals.the["file"]).cols).cluster())
 
 
 def eg_reprows():
@@ -98,8 +105,11 @@ def eg_reprows():
     Example testing repRows().
     """
 
-    print("Not yet implemented")
-    return 0
+    t = utils.dofile(globals.the["file"])
+    rows = utils.repRows(t, utils.transpose(t.cols))
+
+    print(rows.cols.all)
+    print(rows.rows)
 
 
 def eg_prototypes():
@@ -107,8 +117,10 @@ def eg_prototypes():
     Example testing DATA.cluster() on repRows().
     """
 
-    print("Not yet implemented")
-    return 0
+    t = utils.dofile(globals.the["file"])
+    rows = utils.repRows(t, utils.transpose(t.cols))
+
+    utils.show(rows.cluster())
 
 
 def eg_position():
@@ -116,8 +128,10 @@ def eg_position():
     Example testing repPlace().
     """
 
-    print("Not yet implemented")
-    return 0
+    t = utils.dofile(globals.the["file"])
+    rows = utils.repRows(t, utils.transpose(t.cols))
+    rows.cluster()
+    utils.repPlace(rows)
 
 
 def eg_every():
@@ -125,5 +139,4 @@ def eg_every():
     Example testing repgrid().
     """
 
-    print("Not yet implemented")
-    return 0
+    utils.repgrid(globals.the["file"])

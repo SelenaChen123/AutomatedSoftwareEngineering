@@ -91,6 +91,7 @@ if __name__ == '__main__':
     """
 
     examples.eg("the", "show settings", examples.eg_the)
+    examples.eg("copy", "check copy", examples.eg_copy)
     examples.eg("sym", "check syms", examples.eg_sym)
     examples.eg("num", "check nums", examples.eg_num)
     examples.eg("repcols", "checking repcols", examples.eg_repcols)
