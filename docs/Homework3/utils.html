@@ -167,14 +167,13 @@ def any(t):
     return t[rint(len(t)) - 1]
 
 
-def show(node, what, cols, nPlaces, lvl=0):
+def show(node, what, nPlaces, lvl=0):
     &#34;&#34;&#34;
     Prints the tree version of DATA.
 
     Args:
         node (dict): Dictionary of DATA to be printed.
-        what (str): Either &#34;mid&#34; or &#34;div&#34;.
-        cols (list): Columns that the stats are being taken from.
+        what (str): Either &#34;mid&#34; or &#34;div&#34;. Defaults to &#34;mid&#34;.
         nPlaces (int): Number of places to round the stats to.
         lvl (int, optional): Current tree level. Defaults to 0.
     &#34;&#34;&#34;
@@ -182,14 +181,14 @@ def show(node, what, cols, nPlaces, lvl=0):
     if &#34;data&#34; in node:
         print(&#34;{} {}  &#34;.format(&#34;| &#34; * lvl, len(node[&#34;data&#34;].rows)), end=&#34;&#34;)
 
-        print(node[&#34;data&#34;].stats(&#34;mid&#34;, node[&#34;data&#34;].cols.y, nPlaces)
+        print(node[&#34;data&#34;].stats(what or &#34;mid&#34;, node[&#34;data&#34;].cols.y, nPlaces)
               if &#34;left&#34; not in node or lvl == 0 else &#34;&#34;)
 
         if &#34;left&#34; in node:
-            show(node[&#34;left&#34;], what, cols, nPlaces, lvl + 1)
+            show(node[&#34;left&#34;], what, nPlaces, lvl + 1)
 
         if &#34;right&#34; in node:
-            show(node[&#34;right&#34;], what, cols, nPlaces, lvl + 1)</code></pre>
+            show(node[&#34;right&#34;], what, nPlaces, lvl + 1)</code></pre>
 </details>
 </section>
 <section>
@@ -472,7 +471,7 @@ def show(node, what, cols, nPlaces, lvl=0):
 </details>
 </dd>
 <dt id="Homework3.utils.show"><code class="name flex">
-<span>def <span class="ident">show</span></span>(<span>node, what, cols, nPlaces, lvl=0)</span>
+<span>def <span class="ident">show</span></span>(<span>node, what, nPlaces, lvl=0)</span>
 </code></dt>
 <dd>
 <div class="desc"><p>Prints the tree version of DATA.</p>
@@ -481,9 +480,7 @@ def show(node, what, cols, nPlaces, lvl=0):
 <dt><strong><code>node</code></strong> :&ensp;<code>dict</code></dt>
 <dd>Dictionary of DATA to be printed.</dd>
 <dt><strong><code>what</code></strong> :&ensp;<code>str</code></dt>
-<dd>Either "mid" or "div".</dd>
-<dt><strong><code>cols</code></strong> :&ensp;<code>list</code></dt>
-<dd>Columns that the stats are being taken from.</dd>
+<dd>Either "mid" or "div". Defaults to "mid".</dd>
 <dt><strong><code>nPlaces</code></strong> :&ensp;<code>int</code></dt>
 <dd>Number of places to round the stats to.</dd>
 <dt><strong><code>lvl</code></strong> :&ensp;<code>int</code>, optional</dt>
@@ -493,14 +490,13 @@ def show(node, what, cols, nPlaces, lvl=0):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def show(node, what, cols, nPlaces, lvl=0):
+<pre><code class="python">def show(node, what, nPlaces, lvl=0):
     &#34;&#34;&#34;
     Prints the tree version of DATA.
 
     Args:
         node (dict): Dictionary of DATA to be printed.
-        what (str): Either &#34;mid&#34; or &#34;div&#34;.
-        cols (list): Columns that the stats are being taken from.
+        what (str): Either &#34;mid&#34; or &#34;div&#34;. Defaults to &#34;mid&#34;.
         nPlaces (int): Number of places to round the stats to.
         lvl (int, optional): Current tree level. Defaults to 0.
     &#34;&#34;&#34;
@@ -508,14 +504,14 @@ def show(node, what, cols, nPlaces, lvl=0):
     if &#34;data&#34; in node:
         print(&#34;{} {}  &#34;.format(&#34;| &#34; * lvl, len(node[&#34;data&#34;].rows)), end=&#34;&#34;)
 
-        print(node[&#34;data&#34;].stats(&#34;mid&#34;, node[&#34;data&#34;].cols.y, nPlaces)
+        print(node[&#34;data&#34;].stats(what or &#34;mid&#34;, node[&#34;data&#34;].cols.y, nPlaces)
               if &#34;left&#34; not in node or lvl == 0 else &#34;&#34;)
 
         if &#34;left&#34; in node:
-            show(node[&#34;left&#34;], what, cols, nPlaces, lvl + 1)
+            show(node[&#34;left&#34;], what, nPlaces, lvl + 1)
 
         if &#34;right&#34; in node:
-            show(node[&#34;right&#34;], what, cols, nPlaces, lvl + 1)</code></pre>
+            show(node[&#34;right&#34;], what, nPlaces, lvl + 1)</code></pre>
 </details>
 </dd>
 </dl>

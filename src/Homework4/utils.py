@@ -1,6 +1,7 @@
+import copy
+import json
 import math
 import re
-import copy
 
 import data
 
@@ -129,19 +130,6 @@ def any(t):
     return t[rint(len(t)) - 1]
 
 
-def copy(t):
-    """
-    Deep copies t.
-    Args:
-        t (_type_): _description_
-    Returns:
-        _type_: _description_
-    """
-
-    print("Not yet implemented")
-    return 0
-
-
 def transpose(t):
     """
     _summary_
@@ -175,7 +163,8 @@ def repCols(cols):
         for j in len(col):
             col[j - 1] = col[j]
         col[len(col)] = None
-    def fun(k,v):
+
+    def fun(k, v):
         return "Num" + k
     cols.insert(1, map(fun, cols[1]))
     cols[1][len(cols[1])] = "thingX"
@@ -194,11 +183,11 @@ def repRows(t, rows, u):
     """
 
     rows = copy.deepcopy(rows)
-    for j,s in enumerate(rows[len(rows)]):
+    for j, s in enumerate(rows[len(rows)]):
         rows[1][j] = rows[1][j] + ":" + s
     rows[len(rows)] = None
     row = []
-    for n,row in enumerate(rows):
+    for n, row in enumerate(rows):
         if n == 1:
             row.append("thingX")
         else:
@@ -230,7 +219,7 @@ def repPlace(data, n=20, g={}):
     for r, row in enumerate(data.rows):
         c = str(64+r)
         print(c, row.cells[len(row.cells)])
-        x,y = row.x*n//1, row.y*n//1
+        x, y = row.x*n//1, row.y*n//1
         maxy = math.max(maxy, y + 1)
         g[y+1][x+1] = c
     print("")
@@ -257,30 +246,38 @@ def repgrid(sFile):
     return 0
 
 
-def show(node, what, cols, nPlaces, lvl=0):
+def show(node, what, lvl=0):
     """
     Prints the tree version of DATA.
+
     Args:
         node (dict): Dictionary of DATA to be printed.
-        what (str): Either "mid" or "div".
-        cols (list): Columns that the stats are being taken from.
-        nPlaces (int): Number of places to round the stats to.
+        what (str): Either "mid" or "div". Defaults to "mid".
         lvl (int, optional): Current tree level. Defaults to 0.
     """
 
     if "data" in node:
-        print("{} {}  ".format("| " * lvl, end="")
-              
-        print(if "left" not in node and node.data.rows.cells[len(node.data.rows[len(node.data.rows)])])
+        print("|.. " * lvl, end="")
 
-        print(node["data"].stats("mid", node["data"].cols.y, nPlaces)
-              if "left" not in node and  else "")
+        print(node["data"].rows[-1].cells[-1]
+              if "left" not in node else round(100 * node["c"]))
 
         if "left" in node:
-            show(node["left"], what, cols, nPlaces, lvl + 1)
+            show(node["left"], what or "mid", lvl + 1)
 
         if "right" in node:
-            show(node["right"], what, cols, nPlaces, lvl + 1)
+            show(node["right"], what or "mid", lvl + 1)
+
 
 def doFile(sFile):
+    """
+    Turns sFile into JSON and returns a dictionary version of the file contents.
+
+    Args:
+        sFile (str): Filename to be turned into JSON.
+
+    Returns:
+        dict: Dictionary version of the file contents.
+    """
+
     return 0

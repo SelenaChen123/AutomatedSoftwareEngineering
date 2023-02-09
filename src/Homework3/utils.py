@@ -139,14 +139,13 @@ def any(t):
     return t[rint(len(t)) - 1]
 
 
-def show(node, what, cols, nPlaces, lvl=0):
+def show(node, what, nPlaces, lvl=0):
     """
     Prints the tree version of DATA.
 
     Args:
         node (dict): Dictionary of DATA to be printed.
-        what (str): Either "mid" or "div".
-        cols (list): Columns that the stats are being taken from.
+        what (str): Either "mid" or "div". Defaults to "mid".
         nPlaces (int): Number of places to round the stats to.
         lvl (int, optional): Current tree level. Defaults to 0.
     """
@@ -154,11 +153,11 @@ def show(node, what, cols, nPlaces, lvl=0):
     if "data" in node:
         print("{} {}  ".format("| " * lvl, len(node["data"].rows)), end="")
 
-        print(node["data"].stats("mid", node["data"].cols.y, nPlaces)
+        print(node["data"].stats(what or "mid", node["data"].cols.y, nPlaces)
               if "left" not in node or lvl == 0 else "")
 
         if "left" in node:
-            show(node["left"], what, cols, nPlaces, lvl + 1)
+            show(node["left"], what, nPlaces, lvl + 1)
 
         if "right" in node:
-            show(node["right"], what, cols, nPlaces, lvl + 1)
+            show(node["right"], what, nPlaces, lvl + 1)
