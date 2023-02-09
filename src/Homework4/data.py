@@ -1,5 +1,3 @@
-import math
-
 import cols
 import globals
 import row
@@ -130,8 +128,9 @@ class DATA:
             _type_: _description_
         """
 
-        print("Not yet implemented")
-        return 0
+        t = self.around(row1, rows, cols)
+
+        return t[len(t)]
 
     def half(self, rows=[], cols=None, above=None):
         """
@@ -151,8 +150,28 @@ class DATA:
             float: Distance from A to B.
         """
 
-        print("Not yet implemented")
-        return 0, 0, 0, 0, 0, 0
+        def project(row, x, y):
+            x, y = utils.cosine(self.dist(row, A, cols),
+                                self.dist(row, B, cols), c)
+            row.x = row.x or x
+            row.y = row.y or y
+
+            return {"row": row, x: x, y: y}
+
+        A = above or utils.any(rows or self.rows)
+        B = self.furthest(A, rows or self.rows)["row"]
+        c = self.dist(A, B, cols)
+        left = []
+        right = []
+
+        for n, tmp in enumerate(sorted(map(project, rows or self.rows), key=lambda d: d["x"])):
+            if n < len(rows or self.rows) // 2:
+                left.append(tmp["row"])
+                mid = tmp["row"]
+            else:
+                right.append(tmp["row"])
+
+        return left, right, A, B, mid, c
 
     def cluster(self, rows, cols, above):
         """
@@ -160,7 +179,6 @@ class DATA:
 
         Args:
             rows (list, optional): List of ROWs to be halved. Defaults to DATA.rows.
-            min (int, optional): Threshold of the clusters. Defaults to the length of rows raised to the global min option value.
             cols (COLS, optional): Factory that manages rows. Defaults to DATA.cols.x.
             above (ROW, optional): Single chosen ROW. Defaults to [].
 
@@ -168,5 +186,13 @@ class DATA:
             dict: Dictionary of remaining DATA to be recursively halved.
         """
 
-        print("Not yet implemented")
-        return 0
+        node = {"data": self.clone(rows or self.rows)}
+
+        if len(rows or self.rows) >= 2:
+            left, right, node["A"], node["B"], _, _ = self.half(
+                rows or self.rows, cols or self.cols.x, above)
+
+            node["left"] = self.cluster(left, cols or self.cols.x, node["A"])
+            node["right"] = self.cluster(right, cols or self.cols.x, node["B"])
+
+        return node

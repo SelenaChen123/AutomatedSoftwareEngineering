@@ -195,7 +195,7 @@ class DATA:
         node = {"data": self.clone(rows or self.rows)}
 
         if len(rows or self.rows) > 2 * (min or len(rows or self.rows) ** globals.the["min"]):
-            left, right, node["A"], node["B"], node["mid"], _ = self.half(
+            left, right, node["A"], node["B"], _, _ = self.half(
                 rows or self.rows, cols or self.cols.x, above)
 
             node["left"] = self.cluster(left, min or len(
@@ -222,7 +222,7 @@ class DATA:
         node = {"data": self.clone(rows or self.rows)}
 
         if len(rows or self.rows) > 2 * (min or len(rows or self.rows) ** globals.the["min"]):
-            left, right, node["A"], node["B"], node["mid"], _ = self.half(
+            left, right, node["A"], node["B"], _, _ = self.half(
                 rows or self.rows, cols or self.cols.x, above)
 
             if self.better(node["B"], node["A"]):
