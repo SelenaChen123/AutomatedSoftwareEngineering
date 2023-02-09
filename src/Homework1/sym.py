@@ -3,7 +3,7 @@ import math
 
 class SYM():
     """
-    Summarize a stream of symbols.
+    Summarizes a stream of symbols.
     """
 
     def __init__(self):

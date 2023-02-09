@@ -1,8 +1,6 @@
 import globals
-import sym
 import num
-import data
-import utils
+import sym
 
 
 global egs
@@ -14,8 +12,8 @@ def eg(key, str, fun):
     Registers an example.
 
     Args:
-        key (str): Name of the example.
-        str (str): Description of the example.
+        key (str): Name of the example to be registered.
+        str (str): Description of the example to be registered.
         fun (function): Example function to be registered.
     """
 
@@ -25,7 +23,7 @@ def eg(key, str, fun):
 
 def eg_the():
     """
-    Example determining if the globals load correctly.
+    Example testing loading globals.
 
     Returns:
         dict: Dictionary containing the global values.
@@ -36,9 +34,18 @@ def eg_the():
     return globals.the
 
 
+def eg_copy():
+    """
+    Example testing copy().
+    """
+
+    print("Not yet implemented")
+    return 0
+
+
 def eg_sym():
     """
-    Example testing the symbol type from sym.py.
+    Example testing SYM.
 
     Returns:
         bool: True if SYM.mid() = "a" and SYM.div() rounds to 1.379, False otherwise.
@@ -54,7 +61,7 @@ def eg_sym():
 
 def eg_num():
     """
-    Example testing the number type from num.py.
+    Example testing NUM.
 
     Returns:
         bool: True if NUM.mid() = 11/7 and NUM.div() rounds to 0.787, False otherwise.
@@ -68,25 +75,55 @@ def eg_num():
     return 11 / 7 == num1.mid() and 0.787 == round(num1.div(), 3)
 
 
-def eq_repcols():
+def eg_repcols():
+    """
+    Example testing repCols().
+    """
+
+    print("Not yet implemented")
     return 0
 
 
-def eq_synonyms():
+def eg_synonyms():
+    """
+    Example testing DATA.cluster() on repCols().
+    """
+
+    print("Not yet implemented")
     return 0
 
 
-def eq_reprows():
+def eg_reprows():
+    """
+    Example testing repRows().
+    """
+
+    print("Not yet implemented")
     return 0
 
 
-def eq_prototypes():
+def eg_prototypes():
+    """
+    Example testing DATA.cluster() on repRows().
+    """
+
+    print("Not yet implemented")
     return 0
 
 
-def eq_position():
+def eg_position():
+    """
+    Example testing repPlace().
+    """
+
+    print("Not yet implemented")
     return 0
 
 
-def eq_every():
+def eg_every():
+    """
+    Example testing repgrid().
+    """
+
+    print("Not yet implemented")
     return 0
