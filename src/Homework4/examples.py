@@ -71,17 +71,22 @@ def eg_num():
 def eq_repcols():
     return 0
 
+
 def eq_synonyms():
     return 0
+
 
 def eq_reprows():
     return 0
 
+
 def eq_prototypes():
     return 0
 
+
 def eq_position():
     return 0
+
 
 def eq_every():
     return 0
