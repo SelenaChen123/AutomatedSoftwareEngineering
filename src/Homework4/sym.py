@@ -23,7 +23,7 @@ class SYM():
         self.mode = None
 
     def __repr__(self):
-        return "a: {} at: {} txt: {} n: {} has: {} most: {}".format(self.__class__.__name__, self.at, self.txt, self.n, self.has, self.most)
+        return "a: {} at: {} has: {} most: {} n: {} txt: {}".format(self.__class__.__name__, self.at, self.has, self.most, self.n, self.txt)
 
     def add(self, x):
         """

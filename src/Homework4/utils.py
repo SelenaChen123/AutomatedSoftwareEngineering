@@ -240,7 +240,7 @@ def repRows(t, rows):
         if n == 0:
             row.append("thingX")
         else:
-            u = t["rows"][-n + 1]
+            u = t["rows"][-n]
             row.append(u[-1])
 
     return data.DATA(rows)
@@ -282,7 +282,7 @@ def repPlace(data, n=20, g=[]):
     print("")
 
     for i in range(maxy):
-        print(g[i])
+        print("[{}]".format(" ".join(g[i])))
 
 
 def repgrid(sFile):
