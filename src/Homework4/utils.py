@@ -145,13 +145,13 @@ def any(t):
 
 def transpose(t):
     """
-    _summary_
+    Transposes t.
 
     Args:
-        t (_type_): _description_
+        t (list): List to be transposed.
 
     Returns:
-        _type_: _description_
+        list: Transposed version of t.
     """
 
     u = []
@@ -167,10 +167,10 @@ def transpose(t):
 
 def dofile(sFile):
     """
-    Turns sFile into JSON and returns a dictionary version of the file contents.
+    Turns sFile into json and returns a dictionary version of the file contents.
 
     Args:
-        sFile (str): Filename to be turned into JSON.
+        sFile (str): Filename of the csv file.
 
     Returns:
         dict: Dictionary version of the file contents.
@@ -189,13 +189,13 @@ def dofile(sFile):
 
 def repCols(cols):
     """
-    _summary_
+    Turns the columns of the repertory grid into DATA.
 
     Args:
-        cols (dict): _description_
+        cols (list): Columns of the repertory grid.
 
     Returns:
-        DATA: _description_
+        DATA: DATA version of the columns of the repertory grid.
     """
 
     cols = copy.deepcopy(cols)
@@ -219,14 +219,14 @@ def repCols(cols):
 
 def repRows(t, rows):
     """
-    _summary_
+    Turns the rows of the repertory grid into DATA.
 
     Args:
-        t (_type_): _description_
-        rows (_type_): _description_
+        t (list): List to get rows of the repertory grid from.
+        rows (list): Rows of the repertory grid.
 
     Returns:
-        _type_: _description_
+        DATA: DATA version of the rows of the repertory grid.
     """
 
     rows = copy.deepcopy(rows)
@@ -248,16 +248,12 @@ def repRows(t, rows):
 
 def repPlace(data, n=20, g=[]):
     """
-    _summary_
+    Maps the places of the examples on a grid.
 
     Args:
-        data (_type_): _description_
+        data (data): Data whose example locations are to be placed on the grid.
         n (int, optional): _description_. Defaults to 20.
         g (dict, optional): _description_. Defaults to [].
-        maxy (int, optional): _description_. Defaults to 0.
-
-    Returns:
-        _type_: _description_
     """
 
     for i in range(n):
@@ -270,7 +266,7 @@ def repPlace(data, n=20, g=[]):
 
     maxy = 0
     for r, row in enumerate(data.rows):
-        c = chr(64 + r)
+        c = chr(65 + r)
 
         print(c, row.cells[-1])
 
@@ -282,18 +278,15 @@ def repPlace(data, n=20, g=[]):
     print("")
 
     for i in range(maxy):
-        print("[{}]".format(" ".join(g[i])))
+        print("[{}]".format(" ".join(g[i + 1])))
 
 
 def repgrid(sFile):
     """
-    _summary_
+    Pulls repertory grid information from a csv file and clusters the rows and columns of the grid to map the places of the examples.
 
     Args:
-        sFile (_type_): _description_
-
-    Returns:
-        _type_: _description_
+        sFile (str): Filename of the csv file.
     """
 
     t = dofile(sFile)

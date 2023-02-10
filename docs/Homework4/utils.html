@@ -1,0 +1,978 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.10.0" />
+<title>Homework4.utils API documentation</title>
+<meta name="description" content="" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>Homework4.utils</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">import copy
+import json
+import math
+import re
+
+import data
+
+
+seed = 937162211
+
+
+def coerce(s):
+    &#34;&#34;&#34;
+    Coerces a str s into an int, float, bool, or trimmed str.
+
+    Args:
+        s (str): Str to be coerced into an int, float, bool, or trimmed str.
+
+    Returns:
+        int/float/bool/str: int, float, bool, or trimmed str version of s.
+    &#34;&#34;&#34;
+
+    if s == &#34;true&#34;:
+        return True
+    elif s == &#34;false&#34;:
+        return False
+
+    try:
+        return int(s)
+    except ValueError:
+        try:
+            return float(s)
+        except ValueError:
+            return s.strip()
+
+
+def csv(sFilename, fun):
+    &#34;&#34;&#34;
+    Calls the function fun on the rows after coercing the cell text.
+
+    Args:
+        sFilename (str): Filename of the csv file.
+        fun (function): Function to be performed on each row of the csv file.
+    &#34;&#34;&#34;
+
+    with open(sFilename) as src:
+        lines = src.readlines()
+
+        for s in lines:
+            t = []
+
+            for s1 in re.findall(&#34;([^,]+)&#34;, s):
+                t.append(coerce(s1))
+
+            fun(t)
+
+
+def cosine(a, b, c):
+    &#34;&#34;&#34;
+    Finds x and y from the line connecting a to b.
+
+    Args:
+        a (float): a value to calculate the cosine from.
+        b (float): b value to calculate the cosine from.
+        c (float): c value to calculate the cosine from.
+
+    Returns:
+        int/float: x from the line connecting a to b.
+        float: y from the line connecting a to b.
+    &#34;&#34;&#34;
+
+    x1 = (a ** 2 + c ** 2 - b ** 2)
+
+    if c != 0:
+        x1 = x1 / (2 * c)
+
+    x2 = max(0, min(1, x1))
+    y = abs(a ** 2 - x2 ** 2) ** 0.5
+
+    return x2, y
+
+
+def rand(lo=0, hi=1):
+    &#34;&#34;&#34;
+    Generates a random float between lo (inclusive) and hi (not inclusive).
+
+    Args:
+        lo (int, optional): Lower bound for the random float generation. Defaults to 0.
+        hi (int, optional): Upper bound for the random float generation. Defaults to 1.
+
+    Returns:
+        float: Random float between lo (inclusive) and hi (not inclusive).
+    &#34;&#34;&#34;
+
+    global seed
+    seed = (16807 * seed) % 2147483647
+
+    return lo + (hi - lo) * seed / 2147483647
+
+
+def rint(lo=0, hi=1):
+    &#34;&#34;&#34;
+    Generates a random int between lo (inclusive) and hi (not inclusive).
+
+    Args:
+        lo (int, optional): Lower bound for the random int generation. Defaults to 0.
+        hi (int, optional): Upper bound for the random int generation. Defaults to 1.
+
+    Returns:
+        int: Random int between lo (inclusive) and hi (not inclusive).
+    &#34;&#34;&#34;
+
+    return math.floor(0.5 + rand(lo, hi))
+
+
+def many(t, n):
+    &#34;&#34;&#34;
+    Returns n ROWs from t.
+
+    Args:
+        t (list): List to return the ROWs from.
+        n (int): Number of ROWs to be returned.
+
+    Returns:
+        list: List of n ROWs from t.
+    &#34;&#34;&#34;
+
+    return [any(t) for _ in range(0, n)]
+
+
+def any(t):
+    &#34;&#34;&#34;
+    Returns a random ROW from t.
+
+    Args:
+        t (list): List to return the random ROW from.
+
+    Returns:
+        ROW: Random row from t.
+    &#34;&#34;&#34;
+
+    # return t[rint(0, len(t) - 1)]
+    return t[rint(len(t)) - 1]
+
+
+def transpose(t):
+    &#34;&#34;&#34;
+    Transposes t.
+
+    Args:
+        t (list): List to be transposed.
+
+    Returns:
+        list: Transposed version of t.
+    &#34;&#34;&#34;
+
+    u = []
+
+    for i in range(len(t[0])):
+        u.append([])
+
+        for j in range(len(t)):
+            u[i].append(t[j][i])
+
+    return u
+
+
+def dofile(sFile):
+    &#34;&#34;&#34;
+    Turns sFile into json and returns a dictionary version of the file contents.
+
+    Args:
+        sFile (str): Filename of the csv file.
+
+    Returns:
+        dict: Dictionary version of the file contents.
+    &#34;&#34;&#34;
+
+    with open(sFile) as src:
+        contents = src.read()
+
+        returned = contents[contents.index(&#34;return {&#34;) + len(&#34;return {&#34;):contents.rindex(&#34;}&#34;)].replace(&#34;domain&#34;, &#34;\&#34;domain\&#34;&#34;).replace(
+            &#34;cols&#34;, &#34;\&#34;cols\&#34;&#34;).replace(&#34;rows&#34;, &#34;\&#34;rows\&#34;&#34;).replace(&#34;=&#34;, &#34;:&#34;).replace(&#34;&#39;&#34;, &#34;\&#34;&#34;).replace(&#34;{&#34;, &#34;[&#34;).replace(&#34;}&#34;, &#34;]&#34;).replace(&#34;_&#34;, &#34;\&#34;\&#34;&#34;)
+
+        dictionary = json.loads(&#34;{{{}}}&#34;.format(returned))
+
+    return dictionary
+
+
+def repCols(cols):
+    &#34;&#34;&#34;
+    Turns the columns of the repertory grid into DATA.
+
+    Args:
+        cols (list): Columns of the repertory grid.
+
+    Returns:
+        DATA: DATA version of the columns of the repertory grid.
+    &#34;&#34;&#34;
+
+    cols = copy.deepcopy(cols)
+
+    for col in cols:
+        col[len(col) - 1] = col[0] + &#34;:&#34; + col[len(col) - 1]
+
+        for i in range(len(col) - 1):
+            col[i] = col[i + 1]
+
+        col.pop()
+
+    def fun(k):
+        return &#34;Num&#34; + str(k)
+
+    cols.insert(0, list(map(fun, range(1, len(cols[0]) + 1))))
+    cols[0][len(cols[0]) - 1] = &#34;thingX&#34;
+
+    return data.DATA(cols)
+
+
+def repRows(t, rows):
+    &#34;&#34;&#34;
+    Turns the rows of the repertory grid into DATA.
+
+    Args:
+        t (list): List to get rows of the repertory grid from.
+        rows (list): Rows of the repertory grid.
+
+    Returns:
+        DATA: DATA version of the rows of the repertory grid.
+    &#34;&#34;&#34;
+
+    rows = copy.deepcopy(rows)
+
+    for j, s in enumerate(rows[-1]):
+        rows[0][j] = rows[0][j] + &#34;:&#34; + s
+
+    rows.pop()
+
+    for n, row in enumerate(rows):
+        if n == 0:
+            row.append(&#34;thingX&#34;)
+        else:
+            u = t[&#34;rows&#34;][-n]
+            row.append(u[-1])
+
+    return data.DATA(rows)
+
+
+def repPlace(data, n=20, g=[]):
+    &#34;&#34;&#34;
+    Maps the places of the examples on a grid.
+
+    Args:
+        data (data): Data whose example locations are to be placed on the grid.
+        n (int, optional): _description_. Defaults to 20.
+        g (dict, optional): _description_. Defaults to [].
+    &#34;&#34;&#34;
+
+    for i in range(n):
+        g.append([])
+
+        for _ in range(n):
+            g[i].append(&#34; &#34;)
+
+    print(&#34;&#34;)
+
+    maxy = 0
+    for r, row in enumerate(data.rows):
+        c = chr(65 + r)
+
+        print(c, row.cells[-1])
+
+        x = int(row.x * n)
+        y = int(row.y * n)
+        maxy = max(maxy, y + 1)
+        g[y + 1][x + 1] = c
+
+    print(&#34;&#34;)
+
+    for i in range(maxy):
+        print(&#34;[{}]&#34;.format(&#34; &#34;.join(g[i + 1])))
+
+
+def repgrid(sFile):
+    &#34;&#34;&#34;
+    Pulls repertory grid information from a csv file and clusters the rows and columns of the grid to map the places of the examples.
+
+    Args:
+        sFile (str): Filename of the csv file.
+    &#34;&#34;&#34;
+
+    t = dofile(sFile)
+    rows = repRows(t, transpose(t[&#34;cols&#34;]))
+    cols = repCols(t[&#34;cols&#34;])
+
+    show(rows.cluster())
+    show(cols.cluster())
+    repPlace(rows)
+
+
+def show(node, what=&#34;mid&#34;, lvl=0):
+    &#34;&#34;&#34;
+    Prints the tree version of DATA.
+
+    Args:
+        node (dict): Dictionary of DATA to be printed.
+        what (str): Either &#34;mid&#34; or &#34;div&#34;. Defaults to &#34;mid&#34;.
+        lvl (int, optional): Current tree level. Defaults to 0.
+    &#34;&#34;&#34;
+
+    if node:
+        print(&#34;|.. &#34; * lvl, end=&#34;&#34;)
+
+        print(node[&#34;data&#34;].rows[-1].cells[-1]
+              if &#34;left&#34; not in node else round(100 * node[&#34;c&#34;]))
+
+        if &#34;left&#34; in node:
+            show(node[&#34;left&#34;], what, lvl + 1)
+
+        if &#34;right&#34; in node:
+            show(node[&#34;right&#34;], what, lvl + 1)</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="Homework4.utils.any"><code class="name flex">
+<span>def <span class="ident">any</span></span>(<span>t)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns a random ROW from t.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>t</code></strong> :&ensp;<code>list</code></dt>
+<dd>List to return the random ROW from.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>ROW</code></dt>
+<dd>Random row from t.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def any(t):
+    &#34;&#34;&#34;
+    Returns a random ROW from t.
+
+    Args:
+        t (list): List to return the random ROW from.
+
+    Returns:
+        ROW: Random row from t.
+    &#34;&#34;&#34;
+
+    # return t[rint(0, len(t) - 1)]
+    return t[rint(len(t)) - 1]</code></pre>
+</details>
+</dd>
+<dt id="Homework4.utils.coerce"><code class="name flex">
+<span>def <span class="ident">coerce</span></span>(<span>s)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Coerces a str s into an int, float, bool, or trimmed str.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>s</code></strong> :&ensp;<code>str</code></dt>
+<dd>Str to be coerced into an int, float, bool, or trimmed str.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>int/float/bool/str: int, float, bool, or trimmed str version of s.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def coerce(s):
+    &#34;&#34;&#34;
+    Coerces a str s into an int, float, bool, or trimmed str.
+
+    Args:
+        s (str): Str to be coerced into an int, float, bool, or trimmed str.
+
+    Returns:
+        int/float/bool/str: int, float, bool, or trimmed str version of s.
+    &#34;&#34;&#34;
+
+    if s == &#34;true&#34;:
+        return True
+    elif s == &#34;false&#34;:
+        return False
+
+    try:
+        return int(s)
+    except ValueError:
+        try:
+            return float(s)
+        except ValueError:
+            return s.strip()</code></pre>
+</details>
+</dd>
+<dt id="Homework4.utils.cosine"><code class="name flex">
+<span>def <span class="ident">cosine</span></span>(<span>a, b, c)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Finds x and y from the line connecting a to b.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>a</code></strong> :&ensp;<code>float</code></dt>
+<dd>a value to calculate the cosine from.</dd>
+<dt><strong><code>b</code></strong> :&ensp;<code>float</code></dt>
+<dd>b value to calculate the cosine from.</dd>
+<dt><strong><code>c</code></strong> :&ensp;<code>float</code></dt>
+<dd>c value to calculate the cosine from.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt>int/float: x from the line connecting a to b.</dt>
+<dt><code>float</code></dt>
+<dd>y from the line connecting a to b.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def cosine(a, b, c):
+    &#34;&#34;&#34;
+    Finds x and y from the line connecting a to b.
+
+    Args:
+        a (float): a value to calculate the cosine from.
+        b (float): b value to calculate the cosine from.
+        c (float): c value to calculate the cosine from.
+
+    Returns:
+        int/float: x from the line connecting a to b.
+        float: y from the line connecting a to b.
+    &#34;&#34;&#34;
+
+    x1 = (a ** 2 + c ** 2 - b ** 2)
+
+    if c != 0:
+        x1 = x1 / (2 * c)
+
+    x2 = max(0, min(1, x1))
+    y = abs(a ** 2 - x2 ** 2) ** 0.5
+
+    return x2, y</code></pre>
+</details>
+</dd>
+<dt id="Homework4.utils.csv"><code class="name flex">
+<span>def <span class="ident">csv</span></span>(<span>sFilename, fun)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Calls the function fun on the rows after coercing the cell text.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>sFilename</code></strong> :&ensp;<code>str</code></dt>
+<dd>Filename of the csv file.</dd>
+<dt><strong><code>fun</code></strong> :&ensp;<code>function</code></dt>
+<dd>Function to be performed on each row of the csv file.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def csv(sFilename, fun):
+    &#34;&#34;&#34;
+    Calls the function fun on the rows after coercing the cell text.
+
+    Args:
+        sFilename (str): Filename of the csv file.
+        fun (function): Function to be performed on each row of the csv file.
+    &#34;&#34;&#34;
+
+    with open(sFilename) as src:
+        lines = src.readlines()
+
+        for s in lines:
+            t = []
+
+            for s1 in re.findall(&#34;([^,]+)&#34;, s):
+                t.append(coerce(s1))
+
+            fun(t)</code></pre>
+</details>
+</dd>
+<dt id="Homework4.utils.dofile"><code class="name flex">
+<span>def <span class="ident">dofile</span></span>(<span>sFile)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Turns sFile into json and returns a dictionary version of the file contents.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>sFile</code></strong> :&ensp;<code>str</code></dt>
+<dd>Filename of the csv file.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>dict</code></dt>
+<dd>Dictionary version of the file contents.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def dofile(sFile):
+    &#34;&#34;&#34;
+    Turns sFile into json and returns a dictionary version of the file contents.
+
+    Args:
+        sFile (str): Filename of the csv file.
+
+    Returns:
+        dict: Dictionary version of the file contents.
+    &#34;&#34;&#34;
+
+    with open(sFile) as src:
+        contents = src.read()
+
+        returned = contents[contents.index(&#34;return {&#34;) + len(&#34;return {&#34;):contents.rindex(&#34;}&#34;)].replace(&#34;domain&#34;, &#34;\&#34;domain\&#34;&#34;).replace(
+            &#34;cols&#34;, &#34;\&#34;cols\&#34;&#34;).replace(&#34;rows&#34;, &#34;\&#34;rows\&#34;&#34;).replace(&#34;=&#34;, &#34;:&#34;).replace(&#34;&#39;&#34;, &#34;\&#34;&#34;).replace(&#34;{&#34;, &#34;[&#34;).replace(&#34;}&#34;, &#34;]&#34;).replace(&#34;_&#34;, &#34;\&#34;\&#34;&#34;)
+
+        dictionary = json.loads(&#34;{{{}}}&#34;.format(returned))
+
+    return dictionary</code></pre>
+</details>
+</dd>
+<dt id="Homework4.utils.many"><code class="name flex">
+<span>def <span class="ident">many</span></span>(<span>t, n)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns n ROWs from t.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>t</code></strong> :&ensp;<code>list</code></dt>
+<dd>List to return the ROWs from.</dd>
+<dt><strong><code>n</code></strong> :&ensp;<code>int</code></dt>
+<dd>Number of ROWs to be returned.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>list</code></dt>
+<dd>List of n ROWs from t.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def many(t, n):
+    &#34;&#34;&#34;
+    Returns n ROWs from t.
+
+    Args:
+        t (list): List to return the ROWs from.
+        n (int): Number of ROWs to be returned.
+
+    Returns:
+        list: List of n ROWs from t.
+    &#34;&#34;&#34;
+
+    return [any(t) for _ in range(0, n)]</code></pre>
+</details>
+</dd>
+<dt id="Homework4.utils.rand"><code class="name flex">
+<span>def <span class="ident">rand</span></span>(<span>lo=0, hi=1)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Generates a random float between lo (inclusive) and hi (not inclusive).</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>lo</code></strong> :&ensp;<code>int</code>, optional</dt>
+<dd>Lower bound for the random float generation. Defaults to 0.</dd>
+<dt><strong><code>hi</code></strong> :&ensp;<code>int</code>, optional</dt>
+<dd>Upper bound for the random float generation. Defaults to 1.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>float</code></dt>
+<dd>Random float between lo (inclusive) and hi (not inclusive).</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def rand(lo=0, hi=1):
+    &#34;&#34;&#34;
+    Generates a random float between lo (inclusive) and hi (not inclusive).
+
+    Args:
+        lo (int, optional): Lower bound for the random float generation. Defaults to 0.
+        hi (int, optional): Upper bound for the random float generation. Defaults to 1.
+
+    Returns:
+        float: Random float between lo (inclusive) and hi (not inclusive).
+    &#34;&#34;&#34;
+
+    global seed
+    seed = (16807 * seed) % 2147483647
+
+    return lo + (hi - lo) * seed / 2147483647</code></pre>
+</details>
+</dd>
+<dt id="Homework4.utils.repCols"><code class="name flex">
+<span>def <span class="ident">repCols</span></span>(<span>cols)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Turns the columns of the repertory grid into DATA.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>cols</code></strong> :&ensp;<code>list</code></dt>
+<dd>Columns of the repertory grid.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>DATA</code></dt>
+<dd>DATA version of the columns of the repertory grid.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def repCols(cols):
+    &#34;&#34;&#34;
+    Turns the columns of the repertory grid into DATA.
+
+    Args:
+        cols (list): Columns of the repertory grid.
+
+    Returns:
+        DATA: DATA version of the columns of the repertory grid.
+    &#34;&#34;&#34;
+
+    cols = copy.deepcopy(cols)
+
+    for col in cols:
+        col[len(col) - 1] = col[0] + &#34;:&#34; + col[len(col) - 1]
+
+        for i in range(len(col) - 1):
+            col[i] = col[i + 1]
+
+        col.pop()
+
+    def fun(k):
+        return &#34;Num&#34; + str(k)
+
+    cols.insert(0, list(map(fun, range(1, len(cols[0]) + 1))))
+    cols[0][len(cols[0]) - 1] = &#34;thingX&#34;
+
+    return data.DATA(cols)</code></pre>
+</details>
+</dd>
+<dt id="Homework4.utils.repPlace"><code class="name flex">
+<span>def <span class="ident">repPlace</span></span>(<span>data, n=20, g=[])</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Maps the places of the examples on a grid.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>data</code></strong> :&ensp;<code>data</code></dt>
+<dd>Data whose example locations are to be placed on the grid.</dd>
+<dt><strong><code>n</code></strong> :&ensp;<code>int</code>, optional</dt>
+<dd><em>description</em>. Defaults to 20.</dd>
+<dt><strong><code>g</code></strong> :&ensp;<code>dict</code>, optional</dt>
+<dd><em>description</em>. Defaults to [].</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def repPlace(data, n=20, g=[]):
+    &#34;&#34;&#34;
+    Maps the places of the examples on a grid.
+
+    Args:
+        data (data): Data whose example locations are to be placed on the grid.
+        n (int, optional): _description_. Defaults to 20.
+        g (dict, optional): _description_. Defaults to [].
+    &#34;&#34;&#34;
+
+    for i in range(n):
+        g.append([])
+
+        for _ in range(n):
+            g[i].append(&#34; &#34;)
+
+    print(&#34;&#34;)
+
+    maxy = 0
+    for r, row in enumerate(data.rows):
+        c = chr(65 + r)
+
+        print(c, row.cells[-1])
+
+        x = int(row.x * n)
+        y = int(row.y * n)
+        maxy = max(maxy, y + 1)
+        g[y + 1][x + 1] = c
+
+    print(&#34;&#34;)
+
+    for i in range(maxy):
+        print(&#34;[{}]&#34;.format(&#34; &#34;.join(g[i + 1])))</code></pre>
+</details>
+</dd>
+<dt id="Homework4.utils.repRows"><code class="name flex">
+<span>def <span class="ident">repRows</span></span>(<span>t, rows)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Turns the rows of the repertory grid into DATA.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>t</code></strong> :&ensp;<code>list</code></dt>
+<dd>List to get rows of the repertory grid from.</dd>
+<dt><strong><code>rows</code></strong> :&ensp;<code>list</code></dt>
+<dd>Rows of the repertory grid.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>DATA</code></dt>
+<dd>DATA version of the rows of the repertory grid.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def repRows(t, rows):
+    &#34;&#34;&#34;
+    Turns the rows of the repertory grid into DATA.
+
+    Args:
+        t (list): List to get rows of the repertory grid from.
+        rows (list): Rows of the repertory grid.
+
+    Returns:
+        DATA: DATA version of the rows of the repertory grid.
+    &#34;&#34;&#34;
+
+    rows = copy.deepcopy(rows)
+
+    for j, s in enumerate(rows[-1]):
+        rows[0][j] = rows[0][j] + &#34;:&#34; + s
+
+    rows.pop()
+
+    for n, row in enumerate(rows):
+        if n == 0:
+            row.append(&#34;thingX&#34;)
+        else:
+            u = t[&#34;rows&#34;][-n]
+            row.append(u[-1])
+
+    return data.DATA(rows)</code></pre>
+</details>
+</dd>
+<dt id="Homework4.utils.repgrid"><code class="name flex">
+<span>def <span class="ident">repgrid</span></span>(<span>sFile)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Pulls repertory grid information from a csv file and clusters the rows and columns of the grid to map the places of the examples.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>sFile</code></strong> :&ensp;<code>str</code></dt>
+<dd>Filename of the csv file.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def repgrid(sFile):
+    &#34;&#34;&#34;
+    Pulls repertory grid information from a csv file and clusters the rows and columns of the grid to map the places of the examples.
+
+    Args:
+        sFile (str): Filename of the csv file.
+    &#34;&#34;&#34;
+
+    t = dofile(sFile)
+    rows = repRows(t, transpose(t[&#34;cols&#34;]))
+    cols = repCols(t[&#34;cols&#34;])
+
+    show(rows.cluster())
+    show(cols.cluster())
+    repPlace(rows)</code></pre>
+</details>
+</dd>
+<dt id="Homework4.utils.rint"><code class="name flex">
+<span>def <span class="ident">rint</span></span>(<span>lo=0, hi=1)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Generates a random int between lo (inclusive) and hi (not inclusive).</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>lo</code></strong> :&ensp;<code>int</code>, optional</dt>
+<dd>Lower bound for the random int generation. Defaults to 0.</dd>
+<dt><strong><code>hi</code></strong> :&ensp;<code>int</code>, optional</dt>
+<dd>Upper bound for the random int generation. Defaults to 1.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>int</code></dt>
+<dd>Random int between lo (inclusive) and hi (not inclusive).</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def rint(lo=0, hi=1):
+    &#34;&#34;&#34;
+    Generates a random int between lo (inclusive) and hi (not inclusive).
+
+    Args:
+        lo (int, optional): Lower bound for the random int generation. Defaults to 0.
+        hi (int, optional): Upper bound for the random int generation. Defaults to 1.
+
+    Returns:
+        int: Random int between lo (inclusive) and hi (not inclusive).
+    &#34;&#34;&#34;
+
+    return math.floor(0.5 + rand(lo, hi))</code></pre>
+</details>
+</dd>
+<dt id="Homework4.utils.show"><code class="name flex">
+<span>def <span class="ident">show</span></span>(<span>node, what='mid', lvl=0)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Prints the tree version of DATA.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>node</code></strong> :&ensp;<code>dict</code></dt>
+<dd>Dictionary of DATA to be printed.</dd>
+<dt><strong><code>what</code></strong> :&ensp;<code>str</code></dt>
+<dd>Either "mid" or "div". Defaults to "mid".</dd>
+<dt><strong><code>lvl</code></strong> :&ensp;<code>int</code>, optional</dt>
+<dd>Current tree level. Defaults to 0.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def show(node, what=&#34;mid&#34;, lvl=0):
+    &#34;&#34;&#34;
+    Prints the tree version of DATA.
+
+    Args:
+        node (dict): Dictionary of DATA to be printed.
+        what (str): Either &#34;mid&#34; or &#34;div&#34;. Defaults to &#34;mid&#34;.
+        lvl (int, optional): Current tree level. Defaults to 0.
+    &#34;&#34;&#34;
+
+    if node:
+        print(&#34;|.. &#34; * lvl, end=&#34;&#34;)
+
+        print(node[&#34;data&#34;].rows[-1].cells[-1]
+              if &#34;left&#34; not in node else round(100 * node[&#34;c&#34;]))
+
+        if &#34;left&#34; in node:
+            show(node[&#34;left&#34;], what, lvl + 1)
+
+        if &#34;right&#34; in node:
+            show(node[&#34;right&#34;], what, lvl + 1)</code></pre>
+</details>
+</dd>
+<dt id="Homework4.utils.transpose"><code class="name flex">
+<span>def <span class="ident">transpose</span></span>(<span>t)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Transposes t.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>t</code></strong> :&ensp;<code>list</code></dt>
+<dd>List to be transposed.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>list</code></dt>
+<dd>Transposed version of t.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def transpose(t):
+    &#34;&#34;&#34;
+    Transposes t.
+
+    Args:
+        t (list): List to be transposed.
+
+    Returns:
+        list: Transposed version of t.
+    &#34;&#34;&#34;
+
+    u = []
+
+    for i in range(len(t[0])):
+        u.append([])
+
+        for j in range(len(t)):
+            u[i].append(t[j][i])
+
+    return u</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="Homework4" href="index.html">Homework4</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="two-column">
+<li><code><a title="Homework4.utils.any" href="#Homework4.utils.any">any</a></code></li>
+<li><code><a title="Homework4.utils.coerce" href="#Homework4.utils.coerce">coerce</a></code></li>
+<li><code><a title="Homework4.utils.cosine" href="#Homework4.utils.cosine">cosine</a></code></li>
+<li><code><a title="Homework4.utils.csv" href="#Homework4.utils.csv">csv</a></code></li>
+<li><code><a title="Homework4.utils.dofile" href="#Homework4.utils.dofile">dofile</a></code></li>
+<li><code><a title="Homework4.utils.many" href="#Homework4.utils.many">many</a></code></li>
+<li><code><a title="Homework4.utils.rand" href="#Homework4.utils.rand">rand</a></code></li>
+<li><code><a title="Homework4.utils.repCols" href="#Homework4.utils.repCols">repCols</a></code></li>
+<li><code><a title="Homework4.utils.repPlace" href="#Homework4.utils.repPlace">repPlace</a></code></li>
+<li><code><a title="Homework4.utils.repRows" href="#Homework4.utils.repRows">repRows</a></code></li>
+<li><code><a title="Homework4.utils.repgrid" href="#Homework4.utils.repgrid">repgrid</a></code></li>
+<li><code><a title="Homework4.utils.rint" href="#Homework4.utils.rint">rint</a></code></li>
+<li><code><a title="Homework4.utils.show" href="#Homework4.utils.show">show</a></code></li>
+<li><code><a title="Homework4.utils.transpose" href="#Homework4.utils.transpose">transpose</a></code></li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+</footer>
+</body>
+</html>

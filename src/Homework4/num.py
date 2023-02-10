@@ -25,6 +25,13 @@ class NUM():
         self.w = -1 if "-" in txt else 1
 
     def __repr__(self):
+        """
+        Returns a printable representation of NUM.
+
+        Returns:
+            str: Printable representation of NUM.
+        """
+
         return "a: {} at: {} hi: {} lo: {} m2: {} mu: {} n: {} txt: {} w:{}".format(self.__class__.__name__, self.at, self.hi, self.lo, self.m2, self.mu, self.n, self.txt, self.w)
 
     def add(self, n):

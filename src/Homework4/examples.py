@@ -128,8 +128,7 @@ def eg_prototypes():
     t = utils.dofile(globals.the["file"])
     rows = utils.repRows(t, utils.transpose(t["cols"]))
 
-    ret = rows.cluster()
-    utils.show(ret)
+    utils.show(rows.cluster())
 
 
 def eg_position():
@@ -140,6 +139,7 @@ def eg_position():
     t = utils.dofile(globals.the["file"])
     rows = utils.repRows(t, utils.transpose(t["cols"]))
     rows.cluster()
+
     utils.repPlace(rows)
 
 

@@ -23,6 +23,13 @@ class SYM():
         self.mode = None
 
     def __repr__(self):
+        """
+        Returns a printable representation of SYM.
+
+        Returns:
+            str: Printable representation of SYM.
+        """
+
         return "a: {} at: {} has: {} most: {} n: {} txt: {}".format(self.__class__.__name__, self.at, self.has, self.most, self.n, self.txt)
 
     def add(self, x):

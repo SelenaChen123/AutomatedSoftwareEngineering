@@ -107,6 +107,9 @@ class DATA:
             row1 (ROW): ROW to calculate the distance of the other ROWs from.
             rows (list, optional): List of ROWs to be sorted. Defaults to DATA.rows.
             cols (COLS, optional): Factory that manages rows. Defaults to None.
+
+        Returns:
+            __type__: __description__
         """
 
         def function(row2):
@@ -114,18 +117,17 @@ class DATA:
 
         return sorted(map(function, rows or self.rows), key=lambda d: d["dist"])
 
-    def furthest(self, row1, rows, cols=None, t=[]):
+    def furthest(self, row1, rows, cols=None):
         """
-        Sorts other rows by tjheir distance to row1.
+        Returns the furthest row from row1.
 
         Args:
-            row1 (_type_): _description_
-            rows (_type_): _description_
-            cols (_type_): _description_
-            t (_type_): _description_
+            row1 (ROW): ROW to calculate the distance of the other ROWs from.
+            rows (list, optional): List of ROWs to be sorted. Defaults to DATA.rows.
+            cols (COLS, optional): Factory that manages rows. Defaults to None.
 
         Returns:
-            _type_: _description_
+            ROW: ROW furthest from row1.
         """
 
         t = self.around(row1, rows, cols)
