@@ -113,8 +113,11 @@ def eg_reprows():
     t = utils.dofile(globals.the["file"])
     rows = utils.repRows(t, utils.transpose(t["cols"]))
 
-    print(rows.cols.all)
-    print(rows.rows)
+    for item in rows.cols.all:
+        print(repr(item))
+
+    for item in rows.rows:
+        print(repr(item))
 
 
 def eg_prototypes():

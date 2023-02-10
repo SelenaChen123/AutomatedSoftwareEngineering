@@ -12,8 +12,10 @@ seed = 937162211
 def coerce(s):
     """
     Coerces a str s into an int, float, bool, or trimmed str.
+
     Args:
         s (str): Str to be coerced into an int, float, bool, or trimmed str.
+
     Returns:
         int/float/bool/str: int, float, bool, or trimmed str version of s.
     """
@@ -35,6 +37,7 @@ def coerce(s):
 def csv(sFilename, fun):
     """
     Calls the function fun on the rows after coercing the cell text.
+
     Args:
         sFilename (str): Filename of the csv file.
         fun (function): Function to be performed on each row of the csv file.
@@ -55,10 +58,12 @@ def csv(sFilename, fun):
 def cosine(a, b, c):
     """
     Finds x and y from the line connecting a to b.
+
     Args:
         a (float): a value to calculate the cosine from.
         b (float): b value to calculate the cosine from.
         c (float): c value to calculate the cosine from.
+
     Returns:
         int/float: x from the line connecting a to b.
         float: y from the line connecting a to b.
@@ -78,9 +83,11 @@ def cosine(a, b, c):
 def rand(lo=0, hi=1):
     """
     Generates a random float between lo (inclusive) and hi (not inclusive).
+
     Args:
         lo (int, optional): Lower bound for the random float generation. Defaults to 0.
         hi (int, optional): Upper bound for the random float generation. Defaults to 1.
+
     Returns:
         float: Random float between lo (inclusive) and hi (not inclusive).
     """
@@ -94,9 +101,11 @@ def rand(lo=0, hi=1):
 def rint(lo=0, hi=1):
     """
     Generates a random int between lo (inclusive) and hi (not inclusive).
+
     Args:
         lo (int, optional): Lower bound for the random int generation. Defaults to 0.
         hi (int, optional): Upper bound for the random int generation. Defaults to 1.
+
     Returns:
         int: Random int between lo (inclusive) and hi (not inclusive).
     """
@@ -107,9 +116,11 @@ def rint(lo=0, hi=1):
 def many(t, n):
     """
     Returns n ROWs from t.
+
     Args:
         t (list): List to return the ROWs from.
         n (int): Number of ROWs to be returned.
+
     Returns:
         list: List of n ROWs from t.
     """
@@ -120,8 +131,10 @@ def many(t, n):
 def any(t):
     """
     Returns a random ROW from t.
+
     Args:
         t (list): List to return the random ROW from.
+
     Returns:
         ROW: Random row from t.
     """
@@ -133,17 +146,22 @@ def any(t):
 def transpose(t):
     """
     _summary_
+
     Args:
         t (_type_): _description_
+
     Returns:
         _type_: _description_
     """
 
-    u = {}
-    for i in len(t[1]):
-        u[i] = {}
-        for j in len(t):
-            u[i][j] = t[j][i]
+    u = []
+
+    for i in range(len(t[0])):
+        u.append([])
+
+        for j in range(len(t)):
+            u[i].append(t[j][i])
+
     return u
 
 
@@ -175,6 +193,7 @@ def repCols(cols):
 
     Args:
         cols (dict): _description_
+
     Returns:
         DATA: _description_
     """
@@ -198,39 +217,45 @@ def repCols(cols):
     return data.DATA(cols)
 
 
-def repRows(t, rows, u):
+def repRows(t, rows):
     """
     _summary_
+
     Args:
         t (_type_): _description_
         rows (_type_): _description_
-        u (_type_): _description_
+
     Returns:
         _type_: _description_
     """
 
     rows = copy.deepcopy(rows)
-    for j, s in enumerate(rows[len(rows)]):
-        rows[1][j] = rows[1][j] + ":" + s
-    rows[len(rows)] = None
-    row = []
+
+    for j, s in enumerate(rows[-1]):
+        rows[0][j] = rows[0][j] + ":" + s
+
+    rows.pop()
+
     for n, row in enumerate(rows):
-        if n == 1:
+        if n == 0:
             row.append("thingX")
         else:
-            u = t.rows[len(t.rows) - n + 2]
-            row.append(u[len(u)])
+            u = t["rows"][-n + 1]
+            row.append(u[-1])
+
     return data.DATA(rows)
 
 
 def repPlace(data, n=20, g={}):
     """
     _summary_
+
     Args:
         data (_type_): _description_
         n (int, optional): _description_. Defaults to 20.
         g (dict, optional): _description_. Defaults to {}.
         maxy (int, optional): _description_. Defaults to 0.
+
     Returns:
         _type_: _description_
     """
@@ -258,8 +283,10 @@ def repPlace(data, n=20, g={}):
 def repgrid(sFile):
     """
     _summary_
+
     Args:
         sFile (_type_): _description_
+
     Returns:
         _type_: _description_
     """

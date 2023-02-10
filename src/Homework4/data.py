@@ -192,7 +192,7 @@ class DATA:
         node = {"data": self.clone(rows or self.rows)}
 
         if len(rows or self.rows) >= 2:
-            left, right, node["A"], node["B"], _, _ = self.half(
+            left, right, node["A"], node["B"], _, node["c"] = self.half(
                 rows or self.rows, cols or self.cols.x, above)
 
             node["left"] = self.cluster(left, cols or self.cols.x, node["A"])
