@@ -280,4 +280,10 @@ def doFile(sFile):
         dict: Dictionary version of the file contents.
     """
 
-    return 0
+    with open(sFile) as src:
+        contents = src.read()
+
+        grid = contents[contents.index("return {") + len("return {"):contents.rindex("}")].replace("domain", "\"domain\"").replace(
+            "cols", "\"cols\"").replace("rows", "\"rows\"").replace("=", ":").replace("{", "[").replace("}", "]").replace("'", "\"").replace("_", "\"\"")
+
+    return json.loads("{{{}}}".format(grid))
