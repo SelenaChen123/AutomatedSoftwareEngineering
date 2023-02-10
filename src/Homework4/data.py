@@ -114,7 +114,7 @@ class DATA:
 
         return sorted(map(function, rows or self.rows), key=lambda d: d["dist"])
 
-    def furthest(self, row1, rows, cols, t):
+    def furthest(self, row1, rows, cols=None, t=[]):
         """
         Sorts other rows by tjheir distance to row1.
 
@@ -130,7 +130,7 @@ class DATA:
 
         t = self.around(row1, rows, cols)
 
-        return t[len(t)]
+        return t[len(t) - 1]
 
     def half(self, rows=[], cols=None, above=None):
         """
@@ -150,13 +150,16 @@ class DATA:
             float: Distance from A to B.
         """
 
-        def project(row, x, y):
+        def project(row):
             x, y = utils.cosine(self.dist(row, A, cols),
                                 self.dist(row, B, cols), c)
-            row.x = row.x or x
-            row.y = row.y or y
 
-            return {"row": row, x: x, y: y}
+            if not hasattr(row, "x"):
+                row.x = x
+            if not hasattr(row, "y"):
+                row.y = y
+
+            return {"row": row, "x": x, "y": y}
 
         A = above or utils.any(rows or self.rows)
         B = self.furthest(A, rows or self.rows)["row"]
@@ -173,7 +176,7 @@ class DATA:
 
         return left, right, A, B, mid, c
 
-    def cluster(self, rows, cols, above):
+    def cluster(self, rows=[], cols=None, above=[]):
         """
         Recursively halves rows.
 

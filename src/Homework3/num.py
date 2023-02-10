@@ -1,7 +1,7 @@
 import sys
 
 
-class NUM():
+class NUM:
     """
     Summarizes a stream of numbers.
     """

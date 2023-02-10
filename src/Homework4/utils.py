@@ -147,27 +147,54 @@ def transpose(t):
     return u
 
 
+def dofile(sFile):
+    """
+    Turns sFile into JSON and returns a dictionary version of the file contents.
+
+    Args:
+        sFile (str): Filename to be turned into JSON.
+
+    Returns:
+        dict: Dictionary version of the file contents.
+    """
+
+    with open(sFile) as src:
+        contents = src.read()
+
+        returned = contents[contents.index("return {") + len("return {"):contents.rindex("}")].replace("domain", "\"domain\"").replace(
+            "cols", "\"cols\"").replace("rows", "\"rows\"").replace("=", ":").replace("'", "\"").replace("{", "[").replace("}", "]").replace("_", "\"\"")
+
+        dictionary = json.loads("{{{}}}".format(returned))
+
+    return dictionary
+
+
 def repCols(cols):
     """
     _summary_
+
     Args:
-        cols (_type_): _description_
+        cols (dict): _description_
     Returns:
-        _type_: _description_
+        DATA: _description_
     """
 
     cols = copy.deepcopy(cols)
-    for _, col in enumerate(cols):
-        col[len(col)] = col[1] + ":" + col[len(col)]
-        j = 2
-        for j in len(col):
-            col[j - 1] = col[j]
-        col[len(col)] = None
 
-    def fun(k, v):
-        return "Num" + k
-    cols.insert(1, map(fun, cols[1]))
-    cols[1][len(cols[1])] = "thingX"
+    for col in cols:
+        col[len(col) - 1] = col[0] + ":" + col[len(col) - 1]
+
+        for i in range(len(col) - 1):
+            col[i] = col[i + 1]
+
+        col.pop()
+
+    def fun(k):
+        return "Num" + str(k)
+
+    cols.insert(0, list(map(fun, range(1, len(cols[0]) + 1))))
+    cols[0][len(cols[0]) - 1] = "thingX"
+
     return data.DATA(cols)
 
 
@@ -246,7 +273,7 @@ def repgrid(sFile):
     return 0
 
 
-def show(node, what, lvl=0):
+def show(node, what="mid", lvl=0):
     """
     Prints the tree version of DATA.
 
@@ -263,27 +290,7 @@ def show(node, what, lvl=0):
               if "left" not in node else round(100 * node["c"]))
 
         if "left" in node:
-            show(node["left"], what or "mid", lvl + 1)
+            show(node["left"], what, lvl + 1)
 
         if "right" in node:
-            show(node["right"], what or "mid", lvl + 1)
-
-
-def dofile(sFile):
-    """
-    Turns sFile into JSON and returns a dictionary version of the file contents.
-
-    Args:
-        sFile (str): Filename to be turned into JSON.
-
-    Returns:
-        dict: Dictionary version of the file contents.
-    """
-
-    with open(sFile) as src:
-        contents = src.read()
-
-        grid = contents[contents.index("return {") + len("return {"):contents.rindex("}")].replace("domain", "\"domain\"").replace(
-            "cols", "\"cols\"").replace("rows", "\"rows\"").replace("=", ":").replace("{", "[").replace("}", "]").replace("'", "\"").replace("_", "\"\"")
-
-    return json.loads("{{{}}}".format(grid))
+            show(node["right"], what, lvl + 1)

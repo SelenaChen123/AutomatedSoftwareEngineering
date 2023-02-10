@@ -24,6 +24,9 @@ class NUM():
         self.hi = -sys.maxsize
         self.w = -1 if "-" in txt else 1
 
+    def __repr__(self):
+        return "a: {} at: {} txt: {} n: {} mu: {} m2: {} lo: {} hi: {} w:{}".format(self.__class__.__name__, self.at, self.txt, self.n, self.mu, self.m2, self.lo, self.hi, self.w)
+
     def add(self, n):
         """
         Adds n and updates lo, hi, and other values needed for standard deviation.

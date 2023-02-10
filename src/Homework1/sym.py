@@ -1,7 +1,7 @@
 import math
 
 
-class SYM():
+class SYM:
     """
     Summarizes a stream of symbols.
     """

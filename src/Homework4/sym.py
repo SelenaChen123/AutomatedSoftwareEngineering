@@ -22,6 +22,9 @@ class SYM():
         self.most = 0
         self.mode = None
 
+    def __repr__(self):
+        return "a: {} at: {} txt: {} n: {} has: {} most: {}".format(self.__class__.__name__, self.at, self.txt, self.n, self.has, self.most)
+
     def add(self, x):
         """
         Updates the count of the things that have been seen so far.
