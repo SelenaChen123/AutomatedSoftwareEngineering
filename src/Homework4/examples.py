@@ -87,7 +87,7 @@ def eg_repcols():
     Example testing repCols().
     """
 
-    t = utils.repCols(utils.doFile(globals.the["file"]).cols)
+    t = utils.repCols(utils.dofile(globals.the["file"]).cols)
 
     print(t.cols.all)
     print(t.rows)
@@ -98,7 +98,7 @@ def eg_synonyms():
     Example testing DATA.cluster() on repCols().
     """
 
-    utils.show(utils.repCols(utils.doFile(globals.the["file"]).cols).cluster())
+    utils.show(utils.repCols(utils.dofile(globals.the["file"]).cols).cluster())
 
 
 def eg_reprows():
@@ -106,7 +106,7 @@ def eg_reprows():
     Example testing repRows().
     """
 
-    t = utils.doFile(globals.the["file"])
+    t = utils.dofile(globals.the["file"])
     rows = utils.repRows(t, utils.transpose(t.cols))
 
     print(rows.cols.all)
@@ -118,7 +118,7 @@ def eg_prototypes():
     Example testing DATA.cluster() on repRows().
     """
 
-    t = utils.doFile(globals.the["file"])
+    t = utils.dofile(globals.the["file"])
     rows = utils.repRows(t, utils.transpose(t.cols))
 
     utils.show(rows.cluster())
@@ -129,7 +129,7 @@ def eg_position():
     Example testing repPlace().
     """
 
-    t = utils.doFile(globals.the["file"])
+    t = utils.dofile(globals.the["file"])
     rows = utils.repRows(t, utils.transpose(t.cols))
     rows.cluster()
     utils.repPlace(rows)

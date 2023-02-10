@@ -237,7 +237,7 @@ def repgrid(sFile):
         _type_: _description_
     """
 
-    t = doFile(sFile)
+    t = dofile(sFile)
     rows = repRows(t, transpose(t.cols))
     cols = repCols(t.cols)
     show(rows.cluster())
@@ -269,7 +269,7 @@ def show(node, what, lvl=0):
             show(node["right"], what or "mid", lvl + 1)
 
 
-def doFile(sFile):
+def dofile(sFile):
     """
     Turns sFile into JSON and returns a dictionary version of the file contents.
 
