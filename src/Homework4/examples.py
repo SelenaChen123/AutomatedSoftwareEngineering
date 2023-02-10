@@ -128,7 +128,8 @@ def eg_prototypes():
     t = utils.dofile(globals.the["file"])
     rows = utils.repRows(t, utils.transpose(t["cols"]))
 
-    utils.show(rows.cluster())
+    ret = rows.cluster()
+    utils.show(ret)
 
 
 def eg_position():

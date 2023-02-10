@@ -246,38 +246,43 @@ def repRows(t, rows):
     return data.DATA(rows)
 
 
-def repPlace(data, n=20, g={}):
+def repPlace(data, n=20, g=[]):
     """
     _summary_
 
     Args:
         data (_type_): _description_
         n (int, optional): _description_. Defaults to 20.
-        g (dict, optional): _description_. Defaults to {}.
+        g (dict, optional): _description_. Defaults to [].
         maxy (int, optional): _description_. Defaults to 0.
 
     Returns:
         _type_: _description_
     """
 
-    i = 1
-    for i in n+1:
-        g[i] = {}
-        j = 1
-        for j in n+1:
-            g[i][j] = " "
+    for i in range(n):
+        g.append([])
+
+        for _ in range(n):
+            g[i].append(" ")
+
+    print("")
+
     maxy = 0
-    print("")
     for r, row in enumerate(data.rows):
-        c = str(64+r)
-        print(c, row.cells[len(row.cells)])
-        x, y = row.x*n//1, row.y*n//1
-        maxy = math.max(maxy, y + 1)
-        g[y+1][x+1] = c
+        c = chr(64 + r)
+
+        print(c, row.cells[-1])
+
+        x = int(row.x * n)
+        y = int(row.y * n)
+        maxy = max(maxy, y + 1)
+        g[y + 1][x + 1] = c
+
     print("")
-    y = 1
-    for y in maxy:
-        str(g[y])
+
+    for i in range(maxy):
+        print(g[i])
 
 
 def repgrid(sFile):
@@ -292,12 +297,12 @@ def repgrid(sFile):
     """
 
     t = dofile(sFile)
-    rows = repRows(t, transpose(t.cols))
-    cols = repCols(t.cols)
+    rows = repRows(t, transpose(t["cols"]))
+    cols = repCols(t["cols"])
+
     show(rows.cluster())
     show(cols.cluster())
     repPlace(rows)
-    return 0
 
 
 def show(node, what="mid", lvl=0):
@@ -310,7 +315,7 @@ def show(node, what="mid", lvl=0):
         lvl (int, optional): Current tree level. Defaults to 0.
     """
 
-    if "data" in node:
+    if node:
         print("|.. " * lvl, end="")
 
         print(node["data"].rows[-1].cells[-1]

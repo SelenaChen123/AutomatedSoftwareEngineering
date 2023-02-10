@@ -130,7 +130,7 @@ class DATA:
 
         t = self.around(row1, rows, cols)
 
-        return t[len(t) - 1]
+        return t[-1]
 
     def half(self, rows=[], cols=None, above=None):
         """
