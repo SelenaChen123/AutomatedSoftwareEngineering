@@ -154,7 +154,7 @@ def div(col):
 # Didn't do stats function. Got a little confused. Will look into it later. Feel free to do it too
 
 def norm(num,n):
-  if num == "?": # Dr. Menzies mentioned x here. But it doesnt make sense. I am replacing 'x' with 'num'
+  if num == "?": # Dr. Menzies mentioned x here. But 'x' doesnt make much sense. I am replacing 'x' with 'num'
     return num
   return (n - num["lo"]) / (num["hi"] - num["lo"] + 1 / math.inf)
 
