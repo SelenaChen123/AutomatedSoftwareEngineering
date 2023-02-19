@@ -1,4 +1,6 @@
 import math
+import sys
+import re
 
 def COL(n,s):
     if s[0]<="Z" and s[0]>="A":
@@ -212,8 +214,6 @@ def better(data,row1,row2):
         return True
     return False
 
-# Didn't do half function. Got a little confused. Will look into it later. Feel free to do it too
-
 def tree(data, rows=None, cols=None, above=None, here=None):
     if rows == None:
         rows = data["rows"]
@@ -226,7 +226,8 @@ def tree(data, rows=None, cols=None, above=None, here=None):
     return here
 
 
-# I haven't implemented the showTree yet
+# I haven't implemented the showTree
+
 def showTree(tree):
     return tree
 
@@ -333,5 +334,114 @@ def cliffsDelta(ns1,ns2):
     if abs(lt-gt)/n > the.cliffs:
         return True
     return False
- 
 
+# Not implemented diff
+
+# Copied coerce from earlier HW
+def coerce(s):
+    """
+    Coerces a str s into an int, float, bool, or trimmed str.
+    Args:
+        s (str): Str to be coerced into an int, float, bool, or trimmed str.
+    Returns:
+        int/float/bool/str: int, float, bool, or trimmed str version of s.
+    """
+
+    if s == "true":
+        return True
+    elif s == "false":
+        return False
+
+    try:
+        return int(s)
+    except ValueError:
+        try:
+            return float(s)
+        except ValueError:
+            return s.strip()
+
+def cells(s):
+    t = []
+    for s1 in s.split(','):
+        t.append(coerce(s1))
+    return t
+
+# Haven't implemented lines, I just copied the csv function that we used earlier. I think it should work 
+
+def csv(sFilename, fun):
+    """
+    Calls the function fun on the rows after coercing the cell text.
+    Args:
+        sFilename (str): Filename of the csv file.
+        fun (function): Function to be performed on each row of the csv file.
+    """
+
+    with open(sFilename) as src:
+        lines = src.readlines()
+
+        for s in lines:
+            t = []
+
+            for s1 in re.findall("([^,]+)", s):
+                t.append(coerce(s1))
+
+            fun(t)
+
+def any(t):
+    return t[rint(len(t)-1)]
+
+def many(t, n):
+    u = []
+    for i in range(n):
+        u.append(any(t))
+    return u
+
+
+# Not implement Kap, map
+
+def per(t, p=None):
+    p = p or 0.5
+    p = ((p*len(t))+0.5)//1
+    return t[max(min(p, len(t)),1)]
+
+def copy(t):
+    if type(t) != 'dict':
+        return t 
+    u = {}
+    for k, v in t.items():
+        u[k] = copy(v)
+    
+    return u
+
+# Didnt implement 'slice' since it is not used anywhere
+
+# Have'nt implemented any of the string functions (say,sayin, o, oo)
+
+# Haven't implemented 'main' either and I felt there is not a need for implementing 'rogues'.
+
+def cli(options):
+    """
+    Updates t with the global options from the command line.
+    Args:
+        options (dict): Dictionary containing the global options.
+    Returns:
+        dict: Modified dictionary containing the global options from the command line.
+    """
+
+    for k, v in options.items():
+        v = str(v).lower()
+
+        for n, x in enumerate(sys.argv):
+            if x == "-" + k[0] or x == "--" + k:
+                if v == "false":
+                    v = "true"
+                elif v == "true" or n + 1 >= len(sys.argv):
+                    v = "false"
+                else:
+                    v = sys.argv[n + 1]
+
+        options[k] = coerce(v)
+
+    return options
+
+# Have'nt implemented anything after this. Feel free to work on it
