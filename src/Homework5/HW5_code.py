@@ -153,6 +153,13 @@ def div(col):
         return e
     return (per(has(col), 0.9)- per(has(col), 0.1))/2.58
 
+def stats(data, fun, cols, nPlaces):
+    cols = cols or data.cols.y
+    def func(k, col):
+        return rnd((fun or "mid")(col), nPlaces), col.txt
+    temp = map(func, cols)
+    temp["N"] = len(data.rows)
+    return temp
 # Didn't do stats function. Got a little confused. Will look into it later. Feel free to do it too
 
 def norm(num,n):
@@ -418,6 +425,44 @@ def copy(t):
 # Have'nt implemented any of the string functions (say,sayin, o, oo)
 
 # Haven't implemented 'main' either and I felt there is not a need for implementing 'rogues'.
+
+def main(help, funs, the):
+    """
+    Fills in the global dictionary, updates them from the command line, runs the examples, prints the number of tests that failed, and resets the random number seed and settings.
+
+    Args:
+        help (str): String containing the default global options.
+        funs (dict): Contains the list of examples to be run as tests.
+    """
+
+    success,fail,saved = 0,0,copy(the)
+
+    # for k, v in cli(settings(help)).items():
+    #     globals.the[k] = v
+    #     saved[k] = v
+
+    if the.help:
+        print(help)
+    else:
+        for _,pair in funs:
+            k = pair.key
+            if ".*" + the.go + ".*" in k:
+                for k,v in saved:
+                    the[k] = v
+                print(format("\n▶️ %s %s",k,("-"))) # I'm bad at format strings. This needs to repeat 60 "-"
+                ok,val = pair.fun
+                if not ok:
+                    fail += 1
+                    print("❌ fail: " + k + " " + val)
+                elif val == False:
+                    fail += 1
+                    print("❌ fail: " + k)
+                else:
+                    success += 1
+                    print("✅ pass: " + k)
+    if success + fail > 0:
+        print("\n🔆 {pass=" + success + ", fail=" + fail + ", success=" + (100*success/(success+fail)//1))
+    return fail
 
 def cli(options):
     """
