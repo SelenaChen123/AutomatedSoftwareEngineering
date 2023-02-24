@@ -1,8 +1,6 @@
+import globals
 import math
 import re
-
-
-seed = 937162211
 
 
 def coerce(s):
@@ -34,19 +32,19 @@ def csv(sFilename, fun):
 
 
 def rand(nlo=0, nhi=1):
-    global seed
-    seed = (16807 * seed) % 2147483647
-    return nlo + (nhi - nlo) * seed / 2147483647
+    globals.seed = (16807 * globals.seed) % 2147483647
+
+    return nlo + (nhi - nlo) * globals.seed / 2147483647
 
 
-def rint(nlo, nhi=1):
+def rint(nlo=0, nhi=1):
     return math.floor(0.5 + rand(nlo, nhi))
 
 
-def per(t, p):
-    p = math.floor((p or .5) * len(t) + .5)
+def per(t, p=.5):
+    p = math.floor(p * len(t) + .5)
 
-    return t[max(min(p, len(t)), 1)]
+    return t[max(min(p, len(t)), 0)]
 
 
 def many(t, n):
@@ -85,7 +83,7 @@ def cliffsDelta(ns1, ns2):
             if x < y:
                 lt += 1
 
-    return math.abs(lt - gt) / n > globals.the["cliffs"]
+    return abs(lt - gt) / n > globals.the["cliffs"]
 
 
 def diffs(nums1, nums2):

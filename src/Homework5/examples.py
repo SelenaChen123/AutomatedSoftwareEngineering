@@ -24,13 +24,13 @@ def eg_the():
 
 
 def eg_rand():
-    utils.seed = 1
+    globals.seed = 1
     t = []
 
     for _ in range(1000):
         t.append(utils.rint(100))
 
-    utils.seed = 1
+    globals.seed = 1
     u = []
 
     for _ in range(1000):
@@ -75,9 +75,11 @@ def eg_syms():
 
 
 def eg_csv():
+    global n
     n = 0
 
     def f(t):
+        global n
         n += len(t)
 
     utils.csv(globals.the["file"], f)
@@ -87,15 +89,15 @@ def eg_csv():
 
 def eg_data():
     data = creation.read(globals.the["file"])
-    col = data.cols.x[1]
+    col = data["cols"]["x"][0]
 
-    print(col.lo, col.hi, query.mid(col), query.div(col))
+    print(col["lo"], col["hi"], query.mid(col), query.div(col))
     print(query.stats(data))
 
 
 def eg_clone():
     data1 = creation.read(globals.the["file"])
-    data2 = creation.clone(data1, data1.rows)
+    data2 = creation.clone(data1, data1["rows"])
 
     print(query.stats(data1))
     print(query.stats(data2))
@@ -136,10 +138,10 @@ def eg_dist():
     data = creation.read(globals.the["file"])
     num = creation.NUM()
 
-    for row in data.rows.values():
-        update.add(num, query.dist(data, row, data.rows[1]))
+    for row in data["rows"]:
+        update.add(num, query.dist(data, row, data["rows"][0]))
 
-    print({"lo": num.lo, "hi": num.hi, "mid": round(
+    print({"lo": num["lo"], "hi": num["hi"], "mid": round(
         query.mid(num), 2), "div": round(query.div(num), 2)})
 
 

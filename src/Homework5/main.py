@@ -52,6 +52,8 @@ def main(help, funs):
                 for k, v in saved.items():
                     globals.the[k] = v
 
+                globals.seed = globals.the["seed"]
+
                 if funs[pair]() == False:
                     n += 1
                     print("❌ FAIL " + pair)
@@ -66,7 +68,7 @@ def main(help, funs):
     return n
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     examples.eg("the", "show options", examples.eg_the)
     examples.eg("rand", "demo random number generation", examples.eg_rand)
     examples.eg("some", "demo of reservoir sampling", examples.eg_some)

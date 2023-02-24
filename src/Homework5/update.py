@@ -21,12 +21,11 @@ def add(col, x, n=1):
     if x != "?":
         col["n"] += n
 
-        if col.get("isSym"):
-            x = int(x)
-            if len(col['has']) >= x + 1:
+        if "isSym" in col:
+            if x in col["has"]:
                 col["has"][x] = n + col["has"][x]
             else:
-                col['has'].append(n)
+                col["has"][x] = n
 
             if col["has"][x] > col["most"]:
                 col["most"] = col["has"][x]

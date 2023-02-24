@@ -8,9 +8,9 @@ import utils
 def COL(n, s):
     col = NUM(n, s) if re.search("^[A-Z]+", s) else SYM(n, s)
 
-    col["isIgnored"] = re.search("X$", s)
-    col["isKlass"] = re.search("!$", s)
-    col["isGoal"] = re.search("[!+-]$", s)
+    col["isIgnored"] = re.search("X$", s) != None
+    col["isKlass"] = re.search("!$", s) != None
+    col["isGoal"] = re.search("[!+-]$", s) != None
 
     return col
 
@@ -20,7 +20,7 @@ def NUM(n=0, s=""):
 
 
 def SYM(n=0, s=""):
-    return {"at": n or 0, "txt": s or "", "n": 0, "mode": None, "most": 0, "isSym": True, "has": []}
+    return {"at": n or 0, "txt": s or "", "n": 0, "mode": None, "most": 0, "isSym": True, "has": {}}
 
 
 def COLS(ss):
@@ -34,7 +34,10 @@ def COLS(ss):
             if col["isKlass"]:
                 cols["klass"] = col
 
-                cols["y" if col["isGoal"] else "x"].append(col)
+            if col["isGoal"]:
+                cols["y"].append(col)
+            else:
+                cols["x"].append(col)
 
     return cols
 

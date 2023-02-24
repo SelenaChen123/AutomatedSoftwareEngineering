@@ -1,10 +1,11 @@
 import math
 
+import globals
 import utils
 
 
 def has(col):
-    if not col.get("isSym") and not col["ok"]:
+    if not "isSym" in col and not col["ok"]:
         col["has"].sort()
 
     col["ok"] = True
@@ -13,29 +14,29 @@ def has(col):
 
 
 def mid(col):
-    return col["mode"] if col.get("isSym") else utils.per(has(col), .5)
+    return col["mode"] if "isSym" in col else utils.per(has(col), .5)
 
 
 def div(col):
-    if col.get("isSym"):
+    if "isSym" in col:
         e = 0
 
-        for n in col["has"]:
+        for n in col["has"].values():
             e -= (n / col["n"]) * (math.log(n / col["n"], 2))
 
         return e
+    else:
+        return (utils.per(has(col), .9) - utils.per(has(col), .1)) / 2.58
 
-    return (utils.per(has(col), .9) - utils.per(has(col), .1)) / 2.58
 
-
-def stats(data, fun, cols, nPlaces):
+def stats(data={}, fun=None, cols=None, nPlaces=2):
     cols = cols or data["cols"]["y"]
 
     def function(col):
         return round((fun or mid)(col), nPlaces), col["txt"]
 
-    temp = map(function, cols)
-    temp["N"] = len(data.rows)
+    temp = dict(map(function, cols))
+    temp["N"] = len(data["rows"])
 
     return temp
 
@@ -59,11 +60,11 @@ def value(has, nB, nR):
     return b ** 2 / (b + r)
 
 
-def dist(data, t1, t2, cols):
+def dist(data, t1, t2, cols={}):
     def dist1(col, x, y):
         if x == "?" and y == "?":
             return 1
-        elif col["isSym"]:
+        elif "isSym" in col:
             return 0 if x == y else 1
         else:
             x = norm(col, x)
