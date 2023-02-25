@@ -28,7 +28,7 @@ def COL(n, s):
 
 def NUM(n=0, s=""):
     """
-    Creates a NNUM to summarize a stream of numbers.
+    Creates a NUM to summarize a stream of numbers.
 
     Args:
         n (int, optional): Column position. Defaults to 0.
