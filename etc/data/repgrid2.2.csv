@@ -1,0 +1,24 @@
+local _ = " "
+return {
+ domain="Candy",
+ cols={   {'ATTRIBUTE1LOW', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'ATTRIBUTE1HIGH'},
+               {'ATTRIBUTE2LOW', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'ATTRIBUTE2HIGH'},
+  {'ATTRIBUTE3LOW', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'ATTRIBUTE3HIGH'},
+       {'ATTRIBUTE4LOW' , 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'ATTRIBUTE4HIGH'},
+{'ATTRIBUTE5LOW', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'ATTRIBUTE5HIGH'},
+      {'ATTRIBUTE6LOW', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'ATTRIBUTE6HIGH'},
+       {'ATTRIBUTE7LOW', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'ATTRIBUTE7HIGH'},
+      {'ATTRIBUTE8LOW', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'ATTRIBUTE8HIGH'},
+      {'ATTRIBUTE9LOW', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'ATTRIBUTE9HIGH'},
+      {'ATTRIBUTE10LOW', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'ATTRIBUTE10HIGH'}},
+rows={                      { _, _, _, _, _, _, _, _, _, 'Skittles'},
+                            { _, _, _, _, _, _, _, _, 'KitKats'},
+                            { _, _, _, _, _, _, _, 'MAndMs'},
+                            { _, _, _, _, _, _, 'ReesesPeanutButterCups'},
+                            { _, _, _, _, _,  'DumDums'},
+                            { _, _, _, _,  'HersheysMilkChocolate'},
+                            { _, _, _,  'Twizzlers'},
+                            { _, _,  'HiChew'},
+                            { _, '3Musketeers'},
+                            {'Gushers'}}
+}

@@ -4,9 +4,7 @@ import math
 import re
 
 import data
-
-
-seed = 937162211
+import globals
 
 
 def coerce(s):
@@ -92,10 +90,9 @@ def rand(lo=0, hi=1):
         float: Random float between lo (inclusive) and hi (not inclusive).
     """
 
-    global seed
-    seed = (16807 * seed) % 2147483647
+    globals.seed = (16807 * globals.seed) % 2147483647
 
-    return lo + (hi - lo) * seed / 2147483647
+    return lo + (hi - lo) * globals.seed / 2147483647
 
 
 def rint(lo=0, hi=1):
@@ -262,11 +259,11 @@ def repPlace(data, n=20, g=[]):
         for _ in range(n):
             g[i].append(" ")
 
+    maxy = 0
     print("")
 
-    maxy = 0
     for r, row in enumerate(data.rows):
-        c = chr(65 + r)
+        c = chr(64 + r + 1)
 
         print(c, row.cells[-1])
 
@@ -278,7 +275,7 @@ def repPlace(data, n=20, g=[]):
     print("")
 
     for i in range(maxy):
-        print("[{}]".format(" ".join(g[i + 1])))
+        print("[{}]".format("".join(g[i + 1])))
 
 
 def repgrid(sFile):

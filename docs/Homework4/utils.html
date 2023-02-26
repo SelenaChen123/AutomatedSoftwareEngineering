@@ -32,9 +32,7 @@ import math
 import re
 
 import data
-
-
-seed = 937162211
+import globals
 
 
 def coerce(s):
@@ -120,10 +118,9 @@ def rand(lo=0, hi=1):
         float: Random float between lo (inclusive) and hi (not inclusive).
     &#34;&#34;&#34;
 
-    global seed
-    seed = (16807 * seed) % 2147483647
+    globals.seed = (16807 * globals.seed) % 2147483647
 
-    return lo + (hi - lo) * seed / 2147483647
+    return lo + (hi - lo) * globals.seed / 2147483647
 
 
 def rint(lo=0, hi=1):
@@ -627,10 +624,9 @@ def show(node, what=&#34;mid&#34;, lvl=0):
         float: Random float between lo (inclusive) and hi (not inclusive).
     &#34;&#34;&#34;
 
-    global seed
-    seed = (16807 * seed) % 2147483647
+    globals.seed = (16807 * globals.seed) % 2147483647
 
-    return lo + (hi - lo) * seed / 2147483647</code></pre>
+    return lo + (hi - lo) * globals.seed / 2147483647</code></pre>
 </details>
 </dd>
 <dt id="Homework4.utils.repCols"><code class="name flex">

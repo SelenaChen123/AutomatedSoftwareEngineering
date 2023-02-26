@@ -1,8 +1,5 @@
-global the
-global help
-
 """
-Contains the help text and a dictionary of the global option values from the command line.
+Contains the help text, a dictionary of the global option values from the command line, and a global random seed value.
 """
 
 the = {}
@@ -26,3 +23,4 @@ OPTIONS:
 
 ACTIONS:
 """
+seed = 937162211

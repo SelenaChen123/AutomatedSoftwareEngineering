@@ -106,6 +106,8 @@ def main(help, funs):
                 for k, v in saved.items():
                     globals.the[k] = v
 
+                globals.seed = globals.the[&#34;seed&#34;]
+
                 if funs[what]() == False:
                     fails += 1
                     print(&#34;❌ fail: &#34; + what)
@@ -226,6 +228,8 @@ if __name__ == &#39;__main__&#39;:
             if globals.the[&#34;go&#34;] == &#34;all&#34; or what == globals.the[&#34;go&#34;]:
                 for k, v in saved.items():
                     globals.the[k] = v
+
+                globals.seed = globals.the[&#34;seed&#34;]
 
                 if funs[what]() == False:
                     fails += 1

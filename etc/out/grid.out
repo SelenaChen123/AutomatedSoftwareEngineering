@@ -61,24 +61,24 @@ a: ROW cells: [3, 5, 3, 2, 5, 5, 5, 5, 'IntelligentAgents']
 a: ROW cells: [5, 1, 1, 2, 4, 3, 1, 3, 'InformationHighway']
 a: ROW cells: [5, 2, 1, 2, 4, 1, 1, 3, 'BroadbandNetworks']
 ✅ pass: reprows
-77
-|.. 59
-|.. |.. 42
-|.. |.. |.. KnowledgeBasedSystems
-|.. |.. |.. IntelligentAgents
-|.. |.. 48
-|.. |.. |.. VisualProgramming
-|.. |.. |.. 48
-|.. |.. |.. |.. ObjectOrientedSystems
-|.. |.. |.. |.. CrossPlatformGUIs
-|.. 52
-|.. |.. 32
+74
+|.. 48
+|.. |.. 46
+|.. |.. |.. CrossPlatformGUIs
 |.. |.. |.. ElectronicPublishing
-|.. |.. |.. BroadbandNetworks
-|.. |.. 36
-|.. |.. |.. VirtualReality
-|.. |.. |.. 33
+|.. |.. 75
+|.. |.. |.. ObjectOrientedSystems
+|.. |.. |.. 44
 |.. |.. |.. |.. MultimediaAndHypermedia
+|.. |.. |.. |.. VisualProgramming
+|.. 65
+|.. |.. 42
+|.. |.. |.. IntelligentAgents
+|.. |.. |.. KnowledgeBasedSystems
+|.. |.. 43
+|.. |.. |.. BroadbandNetworks
+|.. |.. |.. 34
+|.. |.. |.. |.. VirtualReality
 |.. |.. |.. |.. InformationHighway
 ✅ pass: prototypes
 
@@ -93,52 +93,52 @@ H IntelligentAgents
 I InformationHighway
 J BroadbandNetworks
 
-[  F                             B      ]
+[  E                           H        ]
 [                                       ]
 [                                       ]
 [                                       ]
 [                                       ]
+[        D                              ]
+[                    G                  ]
 [                                       ]
-[                            I          ]
-[            E       D   J              ]
-[          G                            ]
-[                      A                ]
-[                    H                  ]
+[        F                              ]
+[    A C     J                          ]
+[                I                      ]
 ✅ pass: position
-65
-|.. 55
-|.. |.. 33
-|.. |.. |.. VisualProgramming
+74
+|.. 48
+|.. |.. 46
 |.. |.. |.. CrossPlatformGUIs
-|.. |.. 52
 |.. |.. |.. ElectronicPublishing
-|.. |.. |.. 36
-|.. |.. |.. |.. VirtualReality
-|.. |.. |.. |.. MultimediaAndHypermedia
-|.. 71
-|.. |.. 62
-|.. |.. |.. IntelligentAgents
-|.. |.. |.. InformationHighway
-|.. |.. 70
+|.. |.. 75
 |.. |.. |.. ObjectOrientedSystems
-|.. |.. |.. 66
-|.. |.. |.. |.. BroadbandNetworks
-|.. |.. |.. |.. KnowledgeBasedSystems
-75
-|.. 56
-|.. |.. 39
-|.. |.. |.. ConventionalSystem:IntelligentSystem
-|.. |.. |.. TargetedOnInterface:TargetedOnOverallSystem
-|.. |.. 41
-|.. |.. |.. Multimedia:Programming
-|.. |.. |.. CommunicationTechnology:ApplicationTechnology
-|.. 67
+|.. |.. |.. 44
+|.. |.. |.. |.. MultimediaAndHypermedia
+|.. |.. |.. |.. VisualProgramming
+|.. 65
+|.. |.. 42
+|.. |.. |.. IntelligentAgents
+|.. |.. |.. KnowledgeBasedSystems
+|.. |.. 43
+|.. |.. |.. BroadbandNetworks
+|.. |.. |.. 34
+|.. |.. |.. |.. VirtualReality
+|.. |.. |.. |.. InformationHighway
+74
+|.. 61
 |.. |.. 54
-|.. |.. |.. DevelopmentTool:Application
 |.. |.. |.. ConventionalCommunication:NovelCommunication
-|.. |.. 57
-|.. |.. |.. HumanOrientedTool:SystemTool
+|.. |.. |.. DevelopmentTool:Application
+|.. |.. 43
+|.. |.. |.. ConventionalSystem:IntelligentSystem
 |.. |.. |.. OnlyActAsProgrammed:Semi-autonomous
+|.. 51
+|.. |.. 30
+|.. |.. |.. HumanOrientedTool:SystemTool
+|.. |.. |.. CommunicationTechnology:ApplicationTechnology
+|.. |.. 49
+|.. |.. |.. Multimedia:Programming
+|.. |.. |.. TargetedOnInterface:TargetedOnOverallSystem
 
 A ElectronicPublishing
 B VirtualReality
@@ -151,16 +151,15 @@ H IntelligentAgents
 I InformationHighway
 J BroadbandNetworks
 
-[  D                       H     B                                              ]
+[  E                           H                                                ]
 [                                                                               ]
 [                                                                               ]
 [                                                                               ]
 [                                                                               ]
+[        D                                                                      ]
+[                    G                                                          ]
 [                                                                               ]
-[  E               G         I                                                  ]
-[            E       D   J                                                      ]
-[  C       B                                                                    ]
-[          J           A                                                        ]
-[    A         I     H                                                          ]
-[          F                                                                    ]
+[        F                                                                      ]
+[    A C     J                                                                  ]
+[                I                                                              ]
 ✅ pass: every

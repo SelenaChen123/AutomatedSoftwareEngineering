@@ -78,6 +78,8 @@ def main(help, funs):
                 for k, v in saved.items():
                     globals.the[k] = v
 
+                globals.seed = globals.the["seed"]
+
                 if funs[what]() == False:
                     fails += 1
                     print("❌ fail: " + what)
