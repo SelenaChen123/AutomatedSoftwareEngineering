@@ -1,3 +1,4 @@
+from functools import cmp_to_key
 import math
 
 import globals
@@ -99,7 +100,7 @@ def norm(num, n):
     return n if n == "?" else (n - num["lo"]) / (num["hi"] - num["lo"] + 1 / math.inf)
 
 
-def value(has, nB, nR, sGoal=True):
+def value(has, nB=1, nR=1, sGoal=True):
     """
     Returns the score of a distribution of symbols.
 
@@ -142,30 +143,36 @@ def dist(data, t1, t2, cols={}):
         float: Distance between t1 and t2.
     """
 
-    def dist1(col, x, y):
-        if x == "?" and y == "?":
-            return 1
-        elif "isSym" in col:
+    def dist(col, x, y):
+        def sym(x, y):
             return 0 if x == y else 1
-        else:
+
+        def num(x, y):
             x = norm(col, x)
             y = norm(col, y)
 
             if x == "?":
                 x = 1
+
             if y == "?":
                 y = 1
 
             return abs(x - y)
 
-    d = 0
-    n = 1 / math.inf
+        def dist1(col, x, y):
+            if x == "?" and y == "?":
+                return 1
+            elif "isSym" in col:
+                sym(x, y)
+            else:
+                num(norm(col, x), norm(col, y))
 
-    for col in cols or data["cols"]["x"]:
-        n += 1
-        d += dist1(col, t1[col["at"]], t2[col["at"]]) ** globals.the["p"]
+        d = 0
 
-    return (d / n) ** (1 / globals.the["p"])
+        for col in cols or data["cols"]["x"]:
+            d += dist1(col, t1[col["at"]], t2[col["at"]]) ** globals.Is["p"]
+
+        return (d / len(cols)) ** (1 / globals.Is["p"])
 
 
 def better(data, row1, row2):
@@ -195,4 +202,9 @@ def better(data, row1, row2):
 
 
 def betters(data, n):
-    return "NOT YET IMPLEMENTED"
+    def function(r1, r2):
+        return better(data, r1, r2)
+
+    tmp = sorted(data["rows"], key=cmp_to_key(function))
+
+    return tmp[:n], tmp[n:] if n else tmp

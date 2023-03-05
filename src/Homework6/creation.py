@@ -1,6 +1,9 @@
 import math
 import re
 
+import update
+import utils
+
 
 def COL(n, s):
     """
@@ -100,12 +103,43 @@ def RANGE(at, txt, lo=0, hi=1):
 
 
 def RULE(ranges, maxSize):
-    return "NOT YET IMPLEMENTED"
+    t = {}
+
+    for range in ranges:
+        if not range["txt"] in t:
+            t[range["txt"]] = []
+
+        t[range["txt"]].append(
+            {"lo": range["lo"], "hi": range["hi"], "at": range["at"]})
+
+    return prune(t, maxSize)
 
 
 def prune(rule, maxSize):
-    return "NOT YET IMPLEMENTED"
+    n = 0
+
+    for txt, ranges in rule.items():
+        n += 1
+
+        if len(ranges) == maxSize[txt]:
+            n += 1
+            rule[txt] = None
+
+    return rule if n > 0 else None
 
 
-def DATA(src, rows, data, add):
-    return "NOT YET IMPLEMENTED"
+def DATA(src, rows=[]):
+    data = {"rows": [], "cols": None}
+
+    def function(t):
+        update.row(data, t)
+
+    if type(src) == str:
+        utils.csv(src, function)
+    else:
+        data["cols"] = COLS(src["cols"]["names"])
+
+    for row in rows:
+        function(row)
+
+    return data

@@ -37,37 +37,34 @@ def add(col, x, n=1):
         n (int, optional): Threshold for any random item to be replaced by x if the max is reached. Defaults to 1.
     """
 
+    def sym(t):
+        if x in t:
+            t[x] = n + t[x]
+        else:
+            t[x] = n
+
+        if t[x] > col["most"]:
+            col["most"] = t[x]
+            col["mode"] = x
+
+    def num(t):
+        col["lo"] = min(x, col["lo"])
+        col["hi"] = max(x, col["hi"])
+
+        if len(t) < globals.Is["Max"]:
+            col["ok"] = False
+            t.append(x)
+        elif utils.rand() < globals.Is["Max"] / col["n"]:
+            col["ok"] = False
+            t[utils.rint(1, len(t))] = x
+
     if x != "?":
         col["n"] += n
 
         if "isSym" in col:
-            if x in col["has"]:
-                col["has"][x] = n + col["has"][x]
-            else:
-                col["has"][x] = n
-
-            if col["has"][x] > col["most"]:
-                col["most"] = col["has"][x]
-                col["mode"] = x
+            sym(col["has"])
         else:
-            col["lo"] = min(x, col["lo"])
-            col["hi"] = max(x, col["hi"])
-
-            if len(col["has"]) < globals.the["Max"]:
-                pos = len(col["has"]) + 1
-            else:
-                if utils.rand() < globals.the["Max"] / col["n"]:
-                    pos = utils.rint(1, len(col["has"]))
-                else:
-                    pos = -1
-
-            if pos > -1:
-                if len(col["has"]) >= pos:
-                    col["has"][pos - 1] = x
-                else:
-                    col["has"].append(x)
-
-                col["ok"] = False
+            num(col["has"])
 
 
 def adds(col, t=[]):

@@ -4,6 +4,7 @@ import discretization
 import globals
 import optimization
 import query
+import sets
 import update
 import utils
 
@@ -34,9 +35,9 @@ def eg_Is():
         dict: Dictionary containing the global values.
     """
 
-    print(str(globals.the))
+    print(str(globals.Is))
 
-    return globals.the
+    return globals.Is
 
 
 def eg_rand():
@@ -65,7 +66,7 @@ def eg_some():
     Example testing some().
     """
 
-    globals.the["Max"] = 32
+    globals.Is["Max"] = 32
     num1 = creation.NUM()
 
     for i in range(10000):
@@ -127,17 +128,17 @@ def eg_csv():
         global n
         n += len(t)
 
-    utils.csv(globals.the["file"], f)
+    utils.csv(globals.Is["file"], f)
 
     return 3192 == n
 
 
 def eg_data():
     """
-    Example testing read().
+    Example testing DATA().
     """
 
-    data = creation.read(globals.the["file"])
+    data = creation.DATA(globals.Is["file"])
     col = data["cols"]["x"][0]
 
     print(col["lo"], col["hi"], query.mid(col), query.div(col))
@@ -146,11 +147,11 @@ def eg_data():
 
 def eg_clone():
     """
-    Example testing clone().
+    Example testing replicating DATA().
     """
 
-    data1 = creation.read(globals.the["file"])
-    data2 = creation.clone(data1, data1["rows"])
+    data1 = creation.DATA(globals.Is["file"])
+    data2 = creation.DATA(data1, data1["rows"])
 
     print(query.stats(data1))
     print(query.stats(data2))
@@ -196,7 +197,7 @@ def eg_dist():
     Example testing dist().
     """
 
-    data = creation.read(globals.the["file"])
+    data = creation.DATA(globals.Is["file"])
     num = creation.NUM()
 
     for row in data["rows"]:
@@ -211,13 +212,13 @@ def eg_half():
     Example testing half().
     """
 
-    data = creation.read(globals.the["file"])
+    data = creation.DATA(globals.Is["file"])
     left, right, _, _, _ = clustering.half(data)
 
     print(len(left), len(right))
 
-    l = creation.clone(data, left)
-    r = creation.clone(data, right)
+    l = creation.DATA(data, left)
+    r = creation.DATA(data, right)
 
     print("l", query.stats(l))
     print("r", query.stats(r))
@@ -228,7 +229,7 @@ def eg_tree():
     Example testing tree().
     """
 
-    clustering.showTree(clustering.tree(creation.read(globals.the["file"])))
+    clustering.showTree(clustering.tree(creation.DATA(globals.Is["file"])))
 
 
 def eg_sway():
@@ -236,8 +237,8 @@ def eg_sway():
     Example testing sway().
     """
 
-    data = creation.read(globals.the["file"])
-    best, rest = optimization.sway(data)
+    data = creation.DATA(globals.Is["file"])
+    best, rest, _ = optimization.sway(data)
 
     print("\nall ", query.stats(data))
     print("    ", query.stats(data, query.div))
@@ -255,8 +256,8 @@ def eg_bins():
     """
 
     b4 = ""
-    data = creation.read(globals.the["file"])
-    best, rest = optimization.sway(data)
+    data = creation.DATA(globals.Is["file"])
+    best, rest, _ = optimization.sway(data)
 
     print("all", "", "", "", {"best": len(
         best["rows"]), "rest": len(rest["rows"])})
@@ -273,4 +274,27 @@ def eg_bins():
 
 
 def eg_xpln():
-    return "NOT YET IMPLEMENTED"
+    """
+    Example testing xpln().
+    """
+
+    data = creation.DATA(globals.Is["file"])
+    best, rest, evals = optimization.sway(data)
+    rule, most = sets.xpln(data, best, rest)
+
+    print("\n-----------\nexplain=", sets.showRule(rule))
+
+    data1 = creation.DATA(data, sets.selects(rule, data["rows"]))
+
+    print("all               ", query.stats(
+        data), query.stats(data, query.div))
+    print("sway with {} evals".format(evals),
+          query.stats(best), query.stats(best, query.div))
+    print("xpln on   {} evals".format(evals), query.stats(
+        data1), query.stats(data1, query.div))
+
+    top, _ = query.betters(data, len(best["rows"]))
+    top = creation.DATA(top)
+
+    print("sort with {} evals".format(len(data["rows"])), query.stats(
+        top), query.stats(top, query.div))

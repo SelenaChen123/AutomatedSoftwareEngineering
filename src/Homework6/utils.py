@@ -167,7 +167,7 @@ def cliffsDelta(ns1, ns2):
             if x < y:
                 lt += 1
 
-    return abs(lt - gt) / n > globals.the["cliffs"]
+    return abs(lt - gt) / n > globals.Is["cliffs"]
 
 
 def diffs(nums1, nums2):

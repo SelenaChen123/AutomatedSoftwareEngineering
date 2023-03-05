@@ -2,7 +2,7 @@
 Contains the help text, a dictionary of the global option values from the command line, and a global random seed value.
 """
 
-the = {}
+Is = {}
 help = """
 xpln.py : multi-goal semi-supervised explanation
 Copyright (c) 2023 MIT

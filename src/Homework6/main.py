@@ -69,18 +69,18 @@ def main(help, funs):
     saved = {}
 
     for k, v in cli(settings(help)).items():
-        globals.the[k] = v
+        globals.Is[k] = v
         saved[k] = v
 
-    if globals.the["help"]:
+    if globals.Is["help"]:
         print(help)
     else:
         for pair in funs.keys():
-            if globals.the["go"] == "all" or pair == globals.the["go"]:
+            if globals.Is["go"] == "all" or pair == globals.Is["go"]:
                 for k, v in saved.items():
-                    globals.the[k] = v
+                    globals.Is[k] = v
 
-                globals.seed = globals.the["seed"]
+                globals.seed = globals.Is["seed"]
 
                 if funs[pair]() == False:
                     n += 1
