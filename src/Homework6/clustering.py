@@ -64,7 +64,7 @@ def tree(data, rows=[], cols=None, above=[], here={}):
     """
 
     rows = rows or data["rows"]
-    here = {"data": creation.clone(data, rows)}
+    here = {"data": creation.DATA(data, rows)}
 
     if len(rows) >= 2 * len(data["rows"]) ** globals.Is["min"]:
         left, right, A, B, _, _ = half(data, rows, cols, above)

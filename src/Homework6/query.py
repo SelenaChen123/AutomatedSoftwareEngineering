@@ -143,36 +143,34 @@ def dist(data, t1, t2, cols={}):
         float: Distance between t1 and t2.
     """
 
-    def dist(col, x, y):
-        def sym(x, y):
-            return 0 if x == y else 1
+    def sym(x, y):
+        return 0 if x == y else 1
 
-        def num(x, y):
-            x = norm(col, x)
-            y = norm(col, y)
+    def num(x, y):
+        if x == "?":
+            x = 1
 
-            if x == "?":
-                x = 1
+        if y == "?":
+            y = 1
 
-            if y == "?":
-                y = 1
+        return abs(x - y)
 
-            return abs(x - y)
+    def dist1(col, x, y):
+        if x == "?" and y == "?":
+            return 1
+        elif "isSym" in col:
+            return sym(x, y)
+        else:
+            return num(norm(col, x), norm(col, y))
 
-        def dist1(col, x, y):
-            if x == "?" and y == "?":
-                return 1
-            elif "isSym" in col:
-                sym(x, y)
-            else:
-                num(norm(col, x), norm(col, y))
+    d = 0
+    n = 1 / math.inf
 
-        d = 0
+    for col in cols or data["cols"]["x"]:
+        n += 1
+        d += dist1(col, t1[col["at"]], t2[col["at"]]) ** globals.Is["p"]
 
-        for col in cols or data["cols"]["x"]:
-            d += dist1(col, t1[col["at"]], t2[col["at"]]) ** globals.Is["p"]
-
-        return (d / len(cols)) ** (1 / globals.Is["p"])
+    return (d / n) ** (1 / globals.Is["p"])
 
 
 def better(data, row1, row2):

@@ -32,6 +32,6 @@ def sway(data):
 
             return worker(l, worse, evals + evals0, A)
 
-    best, rest, evals = worker(data["rows"], {}, 0)
+    best, rest, evals = worker(data["rows"], [], 0)
 
     return creation.DATA(data, best), creation.DATA(data, rest), evals

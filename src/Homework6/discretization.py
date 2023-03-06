@@ -18,10 +18,11 @@ def bins(cols, rowss):
     Returns:
         list: RANGES that map the rows in rowss to a small number of bins.
     """
+    
 
-    def with1Col(col, n, ranges):
+    def with1Col(col):
         n, ranges = withAllRows(col)
-        ranges.sort()
+        ranges = sorted(ranges.values(), key=lambda x: x["lo"])
 
         return ranges if "isSym" in col else merges(ranges, n / globals.Is["bins"], globals.Is["d"] * query.div(col))
 
@@ -38,7 +39,9 @@ def bins(cols, rowss):
 
                 update.extend(ranges[k], x, y)
 
+        global n
         n = 0
+        global ranges
         ranges = {}
 
         for y, rows in rowss.items():
@@ -61,6 +64,7 @@ def bin(col, x):
     Returns:
         float: Bin value that the row is mapped to.
     """
+    
 
     if x == "?" or "isSym" in col:
         return x
@@ -71,6 +75,8 @@ def bin(col, x):
 
 
 def merges(ranges0, nSmall, nFar):
+    
+
     def noGaps(t):
         for i in range(1, len(t)):
             t[i]["lo"] = t[i - 1]["hi"]
@@ -104,12 +110,18 @@ def merges(ranges0, nSmall, nFar):
 
 
 def merged(col1, col2, nSmall, nFar):
+    
     new = merge(col1, col2)
+    
+    
+    
+    
 
     return new if nSmall and col1["n"] < nSmall or col2["n"] < nSmall or nFar and not "isSym" in col1 and abs(query.mid(col1) - query.mid(col2)) < nFar or query.div(new) <= (query.div(col1) * col1["n"] + query.div(col2) * col2["n"]) / new["n"] else None
 
 
 def merge(col1, col2):
+    
     """
     Merges col1 and col2.
 

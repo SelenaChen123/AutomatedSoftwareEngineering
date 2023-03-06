@@ -56,7 +56,7 @@ def add(col, x, n=1):
             t.append(x)
         elif utils.rand() < globals.Is["Max"] / col["n"]:
             col["ok"] = False
-            t[utils.rint(1, len(t))] = x
+            t[utils.rint(1, len(t)) - 1] = x
 
     if x != "?":
         col["n"] += n

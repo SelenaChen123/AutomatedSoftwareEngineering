@@ -213,7 +213,7 @@ def eg_half():
     """
 
     data = creation.DATA(globals.Is["file"])
-    left, right, _, _, _ = clustering.half(data)
+    left, right, _, _, _, _ = clustering.half(data)
 
     print(len(left), len(right))
 
