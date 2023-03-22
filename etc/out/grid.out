@@ -93,17 +93,17 @@ H IntelligentAgents
 I InformationHighway
 J BroadbandNetworks
 
-[  E                           H        ]
-[                                       ]
-[                                       ]
-[                                       ]
-[                                       ]
-[        D                              ]
-[                    G                  ]
-[                                       ]
-[        F                              ]
-[    A C     J                          ]
-[                I                      ]
+[ E             H    ]
+[                    ]
+[                    ]
+[                    ]
+[                    ]
+[    D               ]
+[          G         ]
+[                    ]
+[    F               ]
+[  AC  J             ]
+[        I           ]
 ✅ pass: position
 74
 |.. 48
@@ -151,15 +151,15 @@ H IntelligentAgents
 I InformationHighway
 J BroadbandNetworks
 
-[  E                           H                                                ]
-[                                                                               ]
-[                                                                               ]
-[                                                                               ]
-[                                                                               ]
-[        D                                                                      ]
-[                    G                                                          ]
-[                                                                               ]
-[        F                                                                      ]
-[    A C     J                                                                  ]
-[                I                                                              ]
+[ E             H                        ]
+[                                        ]
+[                                        ]
+[                                        ]
+[                                        ]
+[    D                                   ]
+[          G                             ]
+[                                        ]
+[    F                                   ]
+[  AC  J                                 ]
+[        I                               ]
 ✅ pass: every

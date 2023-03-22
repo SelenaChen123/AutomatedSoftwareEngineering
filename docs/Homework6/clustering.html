@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
 <meta name="generator" content="pdoc 0.10.0" />
-<title>Homework5.clustering API documentation</title>
+<title>Homework6.clustering API documentation</title>
 <meta name="description" content="" />
 <link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
 <link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
@@ -19,7 +19,7 @@
 <main>
 <article id="content">
 <header>
-<h1 class="title">Module <code>Homework5.clustering</code></h1>
+<h1 class="title">Module <code>Homework6.clustering</code></h1>
 </header>
 <section id="section-intro">
 <details class="source">
@@ -50,6 +50,7 @@ def half(data, rows=[], cols={}, above=[]):
         list: Single chosen row to calculate the distance from.
         row: Single chosen row around A to calculate the distance from.
         float: Distance from A to B.
+        int: 1 if child splits reuse a parent pole and above exists, 2 otherwise.
     &#34;&#34;&#34;
 
     left = []
@@ -62,11 +63,11 @@ def half(data, rows=[], cols={}, above=[]):
         return {&#34;row&#34;: r, &#34;x&#34;: cos(query.dist(data, r, A, cols), query.dist(data, r, B, cols), c)}
 
     rows = rows or data[&#34;rows&#34;]
-    some = utils.many(rows, globals.the[&#34;Halves&#34;])
-    A = above if (globals.the[&#34;Reuse&#34;] and above) else utils.any(some)
+    some = utils.many(rows, globals.Is[&#34;Halves&#34;])
+    A = above if (globals.Is[&#34;Reuse&#34;] and above) else utils.any(some)
     tmp = sorted(list(map(lambda r: {&#34;row&#34;: r, &#34;d&#34;: query.dist(
         data, r, A, cols)}, some)), key=lambda x: x[&#34;d&#34;])
-    far = tmp[math.floor((len(tmp) - 1) * globals.the[&#34;Far&#34;])]
+    far = tmp[math.floor((len(tmp) - 1) * globals.Is[&#34;Far&#34;])]
     B = far[&#34;row&#34;]
     c = far[&#34;d&#34;]
 
@@ -74,7 +75,7 @@ def half(data, rows=[], cols={}, above=[]):
         left.append(two[&#34;row&#34;]) if n &lt;= len(rows) / \
             2 - 1 else right.append(two[&#34;row&#34;])
 
-    return left, right, A, B, c
+    return left, right, A, B, c, (1 if (globals.Is[&#34;Reuse&#34;] and above) else 2)
 
 
 def tree(data, rows=[], cols={}, above=[]):
@@ -92,10 +93,10 @@ def tree(data, rows=[], cols={}, above=[]):
     &#34;&#34;&#34;
 
     rows = rows or data[&#34;rows&#34;]
-    here = {&#34;data&#34;: creation.clone(data, rows)}
+    here = {&#34;data&#34;: creation.DATA(data, rows)}
 
-    if len(rows) &gt;= 2 * len(data[&#34;rows&#34;]) ** globals.the[&#34;min&#34;]:
-        left, right, A, B, _ = half(data, rows, cols, above)
+    if len(rows) &gt;= 2 * len(data[&#34;rows&#34;]) ** globals.Is[&#34;min&#34;]:
+        left, right, A, B, _, _ = half(data, rows, cols, above)
         here[&#34;left&#34;] = tree(data, left, cols, A)
         here[&#34;right&#34;] = tree(data, right, cols, B)
 
@@ -130,7 +131,7 @@ def showTree(tree, lvl=0):
 <section>
 <h2 class="section-title" id="header-functions">Functions</h2>
 <dl>
-<dt id="Homework5.clustering.half"><code class="name flex">
+<dt id="Homework6.clustering.half"><code class="name flex">
 <span>def <span class="ident">half</span></span>(<span>data, rows=[], cols={}, above=[])</span>
 </code></dt>
 <dd>
@@ -158,6 +159,8 @@ def showTree(tree, lvl=0):
 <dd>Single chosen row around A to calculate the distance from.</dd>
 <dt><code>float</code></dt>
 <dd>Distance from A to B.</dd>
+<dt><code>int</code></dt>
+<dd>1 if child splits reuse a parent pole and above exists, 2 otherwise.</dd>
 </dl></div>
 <details class="source">
 <summary>
@@ -179,6 +182,7 @@ def showTree(tree, lvl=0):
         list: Single chosen row to calculate the distance from.
         row: Single chosen row around A to calculate the distance from.
         float: Distance from A to B.
+        int: 1 if child splits reuse a parent pole and above exists, 2 otherwise.
     &#34;&#34;&#34;
 
     left = []
@@ -191,11 +195,11 @@ def showTree(tree, lvl=0):
         return {&#34;row&#34;: r, &#34;x&#34;: cos(query.dist(data, r, A, cols), query.dist(data, r, B, cols), c)}
 
     rows = rows or data[&#34;rows&#34;]
-    some = utils.many(rows, globals.the[&#34;Halves&#34;])
-    A = above if (globals.the[&#34;Reuse&#34;] and above) else utils.any(some)
+    some = utils.many(rows, globals.Is[&#34;Halves&#34;])
+    A = above if (globals.Is[&#34;Reuse&#34;] and above) else utils.any(some)
     tmp = sorted(list(map(lambda r: {&#34;row&#34;: r, &#34;d&#34;: query.dist(
         data, r, A, cols)}, some)), key=lambda x: x[&#34;d&#34;])
-    far = tmp[math.floor((len(tmp) - 1) * globals.the[&#34;Far&#34;])]
+    far = tmp[math.floor((len(tmp) - 1) * globals.Is[&#34;Far&#34;])]
     B = far[&#34;row&#34;]
     c = far[&#34;d&#34;]
 
@@ -203,10 +207,10 @@ def showTree(tree, lvl=0):
         left.append(two[&#34;row&#34;]) if n &lt;= len(rows) / \
             2 - 1 else right.append(two[&#34;row&#34;])
 
-    return left, right, A, B, c</code></pre>
+    return left, right, A, B, c, (1 if (globals.Is[&#34;Reuse&#34;] and above) else 2)</code></pre>
 </details>
 </dd>
-<dt id="Homework5.clustering.showTree"><code class="name flex">
+<dt id="Homework6.clustering.showTree"><code class="name flex">
 <span>def <span class="ident">showTree</span></span>(<span>tree, lvl=0)</span>
 </code></dt>
 <dd>
@@ -243,7 +247,7 @@ def showTree(tree, lvl=0):
             showTree(tree[&#34;right&#34;], lvl + 1)</code></pre>
 </details>
 </dd>
-<dt id="Homework5.clustering.tree"><code class="name flex">
+<dt id="Homework6.clustering.tree"><code class="name flex">
 <span>def <span class="ident">tree</span></span>(<span>data, rows=[], cols={}, above=[])</span>
 </code></dt>
 <dd>
@@ -283,10 +287,10 @@ def showTree(tree, lvl=0):
     &#34;&#34;&#34;
 
     rows = rows or data[&#34;rows&#34;]
-    here = {&#34;data&#34;: creation.clone(data, rows)}
+    here = {&#34;data&#34;: creation.DATA(data, rows)}
 
-    if len(rows) &gt;= 2 * len(data[&#34;rows&#34;]) ** globals.the[&#34;min&#34;]:
-        left, right, A, B, _ = half(data, rows, cols, above)
+    if len(rows) &gt;= 2 * len(data[&#34;rows&#34;]) ** globals.Is[&#34;min&#34;]:
+        left, right, A, B, _, _ = half(data, rows, cols, above)
         here[&#34;left&#34;] = tree(data, left, cols, A)
         here[&#34;right&#34;] = tree(data, right, cols, B)
 
@@ -306,14 +310,14 @@ def showTree(tree, lvl=0):
 <ul id="index">
 <li><h3>Super-module</h3>
 <ul>
-<li><code><a title="Homework5" href="index.html">Homework5</a></code></li>
+<li><code><a title="Homework6" href="index.html">Homework6</a></code></li>
 </ul>
 </li>
 <li><h3><a href="#header-functions">Functions</a></h3>
 <ul class="">
-<li><code><a title="Homework5.clustering.half" href="#Homework5.clustering.half">half</a></code></li>
-<li><code><a title="Homework5.clustering.showTree" href="#Homework5.clustering.showTree">showTree</a></code></li>
-<li><code><a title="Homework5.clustering.tree" href="#Homework5.clustering.tree">tree</a></code></li>
+<li><code><a title="Homework6.clustering.half" href="#Homework6.clustering.half">half</a></code></li>
+<li><code><a title="Homework6.clustering.showTree" href="#Homework6.clustering.showTree">showTree</a></code></li>
+<li><code><a title="Homework6.clustering.tree" href="#Homework6.clustering.tree">tree</a></code></li>
 </ul>
 </li>
 </ul>

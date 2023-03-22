@@ -109,6 +109,9 @@ class DATA:
             row1 (ROW): ROW to calculate the distance of the other ROWs from.
             rows (list, optional): List of ROWs to be sorted. Defaults to DATA.rows.
             cols (COLS, optional): Factory that manages rows. Defaults to None.
+
+        Returns:
+            list: List of rows sorted by their distance to row1.
         """
 
         def function(row2):

@@ -25,6 +25,8 @@ Coursework for NCSU's Spring 2023 CSC 591 021 course, based on the instructor's 
 │       └── ...
 │   └── Homework5
 │       └── ...
+│   └── Homework6
+│       └── ...
 ├── etc
 │   ├── data                # Input data files for the scripts
 │   |   └── ...
@@ -40,6 +42,8 @@ Coursework for NCSU's Spring 2023 CSC 591 021 course, based on the instructor's 
 │   └── Homework4
 │       └── ...
 │   └── Homework5
+│       └── ...
+│   └── Homework6
 │       └── ...
 ├── .gitignore              # List of files to never commit
 ├── CITATION.cff            # Bibliography information
@@ -81,6 +85,14 @@ Coursework for NCSU's Spring 2023 CSC 591 021 course, based on the instructor's 
 5. To run a specific test, run:
   
    `python main.py -g [TEST]`
+
+## Documentation
+
+Documentation can be found at
+
+https://selenachen123.github.io/AutomatedSoftwareEngineering`/[folder]`
+
+where `folder` is the name of the folder containing the scripts.
 
 ## Contributors
 

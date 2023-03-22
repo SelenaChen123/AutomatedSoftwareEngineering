@@ -6,14 +6,14 @@ import query
 import utils
 
 
-def half(data, rows=[], cols=None, above=[]):
+def half(data, rows=[], cols={}, above=[]):
     """
     Divides data using 2 far points.
 
     Args:
         data (dict): Data to be halved.
         rows (list, optional): List of rows to be halved. Defaults to data["rows"].
-        cols (dict, optional): Factory that manages rows. Defaults to None.
+        cols (dict, optional): Factory that manages rows. Defaults to {}.
         above (list, optional): Single chosen row. Defaults to [].
 
     Returns:
@@ -49,7 +49,7 @@ def half(data, rows=[], cols=None, above=[]):
     return left, right, A, B, c
 
 
-def tree(data, rows=[], cols=None, above=[]):
+def tree(data, rows=[], cols={}, above=[]):
     """
     Recursively halves rows.
 

@@ -109,7 +109,7 @@ class DATA:
             cols (COLS, optional): Factory that manages rows. Defaults to None.
 
         Returns:
-            __type__: __description__
+            list: List of rows sorted by their distance to row1.
         """
 
         def function(row2):

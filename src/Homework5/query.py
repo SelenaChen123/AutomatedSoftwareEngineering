@@ -59,7 +59,7 @@ def div(col):
         return (utils.per(has(col), .9) - utils.per(has(col), .1)) / 2.58
 
 
-def stats(data, fun=None, cols=None, nPlaces=2):
+def stats(data, fun=None, cols=[], nPlaces=2):
     """
     Reports the mid or div of cols.
 
@@ -175,7 +175,7 @@ def better(data, row1, row2):
     Args:
         data (dict): Dictionary of data to be used to check whether or not row1 dominates row2.
         row1 (list): Row to check if it dominates the second row.
-        row2 (_type_): Row to check if it is dominated by the first row.
+        row2 (list): Row to check if it is dominated by the first row.
 
     Returns:
         bool: True if s1 divided by the length of ys < s2 divided by the length of ys, False otherwise.

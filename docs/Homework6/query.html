@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
 <meta name="generator" content="pdoc 0.10.0" />
-<title>Homework5.query API documentation</title>
+<title>Homework6.query API documentation</title>
 <meta name="description" content="" />
 <link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
 <link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
@@ -19,14 +19,15 @@
 <main>
 <article id="content">
 <header>
-<h1 class="title">Module <code>Homework5.query</code></h1>
+<h1 class="title">Module <code>Homework6.query</code></h1>
 </header>
 <section id="section-intro">
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">import math
+<pre><code class="python">from functools import cmp_to_key
+import math
 
 import globals
 import utils
@@ -127,7 +128,7 @@ def norm(num, n):
     return n if n == &#34;?&#34; else (n - num[&#34;lo&#34;]) / (num[&#34;hi&#34;] - num[&#34;lo&#34;] + 1 / math.inf)
 
 
-def value(has, nB, nR, sGoal=True):
+def value(has, nB=1, nR=1, sGoal=True):
     &#34;&#34;&#34;
     Returns the score of a distribution of symbols.
 
@@ -170,30 +171,34 @@ def dist(data, t1, t2, cols={}):
         float: Distance between t1 and t2.
     &#34;&#34;&#34;
 
+    def sym(x, y):
+        return 0 if x == y else 1
+
+    def num(x, y):
+        if x == &#34;?&#34;:
+            x = 1
+
+        if y == &#34;?&#34;:
+            y = 1
+
+        return abs(x - y)
+
     def dist1(col, x, y):
         if x == &#34;?&#34; and y == &#34;?&#34;:
             return 1
         elif &#34;isSym&#34; in col:
-            return 0 if x == y else 1
+            return sym(x, y)
         else:
-            x = norm(col, x)
-            y = norm(col, y)
-
-            if x == &#34;?&#34;:
-                x = 1
-            if y == &#34;?&#34;:
-                y = 1
-
-            return abs(x - y)
+            return num(norm(col, x), norm(col, y))
 
     d = 0
     n = 1 / math.inf
 
     for col in cols or data[&#34;cols&#34;][&#34;x&#34;]:
         n += 1
-        d += dist1(col, t1[col[&#34;at&#34;]], t2[col[&#34;at&#34;]]) ** globals.the[&#34;p&#34;]
+        d += dist1(col, t1[col[&#34;at&#34;]], t2[col[&#34;at&#34;]]) ** globals.Is[&#34;p&#34;]
 
-    return (d / n) ** (1 / globals.the[&#34;p&#34;])
+    return (d / n) ** (1 / globals.Is[&#34;p&#34;])
 
 
 def better(data, row1, row2):
@@ -219,7 +224,27 @@ def better(data, row1, row2):
         s1 -= math.exp(col[&#34;w&#34;] * (x - y) / len(ys))
         s2 -= math.exp(col[&#34;w&#34;] * (y - x) / len(ys))
 
-    return s1 / len(ys) &lt; s2 / len(ys)</code></pre>
+    return s1 / len(ys) &lt; s2 / len(ys)
+
+
+def betters(data, n):
+    &#34;&#34;&#34;
+    Returns the best n items from data.
+
+    Args:
+        data (dict): Dictionary of data to return the best n items from.
+        n (int): Number of items to return from data.
+
+    Returns:
+        list: List of the best n items from data.
+    &#34;&#34;&#34;
+
+    def function(r1, r2):
+        return -better(data, r1, r2)
+
+    tmp = sorted(data[&#34;rows&#34;], key=cmp_to_key(function))
+
+    return tmp[1:n], tmp[n + 1:] if n else tmp</code></pre>
 </details>
 </section>
 <section>
@@ -229,7 +254,7 @@ def better(data, row1, row2):
 <section>
 <h2 class="section-title" id="header-functions">Functions</h2>
 <dl>
-<dt id="Homework5.query.better"><code class="name flex">
+<dt id="Homework6.query.better"><code class="name flex">
 <span>def <span class="ident">better</span></span>(<span>data, row1, row2)</span>
 </code></dt>
 <dd>
@@ -278,7 +303,48 @@ def better(data, row1, row2):
     return s1 / len(ys) &lt; s2 / len(ys)</code></pre>
 </details>
 </dd>
-<dt id="Homework5.query.dist"><code class="name flex">
+<dt id="Homework6.query.betters"><code class="name flex">
+<span>def <span class="ident">betters</span></span>(<span>data, n)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns the best n items from data.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>data</code></strong> :&ensp;<code>dict</code></dt>
+<dd>Dictionary of data to return the best n items from.</dd>
+<dt><strong><code>n</code></strong> :&ensp;<code>int</code></dt>
+<dd>Number of items to return from data.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>list</code></dt>
+<dd>List of the best n items from data.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def betters(data, n):
+    &#34;&#34;&#34;
+    Returns the best n items from data.
+
+    Args:
+        data (dict): Dictionary of data to return the best n items from.
+        n (int): Number of items to return from data.
+
+    Returns:
+        list: List of the best n items from data.
+    &#34;&#34;&#34;
+
+    def function(r1, r2):
+        return -better(data, r1, r2)
+
+    tmp = sorted(data[&#34;rows&#34;], key=cmp_to_key(function))
+
+    return tmp[1:n], tmp[n + 1:] if n else tmp</code></pre>
+</details>
+</dd>
+<dt id="Homework6.query.dist"><code class="name flex">
 <span>def <span class="ident">dist</span></span>(<span>data, t1, t2, cols={})</span>
 </code></dt>
 <dd>
@@ -317,33 +383,37 @@ def better(data, row1, row2):
         float: Distance between t1 and t2.
     &#34;&#34;&#34;
 
+    def sym(x, y):
+        return 0 if x == y else 1
+
+    def num(x, y):
+        if x == &#34;?&#34;:
+            x = 1
+
+        if y == &#34;?&#34;:
+            y = 1
+
+        return abs(x - y)
+
     def dist1(col, x, y):
         if x == &#34;?&#34; and y == &#34;?&#34;:
             return 1
         elif &#34;isSym&#34; in col:
-            return 0 if x == y else 1
+            return sym(x, y)
         else:
-            x = norm(col, x)
-            y = norm(col, y)
-
-            if x == &#34;?&#34;:
-                x = 1
-            if y == &#34;?&#34;:
-                y = 1
-
-            return abs(x - y)
+            return num(norm(col, x), norm(col, y))
 
     d = 0
     n = 1 / math.inf
 
     for col in cols or data[&#34;cols&#34;][&#34;x&#34;]:
         n += 1
-        d += dist1(col, t1[col[&#34;at&#34;]], t2[col[&#34;at&#34;]]) ** globals.the[&#34;p&#34;]
+        d += dist1(col, t1[col[&#34;at&#34;]], t2[col[&#34;at&#34;]]) ** globals.Is[&#34;p&#34;]
 
-    return (d / n) ** (1 / globals.the[&#34;p&#34;])</code></pre>
+    return (d / n) ** (1 / globals.Is[&#34;p&#34;])</code></pre>
 </details>
 </dd>
-<dt id="Homework5.query.div"><code class="name flex">
+<dt id="Homework6.query.div"><code class="name flex">
 <span>def <span class="ident">div</span></span>(<span>col)</span>
 </code></dt>
 <dd>
@@ -381,7 +451,7 @@ def better(data, row1, row2):
         return (utils.per(has(col), .9) - utils.per(has(col), .1)) / 2.58</code></pre>
 </details>
 </dd>
-<dt id="Homework5.query.has"><code class="name flex">
+<dt id="Homework6.query.has"><code class="name flex">
 <span>def <span class="ident">has</span></span>(<span>col)</span>
 </code></dt>
 <dd>
@@ -419,7 +489,7 @@ def better(data, row1, row2):
     return col[&#34;has&#34;]</code></pre>
 </details>
 </dd>
-<dt id="Homework5.query.mid"><code class="name flex">
+<dt id="Homework6.query.mid"><code class="name flex">
 <span>def <span class="ident">mid</span></span>(<span>col)</span>
 </code></dt>
 <dd>
@@ -449,7 +519,7 @@ def better(data, row1, row2):
     return col[&#34;mode&#34;] if &#34;isSym&#34; in col else utils.per(has(col), .5)</code></pre>
 </details>
 </dd>
-<dt id="Homework5.query.norm"><code class="name flex">
+<dt id="Homework6.query.norm"><code class="name flex">
 <span>def <span class="ident">norm</span></span>(<span>num, n)</span>
 </code></dt>
 <dd>
@@ -484,7 +554,7 @@ def better(data, row1, row2):
     return n if n == &#34;?&#34; else (n - num[&#34;lo&#34;]) / (num[&#34;hi&#34;] - num[&#34;lo&#34;] + 1 / math.inf)</code></pre>
 </details>
 </dd>
-<dt id="Homework5.query.stats"><code class="name flex">
+<dt id="Homework6.query.stats"><code class="name flex">
 <span>def <span class="ident">stats</span></span>(<span>data, fun=None, cols=[], nPlaces=2)</span>
 </code></dt>
 <dd>
@@ -534,8 +604,8 @@ def better(data, row1, row2):
     return dict(sorted(temp.items()))</code></pre>
 </details>
 </dd>
-<dt id="Homework5.query.value"><code class="name flex">
-<span>def <span class="ident">value</span></span>(<span>has, nB, nR, sGoal=True)</span>
+<dt id="Homework6.query.value"><code class="name flex">
+<span>def <span class="ident">value</span></span>(<span>has, nB=1, nR=1, sGoal=True)</span>
 </code></dt>
 <dd>
 <div class="desc"><p>Returns the score of a distribution of symbols.</p>
@@ -559,7 +629,7 @@ def better(data, row1, row2):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def value(has, nB, nR, sGoal=True):
+<pre><code class="python">def value(has, nB=1, nR=1, sGoal=True):
     &#34;&#34;&#34;
     Returns the score of a distribution of symbols.
 
@@ -601,19 +671,20 @@ def better(data, row1, row2):
 <ul id="index">
 <li><h3>Super-module</h3>
 <ul>
-<li><code><a title="Homework5" href="index.html">Homework5</a></code></li>
+<li><code><a title="Homework6" href="index.html">Homework6</a></code></li>
 </ul>
 </li>
 <li><h3><a href="#header-functions">Functions</a></h3>
 <ul class="two-column">
-<li><code><a title="Homework5.query.better" href="#Homework5.query.better">better</a></code></li>
-<li><code><a title="Homework5.query.dist" href="#Homework5.query.dist">dist</a></code></li>
-<li><code><a title="Homework5.query.div" href="#Homework5.query.div">div</a></code></li>
-<li><code><a title="Homework5.query.has" href="#Homework5.query.has">has</a></code></li>
-<li><code><a title="Homework5.query.mid" href="#Homework5.query.mid">mid</a></code></li>
-<li><code><a title="Homework5.query.norm" href="#Homework5.query.norm">norm</a></code></li>
-<li><code><a title="Homework5.query.stats" href="#Homework5.query.stats">stats</a></code></li>
-<li><code><a title="Homework5.query.value" href="#Homework5.query.value">value</a></code></li>
+<li><code><a title="Homework6.query.better" href="#Homework6.query.better">better</a></code></li>
+<li><code><a title="Homework6.query.betters" href="#Homework6.query.betters">betters</a></code></li>
+<li><code><a title="Homework6.query.dist" href="#Homework6.query.dist">dist</a></code></li>
+<li><code><a title="Homework6.query.div" href="#Homework6.query.div">div</a></code></li>
+<li><code><a title="Homework6.query.has" href="#Homework6.query.has">has</a></code></li>
+<li><code><a title="Homework6.query.mid" href="#Homework6.query.mid">mid</a></code></li>
+<li><code><a title="Homework6.query.norm" href="#Homework6.query.norm">norm</a></code></li>
+<li><code><a title="Homework6.query.stats" href="#Homework6.query.stats">stats</a></code></li>
+<li><code><a title="Homework6.query.value" href="#Homework6.query.value">value</a></code></li>
 </ul>
 </li>
 </ul>

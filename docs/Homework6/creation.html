@@ -1,0 +1,594 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.10.0" />
+<title>Homework6.creation API documentation</title>
+<meta name="description" content="" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>Homework6.creation</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">import math
+import re
+
+import update
+import utils
+
+
+def COL(n, s):
+    &#34;&#34;&#34;
+    Creates a COL that represents either a NUM or a SYM.
+
+    Args:
+        n (int): Column position.
+        s (str): Name.
+
+    Returns:
+        dict: Created COL.
+    &#34;&#34;&#34;
+
+    col = NUM(n, s) if re.search(&#34;^[A-Z]+&#34;, s) else SYM(n, s)
+
+    col[&#34;isIgnored&#34;] = re.search(&#34;X$&#34;, s) != None
+    col[&#34;isKlass&#34;] = re.search(&#34;!$&#34;, s) != None
+    col[&#34;isGoal&#34;] = re.search(&#34;[!+-]$&#34;, s) != None
+
+    return col
+
+
+def NUM(n=0, s=&#34;&#34;):
+    &#34;&#34;&#34;
+    Creates a NUM to summarize a stream of numbers.
+
+    Args:
+        n (int, optional): Column position. Defaults to 0.
+        s (str, optional): Name. Defaults to &#34;&#34;.
+
+    Returns:
+        dict: Created NUM.
+    &#34;&#34;&#34;
+
+    return {&#34;at&#34;: n, &#34;txt&#34;: s, &#34;n&#34;: 0, &#34;hi&#34;: -math.inf, &#34;lo&#34;: math.inf, &#34;ok&#34;: True, &#34;has&#34;: [], &#34;w&#34;: -1 if &#34;-&#34; in s else 1}
+
+
+def SYM(n=0, s=&#34;&#34;):
+    &#34;&#34;&#34;
+    Creates a SYM to summarize a stream of symbols.
+
+    Args:
+        n (int, optional): Column position. Defaults to 0.
+        s (str, optional): Name. Defaults to &#34;&#34;.
+
+    Returns:
+        dict: Created SYM.
+    &#34;&#34;&#34;
+
+    return {&#34;at&#34;: n, &#34;txt&#34;: s, &#34;n&#34;: 0, &#34;mode&#34;: None, &#34;most&#34;: 0, &#34;isSym&#34;: True, &#34;has&#34;: {}}
+
+
+def COLS(ss):
+    &#34;&#34;&#34;
+    Creates a set of COLs.
+
+    Args:
+        ss (list): Names of the columns.
+
+    Returns:
+        dict: Created COLS.
+    &#34;&#34;&#34;
+
+    cols = {&#34;names&#34;: ss, &#34;all&#34;: [], &#34;x&#34;: [], &#34;y&#34;: []}
+
+    for n, s in enumerate(ss):
+        col = COL(n, s)
+        cols[&#34;all&#34;].append(col)
+
+        if not col[&#34;isIgnored&#34;]:
+            if col[&#34;isKlass&#34;]:
+                cols[&#34;klass&#34;] = col
+
+            if col[&#34;isGoal&#34;]:
+                cols[&#34;y&#34;].append(col)
+            else:
+                cols[&#34;x&#34;].append(col)
+
+    return cols
+
+
+def RANGE(at, txt, lo=0, hi=1):
+    &#34;&#34;&#34;
+    Creates a RANGE that tracks the dependent values seen in the range between lo to hi for some independent variable in column position at whose name is txt.
+
+    Args:
+        at (int): Column position.
+        txt (_type_): Column name.
+        lo (int, optional): Lower bound for the range. Defaults to 0.
+        hi (int, optional): Upper bound for the range. Defaults to 1.
+
+    Returns:
+        dict: Created RANGE.
+    &#34;&#34;&#34;
+
+    return {&#34;at&#34;: at, &#34;txt&#34;: txt, &#34;lo&#34;: lo, &#34;hi&#34;: lo or hi, &#34;y&#34;: SYM()}
+
+
+def RULE(ranges, maxSize):
+    &#34;&#34;&#34;
+    Creates a RULE that groups ranges by their column ID. Each group is a disjunction of its contents and sets of groups are conjunctions.
+
+    Args:
+        ranges (list): List of ranges to be grouped.
+        maxSize (dict): Dictionary representation of the max size of each range. 
+
+    Returns:
+        dict: RULE that groups ranges by their column ID.
+    &#34;&#34;&#34;
+
+    t = {}
+
+    for range in ranges:
+        if not range[&#34;txt&#34;] in t:
+            t[range[&#34;txt&#34;]] = []
+
+        t[range[&#34;txt&#34;]].append(
+            {&#34;lo&#34;: range[&#34;lo&#34;], &#34;hi&#34;: range[&#34;hi&#34;], &#34;at&#34;: range[&#34;at&#34;]})
+
+    return prune(t, maxSize)
+
+
+def prune(rule, maxSize):
+    &#34;&#34;&#34;
+    Prunes the rule according to maxSize.
+
+    Args:
+        rule (dict): Rule to be pruned.
+        maxSize (dict): Dictionary representation of the max size of each range.
+
+    Returns:
+        dict: Pruned rule.
+    &#34;&#34;&#34;
+
+    n = 0
+
+    for txt, ranges in rule.items():
+        n += 1
+
+        if len(ranges) == maxSize[txt]:
+            n += 1
+            rule[txt] = None
+
+    return rule if n &gt; 0 else None
+
+
+def DATA(src, rows=[]):
+    &#34;&#34;&#34;
+    Creates a dictionary of data to contains rows, summarized in cols.
+
+    Args:
+        src (str): Filename of the csv file.
+        rows (list, optional): Rows to create the DATA from. Defaults to [].
+
+    Returns:
+        dict: Created dictionary of data.
+    &#34;&#34;&#34;
+
+    data = {&#34;rows&#34;: [], &#34;cols&#34;: None}
+
+    def function(t):
+        update.row(data, t)
+
+    if type(src) == str:
+        utils.csv(src, function)
+    else:
+        data[&#34;cols&#34;] = COLS(src[&#34;cols&#34;][&#34;names&#34;])
+
+    for row in rows:
+        function(row)
+
+    return data</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="Homework6.creation.COL"><code class="name flex">
+<span>def <span class="ident">COL</span></span>(<span>n, s)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Creates a COL that represents either a NUM or a SYM.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>n</code></strong> :&ensp;<code>int</code></dt>
+<dd>Column position.</dd>
+<dt><strong><code>s</code></strong> :&ensp;<code>str</code></dt>
+<dd>Name.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>dict</code></dt>
+<dd>Created COL.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def COL(n, s):
+    &#34;&#34;&#34;
+    Creates a COL that represents either a NUM or a SYM.
+
+    Args:
+        n (int): Column position.
+        s (str): Name.
+
+    Returns:
+        dict: Created COL.
+    &#34;&#34;&#34;
+
+    col = NUM(n, s) if re.search(&#34;^[A-Z]+&#34;, s) else SYM(n, s)
+
+    col[&#34;isIgnored&#34;] = re.search(&#34;X$&#34;, s) != None
+    col[&#34;isKlass&#34;] = re.search(&#34;!$&#34;, s) != None
+    col[&#34;isGoal&#34;] = re.search(&#34;[!+-]$&#34;, s) != None
+
+    return col</code></pre>
+</details>
+</dd>
+<dt id="Homework6.creation.COLS"><code class="name flex">
+<span>def <span class="ident">COLS</span></span>(<span>ss)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Creates a set of COLs.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>ss</code></strong> :&ensp;<code>list</code></dt>
+<dd>Names of the columns.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>dict</code></dt>
+<dd>Created COLS.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def COLS(ss):
+    &#34;&#34;&#34;
+    Creates a set of COLs.
+
+    Args:
+        ss (list): Names of the columns.
+
+    Returns:
+        dict: Created COLS.
+    &#34;&#34;&#34;
+
+    cols = {&#34;names&#34;: ss, &#34;all&#34;: [], &#34;x&#34;: [], &#34;y&#34;: []}
+
+    for n, s in enumerate(ss):
+        col = COL(n, s)
+        cols[&#34;all&#34;].append(col)
+
+        if not col[&#34;isIgnored&#34;]:
+            if col[&#34;isKlass&#34;]:
+                cols[&#34;klass&#34;] = col
+
+            if col[&#34;isGoal&#34;]:
+                cols[&#34;y&#34;].append(col)
+            else:
+                cols[&#34;x&#34;].append(col)
+
+    return cols</code></pre>
+</details>
+</dd>
+<dt id="Homework6.creation.DATA"><code class="name flex">
+<span>def <span class="ident">DATA</span></span>(<span>src, rows=[])</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Creates a dictionary of data to contains rows, summarized in cols.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>src</code></strong> :&ensp;<code>str</code></dt>
+<dd>Filename of the csv file.</dd>
+<dt><strong><code>rows</code></strong> :&ensp;<code>list</code>, optional</dt>
+<dd>Rows to create the DATA from. Defaults to [].</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>dict</code></dt>
+<dd>Created dictionary of data.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def DATA(src, rows=[]):
+    &#34;&#34;&#34;
+    Creates a dictionary of data to contains rows, summarized in cols.
+
+    Args:
+        src (str): Filename of the csv file.
+        rows (list, optional): Rows to create the DATA from. Defaults to [].
+
+    Returns:
+        dict: Created dictionary of data.
+    &#34;&#34;&#34;
+
+    data = {&#34;rows&#34;: [], &#34;cols&#34;: None}
+
+    def function(t):
+        update.row(data, t)
+
+    if type(src) == str:
+        utils.csv(src, function)
+    else:
+        data[&#34;cols&#34;] = COLS(src[&#34;cols&#34;][&#34;names&#34;])
+
+    for row in rows:
+        function(row)
+
+    return data</code></pre>
+</details>
+</dd>
+<dt id="Homework6.creation.NUM"><code class="name flex">
+<span>def <span class="ident">NUM</span></span>(<span>n=0, s='')</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Creates a NUM to summarize a stream of numbers.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>n</code></strong> :&ensp;<code>int</code>, optional</dt>
+<dd>Column position. Defaults to 0.</dd>
+<dt><strong><code>s</code></strong> :&ensp;<code>str</code>, optional</dt>
+<dd>Name. Defaults to "".</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>dict</code></dt>
+<dd>Created NUM.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def NUM(n=0, s=&#34;&#34;):
+    &#34;&#34;&#34;
+    Creates a NUM to summarize a stream of numbers.
+
+    Args:
+        n (int, optional): Column position. Defaults to 0.
+        s (str, optional): Name. Defaults to &#34;&#34;.
+
+    Returns:
+        dict: Created NUM.
+    &#34;&#34;&#34;
+
+    return {&#34;at&#34;: n, &#34;txt&#34;: s, &#34;n&#34;: 0, &#34;hi&#34;: -math.inf, &#34;lo&#34;: math.inf, &#34;ok&#34;: True, &#34;has&#34;: [], &#34;w&#34;: -1 if &#34;-&#34; in s else 1}</code></pre>
+</details>
+</dd>
+<dt id="Homework6.creation.RANGE"><code class="name flex">
+<span>def <span class="ident">RANGE</span></span>(<span>at, txt, lo=0, hi=1)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Creates a RANGE that tracks the dependent values seen in the range between lo to hi for some independent variable in column position at whose name is txt.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>at</code></strong> :&ensp;<code>int</code></dt>
+<dd>Column position.</dd>
+<dt><strong><code>txt</code></strong> :&ensp;<code>_type_</code></dt>
+<dd>Column name.</dd>
+<dt><strong><code>lo</code></strong> :&ensp;<code>int</code>, optional</dt>
+<dd>Lower bound for the range. Defaults to 0.</dd>
+<dt><strong><code>hi</code></strong> :&ensp;<code>int</code>, optional</dt>
+<dd>Upper bound for the range. Defaults to 1.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>dict</code></dt>
+<dd>Created RANGE.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def RANGE(at, txt, lo=0, hi=1):
+    &#34;&#34;&#34;
+    Creates a RANGE that tracks the dependent values seen in the range between lo to hi for some independent variable in column position at whose name is txt.
+
+    Args:
+        at (int): Column position.
+        txt (_type_): Column name.
+        lo (int, optional): Lower bound for the range. Defaults to 0.
+        hi (int, optional): Upper bound for the range. Defaults to 1.
+
+    Returns:
+        dict: Created RANGE.
+    &#34;&#34;&#34;
+
+    return {&#34;at&#34;: at, &#34;txt&#34;: txt, &#34;lo&#34;: lo, &#34;hi&#34;: lo or hi, &#34;y&#34;: SYM()}</code></pre>
+</details>
+</dd>
+<dt id="Homework6.creation.RULE"><code class="name flex">
+<span>def <span class="ident">RULE</span></span>(<span>ranges, maxSize)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Creates a RULE that groups ranges by their column ID. Each group is a disjunction of its contents and sets of groups are conjunctions.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>ranges</code></strong> :&ensp;<code>list</code></dt>
+<dd>List of ranges to be grouped.</dd>
+<dt><strong><code>maxSize</code></strong> :&ensp;<code>dict</code></dt>
+<dd>Dictionary representation of the max size of each range. </dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>dict</code></dt>
+<dd>RULE that groups ranges by their column ID.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def RULE(ranges, maxSize):
+    &#34;&#34;&#34;
+    Creates a RULE that groups ranges by their column ID. Each group is a disjunction of its contents and sets of groups are conjunctions.
+
+    Args:
+        ranges (list): List of ranges to be grouped.
+        maxSize (dict): Dictionary representation of the max size of each range. 
+
+    Returns:
+        dict: RULE that groups ranges by their column ID.
+    &#34;&#34;&#34;
+
+    t = {}
+
+    for range in ranges:
+        if not range[&#34;txt&#34;] in t:
+            t[range[&#34;txt&#34;]] = []
+
+        t[range[&#34;txt&#34;]].append(
+            {&#34;lo&#34;: range[&#34;lo&#34;], &#34;hi&#34;: range[&#34;hi&#34;], &#34;at&#34;: range[&#34;at&#34;]})
+
+    return prune(t, maxSize)</code></pre>
+</details>
+</dd>
+<dt id="Homework6.creation.SYM"><code class="name flex">
+<span>def <span class="ident">SYM</span></span>(<span>n=0, s='')</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Creates a SYM to summarize a stream of symbols.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>n</code></strong> :&ensp;<code>int</code>, optional</dt>
+<dd>Column position. Defaults to 0.</dd>
+<dt><strong><code>s</code></strong> :&ensp;<code>str</code>, optional</dt>
+<dd>Name. Defaults to "".</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>dict</code></dt>
+<dd>Created SYM.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def SYM(n=0, s=&#34;&#34;):
+    &#34;&#34;&#34;
+    Creates a SYM to summarize a stream of symbols.
+
+    Args:
+        n (int, optional): Column position. Defaults to 0.
+        s (str, optional): Name. Defaults to &#34;&#34;.
+
+    Returns:
+        dict: Created SYM.
+    &#34;&#34;&#34;
+
+    return {&#34;at&#34;: n, &#34;txt&#34;: s, &#34;n&#34;: 0, &#34;mode&#34;: None, &#34;most&#34;: 0, &#34;isSym&#34;: True, &#34;has&#34;: {}}</code></pre>
+</details>
+</dd>
+<dt id="Homework6.creation.prune"><code class="name flex">
+<span>def <span class="ident">prune</span></span>(<span>rule, maxSize)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Prunes the rule according to maxSize.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>rule</code></strong> :&ensp;<code>dict</code></dt>
+<dd>Rule to be pruned.</dd>
+<dt><strong><code>maxSize</code></strong> :&ensp;<code>dict</code></dt>
+<dd>Dictionary representation of the max size of each range.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>dict</code></dt>
+<dd>Pruned rule.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def prune(rule, maxSize):
+    &#34;&#34;&#34;
+    Prunes the rule according to maxSize.
+
+    Args:
+        rule (dict): Rule to be pruned.
+        maxSize (dict): Dictionary representation of the max size of each range.
+
+    Returns:
+        dict: Pruned rule.
+    &#34;&#34;&#34;
+
+    n = 0
+
+    for txt, ranges in rule.items():
+        n += 1
+
+        if len(ranges) == maxSize[txt]:
+            n += 1
+            rule[txt] = None
+
+    return rule if n &gt; 0 else None</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="Homework6" href="index.html">Homework6</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="two-column">
+<li><code><a title="Homework6.creation.COL" href="#Homework6.creation.COL">COL</a></code></li>
+<li><code><a title="Homework6.creation.COLS" href="#Homework6.creation.COLS">COLS</a></code></li>
+<li><code><a title="Homework6.creation.DATA" href="#Homework6.creation.DATA">DATA</a></code></li>
+<li><code><a title="Homework6.creation.NUM" href="#Homework6.creation.NUM">NUM</a></code></li>
+<li><code><a title="Homework6.creation.RANGE" href="#Homework6.creation.RANGE">RANGE</a></code></li>
+<li><code><a title="Homework6.creation.RULE" href="#Homework6.creation.RULE">RULE</a></code></li>
+<li><code><a title="Homework6.creation.SYM" href="#Homework6.creation.SYM">SYM</a></code></li>
+<li><code><a title="Homework6.creation.prune" href="#Homework6.creation.prune">prune</a></code></li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+</footer>
+</body>
+</html>
