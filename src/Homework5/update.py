@@ -75,7 +75,7 @@ def adds(col, t=[]):
     Adds the items from t to col.
 
     Args:
-        col (dict): Column to add x to.
+        col (dict): Column to add the items to.
         t (list, optional): List of items to be added to col. Defaults to [].
 
     Returns:
