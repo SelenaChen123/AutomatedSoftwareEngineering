@@ -115,6 +115,6 @@ if __name__ == "__main__":
     examples.eg("tree", "make and show tree of clusters", examples.eg_tree)
     examples.eg("sway", "optimizing", examples.eg_sway)
     examples.eg("bins", "find deltas between best and rest", examples.eg_bins)
-    examples.eg("xpln", "explore explanation sets", examples.eg_bins)
+    examples.eg("xpln", "explore explanation sets", examples.eg_xpln)
 
     main(globals.help, examples.egs)

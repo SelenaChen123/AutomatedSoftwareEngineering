@@ -6,14 +6,14 @@ import query
 import utils
 
 
-def half(data, rows=[], cols=None, above=[]):
+def half(data, rows=[], cols={}, above=[]):
     """
     Divides data using 2 far points.
 
     Args:
         data (dict): Data to be halved.
         rows (list, optional): List of rows to be halved. Defaults to data["rows"].
-        cols (dict, optional): Factory that manages rows. Defaults to None.
+        cols (dict, optional): Factory that manages rows. Defaults to {}.
         above (list, optional): Single chosen row. Defaults to [].
 
     Returns:
@@ -22,6 +22,7 @@ def half(data, rows=[], cols=None, above=[]):
         list: Single chosen row to calculate the distance from.
         row: Single chosen row around A to calculate the distance from.
         float: Distance from A to B.
+        int: 1 if child splits reuse a parent pole and above exists, 2 otherwise.
     """
 
     left = []
@@ -49,7 +50,7 @@ def half(data, rows=[], cols=None, above=[]):
     return left, right, A, B, c, (1 if (globals.Is["Reuse"] and above) else 2)
 
 
-def tree(data, rows=[], cols=None, above=[], here={}):
+def tree(data, rows=[], cols={}, above=[]):
     """
     Recursively halves rows.
 

@@ -18,7 +18,6 @@ def bins(cols, rowss):
     Returns:
         list: RANGES that map the rows in rowss to a small number of bins.
     """
-    
 
     def with1Col(col):
         n, ranges = withAllRows(col)
@@ -64,7 +63,6 @@ def bin(col, x):
     Returns:
         float: Bin value that the row is mapped to.
     """
-    
 
     if x == "?" or "isSym" in col:
         return x
@@ -75,7 +73,14 @@ def bin(col, x):
 
 
 def merges(ranges0, nSmall, nFar):
-    
+    """
+    Merges adjacent items given a sorted list of ranges, stopping when no more can be merges. when done, makes the ranges run from -infinity to +infinity with no gaps in between.
+
+    Args:
+        ranges0 (list): List of ranges to be merged.
+        nSmall (float): Threshold for being too small.
+        nFar (float): Threshold for being too far.
+    """
 
     def noGaps(t):
         for i in range(1, len(t)):
@@ -101,27 +106,36 @@ def merges(ranges0, nSmall, nFar):
 
     while i <= len(ranges0):
         here = ranges0[i - 1]
+
         if i < len(ranges0):
             i, here = try2Merge(here, ranges0[i], i)
-            i += 1
-            ranges1.append(here)
+
+        i += 1
+        ranges1.append(here)
 
     return noGaps(ranges0) if len(ranges0) == len(ranges1) else merges(ranges1, nSmall, nFar)
 
 
 def merged(col1, col2, nSmall, nFar):
-    
-    new = merge(col1, col2)
-    
-    
-    
-    
+    """
+    Returns the merge if the parts are too small or the whole is as good (or simpler) than the parts.
 
-    return new if nSmall and col1["n"] < nSmall or col2["n"] < nSmall or nFar and not "isSym" in col1 and abs(query.mid(col1) - query.mid(col2)) < nFar or query.div(new) <= (query.div(col1) * col1["n"] + query.div(col2) * col2["n"]) / new["n"] else None
+    Args:
+        col1 (dict): First column to be merged.
+        col2 (dict): Second column to be merged.
+        nSmall (float): Threshold for being too small.
+        nFar (float): Threshold for being too far.
+
+    Returns:
+        dict: Merged version of col1 and col2.
+    """
+
+    new = merge(col1, col2)
+
+    return new if (nSmall and col1["n"] < nSmall or col2["n"] < nSmall) or (nFar and not "isSym" in col1 and abs(query.mid(col1) - query.mid(col2)) < nFar) or (query.div(new) <= (query.div(col1) * col1["n"] + query.div(col2) * col2["n"]) / new["n"]) else None
 
 
 def merge(col1, col2):
-    
     """
     Merges col1 and col2.
 

@@ -280,7 +280,7 @@ def eg_xpln():
 
     data = creation.DATA(globals.Is["file"])
     best, rest, evals = optimization.sway(data)
-    rule, most = sets.xpln(data, best, rest)
+    rule, _ = sets.xpln(data, best, rest)
 
     print("\n-----------\nexplain=", sets.showRule(rule))
 
@@ -294,7 +294,7 @@ def eg_xpln():
         data1), query.stats(data1, query.div))
 
     top, _ = query.betters(data, len(best["rows"]))
-    top = creation.DATA(top)
+    top = creation.DATA(data, top)
 
     print("sort with {} evals".format(len(data["rows"])), query.stats(
         top), query.stats(top, query.div))

@@ -186,3 +186,27 @@ def diffs(nums1, nums2):
         return nums["txt"], cliffsDelta(nums["has"], nums2[0]["has"])
 
     return dict(sorted(map(function, nums1)))
+
+
+def kap(t, fun):
+    """
+    Maps fun over t.
+
+    Args:
+        t (dict): Dictionary to be mapped.
+        fun (function): Function used to map.
+    Returns:
+        dict: Map of items to their fun values.
+    """
+
+    u = {}
+
+    for k, v in t.items():
+        v, k = fun(k, v)
+
+        if not k:
+            u[len(u)] = v
+        else:
+            u[k] = v
+
+    return u

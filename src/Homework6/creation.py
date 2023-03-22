@@ -103,6 +103,17 @@ def RANGE(at, txt, lo=0, hi=1):
 
 
 def RULE(ranges, maxSize):
+    """
+    Creates a RULE that groups ranges by their column ID. Each group is a disjunction of its contents and sets of groups are conjunctions.
+
+    Args:
+        ranges (list): List of ranges to be grouped.
+        maxSize (dict): Dictionary representation of the max size of each range. 
+
+    Returns:
+        dict: RULE that groups ranges by their column ID.
+    """
+
     t = {}
 
     for range in ranges:
@@ -116,6 +127,17 @@ def RULE(ranges, maxSize):
 
 
 def prune(rule, maxSize):
+    """
+    Prunes the rule according to maxSize.
+
+    Args:
+        rule (dict): Rule to be pruned.
+        maxSize (dict): Dictionary representation of the max size of each range.
+
+    Returns:
+        dict: Pruned rule.
+    """
+
     n = 0
 
     for txt, ranges in rule.items():
@@ -129,6 +151,17 @@ def prune(rule, maxSize):
 
 
 def DATA(src, rows=[]):
+    """
+    Creates a dictionary of data to contains rows, summarized in cols.
+
+    Args:
+        src (str): Filename of the csv file.
+        rows (list, optional): Rows to create the DATA from. Defaults to [].
+
+    Returns:
+        dict: Created dictionary of data.
+    """
+
     data = {"rows": [], "cols": None}
 
     def function(t):
