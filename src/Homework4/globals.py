@@ -15,7 +15,7 @@ USAGE: grid.py  [OPTIONS] [-g ACTION]
 
 OPTIONS:
   -d  --dump    on crash, dump stack   = false
-  -f  --file    name of file           = ../../etc/data/repgrid1.csv
+  -f  --file    name of file           = ../../etc/data/repgrid2.2.csv
   -g  --go      start-up action        = data
   -h  --help    show help              = false
   -p  --p       distance coefficient   = 2
