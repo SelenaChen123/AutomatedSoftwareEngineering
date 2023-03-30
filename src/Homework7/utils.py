@@ -1,21 +1,22 @@
 import math
+import random
 
 import globals
 
 
-def samples(t, n):
+def samples(t, n=None):
     """
     Returns n samples from t.
 
     Args:
         t (list): List to return the samples from.
-        n (int): Number of samples to be returned.
+        n (int): Number of samples to be returned. Defaults to len(t).
 
     Returns:
         list: List of n samples from t.
     """
 
-    return [t[math.randint(len(t)) - 1] for _ in range(0, n)]
+    return [t[random.randint(1, len(t)) - 1] for _ in range(n or len(t))]
 
 
 def cliffsDelta(ns1, ns2):
@@ -27,7 +28,7 @@ def cliffsDelta(ns1, ns2):
         ns2 (list): Second list to calculate the Cliff's Delta from.
 
     Returns:
-        bool: True if the Cliff's Delta between ns1 and ns2 is greater than the global cliffs threshold, False otherwise.
+        bool: True if the Cliff's Delta between ns1 and ns2 is less than or equal to the global cliffs threshold, False otherwise.
     """
 
     if len(ns1) > 128:
@@ -50,7 +51,7 @@ def cliffsDelta(ns1, ns2):
             if x < y:
                 lt += 1
 
-    return abs(lt - gt) / n <= globals.the["cliffs"]
+    return abs(lt - gt) / n <= globals.the["cliff"]
 
 
 def gaussian(mu=0, sd=1):
@@ -65,7 +66,7 @@ def gaussian(mu=0, sd=1):
         float: Sample from a Gaussian with mean mu and standard deviation sd.
     """
 
-    return mu + sd * math.sqrt(-2 * math.log(math.random())) * math.cos(2 * math.pi * math.random())
+    return mu + sd * math.sqrt(-2 * math.log(random.random())) * math.cos(2 * math.pi * random.random())
 
 
 def delta(i, other):
@@ -73,7 +74,7 @@ def delta(i, other):
     Returns the delta between i and other.
 
     Args:
-        i (dict): first dictionary to calculate the delta from.
+        i (dict): First dictionary to calculate the delta from.
         other (dict): Second dictionary to calculate the delta from.
 
     Returns:

@@ -23,6 +23,7 @@ if __name__ == "__main__":
     """
 
     examples.eg("ok", examples.eg_ok)
+    examples.eg("sample", examples.eg_sample)
     examples.eg("num", examples.eg_num)
     examples.eg("gauss", examples.eg_gauss)
     examples.eg("bootmu", examples.eg_bootmu)

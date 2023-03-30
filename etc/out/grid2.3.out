@@ -1,0 +1,173 @@
+{'dump': False, 'file': '../../etc/data/repgrid2.3.csv', 'go': 'all', 'help': False, 'p': 2, 'seed': 937162211}
+✅ pass: the
+b4 {'a': 1, 'b': {'c': 2, 'd': [3]}} 
+after {'a': 1, 'b': {'c': 2, 'd': [10000]}}
+✅ pass: copy
+✅ pass: sym
+✅ pass: num
+a: NUM at: 0 hi: 4 lo: 1 m2: 6.399999999999999 mu: 2.4000000000000004 n: 10 txt: Num1 w:1
+a: NUM at: 1 hi: 4 lo: 1 m2: 11.6 mu: 1.8 n: 10 txt: Num2 w:1
+a: NUM at: 2 hi: 5 lo: 1 m2: 13.600000000000001 mu: 2.7999999999999994 n: 10 txt: Num3 w:1
+a: NUM at: 3 hi: 5 lo: 1 m2: 17.599999999999998 mu: 2.2 n: 10 txt: Num4 w:1
+a: NUM at: 4 hi: 5 lo: 1 m2: 19.600000000000005 mu: 2.2 n: 10 txt: Num5 w:1
+a: NUM at: 5 hi: 4 lo: 1 m2: 10.9 mu: 2.1 n: 10 txt: Num6 w:1
+a: NUM at: 6 hi: 4 lo: 1 m2: 10.5 mu: 2.5 n: 10 txt: Num7 w:1
+a: NUM at: 7 hi: 5 lo: 1 m2: 21.599999999999994 mu: 3.2 n: 10 txt: Num8 w:1
+a: NUM at: 8 hi: 4 lo: 1 m2: 16.099999999999998 mu: 2.6999999999999997 n: 10 txt: Num9 w:1
+a: NUM at: 9 hi: 5 lo: 1 m2: 19.599999999999998 mu: 3.2 n: 10 txt: Num10 w:1
+a: SYM at: 10 has: {} most: 0 n: 0 txt: thingX
+a: ROW cells: [3, 1, 4, 2, 1, 4, 1, 4, 1, 5, 'Drab:Colorful']
+a: ROW cells: [1, 3, 1, 1, 5, 1, 3, 5, 4, 1, 'Fruity:Chocolatey']
+a: ROW cells: [3, 2, 5, 4, 1, 3, 3, 2, 1, 3, 'Crisp:Chewy']
+a: ROW cells: [2, 1, 2, 2, 1, 3, 2, 4, 4, 3, 'Soft:Crunchy']
+a: ROW cells: [2, 1, 2, 1, 2, 3, 4, 5, 1, 5, 'NotCircular:Circular']
+a: ROW cells: [3, 1, 3, 2, 3, 1, 2, 2, 4, 2, 'SinglePiece:Sectioned']
+a: ROW cells: [2, 3, 2, 1, 4, 1, 4, 2, 3, 4, 'Solid:Gooey']
+a: ROW cells: [2, 1, 3, 5, 1, 2, 1, 2, 4, 2, 'NotRed:Red']
+a: ROW cells: [2, 4, 2, 1, 1, 2, 3, 1, 3, 2, 'SingleFlavor:SeondaryFlavor']
+a: ROW cells: [4, 1, 4, 3, 3, 1, 2, 5, 2, 5, 'Single:Multiple']
+✅ pass: repcols
+66
+|.. 61
+|.. |.. 41
+|.. |.. |.. NotCircular:Circular
+|.. |.. |.. Drab:Colorful
+|.. |.. 64
+|.. |.. |.. Fruity:Chocolatey
+|.. |.. |.. 51
+|.. |.. |.. |.. Single:Multiple
+|.. |.. |.. |.. Solid:Gooey
+|.. 52
+|.. |.. 34
+|.. |.. |.. NotRed:Red
+|.. |.. |.. Soft:Crunchy
+|.. |.. 49
+|.. |.. |.. SingleFlavor:SeondaryFlavor
+|.. |.. |.. 50
+|.. |.. |.. |.. Crisp:Chewy
+|.. |.. |.. |.. SinglePiece:Sectioned
+✅ pass: synonyms
+a: NUM at: 0 hi: 5 lo: 1 m2: 22.4 mu: 2.6 n: 10 txt: Drab:Colorful w:1
+a: NUM at: 1 hi: 5 lo: 1 m2: 26.5 mu: 2.5 n: 10 txt: Fruity:Chocolatey w:1
+a: NUM at: 2 hi: 5 lo: 1 m2: 14.1 mu: 2.6999999999999997 n: 10 txt: Crisp:Chewy w:1
+a: NUM at: 3 hi: 4 lo: 1 m2: 10.399999999999999 mu: 2.4000000000000004 n: 10 txt: Soft:Crunchy w:1
+a: NUM at: 4 hi: 5 lo: 1 m2: 22.4 mu: 2.6 n: 10 txt: NotCircular:Circular w:1
+a: NUM at: 5 hi: 4 lo: 1 m2: 8.1 mu: 2.3000000000000003 n: 10 txt: SinglePiece:Sectioned w:1
+a: NUM at: 6 hi: 4 lo: 1 m2: 12.4 mu: 2.6 n: 10 txt: Solid:Gooey w:1
+a: NUM at: 7 hi: 5 lo: 1 m2: 16.099999999999998 mu: 2.3000000000000003 n: 10 txt: NotRed:Red w:1
+a: NUM at: 8 hi: 4 lo: 1 m2: 8.9 mu: 2.1 n: 10 txt: SingleFlavor:SeondaryFlavor w:1
+a: NUM at: 9 hi: 5 lo: 1 m2: 20.0 mu: 3.0 n: 10 txt: Single:Multiple w:1
+a: SYM at: 10 has: {} most: 0 n: 0 txt: thingX
+a: ROW cells: [3, 1, 3, 2, 2, 3, 2, 2, 2, 4, 'Gushers']
+a: ROW cells: [1, 3, 2, 1, 1, 1, 3, 1, 4, 1, '3Musketeers']
+a: ROW cells: [4, 1, 5, 2, 2, 3, 2, 3, 2, 4, 'HiChew']
+a: ROW cells: [2, 1, 4, 2, 1, 2, 1, 5, 1, 3, 'Twizzlers']
+a: ROW cells: [1, 5, 1, 1, 2, 3, 4, 1, 1, 3, 'HersheysMilkChocolate']
+a: ROW cells: [4, 1, 3, 3, 3, 1, 1, 2, 2, 1, 'DumDums']
+a: ROW cells: [1, 3, 3, 2, 4, 2, 4, 1, 3, 2, 'ReesesPeanutButterCups']
+a: ROW cells: [4, 5, 2, 4, 5, 2, 2, 2, 1, 5, 'MAndMs']
+a: ROW cells: [1, 4, 1, 4, 1, 4, 3, 4, 3, 2, 'KitKats']
+a: ROW cells: [5, 1, 3, 3, 5, 2, 4, 2, 2, 5, 'Skittles']
+✅ pass: reprows
+65
+|.. 55
+|.. |.. 47
+|.. |.. |.. HersheysMilkChocolate
+|.. |.. |.. 3Musketeers
+|.. |.. 59
+|.. |.. |.. MAndMs
+|.. |.. |.. 49
+|.. |.. |.. |.. KitKats
+|.. |.. |.. |.. ReesesPeanutButterCups
+|.. 49
+|.. |.. 41
+|.. |.. |.. DumDums
+|.. |.. |.. Twizzlers
+|.. |.. 41
+|.. |.. |.. Skittles
+|.. |.. |.. 19
+|.. |.. |.. |.. HiChew
+|.. |.. |.. |.. Gushers
+✅ pass: prototypes
+
+A Gushers
+B 3Musketeers
+C HiChew
+D Twizzlers
+E HersheysMilkChocolate
+F DumDums
+G ReesesPeanutButterCups
+H MAndMs
+I KitKats
+J Skittles
+
+[ E           F      ]
+[                    ]
+[                    ]
+[                    ]
+[                    ]
+[      G A           ]
+[                    ]
+[      B   D         ]
+[     I H J          ]
+✅ pass: position
+65
+|.. 55
+|.. |.. 47
+|.. |.. |.. HersheysMilkChocolate
+|.. |.. |.. 3Musketeers
+|.. |.. 59
+|.. |.. |.. MAndMs
+|.. |.. |.. 49
+|.. |.. |.. |.. KitKats
+|.. |.. |.. |.. ReesesPeanutButterCups
+|.. 49
+|.. |.. 41
+|.. |.. |.. DumDums
+|.. |.. |.. Twizzlers
+|.. |.. 41
+|.. |.. |.. Skittles
+|.. |.. |.. 19
+|.. |.. |.. |.. HiChew
+|.. |.. |.. |.. Gushers
+65
+|.. 47
+|.. |.. 40
+|.. |.. |.. Solid:Gooey
+|.. |.. |.. Fruity:Chocolatey
+|.. |.. 58
+|.. |.. |.. NotCircular:Circular
+|.. |.. |.. 43
+|.. |.. |.. |.. SinglePiece:Sectioned
+|.. |.. |.. |.. SingleFlavor:SeondaryFlavor
+|.. 55
+|.. |.. 41
+|.. |.. |.. Drab:Colorful
+|.. |.. |.. Single:Multiple
+|.. |.. 46
+|.. |.. |.. NotRed:Red
+|.. |.. |.. 49
+|.. |.. |.. |.. Crisp:Chewy
+|.. |.. |.. |.. Soft:Crunchy
+
+A Gushers
+B 3Musketeers
+C HiChew
+D Twizzlers
+E HersheysMilkChocolate
+F DumDums
+G ReesesPeanutButterCups
+H MAndMs
+I KitKats
+J Skittles
+
+[ E           F                          ]
+[                                        ]
+[                                        ]
+[                                        ]
+[                                        ]
+[      G A                               ]
+[                                        ]
+[      B   D                             ]
+[     I H J                              ]
+✅ pass: every

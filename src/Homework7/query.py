@@ -6,12 +6,12 @@ def mid(t):
         t (dict): Dictionary to get the central tendency of.
 
     Returns:
-        float/str: Central tendency of t.
+        float: Central tendency of t.
     """
 
-    t = t["has"] if "has" in t else t
+    t = t["has"] if t["has"] else t
 
-    return (t[len(t) // 2] + t[len(t) // 2 + 1]) / 2 if len(t) % 2 == 0 else t[len(t) // 2 + 1]
+    return (t[(len(t) - 1) // 2] + t[(len(t) - 1) // 2 + 1]) / 2 if len(t) % 2 == 0 else t[(len(t) - 1) // 2 + 1]
 
 
 def div(t):
@@ -22,7 +22,7 @@ def div(t):
         t (dict): Dictionary to get the deviation from its central tendency.
 
     Returns:
-        int/float/str: Deviation from its central tendency of t.
+        int/float: Deviation from its central tendency of t.
     """
 
     t = t["has"] if "has" in t else t

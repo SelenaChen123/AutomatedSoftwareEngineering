@@ -13,8 +13,8 @@ Coursework for NCSU's Spring 2023 CSC 591 021 course, based on the instructor's 
 ```
 ├── .github
 │   └── workflows
-│       └── tests.yml       # Runs tests on each push and reports failures
-├── docs                    # HTML documentation files for each homework
+│       └── tests.yml  # Runs tests on each push and reports failures
+├── docs               # HTML documentation files for each homework
 │   ├── Homework1
 │   |   └── ...
 │   ├── Homework2
@@ -26,13 +26,16 @@ Coursework for NCSU's Spring 2023 CSC 591 021 course, based on the instructor's 
 │   └── Homework5
 │       └── ...
 │   └── Homework6
+│       └── ...
+│   └── Homework7
 │       └── ...
 ├── etc
-│   ├── data                # Input data files for the scripts
+│   ├── data           # Input data files for the scripts
 │   |   └── ...
-│   └── out                 # Output of the scripts
-│       └── ...
-├── src                     # Python source code for each homework
+│   ├── out            # Output of the scripts
+│   |   └── ...
+│   └── onGrid.md      # Report on the results of the grid2.*.out files in ./etc/out/
+├── src                # Python source code for each homework
 │   ├── Homework1
 │   |   └── ...
 │   ├── Homework2
@@ -45,10 +48,12 @@ Coursework for NCSU's Spring 2023 CSC 591 021 course, based on the instructor's 
 │       └── ...
 │   └── Homework6
 │       └── ...
-├── .gitignore              # List of files to never commit
-├── CITATION.cff            # Bibliography information
-├── LICENSE.md              # MIT license
-└── README.md               # Top-level repo documentation
+│   └── Homework7
+│       └── ...
+├── .gitignore         # List of files to never commit
+├── CITATION.cff       # Bibliography information
+├── LICENSE.md         # MIT license
+└── README.md          # Top-level repo documentation
 
 ```
 

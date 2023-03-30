@@ -1,4 +1,4 @@
-import utils
+import update
 
 
 def NUM(t=[]):
@@ -14,10 +14,21 @@ def NUM(t=[]):
     i = {"n": 0, "mu": 0, "m2": 0, "sd": 0}
 
     for x in t:
-        utils.add(i, x)
+        update.add(i, x)
 
     return i
 
 
-def RX(t, s):
-    print("NOT YET IMPLEMENTED")
+def RX(t, s=""):
+    """
+    Creates an RX.
+
+    Args:
+        t (list): List of items to create an RX from.
+        s (str, optional): Name of the RX. Defaults to "".
+
+    Returns:
+        dict: Created RX.
+    """
+
+    return {"name": s, "rank": 0, "n": len(t), "show": "", "has": sorted(t)}
