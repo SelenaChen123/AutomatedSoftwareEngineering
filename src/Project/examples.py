@@ -141,7 +141,8 @@ def eg_data():
     data = creation.DATA(globals.Is["file"])
     col = data["cols"]["x"][0]
 
-    print(col["lo"], col["hi"], query.mid(col), query.div(col))
+    # print(col["lo"], col["hi"], query.mid(col), query.div(col))
+    print(query.mid(col), query.div(col))
     print(query.stats(data))
 
 
@@ -279,8 +280,11 @@ def eg_xpln():
     """
 
     data = creation.DATA(globals.Is["file"])
-    best, rest, evals = optimization.sway(data)
-    rule, _ = sets.xpln(data, best, rest)
+    rule = None
+
+    while (rule == None):
+        best, rest, evals = optimization.sway(data)
+        rule, _ = sets.xpln(data, best, rest)
 
     print("\n-----------\nexplain=", sets.showRule(rule))
 

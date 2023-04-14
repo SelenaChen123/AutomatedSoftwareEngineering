@@ -139,13 +139,14 @@ def prune(rule, maxSize):
     """
 
     n = 0
+    rules = [item for item in rule.items()]
 
-    for txt, ranges in rule.items():
+    for txt, ranges in rules:
         n += 1
 
         if len(ranges) == maxSize[txt]:
             n += 1
-            rule[txt] = None
+            del rule[txt]
 
     return rule if n > 0 else None
 

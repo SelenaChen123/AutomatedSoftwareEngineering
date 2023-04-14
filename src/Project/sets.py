@@ -64,7 +64,7 @@ def firstN(sortedRanges, scoreFun):
         print(r["range"]["txt"], r["range"]["lo"], r["range"]
               ["hi"], round(r["val"], 2), r["range"]["y"]["has"])
 
-    map(function, sortedRanges)
+    list(map(function, sortedRanges))
     first = sortedRanges[0]["val"]
 
     def useful(Range):
