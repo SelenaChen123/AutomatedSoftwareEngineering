@@ -96,8 +96,11 @@ def norm(num, n):
     Returns:
         float: Normalized version of n.
     """
-
-    return n if n == "?" else (n - num["lo"]) / (num["hi"] - num["lo"] + 1 / math.inf)
+    if n =="?":
+        return n
+    if n - num["lo"]==0:
+        return 0.00000000000000000000000000000000000000000000000000000000000000001/(num["hi"] - num["lo"] + 0.00000000000000000000000000000000000000000000000000000000000001)
+    return (n - num["lo"]) / (num["hi"] - num["lo"] + 1 / math.inf)
 
 
 def value(has, nB=1, nR=1, sGoal=True):
@@ -161,6 +164,7 @@ def dist(data, t1, t2, cols={}):
         elif "isSym" in col:
             return sym(x, y)
         else:
+
             return num(norm(col, x), norm(col, y))
 
     d = 0
@@ -169,7 +173,6 @@ def dist(data, t1, t2, cols={}):
     for col in cols or data["cols"]["x"]:
         n += 1
         d += dist1(col, t1[col["at"]], t2[col["at"]]) ** globals.Is["p"]
-
     return (d / n) ** (1 / globals.Is["p"])
 
 
