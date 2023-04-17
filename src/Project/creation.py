@@ -26,7 +26,7 @@ def COL(n, s):
     return col
 
 
-def NUM(n=0, s=""):
+def NUM(n=0, s="",t = []):
     """
     Creates a NUM to summarize a stream of numbers.
 
@@ -38,7 +38,11 @@ def NUM(n=0, s=""):
         dict: Created NUM.
     """
 
-    return {"at": n, "txt": s, "n": 0, "hi": -math.inf, "lo": math.inf, "ok": True, "has": [], "w": -1 if "-" in s else 1}
+    i = {"at": n, "txt": s, "n": 0, "mu": 0, "m2": 0, "sd": 0,"hi": -math.inf, "lo": math.inf, "ok": True, "has": [], "w": -1 if "-" in s else 1}
+    
+    for x in t:
+        update.update_num_keys(i, x)
+    return i
 
 
 def SYM(n=0, s=""):
@@ -177,3 +181,17 @@ def DATA(src, rows=[]):
         function(row)
 
     return data
+
+def RX(t, s=""):
+    """
+    Creates an RX.
+
+    Args:
+        t (list): List of items to create an RX from.
+        s (str, optional): Name of the RX. Defaults to "".
+
+    Returns:
+        dict: Created RX.
+    """
+
+    return {"name": s, "rank": 0, "n": len(t), "show": "", "has": sorted(t)}
