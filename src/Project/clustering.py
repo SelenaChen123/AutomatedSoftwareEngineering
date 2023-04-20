@@ -3,10 +3,7 @@ import random
 
 import creation
 import globals
-import optimization
 import query
-import sets
-import stats
 import utils
 
 
@@ -36,7 +33,6 @@ def half(data, rows=[], cols={}, above=[]):
         return (a ** 2 + c ** 2 - b ** 2) / (2 * c)
 
     def proj(r):
-        print(query.dist(data, r, B, cols))
         return {"row": r, "x": cos(query.dist(data, r, A, cols), query.dist(data, r, B, cols), c)}
 
     rows = rows or data["rows"]
@@ -164,100 +160,3 @@ def showTree(tree, lvl=0):
 
         if "right" in tree:
             showTree(tree["right"], lvl + 1)
-
-
-# def report(data):
-#     report = {"all": {"data": None, "sums": [], "to": [{"k": "all", "report": []}, {"k": "sway1", "report": []}, {"k": "sway2", "report": []}]}, "sway1": {"data": None, "sums": [], "to": [{"k": "sway2", "report": []}, {"k": "xpln1", "report": []}, {
-#         "k": "top", "report": []}]}, "xpln1": {"data": None, "sums": [], "to": []}, "sway2": {"data": None, "sums": [], "to": [{"k": "xpln2", "report": []}]}, "xpln2": {"data": None, "sums": [], "to": []}, "top": {"data": None, "sums": [], "to": []}}
-#     rule1 = None
-
-#     globals.seed = utils.rint(100)
-
-#     while (rule1 == None):
-#         best1, rest1, _ = optimization.sway(data)
-#         rule1, _ = sets.xpln(data, best1, rest1, False)
-
-#     data1 = creation.DATA(data, sets.selects(rule1, data["rows"]))
-#     top, _ = query.betters(data, len(best1["rows"]))
-#     top = creation.DATA(data, top)
-#     rule2 = None
-
-#     while (rule2 == None):
-#         best2, rest2, _ = optimization.sway2(data)
-#         rule2, _ = sets.xpln(data, best2, rest2, False)
-
-#     data2 = creation.DATA(data, sets.selects(rule2, data["rows"]))
-
-#     report["all"]["data"] = data
-#     report["sway1"]["data"] = best1
-#     report["xpln1"]["data"] = data1
-#     report["sway2"]["data"] = best2
-#     report["xpln2"]["data"] = data2
-#     report["top"]["data"] = top
-
-#     for i, results in enumerate(report):
-#         for k in results:
-#             stat = query.stats(results[k]["data"])
-#             del stat["N"]
-
-#             if len(results[k]["sums"]) == 0:
-#                 results[k]["sums"] = stat.values()
-#             else:
-#                 results[k]["sums"] = [old + new for old,
-#                                       new in zip(results[k]["sums"], stat.values())]
-
-#         report[i] = results
-
-#     return report
-
-
-# def showReport(data, report, iterations):
-#     print("report")
-#     for item in report:
-#         for k in item:
-#             print(item[k]["sums"])
-#     print("--------------------")
-
-#     print("\t\t\t", end="")
-#     for y in sorted([data["cols"]["y"][i]["txt"] for i in range(len(data["cols"]["y"]))]):
-#         print(y, end="\t")
-
-#     for results in report:
-#         for k in results:
-#             print("\n{}\t\t\t".format(k), end="")
-
-#             for value in results[k]["sums"]:
-#                 print(round(value / iterations, 2), end="\t")
-
-#     print("\n\n\t\t\t", end="")
-#     for y in sorted([data["cols"]["y"][i]["txt"] for i in range(len(data["cols"]["y"]))]):
-#         print(y, end="\t")
-
-#     for results in report:
-#         for k in results:
-#             for to in range(len(results[k]["to"])):
-#                 result = []
-
-#                 for i in range(len(data["cols"]["y"])):
-#                     y0 = results[k]["data"]["cols"]["y"][i]["has"]
-#                     z0 = results[results[k]["to"][to]
-#                                  ["k"]]["data"]["cols"]["y"][i]["has"]
-
-#                     result.append("=" if not (stats.bootstrap(y0, z0)
-#                                               and utils.cliffsDelta(y0, z0)) else "≠")
-
-#                 results[k]["to"][to]["report"] = result
-
-#                 if results[k]["to"][to]["k"] != "top":
-#                     print("\n{}\t{}\t\t".format(
-#                         k, results[k]["to"][to]["k"]), end="")
-
-#                     for result in results[k]["to"][to]["report"]:
-#                         print(result, end="\t")
-
-#     print("\nsway1\ttop\t\t", end="")
-
-#     for result in results["sway1"]["to"][2]["report"]:
-#         print(result, end="\t")
-
-#     print()
