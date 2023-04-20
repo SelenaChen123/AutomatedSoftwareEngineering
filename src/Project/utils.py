@@ -211,6 +211,7 @@ def kap(t, fun):
 
     return u
 
+
 def samples(t, n=None):
     """
     Returns n samples from t.
@@ -222,8 +223,9 @@ def samples(t, n=None):
     Returns:
         list: List of n samples from t.
     """
-    
+
     return [t[random.randint(1, len(t)) - 1] for _ in range(n or len(t))]
+
 
 def gaussian(mu=0, sd=1):
     """
@@ -252,4 +254,3 @@ def delta(i, other):
         float: Delta between i and other.
     """
     return abs(i["mu"] - other["mu"]) / ((1E-32 + i["sd"] ** 2 / i["n"] + other["sd"] ** 2 / other["n"]) ** .5)
-
