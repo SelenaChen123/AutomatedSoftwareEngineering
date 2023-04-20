@@ -37,118 +37,123 @@ def sway(data):
 
     return creation.DATA(data, best), creation.DATA(data, rest), evals
 
-def agglomerativeHierarchalClustering(data, k):
-    clusters = {}
-
-    for row in data["rows"]:
-        clusters[len(clusters)] = [row]
-    
-    while len(clusters) > k:
-        closestClusters = findClosestClusters(data, clusters)
-        clusters = mergeClusters(*closestClusters, clusters)
-    
-    return clusters
-
-def mergeClusters(cIiD, cJiD, clusters):
-    newClusters = {0: clusters[cIiD] + clusters[cJiD]}
-
-    for clusterID in clusters.keys():
-        if (clusterID == cIiD) | (clusterID == cJiD):
-            continue
-        newClusters[len(newClusters.keys())] = clusters[clusterID]
-    return newClusters
-
-def findClosestClusters(data, clusters):
-    minDist = math.inf
-    closestClusters = None
-
-    clusterIDs = list(clusters.keys())
-
-    for i, clusterI in enumerate(clusterIDs[:-1]):
-        for j, clusterJ in enumerate(clusterIDs[i+1:]):
-            dist = clusterMetric(data, clusters[clusterI], clusters[clusterJ])
-            if dist < minDist:
-                minDist, closestClusters = dist, (clusterI, clusterJ)
-    return closestClusters
-
-def clusterMetric(data, cI, cJ):
-    # distances = [query.dist(data, rI, rJ) for rI in cI for rJ in cJ]
-    # return sum(distances) / len(distances)
-    # return max([query.dist(data, rI, rJ) for rI in cI for rJ in cJ])
-    return min([query.dist(data, rI, rJ) for rI in cI for rJ in cJ])
-
-def sway2(data, k = 3):
-    k = globals.Is["k"]
-    clusters = agglomerativeHierarchalClustering(data, k)
-    best, rest, evals = bestCluster(data, clusters)
-    rest = utils.many(rest, globals.Is["rest"] * len(best))
-    return creation.DATA(data, best), creation.DATA(data, rest), evals
-
-# def dbscan2(data, eps, minPts):
-#     labels = [0]*len(data["rows"])
-
-#     cID = 0
-
-#     for i in range(0, len(data["rows"])):
-#         if not (labels[i] == 0):
-#             continue
-#         neighbors = regionQuery(data, i, eps)
-
-#         if len(neighbors) < minPts:
-#             labels[i] = -1
-#         else:
-#             cID += 1
-#             growCluster(data, labels, i, neighbors, cID, eps, minPts)
-
+# def agglomerativeHierarchalClustering(data, k):
 #     clusters = {}
-#     noise = []
 
-#     for j in range(0, len(labels)):
-#         if labels[j] == -1:
-#             noise.append(data["rows"][j])
-#         else:
-#             if labels[j] not in clusters:
-#                 clusters[labels[j]] = [data["rows"][j]]
-#             else:
-#                 clusters[labels[j]].append(data["rows"][j])
+#     for row in data["rows"]:
+#         clusters[len(clusters)] = [row]
     
-#     return clusters, noise
-
-# def growCluster(data, labels, i, neighbors, c, eps, minPts):
-#     labels[i] = c
-
-#     j = 0
-
-#     while j < len(neighbors):
-#         iN = neighbors[j]
-
-#         if labels[iN] == -1:
-#             labels[iN] = c
-#         elif labels[iN] == 0:
-#             labels[iN] = c
-
-#             iNneighbors = regionQuery(data, iN, eps)
-
-#             if len(iNneighbors) >= minPts:
-#                 neighbors = neighbors + iNneighbors
-#         j += 1
-
-# def regionQuery(data, i, eps):
-#     neighbors = []
-
-#     for iN in range(0, len(data["rows"])):
-#         if query.dist(data, data["rows"][i], data["rows"][iN]) < eps:
-#             neighbors.append(iN)
+#     while len(clusters) > k:
+#         closestClusters = findClosestClusters(data, clusters)
+#         clusters = mergeClusters(*closestClusters, clusters)
+#         print(len(clusters))
     
-#     return neighbors
+#     return clusters
 
-# def sway2(data, eps= 0.3, minPoints= 4):
-#     eps = globals.Is["eps"]
-#     minPoints = globals.Is["minPts"]
-#     clusters, noise = dbscan2(data, eps, minPoints)
+# def mergeClusters(cIiD, cJiD, clusters):
+#     newClusters = {0: clusters[cIiD] + clusters[cJiD]}
+
+#     for clusterID in clusters.keys():
+#         if (clusterID == cIiD) | (clusterID == cJiD):
+#             continue
+#         newClusters[len(newClusters.keys())] = clusters[clusterID]
+#     return newClusters
+
+# def findClosestClusters(data, clusters):
+#     minDist = math.inf
+#     closestClusters = None
+
+#     clusterIDs = list(clusters.keys())
+
+#     for i, clusterI in enumerate(clusterIDs[:-1]):
+#         for j, clusterJ in enumerate(clusterIDs[i+1:]):
+#             dist = clusterMetric(data, clusters[clusterI], clusters[clusterJ])
+#             if dist < minDist:
+#                 minDist, closestClusters = dist, (clusterI, clusterJ)
+#     return closestClusters
+
+# def clusterMetric(data, cI, cJ):
+#     # distances = [query.dist(data, rI, rJ) for rI in cI for rJ in cJ]
+#     # return sum(distances) / len(distances)
+#     # return max([query.dist(data, rI, rJ) for rI in cI for rJ in cJ])
+#     return min([query.dist(data, rI, rJ) for rI in cI for rJ in cJ])
+
+# def sway2(data, k = 3):
+#     k = globals.Is["k"]
+#     clusters = agglomerativeHierarchalClustering(data, k)
+#     print("Finished clustering")
 #     best, rest, evals = bestCluster(data, clusters)
 #     rest = utils.many(rest, globals.Is["rest"] * len(best))
+#     print("Found best and rest")
 #     return creation.DATA(data, best), creation.DATA(data, rest), evals
+
+def dbscan2(data, eps, minPts):
+    labels = [0]*len(data["rows"])
+
+    cID = 0
+
+    for i in range(0, len(data["rows"])):
+        if not (labels[i] == 0):
+            continue
+        neighbors = regionQuery(data, i, eps)
+
+        if len(neighbors) < minPts:
+            labels[i] = -1
+        else:
+            cID += 1
+            growCluster(data, labels, i, neighbors, cID, eps, minPts)
+
+    clusters = {}
+    noise = []
+
+    for j in range(0, len(labels)):
+        if labels[j] == -1:
+            noise.append(data["rows"][j])
+        else:
+            if labels[j] not in clusters:
+                clusters[labels[j]] = [data["rows"][j]]
+            else:
+                clusters[labels[j]].append(data["rows"][j])
+    
+    return clusters, noise
+
+def growCluster(data, labels, i, neighbors, c, eps, minPts):
+    labels[i] = c
+
+    j = 0
+
+    while j < len(neighbors):
+        iN = neighbors[j]
+
+        if labels[iN] == -1:
+            labels[iN] = c
+        elif labels[iN] == 0:
+            labels[iN] = c
+
+            iNneighbors = regionQuery(data, iN, eps)
+
+            if len(iNneighbors) >= minPts:
+                neighbors = neighbors + iNneighbors
+        j += 1
+
+def regionQuery(data, i, eps):
+    neighbors = []
+
+    for iN in range(0, len(data["rows"])):
+        if query.dist(data, data["rows"][i], data["rows"][iN]) < eps:
+            neighbors.append(iN)
+    
+    return neighbors
+
+def sway2(data, eps= 0.3, minPoints= 4):
+    eps = globals.Is["eps"]
+    minPoints = globals.Is["minPts"]
+    clusters, noise = dbscan2(data, eps, minPoints)
+    print(len(clusters))
+    best, rest, evals = bestCluster(data, clusters)
+    print(len(best))
+    rest = utils.many(rest, globals.Is["rest"] * len(best))
+    return creation.DATA(data, best), creation.DATA(data, rest), evals
 
 def bestCluster(data, clusters):
     bestCluster = None
