@@ -96,9 +96,9 @@ def norm(num, n):
     Returns:
         float: Normalized version of n.
     """
-    if n =="?":
+    if n == "?":
         return n
-    if n - num["lo"]==0:
+    if n - num["lo"] == 0:
         return 0.00000000000000000000000000000000000000000000000000000000000000001/(num["hi"] - num["lo"] + 0.00000000000000000000000000000000000000000000000000000000000001)
     return (n - num["lo"]) / (num["hi"] - num["lo"] + 1 / math.inf)
 
@@ -164,7 +164,6 @@ def dist(data, t1, t2, cols={}):
         elif "isSym" in col:
             return sym(x, y)
         else:
-
             return num(norm(col, x), norm(col, y))
 
     d = 0
@@ -221,10 +220,12 @@ def betters(data, n):
 
     return tmp[1:n], tmp[n + 1:] if n else tmp
 
+
 def mid1(t):
     t = t["has"] if t["has"] else t
 
     return (t[(len(t) - 1) // 2] + t[(len(t) - 1) // 2 + 1]) / 2 if len(t) % 2 == 0 else t[(len(t) - 1) // 2 + 1]
+
 
 def div1(t):
 
