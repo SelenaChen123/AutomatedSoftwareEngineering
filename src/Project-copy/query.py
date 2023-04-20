@@ -102,6 +102,7 @@ def norm(num, n):
     """
     if n =="?":
         return n
+    # print(n, num["lo"])
     if n - num["lo"]==0:
         return 0.00000000000000000000000000000000000000000000000000000000000000001/(num["hi"] - num["lo"] + 0.00000000000000000000000000000000000000000000000000000000000001)
     return (n - num["lo"]) / (num["hi"] - num["lo"] + 1 / math.inf)
@@ -173,7 +174,6 @@ def dist(data, t1, t2, cols={}):
 
     d = 0
     n = 1 / math.inf
-
     for col in cols or data["cols"]["x"]:
         n += 1
         d += dist1(col, t1[col["at"]], t2[col["at"]]) ** globals.Is["p"]

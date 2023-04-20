@@ -188,6 +188,27 @@ def better(data, row1, row2):
         bool: True if s1 divided by the length of ys < s2 divided by the length of ys, False otherwise.
     """
 
+def better(data, row1, row2):
+    """
+    Checks whether or not row1 dominates row2.
+    Args:
+        data (dict): Dictionary of data to be used to check whether or not row1 dominates row2.
+        row1 (list): Row to check if it dominates the second row.
+        row2 (list): Row to check if it is dominated by the first row.
+    Returns:
+        bool: True if row1 dominates row2, False otherwise.
+    """
+
+
+    # ys = data["cols"]["y"]
+    # d1 = sum([norm(col, row1[col["at"]]) ** 2 for col in ys])
+    # d2 = sum([norm(col, row2[col["at"]]) ** 2 for col in ys])
+    # if d1 == d2:
+    #     return False
+    # else:
+    #     s1 = sum([norm(col, row1[col["at"]]) / math.sqrt(d1) - norm(col, row2[col["at"]]) / math.sqrt(d2) for col in ys])
+    #     return s1 > 0
+
     s1 = 0
     s2 = 0
     ys = data["cols"]["y"]
@@ -199,7 +220,6 @@ def better(data, row1, row2):
         s2 -= math.exp(col["w"] * (y - x) / len(ys))
 
     return s1 / len(ys) < s2 / len(ys)
-
 
 def betters(data, n):
     """

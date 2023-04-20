@@ -252,7 +252,7 @@ def eg_sway():
     globals.seed = globals.Is["seed"]
 
     data2 = creation.DATA(globals.Is["file"])
-    best2, rest2, _ = optimization.sway2(data2)
+    best2, rest2, _ = optimization.sway3(data2)
     
     
 
