@@ -41,11 +41,11 @@ def bootstrap(y0, z0):
 
     n = 0
 
-    for _ in range(globals.Is["bootstrap"]):
-        if utils.delta(creation.NUM(t=utils.samples(yhat)), creation.NUM(t=utils.samples(zhat))) > utils.delta(y, z):
+    for _ in range(globals.the["bootstrap"]):
+        if utils.delta(creation.NUM(t = utils.samples(yhat)), creation.NUM(t = utils.samples(zhat))) > utils.delta(y, z):
             n += 1
 
-    return n / globals.Is["bootstrap"] >= globals.Is["conf"]
+    return n / globals.the["bootstrap"] >= globals.the["conf"]
 
 
 def merge(rx1, rx2):
@@ -125,7 +125,7 @@ def scottKnot(rxs):
 
     rxs = sorted(rxs, key=lambda x: query.mid1(x))
     cohen = query.div1(
-        merges(0, len(rxs) - 1)) * globals.Is["cohen"]
+        merges(0, len(rxs) - 1)) * globals.the["cohen"]
     recurse(0, len(rxs) - 1, 1)
 
     return rxs
@@ -161,7 +161,7 @@ def tiles(rxs):
         def pos(x):
             return math.floor(of(40*(x-lo)/(hi-lo+1E-32)//1, 40))
 
-        for _ in range(globals.Is["width"] + 1):
+        for _ in range(globals.the["width"] + 1):
             u.append(" ")
 
         for i in range(pos(at(.1)), pos(at(.3)) + 1):
@@ -170,13 +170,13 @@ def tiles(rxs):
         for i in range(pos(at(.7)), pos(at(.9)) + 1):
             u[i] = "-"
 
-        u[globals.Is["width"] // 2] = "|"
+        u[globals.the["width"] // 2] = "|"
         u[pos(at(.5))] = "*"
 
-        rx["show"] = "".join(u) + " {" + "{:6.2f}".format(at(.1))
+        rx["show"] = "".join(u) + " {" + globals.the["Fmt"].format(at(.1))
 
         for x in [at(.3), at(.5), at(.7), at(.9)]:
-            rx["show"] += ", " + "{:6.2f}".format(x)
+            rx["show"] += ", " + globals.the["Fmt"].format(x)
 
         rx["show"] += " }"
 

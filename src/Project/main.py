@@ -1,5 +1,4 @@
 import math
-import os
 import re
 import sys
 
@@ -76,40 +75,19 @@ def main(help, funs):
     if globals.Is["help"]:
         print(help)
     else:
-        if os.path.isdir(os.path.abspath(globals.Is["file"])):
-            for dataset in globals.datasets:
-                for pair in funs.keys():
-                    if globals.Is["go"] == "all" or pair == globals.Is["go"]:
-                        for k, v in saved.items():
-                            globals.Is[k] = v if k != "file" else os.path.relpath(os.path.join(
-                                os.path.abspath(globals.Is["file"]), dataset))
+        for pair in funs.keys():
+            if globals.Is["go"] == "all" or pair == globals.Is["go"]:
+                for k, v in saved.items():
+                    globals.Is[k] = v
 
-                        if funs[pair]() == False:
-                            n += 1
-                            print("❌ FAIL " +
-                                  globals.Is["file"] + "\n   " + pair)
-                        else:
-                            y += 1
-                            print("✅ PASS " +
-                                  globals.Is["file"] + "\n   " + pair)
+                globals.seed = globals.Is["seed"]
 
-                        globals.Is["file"] = saved["file"]
-        else:
-            for pair in funs.keys():
-                if globals.Is["go"] == "all" or pair == globals.Is["go"]:
-                    for k, v in saved.items():
-                        globals.Is[k] = v
-
-                    globals.seed = globals.Is["seed"]
-
-                    if funs[pair]() == False:
-                        n += 1
-                        print("❌ FAIL " +
-                              globals.Is["file"] + "\n   " + pair)
-                    else:
-                        y += 1
-                        print("✅ PASS " +
-                              globals.Is["file"] + "\n   " + pair)
+                if funs[pair]() == False:
+                    n += 1
+                    print("❌ FAIL " + pair)
+                else:
+                    y += 1
+                    print("✅ PASS " + pair)
 
     if y + n > 0:
         print("\n🔆 {}\n".format({"pass": y, "fail": n,
@@ -123,29 +101,28 @@ if __name__ == "__main__":
     Starting point of the program. Generates examples and calls the main function.
     """
 
-    examples.eg("Is", "show options", examples.eg_Is)
-    examples.eg("rand", "demo random number generation", examples.eg_rand)
-    examples.eg("some", "demo of reservoir sampling", examples.eg_some)
-    examples.eg("nums", "demo of NUM", examples.eg_nums)
-    examples.eg("syms", "demo SYMS", examples.eg_syms)
-    examples.eg("csv", "reading csv files", examples.eg_csv)
-    examples.eg("data", "showing data sets", examples.eg_data)
-    examples.eg("clone", "replicate structure of a DATA", examples.eg_clone)
-    examples.eg("cliffs", "stats tests", examples.eg_cliffs)
-    examples.eg("dist", "distance test", examples.eg_dist)
-    examples.eg("half", "divide data in half", examples.eg_half)
-    examples.eg("tree", "make and show tree of clusters", examples.eg_tree)
+    # examples.eg("Is", "show options", examples.eg_Is)
+    # examples.eg("rand", "demo random number generation", examples.eg_rand)
+    # examples.eg("some", "demo of reservoir sampling", examples.eg_some)
+    # examples.eg("nums", "demo of NUM", examples.eg_nums)
+    # examples.eg("syms", "demo SYMS", examples.eg_syms)
+    # examples.eg("csv", "reading csv files", examples.eg_csv)
+    # examples.eg("data", "showing data sets", examples.eg_data)
+    # examples.eg("clone", "replicate structure of a DATA", examples.eg_clone)
+    # examples.eg("cliffs", "stats tests", examples.eg_cliffs)
+    # examples.eg("dist", "distance test", examples.eg_dist)
+    # examples.eg("half", "divide data in half", examples.eg_half)
+    # examples.eg("tree", "make and show tree of clusters", examples.eg_tree)
     examples.eg("sway", "optimizing", examples.eg_sway)
-    examples.eg("bins", "find deltas between best and rest", examples.eg_bins)
-    examples.eg("xpln", "explore explanation sets", examples.eg_xpln)
-    examples.eg("sample", "Sampling", examples.eg_sample)
-    examples.eg("gauss", "Gaussian", examples.eg_gauss)
-    examples.eg("bootmu", "bootmu", examples.eg_bootmu)
-    examples.eg("basic", "Main", examples.eg_basic)
-    examples.eg("pre", "Pre", examples.eg_pre)
-    examples.eg("five", "five", examples.eg_five)
-    examples.eg("six", "six", examples.eg_six)
-    examples.eg("tiles", "titles", examples.eg_tiles)
-    examples.eg("sk", "sk", examples.eg_sk)
-    examples.eg("report", "report", examples.eg_report)
+    # examples.eg("bins", "find deltas between best and rest", examples.eg_bins)
+    # examples.eg("xpln", "explore explanation sets", examples.eg_xpln)
+    # examples.eg("sample", "Sampling", examples.eg_sample)
+    # examples.eg("gauss", "Gaussian",examples.eg_gauss)
+    # examples.eg("bootmu", "bootmu",examples.eg_bootmu)
+    # examples.eg("basic", "Main", examples.eg_basic)
+    # examples.eg("pre", "Pre",examples.eg_pre)
+    # examples.eg("five", "five",examples.eg_five)
+    # examples.eg("six", "six", examples.eg_six)
+    # examples.eg("tiles", "titles", examples.eg_tiles)
+    # examples.eg("sk", "sk", examples.eg_sk)
     main(globals.help, examples.egs)

@@ -4,7 +4,7 @@ import query
 import utils
 
 
-def xpln(data, best, rest, show=True):
+def xpln(data, best, rest):
     """
     Collects all of the ranges into a flat list and sorts them by their values.
 
@@ -12,15 +12,13 @@ def xpln(data, best, rest, show=True):
         data (dict): Dictionary of data to be sorted.
         best (dict): Best half of the data.
         rest (dict): Rest of the data.
-        show (boolean): True if printing the ranges, False otherwise. Defaults to True.
     """
 
     def score(ranges):
         rule = creation.RULE(ranges, maxSizes)
 
         if rule:
-            if show:
-                print(showRule(rule))
+            print(showRule(rule))
 
             bestr = selects(rule, best["rows"])
             restr = selects(rule, rest["rows"])
@@ -36,43 +34,37 @@ def xpln(data, best, rest, show=True):
     for ranges in discretization.bins(data["cols"]["x"], {"best": best["rows"], "rest": rest["rows"]}):
         maxSizes[ranges[0]["txt"]] = len(ranges)
 
-        if show:
-            print("")
+        print("")
 
         for Range in ranges:
-            if show:
-                print(Range["txt"], Range["lo"], Range["hi"])
+            print(Range["txt"], Range["lo"], Range["hi"])
 
             tmp.append({"range": Range, "max": len(ranges),
                        "val": query.value(Range["y"]["has"], len(best["rows"]), len(rest["rows"]), "best")})
 
-    return firstN(sorted(tmp, key=lambda x: x["val"], reverse=True), score, show)
+    return firstN(sorted(tmp, key=lambda x: x["val"], reverse=True), score)
 
 
-def firstN(sortedRanges, scoreFun, show=True):
+def firstN(sortedRanges, scoreFun):
     """
     Returns the best ranges according to their values.
 
     Args:
         sortedRanges (list): Sorted list of ranges to return the best ranges from.
         scoreFun (function): Score function to determine the values of the ranges.
-        show (boolean): True if printing the ranges, False otherwise. Defaults to True.
 
     Returns:
         dict: Best ranges according to the values.
         most: Best value.
     """
 
-    if show:
-        print("")
+    print("")
 
     def function(r):
         print(r["range"]["txt"], r["range"]["lo"], r["range"]
               ["hi"], round(r["val"], 2), r["range"]["y"]["has"])
 
-    if show:
-        list(map(function, sortedRanges))
-
+    list(map(function, sortedRanges))
     first = sortedRanges[0]["val"]
 
     def useful(Range):
