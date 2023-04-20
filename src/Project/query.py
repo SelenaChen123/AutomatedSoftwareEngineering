@@ -96,10 +96,13 @@ def norm(num, n):
     Returns:
         float: Normalized version of n.
     """
+
     if n == "?":
         return n
+
     if n - num["lo"] == 0:
-        return 0.00000000000000000000000000000000000000000000000000000000000000001/(num["hi"] - num["lo"] + 0.00000000000000000000000000000000000000000000000000000000000001)
+        return 1E-32 / (num["hi"] - num["lo"] + 1E-32)
+
     return (n - num["lo"]) / (num["hi"] - num["lo"] + 1 / math.inf)
 
 
@@ -201,6 +204,39 @@ def better(data, row1, row2):
     return s1 / len(ys) < s2 / len(ys)
 
 
+def better2(data, row1, row2):
+    """
+    Checks whether or not row1 dominates row2.
+    Args:
+        data (dict): Dictionary of data to be used to check whether or not row1 dominates row2.
+        row1 (list): Row to check if it dominates the second row.
+        row2 (list): Row to check if it is dominated by the first row.
+    Returns:
+        bool: True if row1 dominates row2, False otherwise.
+    """
+
+    ys = data["cols"]["y"]
+    d1 = sum([norm(col, row1[col["at"]]) ** 2 for col in ys])
+    d2 = sum([norm(col, row2[col["at"]]) ** 2 for col in ys])
+
+    if d1 == 0 or d2 == 0:
+        return False
+    else:
+        s1 = 0
+        s2 = 0
+
+        for col in ys:
+            x = norm(col, row1[col["at"]])
+            y = norm(col, row2[col["at"]])
+
+            if x > y:
+                s1 += col["w"]
+            elif y > x:
+                s2 += col["w"]
+
+        return s1 / math.sqrt(d1) > s2 / math.sqrt(d2)
+
+
 def betters(data, n):
     """
     Returns the best n items from data.
@@ -215,6 +251,24 @@ def betters(data, n):
 
     def function(r1, r2):
         return -better(data, r1, r2)
+
+    tmp = sorted(data["rows"], key=cmp_to_key(function))
+
+    return tmp[1:n], tmp[n + 1:] if n else tmp
+
+
+def betters2(data, n):
+    """
+    Returns the best n items from data.
+    Args:
+        data (dict): Dictionary of data to return the best n items from.
+        n (int): Number of items to return from data.
+    Returns:
+        list: List of the best n items from data.
+    """
+
+    def function(r1, r2):
+        return -better2(data, r1, r2)
 
     tmp = sorted(data["rows"], key=cmp_to_key(function))
 

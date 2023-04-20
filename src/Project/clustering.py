@@ -1,4 +1,5 @@
 import math
+import random
 
 import creation
 import globals
@@ -48,6 +49,71 @@ def half(data, rows=[], cols={}, above=[]):
             2 - 1 else right.append(two["row"])
 
     return left, right, A, B, c, (1 if (globals.Is["Reuse"] and above) else 2)
+
+
+def half2(data, rows=[], cols={}, above=[]):
+    rows = rows or data["rows"]
+    some = utils.many(rows, globals.Is["Halves"])
+    above = utils.any(some)
+    k = 2
+    max_iterations = 1000
+    centroids = random.sample(rows, k)
+
+    for _ in range(max_iterations):
+        clusters = [[] for _ in range(k)]
+
+        for row in rows:
+            distances = [query.dist(data, row, centroid, cols)
+                         for centroid in centroids]
+            cluster_index = distances.index(min(distances))
+            clusters[cluster_index].append(row)
+
+        new_centroids = []
+
+        if len(clusters[0]) == 0 or len(clusters[1]) == 0:
+            break
+
+        for cluster in clusters:
+            cluster_mean = []
+
+            for col in range(len(data["cols"]["all"])):
+                s = 0
+
+                for row in cluster:
+                    if isinstance(row[col], int) or isinstance(row[col], float):
+                        s += row[col]
+
+                s = s / len(cluster)
+                cluster_mean.append(s)
+
+            new_centroids.append(cluster_mean)
+
+        if new_centroids == centroids:
+            break
+
+        centroids = new_centroids
+
+    above_cluster = None
+
+    for i, cluster in enumerate(clusters):
+        if above in cluster:
+            above_cluster = i
+            break
+
+    farthest_distance = 0
+    farthest_row = None
+
+    for row in clusters[above_cluster]:
+        distance = query.dist(data, row, above, cols)
+
+        if distance > farthest_distance:
+            farthest_distance = distance
+            farthest_row = row
+
+    left_half = clusters[0]
+    right_half = clusters[1]
+
+    return left_half, right_half, above, farthest_row, farthest_distance, (1 if above else 2)
 
 
 def tree(data, rows=[], cols={}, above=[]):

@@ -1,3 +1,5 @@
+import random
+
 import clustering
 import creation
 import discretization
@@ -522,17 +524,13 @@ def eg_sk():
 
 def eg_report():
     data = creation.DATA(globals.Is["file"])
-
-    print("\t\t\t", end="")
-    for y in sorted([data["cols"]["y"][i]["txt"] for i in range(len(data["cols"]["y"]))]):
-        print(y, end="\t")
-
     results = {"all": {"data": None, "sums": [], "to": [{"k": "all", "results": []}, {"k": "sway1", "results": []}, {"k": "sway2", "results": []}]}, "sway1": {"data": None, "sums": [], "to": [{"k": "sway2", "results": []}, {"k": "xpln1", "results": []}, {
         "k": "top", "results": []}]}, "xpln1": {"data": None, "sums": [], "to": []}, "sway2": {"data": None, "sums": [], "to": [{"k": "xpln2", "results": []}]}, "xpln2": {"data": None, "sums": [], "to": []}, "top": {"data": None, "sums": [], "to": []}}
     rule1 = None
+    iterations = 1
 
-    for i in range(20):
-        globals.seed = utils.rint(1000)
+    for i in range(iterations):
+        globals.seed = random.randint(0, 1000)
 
         while (rule1 == None):
             best1, rest1, _ = optimization.sway(data)
@@ -545,7 +543,7 @@ def eg_report():
         rule2 = None
 
         while (rule2 == None):
-            best2, rest2, _ = optimization.sway(data)
+            best2, rest2, _ = optimization.sway2(data)
             rule2, _ = sets.xpln(data, best2, rest2, False)
 
         data2 = creation.DATA(data, sets.selects(rule2, data["rows"]))
@@ -567,15 +565,22 @@ def eg_report():
                 results[k]["sums"] = [old + new for old,
                                       new in zip(results[k]["sums"], stat.values())]
 
+    print("", end="")
+
+    for y in sorted([data["cols"]["y"][i]["txt"] for i in range(len(data["cols"]["y"]))]):
+        print(y, end=" ")
+
     for k in results:
-        print("\n{}\t\t\t".format(k), end="")
+        print("\n{} ".format(k) if k !=
+              "all" and k != "top" else "\n{} ".format(k), end="")
 
         for value in results[k]["sums"]:
-            print(round(value / 20, 2), end="\t")
+            print(round(value / iterations, 2), end=" ")
 
-    print("\n\n\t\t\t", end="")
+    print("\n\n", end="")
+
     for y in sorted([data["cols"]["y"][i]["txt"] for i in range(len(data["cols"]["y"]))]):
-        print(y, end="\t")
+        print(y, end=" ")
 
     for k in results:
         for to in range(len(results[k]["to"])):
@@ -592,15 +597,137 @@ def eg_report():
             results[k]["to"][to]["results"] = result
 
             if results[k]["to"][to]["k"] != "top":
-                print("\n{}\t{}\t\t".format(
-                    k, results[k]["to"][to]["k"]), end="")
+                print("\n{} {} ".format(k, results[k]["to"][to]["k"]), end="")
 
                 for result in results[k]["to"][to]["results"]:
-                    print(result, end="\t")
+                    print(result, end=" ")
 
-    print("\nsway1\ttop\t\t", end="")
+    print("\nsway1 top ", end="")
 
     for result in results["sway1"]["to"][2]["results"]:
-        print(result, end="\t")
+        print(result, end=" ")
 
     print()
+
+
+# def eg_report():
+    # data = creation.DATA(globals.Is["file"])
+    # template = {"all": {"data": None, "sums": [], "to": [{"k": "all", "results": []}, {"k": "sway1", "results": []}, {"k": "sway2", "results": []}]}, "sway1": {"data": None, "sums": [], "to": [{"k": "sway2", "results": []}, {"k": "xpln1", "results": []}, {
+    #     "k": "top", "results": []}]}, "xpln1": {"data": None, "sums": [], "to": []}, "sway2": {"data": None, "sums": [], "to": [{"k": "xpln2", "results": []}]}, "xpln2": {"data": None, "sums": [], "to": []}, "top": {"data": None, "sums": [], "to": []}}
+    # report = template
+    # runs = []
+    # rule1 = None
+    # iterations = 2
+
+    # while len(runs) != iterations:
+    #     globals.seed = utils.rint(1000)
+    #     results = template
+
+    #     while (rule1 == None):
+    #         best1, rest1, _ = optimization.sway(data)
+    #         rule1, _ = sets.xpln(data, best1, rest1, False)
+
+    #     data1 = creation.DATA(data, sets.selects(rule1, data["rows"]))
+    #     top, _ = query.betters(data, len(best1["rows"]))
+    #     top = creation.DATA(data, top)
+
+    #     rule2 = None
+
+    #     while (rule2 == None):
+    #         best2, rest2, _ = optimization.sway2(data)
+    #         rule2, _ = sets.xpln(data, best2, rest2, False)
+
+    #     data2 = creation.DATA(data, sets.selects(rule2, data["rows"]))
+
+    #     results["all"]["data"] = data
+    #     results["sway1"]["data"] = best1
+    #     results["xpln1"]["data"] = data1
+    #     results["sway2"]["data"] = best2
+    #     results["xpln2"]["data"] = data2
+    #     results["top"]["data"] = top
+
+    #     for k in results:
+    #         stat = query.stats(results[k]["data"])
+    #         del stat["N"]
+    #         # results[k]["sums"] = [value for value in stat.values()]
+
+    #         if len(runs) == 0:
+    #             results[k]["sums"] = stat.values()
+    #         else:
+    #             print("here")
+    #             results[k]["sums"] = [old + new for old,
+    #                                   new in zip(results[k]["sums"], [value for value in stat.values()])]
+
+    #     runs.append(results)
+
+    # print(runs[0]["sway2"]["sums"])
+    # print(runs[1]["sway2"]["sums"])
+
+    # print(runs[0].keys())
+    # sums = [0 for _ in range(len(runs[0].keys()))]
+    # for k in runs[0].keys():
+    #     for run in runs:
+    #         print(sums)
+    #         print([item for item in run[k]["sums"]])
+    #         # sums = [old + new for old, new in zip(sums, run[k]["sums"])]
+    #         print()
+    #     print("---------------")
+
+    # for item in sums:
+    #     print(item / iterations)
+
+    # print("\t\t\t", end="")
+    # for y in sorted([data["cols"]["y"][i]["txt"] for i in range(len(data["cols"]["y"]))]):
+    #     print(y, end="\t")
+
+    # for k in results:
+    #     print("\n{}\t\t\t".format(k), end="")
+
+    #     for value in results[k]["sums"]:
+    #         print(round(value, 2), end="\t")
+
+    # print("\n\n\t\t\t", end="")
+    # for y in sorted([data["cols"]["y"][i]["txt"] for i in range(len(data["cols"]["y"]))]):
+    #     print(y, end="\t")
+
+    # for k in results:
+    #     for to in range(len(results[k]["to"])):
+    #         result = []
+
+    #         for i in range(len(data["cols"]["y"])):
+    #             y0 = results[k]["data"]["cols"]["y"][i]["has"]
+    #             z0 = results[results[k]["to"][to]
+    #                          ["k"]]["data"]["cols"]["y"][i]["has"]
+
+    #             result.append("=" if not (stats.bootstrap(y0, z0)
+    #                                       and utils.cliffsDelta(y0, z0)) else "≠")
+
+    #         results[k]["to"][to]["results"] = result
+
+    #         if results[k]["to"][to]["k"] != "top":
+    #             print("\n{}\t{}\t\t".format(
+    #                 k, results[k]["to"][to]["k"]), end="")
+
+    #             for result in results[k]["to"][to]["results"]:
+    #                 print(result, end="\t")
+
+    # print("\nsway1\ttop\t\t", end="")
+
+    # for result in results["sway1"]["to"][2]["results"]:
+    #     print(result, end="\t")
+
+    # print()
+
+
+# def eg_report():
+#     data = creation.DATA(globals.Is["file"])
+#     iterations = 1
+#     report = []
+
+#     while len(report) != iterations:
+#         try:
+#             report.append(clustering.report(data))
+#         except:
+#             pass
+
+#     clustering.showReport(data, report, iterations)
