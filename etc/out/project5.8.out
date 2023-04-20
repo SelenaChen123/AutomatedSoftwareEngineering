@@ -1,0 +1,21 @@
+Effort- Loc+ Risk- 
+all 21427.0 931.0 5.0 
+sway1 14094.0 904.0 3.0 
+xpln1 26642.0 1006.0 7.0 
+sway2 15356.0 1096.0 3.0 
+xpln2 13672.0 1042.0 5.0 
+top 17752.0 1959.0 0.0 
+
+Effort- Loc+ Risk- 
+all all = = = 
+all sway1 = = = 
+all sway2 = = = 
+sway1 sway2 = = = 
+sway1 xpln1 = = = 
+sway2 xpln2 = = = 
+sway1 top = = ≠ 
+✅ PASS ../../etc/data/coc10000.csv
+   report
+
+🔆 {'pass': 1, 'fail': 0, 'success': 100.0}
+

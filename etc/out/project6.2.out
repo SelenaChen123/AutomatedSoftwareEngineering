@@ -1,0 +1,21 @@
+ACC+ MRE- PRED40+ 
+all 7.16 75.34 25.0 
+sway1 8.05 74.18 25.0 
+xpln1 7.54 73.88 25.0 
+sway2 6.17 77.96 25.0 
+xpln2 6.61 76.54 25.0 
+top 11.33 64.91 25.0 
+
+ACC+ MRE- PRED40+ 
+all all = = = 
+all sway1 = = = 
+all sway2 = ≠ = 
+sway1 sway2 = = = 
+sway1 xpln1 = = = 
+sway2 xpln2 = = = 
+sway1 top = = = 
+✅ PASS ../../etc/data/healthCloseIsses12mths0001-hard.csv
+   report
+
+🔆 {'pass': 1, 'fail': 0, 'success': 100.0}
+
