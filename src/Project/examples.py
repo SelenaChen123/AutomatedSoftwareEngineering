@@ -531,7 +531,7 @@ def eg_report():
         "k": "top", "results": []}]}, "xpln1": {"data": None, "sums": [], "to": []}, "sway2": {"data": None, "sums": [], "to": [{"k": "xpln2", "results": []}]}, "xpln2": {"data": None, "sums": [], "to": []}, "top": {"data": None, "sums": [], "to": []}}
     rule1 = None
 
-    for i in range(20):
+    for i in range(1):
         globals.seed = utils.rint(1000)
 
         while (rule1 == None):
@@ -545,7 +545,7 @@ def eg_report():
         rule2 = None
 
         while (rule2 == None):
-            best2, rest2, _ = optimization.sway(data)
+            best2, rest2, _ = optimization.sway2(data)
             rule2, _ = sets.xpln(data, best2, rest2, False)
 
         data2 = creation.DATA(data, sets.selects(rule2, data["rows"]))
@@ -571,7 +571,7 @@ def eg_report():
         print("\n{}\t\t\t".format(k), end="")
 
         for value in results[k]["sums"]:
-            print(round(value / 20, 2), end="\t")
+            print(round(value / 1, 2), end="\t")
 
     print("\n\n\t\t\t", end="")
     for y in sorted([data["cols"]["y"][i]["txt"] for i in range(len(data["cols"]["y"]))]):
@@ -587,7 +587,7 @@ def eg_report():
                              ["k"]]["data"]["cols"]["y"][i]["has"]
 
                 result.append("=" if not (stats.bootstrap(y0, z0)
-                                          and utils.cliffsDelta(y0, z0)) else "≠")
+                                          and utils.cliffsDelta(y0, z0)) else "!=")
 
             results[k]["to"][to]["results"] = result
 
