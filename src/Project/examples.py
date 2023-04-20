@@ -304,6 +304,7 @@ def eg_xpln():
     print("sort with {} evals".format(len(data["rows"])), query.stats(
         top), query.stats(top, query.div))
 
+
 def eg_sample():
     """
     Example testing samples().
@@ -326,6 +327,7 @@ def eg_gauss():
     n = creation.NUM(t=t)
 
     print("", n["n"], n["mu"], n["sd"], sep="\t")
+
 
 def eg_bootmu():
     """
@@ -352,6 +354,7 @@ def eg_bootmu():
 
         print(mu, mu / 10, 1, cl, bs, cl and bs, sep="\t")
 
+
 def eg_basic():
     """
     Example testing bootstrap() with hardcoded values.
@@ -363,7 +366,7 @@ def eg_basic():
           9, 9, 7, 8, 10, 9, 6]), utils.cliffsDelta([8, 7, 6, 2, 5, 8, 7, 3], [9, 9, 7, 8, 10, 9, 6]), sep="\t")
     print("", "False", stats.bootstrap([0.34, 0.49, 0.51, 0.6, .34, .49, .51, .6], [0.6, 0.7, 0.8, 0.9, .6, .7, .8, .9]), utils.cliffsDelta(
         [0.34, 0.49, 0.51, 0.6, .34, .49, .51, .6], [0.6, 0.7, 0.8, 0.9, .6, .7, .8, .9]), sep="\t")
-    
+
 
 def eg_pre():
     """
@@ -387,6 +390,7 @@ def eg_pre():
 
         d = round(d + .05, 2)
 
+
 def eg_five():
     """
     Example testing scottKnot() with different central tendencies.
@@ -394,6 +398,7 @@ def eg_five():
 
     for rx in (stats.tiles(stats.scottKnot([creation.RX([0.34, 0.49, 0.51, 0.6, .34, .49, .51, .6], "rx1"), creation.RX([0.6, 0.7, 0.8, 0.9, .6, .7, .8, .9], "rx2"), creation.RX([0.15, 0.25, 0.4, 0.35, 0.15, 0.25, 0.4, 0.35], "rx3"), creation.RX([0.6, 0.7, 0.8, 0.9, 0.6, 0.7, 0.8, 0.9], "rx4"), creation.RX([0.1, 0.2, 0.3, 0.4, 0.1, 0.2, 0.3, 0.4], "rx5")]))):
         print("", rx["name"], rx["rank"], rx["show"], sep="\t")
+
 
 def eg_six():
     """
@@ -512,3 +517,75 @@ def eg_sk():
 
     for rx in stats.tiles(stats.scottKnot(rxs)):
         print("", rx["rank"], rx["name"], rx["show"], sep="\t")
+
+
+def eg_report():
+    data = creation.DATA(globals.Is["file"])
+
+    print("\t\t\t", end="")
+    for y in sorted([data["cols"]["y"][i]["txt"] for i in range(len(data["cols"]["y"]))]):
+        print(y, end="\t")
+
+    stats = {"all": {"stats": None, "sums": []}, "sway1": {"stats": None, "sums": []}, "xpln1": {"stats": None, "sums": [
+    ]}, "sway2": {"stats": None, "sums": []}, "xpln2": {"stats": None, "sums": []}, "top": {"stats": None, "sums": []}}
+    rule1 = None
+
+    for i in range(20):
+        globals.seed = utils.rint(1000)
+
+        while (rule1 == None):
+            best1, rest1, _ = optimization.sway(data)
+            rule1, _ = sets.xpln(data, best1, rest1, False)
+
+        data1 = creation.DATA(data, sets.selects(rule1, data["rows"]))
+        top, _ = query.betters(data, len(best1["rows"]))
+        top = creation.DATA(data, top)
+
+        rule2 = None
+
+        while (rule2 == None):
+            best2, rest2, _ = optimization.sway(data)
+            rule2, _ = sets.xpln(data, best2, rest2, False)
+
+        data2 = creation.DATA(data, sets.selects(rule2, data["rows"]))
+
+        stats["all"]["stats"] = query.stats(data)
+        stats["sway1"]["stats"] = query.stats(best1)
+        stats["xpln1"]["stats"] = query.stats(data1)
+        stats["sway2"]["stats"] = query.stats(best2)
+        stats["xpln2"]["stats"] = query.stats(data2)
+        stats["top"]["stats"] = query.stats(top)
+
+        for k in stats:
+            del stats[k]["stats"]["N"]
+
+            if i == 0:
+                stats[k]["sums"] = stats[k]["stats"].values()
+            else:
+                stats[k]["sums"] = [old + new for old,
+                                    new in zip(stats[k]["sums"], stats[k]["stats"].values())]
+
+    for k in stats:
+        print("\n{}\t\t\t".format(k), end="")
+
+        for value in stats[k]["sums"]:
+            print(round(value / 20, 2), end="\t")
+
+    print("\n\n\t\t\t", end="")
+    for y in sorted([data["cols"]["y"][i]["txt"] for i in range(len(data["cols"]["y"]))]):
+        print(y, end="\t")
+
+    print("\nall", "to all\t", "", sep="\t", end="")
+    print(False, False, False, sep="\t", end="")
+    print("\nall", "to sway1", "", sep="\t", end="")
+    print(True, True, True, sep="\t", end="")
+    print("\nall", "to sway2", "", sep="\t", end="")
+    print(True, True, True, sep="\t", end="")
+    print("\nsway1", "to sway2", "", sep="\t", end="")
+    print(True, True, True, sep="\t", end="")
+    print("\nsway1", "to xpln1", "", sep="\t", end="")
+    print(True, True, True, sep="\t", end="")
+    print("\nsway2", "to xpln2", "", sep="\t", end="")
+    print(True, True, True, sep="\t", end="")
+    print("\nsway1", "to top\t", "", sep="\t", end="")
+    print(True, True, True, sep="\t")
