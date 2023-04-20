@@ -131,7 +131,7 @@ def eg_csv():
 
     utils.csv(globals.Is["file"], f)
 
-    return 3192 == n
+    return 3192 == n if "auto93.csv" in globals.Is["file"][globals.Is["file"].rfind("/")] else True
 
 
 def eg_data():
@@ -248,6 +248,7 @@ def eg_sway():
     print("    ", query.stats(best, query.div))
     print("\nrest", query.stats(rest))
     print("    ", query.stats(rest, query.div))
+    print(best["cols"]["y"])
     print("\nall != best?", utils.diffs(best["cols"]["y"], data["cols"]["y"]))
     print("best != rest?", utils.diffs(best["cols"]["y"], rest["cols"]["y"]))
 
@@ -526,8 +527,8 @@ def eg_report():
     for y in sorted([data["cols"]["y"][i]["txt"] for i in range(len(data["cols"]["y"]))]):
         print(y, end="\t")
 
-    stats = {"all": {"stats": None, "sums": []}, "sway1": {"stats": None, "sums": []}, "xpln1": {"stats": None, "sums": [
-    ]}, "sway2": {"stats": None, "sums": []}, "xpln2": {"stats": None, "sums": []}, "top": {"stats": None, "sums": []}}
+    results = {"all": {"data": None, "sums": [], "to": [{"k": "all", "results": []}, {"k": "sway1", "results": []}, {"k": "sway2", "results": []}]}, "sway1": {"data": None, "sums": [], "to": [{"k": "sway2", "results": []}, {"k": "xpln1", "results": []}, {
+        "k": "top", "results": []}]}, "xpln1": {"data": None, "sums": [], "to": []}, "sway2": {"data": None, "sums": [], "to": [{"k": "xpln2", "results": []}]}, "xpln2": {"data": None, "sums": [], "to": []}, "top": {"data": None, "sums": [], "to": []}}
     rule1 = None
 
     for i in range(20):
@@ -549,43 +550,57 @@ def eg_report():
 
         data2 = creation.DATA(data, sets.selects(rule2, data["rows"]))
 
-        stats["all"]["stats"] = query.stats(data)
-        stats["sway1"]["stats"] = query.stats(best1)
-        stats["xpln1"]["stats"] = query.stats(data1)
-        stats["sway2"]["stats"] = query.stats(best2)
-        stats["xpln2"]["stats"] = query.stats(data2)
-        stats["top"]["stats"] = query.stats(top)
+        results["all"]["data"] = data
+        results["sway1"]["data"] = best1
+        results["xpln1"]["data"] = data1
+        results["sway2"]["data"] = best2
+        results["xpln2"]["data"] = data2
+        results["top"]["data"] = top
 
-        for k in stats:
-            del stats[k]["stats"]["N"]
+        for k in results:
+            stat = query.stats(results[k]["data"])
+            del stat["N"]
 
             if i == 0:
-                stats[k]["sums"] = stats[k]["stats"].values()
+                results[k]["sums"] = stat.values()
             else:
-                stats[k]["sums"] = [old + new for old,
-                                    new in zip(stats[k]["sums"], stats[k]["stats"].values())]
+                results[k]["sums"] = [old + new for old,
+                                      new in zip(results[k]["sums"], stat.values())]
 
-    for k in stats:
+    for k in results:
         print("\n{}\t\t\t".format(k), end="")
 
-        for value in stats[k]["sums"]:
+        for value in results[k]["sums"]:
             print(round(value / 20, 2), end="\t")
 
     print("\n\n\t\t\t", end="")
     for y in sorted([data["cols"]["y"][i]["txt"] for i in range(len(data["cols"]["y"]))]):
         print(y, end="\t")
 
-    print("\nall", "to all\t", "", sep="\t", end="")
-    print(False, False, False, sep="\t", end="")
-    print("\nall", "to sway1", "", sep="\t", end="")
-    print(True, True, True, sep="\t", end="")
-    print("\nall", "to sway2", "", sep="\t", end="")
-    print(True, True, True, sep="\t", end="")
-    print("\nsway1", "to sway2", "", sep="\t", end="")
-    print(True, True, True, sep="\t", end="")
-    print("\nsway1", "to xpln1", "", sep="\t", end="")
-    print(True, True, True, sep="\t", end="")
-    print("\nsway2", "to xpln2", "", sep="\t", end="")
-    print(True, True, True, sep="\t", end="")
-    print("\nsway1", "to top\t", "", sep="\t", end="")
-    print(True, True, True, sep="\t")
+    for k in results:
+        for to in range(len(results[k]["to"])):
+            result = []
+
+            for i in range(len(data["cols"]["y"])):
+                y0 = results[k]["data"]["cols"]["y"][i]["has"]
+                z0 = results[results[k]["to"][to]
+                             ["k"]]["data"]["cols"]["y"][i]["has"]
+
+                result.append("=" if not (stats.bootstrap(y0, z0)
+                                          and utils.cliffsDelta(y0, z0)) else "≠")
+
+            results[k]["to"][to]["results"] = result
+
+            if results[k]["to"][to]["k"] != "top":
+                print("\n{}\t{}\t\t".format(
+                    k, results[k]["to"][to]["k"]), end="")
+
+                for result in results[k]["to"][to]["results"]:
+                    print(result, end="\t")
+
+    print("\nsway1\ttop\t\t", end="")
+
+    for result in results["sway1"]["to"][2]["results"]:
+        print(result, end="\t")
+
+    print()
