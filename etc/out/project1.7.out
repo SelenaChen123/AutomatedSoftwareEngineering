@@ -1,0 +1,21 @@
+CityMPG+ Class- HighwayMPG+ Weight- 
+all 21.0 17.7 28.0 3040.0 
+sway1 29.0 8.4 33.0 2240.0 
+xpln1 29.0 9.8 33.0 2325.0 
+sway2 19.0 17.7 28.0 3240.0 
+xpln2 22.0 15.9 28.0 2850.0 
+top 33.0 9.0 41.0 2055.0 
+
+CityMPG+ Class- HighwayMPG+ Weight- 
+all all = = = = 
+all sway1 ≠ ≠ = = 
+all sway2 = ≠ ≠ = 
+sway1 sway2 = ≠ = ≠ 
+sway1 xpln1 = = = ≠ 
+sway2 xpln2 = ≠ ≠ ≠ 
+sway1 top ≠ ≠ ≠ = 
+✅ PASS ../../etc/data/auto2.csv
+   report
+
+🔆 {'pass': 1, 'fail': 0, 'success': 100.0}
+

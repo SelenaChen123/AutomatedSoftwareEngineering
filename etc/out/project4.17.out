@@ -1,0 +1,21 @@
+AEXP- EFFORT- LOC+ PLEX- RISK- 
+all 3.0 19548.0 1013.0 3.0 5.0 
+sway1 2.0 8971.0 920.0 4.0 1.0 
+xpln1 3.0 25334.0 1094.0 3.0 5.0 
+sway2 3.0 8340.0 630.0 3.0 0.0 
+xpln2 3.0 14410.0 1188.0 3.0 2.0 
+top 2.0 29972.0 1529.0 1.0 3.0 
+
+AEXP- EFFORT- LOC+ PLEX- RISK- 
+all all = = = = = 
+all sway1 = = = = ≠ 
+all sway2 ≠ = = = = 
+sway1 sway2 ≠ = = ≠ = 
+sway1 xpln1 = = = = = 
+sway2 xpln2 = ≠ = = = 
+sway1 top = = = ≠ = 
+✅ PASS ../../etc/data/coc1000.csv
+   report
+
+🔆 {'pass': 1, 'fail': 0, 'success': 100.0}
+

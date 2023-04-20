@@ -1,0 +1,21 @@
+Acc+ Lbs- Mpg+ 
+all 15.5 2800.0 20.0 
+sway1 16.8 2020.0 30.0 
+xpln1 16.4 2155.0 30.0 
+sway2 13.5 2807.0 20.0 
+xpln2 14.7 3449.0 20.0 
+top 18.6 1985.0 40.0 
+
+Acc+ Lbs- Mpg+ 
+all all = = = 
+all sway1 = ≠ = 
+all sway2 = = = 
+sway1 sway2 = = = 
+sway1 xpln1 ≠ ≠ ≠ 
+sway2 xpln2 = = = 
+sway1 top ≠ = = 
+✅ PASS ../../etc/data/auto93.csv
+   report
+
+🔆 {'pass': 1, 'fail': 0, 'success': 100.0}
+
