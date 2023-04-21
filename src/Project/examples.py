@@ -635,85 +635,85 @@ def eg_read():
 
             results.extend(summary)
 
-    print(len(results))
-    print(len(results[0]))
-
     for i, line in enumerate(results):
-        if "." in line[0]:
-            print(i, line)
-        else:
-            print("--------", end=" ")
+        break
+        # if "." in line[0]:
+            # print(i, line)
+        # else:
+        #     print("--------", end=" ")
 
     report = [[0 for _ in range(num_ys)], [0 for _ in range(num_ys)], [0 for _ in range(num_ys)], [0 for _ in range(num_ys)], [0 for _ in range(num_ys)], [0 for _ in range(num_ys)], ["" for _ in range(
         num_ys)], ["" for _ in range(num_ys)], ["" for _ in range(num_ys)], ["" for _ in range(num_ys)], ["" for _ in range(num_ys)], ["" for _ in range(num_ys)], ["" for _ in range(num_ys)]]
 
-    print(len(report))
-    print(len(report[0]))
-
+    print(results[0 + 1])
     report[0] = [
         round(sum([float(results[i * 13][0])
-                   for i in range(num_iterations - 2)]) / num_iterations, 2),
-        round(sum([float(results[i * 13 + 1][1])
-                   for i in range(num_iterations - 2)]) / num_iterations, 2),
-        round(sum([float(results[i * 13 + 2][2])
-                   for i in range(num_iterations - 2)]) / num_iterations, 2),
-        round(sum([float(results[i * 13 + 3][3])
-                   for i in range(num_iterations - 2)]) / num_iterations, 2)
+                   for i in range(num_iterations - 1)]) / num_iterations, 2),
+        round(sum([float(results[i * 13][1])
+                   for i in range(num_iterations - 1)]) / num_iterations, 2),
+        round(sum([float(results[i * 13][2])
+                   for i in range(num_iterations - 1)]) / num_iterations, 2),
+        round(sum([float(results[i * 13][3])
+                   for i in range(num_iterations - 1)]) / num_iterations, 2)
     ]
 
+    print(report[0])
+
     report[1] = [
-        round(sum([float(results[(i + 1) * 13][0])
-                   for i in range(num_iterations - 2)]) / num_iterations, 2),
-        round(sum([float(results[(i + 1) * 13 + 1][1])
-                   for i in range(num_iterations - 2)]) / num_iterations, 2),
-        round(sum([float(results[(i + 1) * 13 + 2][2])
-                   for i in range(num_iterations - 2)]) / num_iterations, 2),
-        round(sum([float(results[(i + 1) * 13 + 3][3])
-                   for i in range(num_iterations - 2)]) / num_iterations, 2)
+        round(sum([float(results[(i * 13) + 1][0])
+                   for i in range(num_iterations - 1)]) / num_iterations, 2),
+        round(sum([float(results[(i * 13) + 1][1])
+                   for i in range(num_iterations - 1)]) / num_iterations, 2),
+        round(sum([float(results[(i * 13) + 1][2])
+                   for i in range(num_iterations - 1)]) / num_iterations, 2),
+        round(sum([float(results[(i * 13) + 1][3])
+                   for i in range(num_iterations - 1)]) / num_iterations, 2)
     ]
 
     report[2] = [
-        round(sum([float(results[(i + 2) * 13][0])
-                   for i in range(num_iterations - 2)]) / num_iterations, 2),
-        round(sum([float(results[(i + 2) * 13 + 1][1])
-                   for i in range(num_iterations - 2)]) / num_iterations, 2),
-        round(sum([float(results[(i + 2) * 13 + 2][2])
-                   for i in range(num_iterations - 2)]) / num_iterations, 2),
-        round(sum([float(results[(i + 2) * 13 + 3][3])
-                   for i in range(num_iterations - 2)]) / num_iterations, 2)
+        round(sum([float(results[(i * 13) + 2][0])
+                   for i in range(num_iterations - 1)]) / num_iterations, 2),
+        round(sum([float(results[(i * 13) + 2][1])
+                   for i in range(num_iterations - 1)]) / num_iterations, 2),
+        round(sum([float(results[(i * 13) + 2][2])
+                   for i in range(num_iterations - 1)]) / num_iterations, 2),
+        round(sum([float(results[(i * 13) + 2][3])
+                   for i in range(num_iterations - 1)]) / num_iterations, 2)
     ]
 
+    print(results[39])
+
     report[3] = [
-        round(sum([float(results[(i + 3) * 13][0])
-                   for i in range(num_iterations - 2)]) / num_iterations, 2),
-        round(sum([float(results[(i + 3) * 13 + 1][1])
-                   for i in range(num_iterations - 2)]) / num_iterations, 2),
-        round(sum([float(results[(i + 3) * 13 + 2][2])
-                   for i in range(num_iterations - 2)]) / num_iterations, 2),
-        round(sum([float(results[(i + 3) * 13 + 3][3])
-                   for i in range(num_iterations - 2)]) / num_iterations, 2)
+        round(sum([float(results[(i * 13) + 3][0])
+                   for i in range(num_iterations - 1)]) / num_iterations, 2),
+        round(sum([float(results[(i * 13) + 3][1])
+                   for i in range(num_iterations - 1)]) / num_iterations, 2),
+        round(sum([float(results[(i * 13) + 3][2])
+                   for i in range(num_iterations - 1)]) / num_iterations, 2),
+        round(sum([float(results[(i * 13) + 3][3])
+                   for i in range(num_iterations - 1)]) / num_iterations, 2)
     ]
 
     report[4] = [
-        round(sum([float(results[(i + 4) * 13][0])
-                   for i in range(num_iterations - 2)]) / num_iterations, 2),
-        round(sum([float(results[(i + 4) * 13 + 1][1])
-                   for i in range(num_iterations - 2)]) / num_iterations, 2),
-        round(sum([float(results[(i + 4) * 13 + 2][2])
-                   for i in range(num_iterations - 2)]) / num_iterations, 2),
-        round(sum([float(results[(i + 4) * 13 + 3][3])
-                   for i in range(num_iterations - 2)]) / num_iterations, 2)
+        round(sum([float(results[(i * 13) + 4][0])
+                   for i in range(num_iterations - 1)]) / num_iterations, 2),
+        round(sum([float(results[(i * 13) + 4][1])
+                   for i in range(num_iterations - 1)]) / num_iterations, 2),
+        round(sum([float(results[(i * 13) + 4][2])
+                   for i in range(num_iterations - 1)]) / num_iterations, 2),
+        round(sum([float(results[(i * 13) + 4][3])
+                   for i in range(num_iterations - 1)]) / num_iterations, 2)
     ]
 
     report[5] = [
-        round(sum([float(results[(i + 5) * 13][0])
-                   for i in range(num_iterations - 2)]) / num_iterations, 2),
-        round(sum([float(results[(i + 5) * 13 + 1][1])
-                   for i in range(num_iterations - 2)]) / num_iterations, 2),
-        round(sum([float(results[(i + 5) * 13 + 2][2])
-                   for i in range(num_iterations - 2)]) / num_iterations, 2),
-        round(sum([float(results[(i + 5) * 13 + 3][3])
-                   for i in range(num_iterations - 2)]) / num_iterations, 2)
+        round(sum([float(results[(i * 13) + 5][0])
+                   for i in range(num_iterations - 1)]) / num_iterations, 2),
+        round(sum([float(results[(i * 13) + 5][1])
+                   for i in range(num_iterations - 1)]) / num_iterations, 2),
+        round(sum([float(results[(i * 13) + 5][2])
+                   for i in range(num_iterations - 1)]) / num_iterations, 2),
+        round(sum([float(results[(i * 13) + 5][3])
+                   for i in range(num_iterations - 1)]) / num_iterations, 2)
     ]
 
     for line in report:
