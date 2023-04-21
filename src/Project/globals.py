@@ -22,7 +22,7 @@ OPTIONS:
   -cl --cliff     cliff's delta threshold v2       = .4
   -C  --cohen     cohen's constant                 = .35
   -d  --d         different is over sd*d           = .35
-  -f  --file      data file                        = ../../etc/data/auto93.csv
+  -f  --file      data file                        = ../../etc/data/
   -F  --Far       distance to distant              = .95
   -g  --go        start-up action                  = nothing
   -h  --help      show help                        = false
