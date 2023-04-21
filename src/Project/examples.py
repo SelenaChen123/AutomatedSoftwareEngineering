@@ -592,7 +592,7 @@ def eg_report():
                              ["k"]]["data"]["cols"]["y"][i]["has"]
 
                 result.append("=" if not (stats.bootstrap(y0, z0)
-                                          and utils.cliffsDelta(y0, z0)) else "≠")
+                                          and utils.cliffsDelta(y0, z0)) else "!=")
 
             results[k]["to"][to]["results"] = result
 

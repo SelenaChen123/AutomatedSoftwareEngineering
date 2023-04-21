@@ -86,11 +86,11 @@ def main(help, funs):
 
                         if funs[pair]() == False:
                             n += 1
-                            print("❌ FAIL " +
+                            print("FAIL " +
                                   globals.Is["file"] + "\n   " + pair)
                         else:
                             y += 1
-                            print("✅ PASS " +
+                            print(" PASS " +
                                   globals.Is["file"] + "\n   " + pair)
 
                         globals.Is["file"] = saved["file"]
@@ -104,15 +104,15 @@ def main(help, funs):
 
                     if funs[pair]() == False:
                         n += 1
-                        print("❌ FAIL " +
+                        print(" FAIL " +
                               globals.Is["file"] + "\n   " + pair)
                     else:
                         y += 1
-                        print("✅ PASS " +
+                        print("PASS " +
                               globals.Is["file"] + "\n   " + pair)
 
     if y + n > 0:
-        print("\n🔆 {}\n".format({"pass": y, "fail": n,
+        print("\n {}\n".format({"pass": y, "fail": n,
               "success": 100 * y / math.floor(y + n)}))
 
     return n
