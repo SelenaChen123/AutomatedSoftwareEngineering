@@ -54,7 +54,7 @@ def sway2(data):
         else:
             l, r, A, B, _, evals = clustering.half2(data, rows, None, above)
 
-            if query.better(data, B, A):
+            if query.better2(data, B, A):
                 l, r, A, B = r, l, B, A
 
             def function(row):

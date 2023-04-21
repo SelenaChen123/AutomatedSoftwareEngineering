@@ -134,7 +134,7 @@ def eg_csv():
 
     utils.csv(globals.Is["file"], f)
 
-    return 3192 == n if "auto93.csv" in globals.Is["file"][globals.Is["file"].rfind("/")] else True
+    return 3192 == n if "auto93.csv" in globals.Is["file"][globals.Is["file"].rfind("/") + 1:] else True
 
 
 def eg_data():
@@ -463,7 +463,7 @@ def eg_tiles():
     for k, v in enumerate([a, b, c, d, e, f, g, h, i, j]):
         rxs.append(creation.RX(v, "rx{}".format(k + 1)))
 
-    rxs = sorted(rxs, key=lambda x: query.mid1(x))
+    rxs = sorted(rxs, key=lambda x: query.mid2(x))
 
     for rx in stats.tiles(rxs):
         print("", rx["name"], rx["show"], sep="\t")
@@ -524,6 +524,10 @@ def eg_sk():
 
 
 def eg_report():
+    """
+    Example testing half2().
+    """
+
     data = creation.DATA(globals.Is["file"])
     results = {"all": {"data": None, "sums": [], "to": [{"k": "all", "results": []}, {"k": "sway1", "results": []}, {"k": "sway2", "results": []}]}, "sway1": {"data": None, "sums": [], "to": [{"k": "sway2", "results": []}, {"k": "xpln1", "results": []}, {
         "k": "top", "results": []}]}, "xpln1": {"data": None, "sums": [], "to": []}, "sway2": {"data": None, "sums": [], "to": [{"k": "xpln2", "results": []}]}, "xpln2": {"data": None, "sums": [], "to": []}, "top": {"data": None, "sums": [], "to": []}}
@@ -556,12 +560,7 @@ def eg_report():
     for k in results:
         stat = query.stats(results[k]["data"])
         del stat["N"]
-
-        if i == 0:
-            results[k]["sums"] = stat.values()
-        else:
-            results[k]["sums"] = [old + new for old,
-                                  new in zip(results[k]["sums"], stat.values())]
+        results[k]["sums"] = stat.values()
 
     print("", end="")
 
@@ -609,6 +608,10 @@ def eg_report():
 
 
 def eg_read():
+    """
+    Example testing half2() over 20 iterations.
+    """
+
     names = ["all", "sway1", "xpln1", "sway2", "xpln2", "top"]
     num_iterations = 20
     num_ys = 0

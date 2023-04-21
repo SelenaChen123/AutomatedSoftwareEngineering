@@ -26,12 +26,12 @@ def bootstrap(y0, z0):
     zhat = []
 
     for y1 in y0:
-        update.update_num_keys(x, y1)
-        update.update_num_keys(y, y1)
+        update.add2(x, y1)
+        update.add2(y, y1)
 
     for z1 in z0:
-        update.update_num_keys(x, z1)
-        update.update_num_keys(z, z1)
+        update.add2(x, z1)
+        update.add2(z, z1)
 
     for y1 in y0:
         yhat.append(y1 - y["mu"] + x["mu"])
@@ -106,11 +106,11 @@ def scottKnot(rxs):
             if i < hi:
                 l = merges(lo, i)
                 r = merges(i + 1, hi)
-                now = (l["n"] * (query.mid1(l) - query.mid1(b4)) ** 2 + r["n"]
-                       * (query.mid1(r) - query.mid1(b4)) ** 2) / (l["n"] + r["n"])
+                now = (l["n"] * (query.mid2(l) - query.mid2(b4)) ** 2 + r["n"]
+                       * (query.mid2(r) - query.mid2(b4)) ** 2) / (l["n"] + r["n"])
 
                 if now > best:
-                    if abs(query.mid1(l) - query.mid1(r)) >= cohen:
+                    if abs(query.mid2(l) - query.mid2(r)) >= cohen:
                         cut = i
                         best = now
 
@@ -123,9 +123,8 @@ def scottKnot(rxs):
 
         return rank
 
-    rxs = sorted(rxs, key=lambda x: query.mid1(x))
-    cohen = query.div1(
-        merges(0, len(rxs) - 1)) * globals.Is["cohen"]
+    rxs = sorted(rxs, key=lambda x: query.mid2(x))
+    cohen = query.div2(merges(0, len(rxs) - 1)) * globals.Is["cohen"]
     recurse(0, len(rxs) - 1, 1)
 
     return rxs

@@ -52,6 +52,24 @@ def half(data, rows=[], cols={}, above=[]):
 
 
 def half2(data, rows=[], cols={}, above=[]):
+    """
+    Divides data using kmeans clustering.
+
+    Args:
+        data (dict): Data to be halved.
+        rows (list, optional): List of rows to be halved. Defaults to data["rows"].
+        cols (dict, optional): Factory that manages rows. Defaults to {}.
+        above (list, optional): Single chosen row. Defaults to [].
+
+    Returns:
+        list: Left half of the rows.
+        list: Right half of the rows.
+        list: Single chosen row to calculate the distance from.
+        row: Single chosen row around A to calculate the distance from.
+        float: Distance from A to B.
+        int: 1 if child splits reuse a parent pole and above exists, 2 otherwise.
+    """
+
     rows = rows or data["rows"]
     some = utils.many(rows, globals.Is["Halves"])
     above = utils.any(some)

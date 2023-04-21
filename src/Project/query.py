@@ -38,6 +38,22 @@ def mid(col):
     return col["mode"] if "isSym" in col else utils.per(has(col), .5)
 
 
+def mid2(col):
+    """
+    Returns the central tendency of col.
+
+    Args:
+        col (dict): Column to get the central tendency of.
+
+    Returns:
+        float/str: Central tendency of col.
+    """
+
+    col = col["has"] if col["has"] else col
+
+    return (col[(len(col) - 1) // 2] + col[(len(col) - 1) // 2 + 1]) / 2 if len(col) % 2 == 0 else col[(len(col) - 1) // 2 + 1]
+
+
 def div(col):
     """
     Returns the deviation of col from its central tendency.
@@ -58,6 +74,22 @@ def div(col):
         return e
     else:
         return (utils.per(has(col), .9) - utils.per(has(col), .1)) / 2.58
+
+
+def div2(col):
+    """
+    Returns the deviation of col from its central tendency.
+
+    Args:
+        col (dict): Column to get the deviation from its central tendency.
+
+    Returns:
+        int/float/str: Deviation from its central tendency of col.
+    """
+
+    col = col["has"] if "has" in col else col
+
+    return (col[len(col) * 9 // 10] - col[len(col) * 1 // 10]) / 2.56
 
 
 def stats(data, fun=None, cols=[], nPlaces=2):
@@ -207,10 +239,12 @@ def better(data, row1, row2):
 def better2(data, row1, row2):
     """
     Checks whether or not row1 dominates row2.
+
     Args:
         data (dict): Dictionary of data to be used to check whether or not row1 dominates row2.
         row1 (list): Row to check if it dominates the second row.
         row2 (list): Row to check if it is dominated by the first row.
+
     Returns:
         bool: True if row1 dominates row2, False otherwise.
     """
@@ -260,9 +294,11 @@ def betters(data, n):
 def betters2(data, n):
     """
     Returns the best n items from data.
+
     Args:
         data (dict): Dictionary of data to return the best n items from.
         n (int): Number of items to return from data.
+
     Returns:
         list: List of the best n items from data.
     """
@@ -273,16 +309,3 @@ def betters2(data, n):
     tmp = sorted(data["rows"], key=cmp_to_key(function))
 
     return tmp[1:n], tmp[n + 1:] if n else tmp
-
-
-def mid1(t):
-    t = t["has"] if t["has"] else t
-
-    return (t[(len(t) - 1) // 2] + t[(len(t) - 1) // 2 + 1]) / 2 if len(t) % 2 == 0 else t[(len(t) - 1) // 2 + 1]
-
-
-def div1(t):
-
-    t = t["has"] if "has" in t else t
-
-    return (t[len(t) * 9 // 10] - t[len(t) * 1 // 10]) / 2.56

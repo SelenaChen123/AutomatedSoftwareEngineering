@@ -79,10 +79,12 @@ def main(help, funs):
         if os.path.isdir(os.path.abspath(globals.Is["file"])):
             for dataset in globals.datasets:
                 for pair in funs.keys():
-                    if globals.Is["go"] == "all" or pair == globals.Is["go"]:
+                    if (globals.Is["go"] == "all" and pair != "report" and pair != "read") or pair == globals.Is["go"]:
                         for k, v in saved.items():
                             globals.Is[k] = v if k != "file" else os.path.relpath(os.path.join(
                                 os.path.abspath(globals.Is["file"]), dataset))
+
+                        globals.seed = globals.Is["seed"]
 
                         if funs[pair]() == False:
                             n += 1
@@ -96,7 +98,7 @@ def main(help, funs):
                         globals.Is["file"] = saved["file"]
         else:
             for pair in funs.keys():
-                if globals.Is["go"] == "all" or pair == globals.Is["go"]:
+                if (globals.Is["go"] == "all" and pair != "report" and pair != "read") or pair == globals.Is["go"]:
                     for k, v in saved.items():
                         globals.Is[k] = v
 

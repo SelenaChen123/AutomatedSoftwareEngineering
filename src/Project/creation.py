@@ -26,7 +26,7 @@ def COL(n, s):
     return col
 
 
-def NUM(n=0, s="",t = []):
+def NUM(n=0, s="", t=[]):
     """
     Creates a NUM to summarize a stream of numbers.
 
@@ -38,10 +38,11 @@ def NUM(n=0, s="",t = []):
         dict: Created NUM.
     """
 
-    i = {"at": n, "txt": s, "n": 0, "mu": 0, "m2": 0, "sd": 0,"hi": -math.inf, "lo": math.inf, "ok": True, "has": [], "w": -1 if "-" in s else 1}
-    
+    i = {"at": n, "txt": s, "n": 0, "mu": 0, "m2": 0, "sd": 0, "hi": -math.inf,
+         "lo": math.inf, "ok": True, "has": [], "w": -1 if "-" in s else 1}
+
     for x in t:
-        update.update_num_keys(i, x)
+        update.add2(i, x)
     return i
 
 
@@ -181,6 +182,7 @@ def DATA(src, rows=[]):
         function(row)
 
     return data
+
 
 def RX(t, s=""):
     """
