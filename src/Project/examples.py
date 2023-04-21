@@ -610,124 +610,111 @@ def eg_report():
     print()
 
 
-# def eg_report():
-    # data = creation.DATA(globals.Is["file"])
-    # template = {"all": {"data": None, "sums": [], "to": [{"k": "all", "results": []}, {"k": "sway1", "results": []}, {"k": "sway2", "results": []}]}, "sway1": {"data": None, "sums": [], "to": [{"k": "sway2", "results": []}, {"k": "xpln1", "results": []}, {
-    #     "k": "top", "results": []}]}, "xpln1": {"data": None, "sums": [], "to": []}, "sway2": {"data": None, "sums": [], "to": [{"k": "xpln2", "results": []}]}, "xpln2": {"data": None, "sums": [], "to": []}, "top": {"data": None, "sums": [], "to": []}}
-    # report = template
-    # runs = []
-    # rule1 = None
-    # iterations = 2
+def eg_read():
+    names = ["all", "sway1", "xpln1", "sway2", "xpln2", "top"]
+    num_iterations = 20
+    num_ys = 4
+    results = []
+    report = []
 
-    # while len(runs) != iterations:
-    #     globals.seed = utils.rint(1000)
-    #     results = template
+    for iteration_num in range(num_iterations):
+        with open("../../etc/out/project1.{}.out".format(iteration_num + 1), encoding="UTF-8") as f:
+            lines = f.readlines()
+            summary = []
 
-    #     while (rule1 == None):
-    #         best1, rest1, _ = optimization.sway(data)
-    #         rule1, _ = sets.xpln(data, best1, rest1, False)
+            for line in lines:
+                tokens = line.split()
 
-    #     data1 = creation.DATA(data, sets.selects(rule1, data["rows"]))
-    #     top, _ = query.betters(data, len(best1["rows"]))
-    #     top = creation.DATA(data, top)
+                if len(tokens) > 0 and tokens[0] in names:
+                    info = []
 
-    #     rule2 = None
+                    for token in tokens[1 if "." in tokens[len(tokens) - 1] else 2:]:
+                        info.append(token)
 
-    #     while (rule2 == None):
-    #         best2, rest2, _ = optimization.sway2(data)
-    #         rule2, _ = sets.xpln(data, best2, rest2, False)
+                    summary.append(info)
 
-    #     data2 = creation.DATA(data, sets.selects(rule2, data["rows"]))
+            results.extend(summary)
 
-    #     results["all"]["data"] = data
-    #     results["sway1"]["data"] = best1
-    #     results["xpln1"]["data"] = data1
-    #     results["sway2"]["data"] = best2
-    #     results["xpln2"]["data"] = data2
-    #     results["top"]["data"] = top
+    print(len(results))
+    print(len(results[0]))
 
-    #     for k in results:
-    #         stat = query.stats(results[k]["data"])
-    #         del stat["N"]
-    #         # results[k]["sums"] = [value for value in stat.values()]
+    for i, line in enumerate(results):
+        if "." in line[0]:
+            print(i, line)
+        else:
+            print("--------", end=" ")
 
-    #         if len(runs) == 0:
-    #             results[k]["sums"] = stat.values()
-    #         else:
-    #             print("here")
-    #             results[k]["sums"] = [old + new for old,
-    #                                   new in zip(results[k]["sums"], [value for value in stat.values()])]
+    report = [[0 for _ in range(num_ys)], [0 for _ in range(num_ys)], [0 for _ in range(num_ys)], [0 for _ in range(num_ys)], [0 for _ in range(num_ys)], [0 for _ in range(num_ys)], ["" for _ in range(
+        num_ys)], ["" for _ in range(num_ys)], ["" for _ in range(num_ys)], ["" for _ in range(num_ys)], ["" for _ in range(num_ys)], ["" for _ in range(num_ys)], ["" for _ in range(num_ys)]]
 
-    #     runs.append(results)
+    print(len(report))
+    print(len(report[0]))
 
-    # print(runs[0]["sway2"]["sums"])
-    # print(runs[1]["sway2"]["sums"])
+    report[0] = [
+        round(sum([float(results[i * 13][0])
+                   for i in range(num_iterations - 2)]) / num_iterations, 2),
+        round(sum([float(results[i * 13 + 1][1])
+                   for i in range(num_iterations - 2)]) / num_iterations, 2),
+        round(sum([float(results[i * 13 + 2][2])
+                   for i in range(num_iterations - 2)]) / num_iterations, 2),
+        round(sum([float(results[i * 13 + 3][3])
+                   for i in range(num_iterations - 2)]) / num_iterations, 2)
+    ]
 
-    # print(runs[0].keys())
-    # sums = [0 for _ in range(len(runs[0].keys()))]
-    # for k in runs[0].keys():
-    #     for run in runs:
-    #         print(sums)
-    #         print([item for item in run[k]["sums"]])
-    #         # sums = [old + new for old, new in zip(sums, run[k]["sums"])]
-    #         print()
-    #     print("---------------")
+    report[1] = [
+        round(sum([float(results[(i + 1) * 13][0])
+                   for i in range(num_iterations - 2)]) / num_iterations, 2),
+        round(sum([float(results[(i + 1) * 13 + 1][1])
+                   for i in range(num_iterations - 2)]) / num_iterations, 2),
+        round(sum([float(results[(i + 1) * 13 + 2][2])
+                   for i in range(num_iterations - 2)]) / num_iterations, 2),
+        round(sum([float(results[(i + 1) * 13 + 3][3])
+                   for i in range(num_iterations - 2)]) / num_iterations, 2)
+    ]
 
-    # for item in sums:
-    #     print(item / iterations)
+    report[2] = [
+        round(sum([float(results[(i + 2) * 13][0])
+                   for i in range(num_iterations - 2)]) / num_iterations, 2),
+        round(sum([float(results[(i + 2) * 13 + 1][1])
+                   for i in range(num_iterations - 2)]) / num_iterations, 2),
+        round(sum([float(results[(i + 2) * 13 + 2][2])
+                   for i in range(num_iterations - 2)]) / num_iterations, 2),
+        round(sum([float(results[(i + 2) * 13 + 3][3])
+                   for i in range(num_iterations - 2)]) / num_iterations, 2)
+    ]
 
-    # print("\t\t\t", end="")
-    # for y in sorted([data["cols"]["y"][i]["txt"] for i in range(len(data["cols"]["y"]))]):
-    #     print(y, end="\t")
+    report[3] = [
+        round(sum([float(results[(i + 3) * 13][0])
+                   for i in range(num_iterations - 2)]) / num_iterations, 2),
+        round(sum([float(results[(i + 3) * 13 + 1][1])
+                   for i in range(num_iterations - 2)]) / num_iterations, 2),
+        round(sum([float(results[(i + 3) * 13 + 2][2])
+                   for i in range(num_iterations - 2)]) / num_iterations, 2),
+        round(sum([float(results[(i + 3) * 13 + 3][3])
+                   for i in range(num_iterations - 2)]) / num_iterations, 2)
+    ]
 
-    # for k in results:
-    #     print("\n{}\t\t\t".format(k), end="")
+    report[4] = [
+        round(sum([float(results[(i + 4) * 13][0])
+                   for i in range(num_iterations - 2)]) / num_iterations, 2),
+        round(sum([float(results[(i + 4) * 13 + 1][1])
+                   for i in range(num_iterations - 2)]) / num_iterations, 2),
+        round(sum([float(results[(i + 4) * 13 + 2][2])
+                   for i in range(num_iterations - 2)]) / num_iterations, 2),
+        round(sum([float(results[(i + 4) * 13 + 3][3])
+                   for i in range(num_iterations - 2)]) / num_iterations, 2)
+    ]
 
-    #     for value in results[k]["sums"]:
-    #         print(round(value, 2), end="\t")
+    report[5] = [
+        round(sum([float(results[(i + 5) * 13][0])
+                   for i in range(num_iterations - 2)]) / num_iterations, 2),
+        round(sum([float(results[(i + 5) * 13 + 1][1])
+                   for i in range(num_iterations - 2)]) / num_iterations, 2),
+        round(sum([float(results[(i + 5) * 13 + 2][2])
+                   for i in range(num_iterations - 2)]) / num_iterations, 2),
+        round(sum([float(results[(i + 5) * 13 + 3][3])
+                   for i in range(num_iterations - 2)]) / num_iterations, 2)
+    ]
 
-    # print("\n\n\t\t\t", end="")
-    # for y in sorted([data["cols"]["y"][i]["txt"] for i in range(len(data["cols"]["y"]))]):
-    #     print(y, end="\t")
-
-    # for k in results:
-    #     for to in range(len(results[k]["to"])):
-    #         result = []
-
-    #         for i in range(len(data["cols"]["y"])):
-    #             y0 = results[k]["data"]["cols"]["y"][i]["has"]
-    #             z0 = results[results[k]["to"][to]
-    #                          ["k"]]["data"]["cols"]["y"][i]["has"]
-
-    #             result.append("=" if not (stats.bootstrap(y0, z0)
-    #                                       and utils.cliffsDelta(y0, z0)) else "≠")
-
-    #         results[k]["to"][to]["results"] = result
-
-    #         if results[k]["to"][to]["k"] != "top":
-    #             print("\n{}\t{}\t\t".format(
-    #                 k, results[k]["to"][to]["k"]), end="")
-
-    #             for result in results[k]["to"][to]["results"]:
-    #                 print(result, end="\t")
-
-    # print("\nsway1\ttop\t\t", end="")
-
-    # for result in results["sway1"]["to"][2]["results"]:
-    #     print(result, end="\t")
-
-    # print()
-
-
-# def eg_report():
-#     data = creation.DATA(globals.Is["file"])
-#     iterations = 1
-#     report = []
-
-#     while len(report) != iterations:
-#         try:
-#             report.append(clustering.report(data))
-#         except:
-#             pass
-
-#     clustering.showReport(data, report, iterations)
+    for line in report:
+        print(line)

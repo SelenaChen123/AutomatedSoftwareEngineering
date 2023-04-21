@@ -148,4 +148,5 @@ if __name__ == "__main__":
     examples.eg("tiles", "titles", examples.eg_tiles)
     examples.eg("sk", "sk", examples.eg_sk)
     examples.eg("report", "report", examples.eg_report)
+    examples.eg("read", "read", examples.eg_read)
     main(globals.help, examples.egs)
