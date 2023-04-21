@@ -29,6 +29,6 @@ jobs:
     - name: Test Homework 7
       run: cd ./src/Homework7; python main.py -g all
     - run: echo "🍏 This job's status is ${{ job.status }}."
-    - name: Test Homework 7
+    - name: Test Project
       run: cd ./src/Project; python main.py -g all
     - run: echo "🍏 This job's status is ${{ job.status }}."
