@@ -616,17 +616,23 @@ def eg_report():
 def eg_read():
     names = ["all", "sway1", "xpln1", "sway2", "xpln2", "top"]
     num_iterations = 20
-    num_ys = 4
+    num_ys = 0
+    project_num = globals.datasets.index(
+        globals.Is["file"][globals.Is["file"].rfind("/") + 1:])
     results = []
     report = []
+    lines = []
 
     for iteration_num in range(num_iterations):
-        with open("../../etc/out/project1.{}.out".format(iteration_num + 1), encoding="UTF-8") as f:
+        with open("../../etc/out/project{}.{}.out".format(project_num + 1, iteration_num + 1), encoding="UTF-8") as f:
             lines = f.readlines()
             summary = []
 
-            for line in lines:
+            for i, line in enumerate(lines):
                 tokens = line.split()
+
+                if i == 0:
+                    num_ys = len(tokens)
 
                 if len(tokens) > 0 and tokens[0] in names:
                     info = []
@@ -638,86 +644,41 @@ def eg_read():
 
             results.extend(summary)
 
-    for i, line in enumerate(results):
-        break
-        # if "." in line[0]:
-            # print(i, line)
-        # else:
-        #     print("--------", end=" ")
-
     report = [[0 for _ in range(num_ys)], [0 for _ in range(num_ys)], [0 for _ in range(num_ys)], [0 for _ in range(num_ys)], [0 for _ in range(num_ys)], [0 for _ in range(num_ys)], ["" for _ in range(
         num_ys)], ["" for _ in range(num_ys)], ["" for _ in range(num_ys)], ["" for _ in range(num_ys)], ["" for _ in range(num_ys)], ["" for _ in range(num_ys)], ["" for _ in range(num_ys)]]
 
-    print(results[0 + 1])
-    report[0] = [
-        round(sum([float(results[i * 13][0])
-                   for i in range(num_iterations - 1)]) / num_iterations, 2),
-        round(sum([float(results[i * 13][1])
-                   for i in range(num_iterations - 1)]) / num_iterations, 2),
-        round(sum([float(results[i * 13][2])
-                   for i in range(num_iterations - 1)]) / num_iterations, 2),
-        round(sum([float(results[i * 13][3])
-                   for i in range(num_iterations - 1)]) / num_iterations, 2)
-    ]
+    for line_number in range(13):
+        if line_number < 6:
+            report[line_number] = [
+                round(sum([float(results[(i * 13) + line_number][0])
+                           for i in range(num_iterations)]) / num_iterations, 2),
+                round(sum([float(results[(i * 13) + line_number][1])
+                           for i in range(num_iterations)]) / num_iterations, 2)
+            ]
+        else:
+            report[line_number] = [
+                "=" if "≠" not in [results[(i * 13) + line_number][0]
+                                   for i in range(num_iterations)] else "≠",
+                "=" if "≠" not in [results[(i * 13) + line_number][1]
+                                   for i in range(num_iterations)] else "≠"
+            ]
 
-    print(report[0])
+    beginnings = [["all"], ["sway1"], ["xpln1"], ["sway2"], ["xpln2"], ["top"], ["all", "all"], ["all", "sway1"], [
+        "all", "sway2"], ["sway1", "sway2"], ["sway1", "xpln1"], ["sway2", "xpln2"], ["sway1", "top"]]
 
-    report[1] = [
-        round(sum([float(results[(i * 13) + 1][0])
-                   for i in range(num_iterations - 1)]) / num_iterations, 2),
-        round(sum([float(results[(i * 13) + 1][1])
-                   for i in range(num_iterations - 1)]) / num_iterations, 2),
-        round(sum([float(results[(i * 13) + 1][2])
-                   for i in range(num_iterations - 1)]) / num_iterations, 2),
-        round(sum([float(results[(i * 13) + 1][3])
-                   for i in range(num_iterations - 1)]) / num_iterations, 2)
-    ]
+    for i, beginning in enumerate(beginnings):
+        if i == 0:
+            for y in lines[0].split():
+                print(y, end=" ")
 
-    report[2] = [
-        round(sum([float(results[(i * 13) + 2][0])
-                   for i in range(num_iterations - 1)]) / num_iterations, 2),
-        round(sum([float(results[(i * 13) + 2][1])
-                   for i in range(num_iterations - 1)]) / num_iterations, 2),
-        round(sum([float(results[(i * 13) + 2][2])
-                   for i in range(num_iterations - 1)]) / num_iterations, 2),
-        round(sum([float(results[(i * 13) + 2][3])
-                   for i in range(num_iterations - 1)]) / num_iterations, 2)
-    ]
+            print()
+        elif i == 6:
+            print()
 
-    print(results[39])
+            for y in lines[0].split():
+                print(y, end=" ")
 
-    report[3] = [
-        round(sum([float(results[(i * 13) + 3][0])
-                   for i in range(num_iterations - 1)]) / num_iterations, 2),
-        round(sum([float(results[(i * 13) + 3][1])
-                   for i in range(num_iterations - 1)]) / num_iterations, 2),
-        round(sum([float(results[(i * 13) + 3][2])
-                   for i in range(num_iterations - 1)]) / num_iterations, 2),
-        round(sum([float(results[(i * 13) + 3][3])
-                   for i in range(num_iterations - 1)]) / num_iterations, 2)
-    ]
+            print()
 
-    report[4] = [
-        round(sum([float(results[(i * 13) + 4][0])
-                   for i in range(num_iterations - 1)]) / num_iterations, 2),
-        round(sum([float(results[(i * 13) + 4][1])
-                   for i in range(num_iterations - 1)]) / num_iterations, 2),
-        round(sum([float(results[(i * 13) + 4][2])
-                   for i in range(num_iterations - 1)]) / num_iterations, 2),
-        round(sum([float(results[(i * 13) + 4][3])
-                   for i in range(num_iterations - 1)]) / num_iterations, 2)
-    ]
-
-    report[5] = [
-        round(sum([float(results[(i * 13) + 5][0])
-                   for i in range(num_iterations - 1)]) / num_iterations, 2),
-        round(sum([float(results[(i * 13) + 5][1])
-                   for i in range(num_iterations - 1)]) / num_iterations, 2),
-        round(sum([float(results[(i * 13) + 5][2])
-                   for i in range(num_iterations - 1)]) / num_iterations, 2),
-        round(sum([float(results[(i * 13) + 5][3])
-                   for i in range(num_iterations - 1)]) / num_iterations, 2)
-    ]
-
-    for line in report:
-        print(line)
+        print(" ".join(beginning), " ".join(
+            [str(item) for item in report[i]]), sep=" ")

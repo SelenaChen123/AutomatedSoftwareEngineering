@@ -1,0 +1,21 @@
+Completion+ Cost- Idle- 
+all 0.9 313.79 0.25
+sway1 0.89 210.86 0.23
+xpln1 0.9 324.03 0.24
+sway2 0.91 380.53 0.25
+xpln2 0.91 368.32 0.23
+top 1.0 138.75 0.0
+
+Completion+ Cost- Idle- 
+all all ≠ = ≠
+all sway1 = ≠ ≠
+all sway2 = = =
+sway1 sway2 ≠ ≠ ≠
+sway1 xpln1 ≠ ≠ ≠
+sway2 xpln2 ≠ = ≠
+sway1 top = = =
+✅ PASS ../../etc/data/pom.csv
+   read
+
+🔆 {'pass': 1, 'fail': 0, 'success': 100.0}
+

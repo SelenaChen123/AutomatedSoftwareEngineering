@@ -1,0 +1,21 @@
+N_effort- 
+all 2098.0
+sway1 877.2
+xpln1 1460.95
+sway2 11463.3
+xpln2 5832.7
+top 146.0
+
+N_effort- 
+all all =
+all sway1 ≠
+all sway2 ≠
+sway1 sway2 ≠
+sway1 xpln1 ≠
+sway2 xpln2 ≠
+sway1 top ≠
+✅ PASS ../../etc/data/china.csv
+   read
+
+🔆 {'pass': 1, 'fail': 0, 'success': 100.0}
+
