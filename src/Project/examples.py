@@ -10,6 +10,9 @@ import sets
 import update
 import utils
 import stats
+import sys
+# sys.setdefaultencoding() does not exist, here!
+
 
 global egs
 egs = {}
