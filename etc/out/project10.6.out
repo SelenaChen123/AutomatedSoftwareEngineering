@@ -1,20 +1,20 @@
-Energy- PSNR- 
-all 1237.73 45.67 
-sway1 504.97 45.84 
-xpln1 514.15 42.33 
-sway2 2222.06 47.12 
-xpln2 1674.19 45.73 
-top 465.94 26.7 
+NUMBERITERATIONS- TIMETOSOLUTION- 
+all 6.0 133.54 
+sway1 7.0 198.52 
+xpln1 5.0 108.62 
+sway2 6.0 115.2 
+xpln2 6.0 129.45 
+top 4.0 59.97 
 
-Energy- PSNR- 
+NUMBERITERATIONS- TIMETOSOLUTION- 
 all all = = 
-all sway1 = = 
+all sway1 = != 
 all sway2 = = 
 sway1 sway2 = = 
 sway1 xpln1 = = 
-sway2 xpln2 = != 
-sway1 top = != 
-PASS ../../etc/data/SSN.csv
+sway2 xpln2 = = 
+sway1 top = = 
+PASS ../../etc/data/SSM.csv
    report
 
  {'pass': 1, 'fail': 0, 'success': 100.0}
