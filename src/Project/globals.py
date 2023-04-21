@@ -35,8 +35,8 @@ OPTIONS:
   -s  --seed      random number seed               = 937162211
   -w  --width     plot width                       = 40
   -k  --k         number of clusters for agglo     = 50
-  -e  --eps       epsilon                          = 0.008
-  -P  --minPts    minimum points for dbscan        = 2
+  -e  --eps       epsilon                          = 0.007
+  -P  --minPts    minimum points for dbscan        = 3
 
 ACTIONS:
 """
