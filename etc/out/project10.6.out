@@ -8,14 +8,14 @@ top 4.0 59.97
 
 NUMBERITERATIONS- TIMETOSOLUTION- 
 all all = = 
-all sway1 = != 
+all sway1 = ≠ 
 all sway2 = = 
 sway1 sway2 = = 
 sway1 xpln1 = = 
 sway2 xpln2 = = 
 sway1 top = = 
-PASS ../../etc/data/SSM.csv
+✅ PASS ../../etc/data/SSM.csv
    report
 
- {'pass': 1, 'fail': 0, 'success': 100.0}
+🔆 {'pass': 1, 'fail': 0, 'success': 100.0}
 

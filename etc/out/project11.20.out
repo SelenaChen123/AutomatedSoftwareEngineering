@@ -1,0 +1,21 @@
+Energy- PSNR- 
+all 1237.73 45.67 
+sway1 579.49 49.44 
+xpln1 547.46 49.53 
+sway2 552.66 49.74 
+xpln2 560.79 41.97 
+top 465.94 26.7 
+
+Energy- PSNR- 
+all all = = 
+all sway1 = = 
+all sway2 = = 
+sway1 sway2 = = 
+sway1 xpln1 = = 
+sway2 xpln2 = = 
+sway1 top = = 
+✅ PASS ../../etc/data/SSN.csv
+   report
+
+🔆 {'pass': 1, 'fail': 0, 'success': 100.0}
+

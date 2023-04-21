@@ -10,8 +10,6 @@ import sets
 import update
 import utils
 import stats
-import sys
-# sys.setdefaultencoding() does not exist, here!
 
 
 global egs
@@ -530,43 +528,40 @@ def eg_report():
     results = {"all": {"data": None, "sums": [], "to": [{"k": "all", "results": []}, {"k": "sway1", "results": []}, {"k": "sway2", "results": []}]}, "sway1": {"data": None, "sums": [], "to": [{"k": "sway2", "results": []}, {"k": "xpln1", "results": []}, {
         "k": "top", "results": []}]}, "xpln1": {"data": None, "sums": [], "to": []}, "sway2": {"data": None, "sums": [], "to": [{"k": "xpln2", "results": []}]}, "xpln2": {"data": None, "sums": [], "to": []}, "top": {"data": None, "sums": [], "to": []}}
     rule1 = None
-    iterations = 1
+    globals.seed = random.randint(0, 1000)
 
-    for i in range(iterations):
-        globals.seed = random.randint(0, 1000)
+    while (rule1 == None):
+        best1, rest1, _ = optimization.sway(data)
+        rule1, _ = sets.xpln(data, best1, rest1, False)
 
-        while (rule1 == None):
-            best1, rest1, _ = optimization.sway(data)
-            rule1, _ = sets.xpln(data, best1, rest1, False)
+    data1 = creation.DATA(data, sets.selects(rule1, data["rows"]))
+    top, _ = query.betters(data, len(best1["rows"]))
+    top = creation.DATA(data, top)
 
-        data1 = creation.DATA(data, sets.selects(rule1, data["rows"]))
-        top, _ = query.betters(data, len(best1["rows"]))
-        top = creation.DATA(data, top)
+    rule2 = None
 
-        rule2 = None
+    while (rule2 == None):
+        best2, rest2, _ = optimization.sway2(data)
+        rule2, _ = sets.xpln(data, best2, rest2, False)
 
-        while (rule2 == None):
-            best2, rest2, _ = optimization.sway2(data)
-            rule2, _ = sets.xpln(data, best2, rest2, False)
+    data2 = creation.DATA(data, sets.selects(rule2, data["rows"]))
 
-        data2 = creation.DATA(data, sets.selects(rule2, data["rows"]))
+    results["all"]["data"] = data
+    results["sway1"]["data"] = best1
+    results["xpln1"]["data"] = data1
+    results["sway2"]["data"] = best2
+    results["xpln2"]["data"] = data2
+    results["top"]["data"] = top
 
-        results["all"]["data"] = data
-        results["sway1"]["data"] = best1
-        results["xpln1"]["data"] = data1
-        results["sway2"]["data"] = best2
-        results["xpln2"]["data"] = data2
-        results["top"]["data"] = top
+    for k in results:
+        stat = query.stats(results[k]["data"])
+        del stat["N"]
 
-        for k in results:
-            stat = query.stats(results[k]["data"])
-            del stat["N"]
-
-            if i == 0:
-                results[k]["sums"] = stat.values()
-            else:
-                results[k]["sums"] = [old + new for old,
-                                      new in zip(results[k]["sums"], stat.values())]
+        if i == 0:
+            results[k]["sums"] = stat.values()
+        else:
+            results[k]["sums"] = [old + new for old,
+                                  new in zip(results[k]["sums"], stat.values())]
 
     print("", end="")
 
@@ -578,7 +573,7 @@ def eg_report():
               "all" and k != "top" else "\n{} ".format(k), end="")
 
         for value in results[k]["sums"]:
-            print(round(value / iterations, 2), end=" ")
+            print(round(value, 2), end=" ")
 
     print("\n\n", end="")
 
@@ -595,7 +590,7 @@ def eg_report():
                              ["k"]]["data"]["cols"]["y"][i]["has"]
 
                 result.append("=" if not (stats.bootstrap(y0, z0)
-                                          and utils.cliffsDelta(y0, z0)) else "!=")
+                                          and utils.cliffsDelta(y0, z0)) else "≠")
 
             results[k]["to"][to]["results"] = result
 
